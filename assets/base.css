@@ -2886,3 +2886,7 @@ details-disclosure > details {
   .globo-swatch-product-detail .globo-detail-size-small.globo-detail-border-style-double{
     font-size: 0 !important;
   }
+
+  /* aoa styles */
+
+.animate-opacity{animation:opac 0.8s}@keyframes opac{from{opacity:0} to{opacity:1}}
