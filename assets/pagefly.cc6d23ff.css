@@ -1,0 +1,1082 @@
+/* PageFly Element Styles */
+						.kuwSuz { display: inline-block; line-height: 1; padding: 12px 20px; text-align: center; text-decoration: none; outline: 0px; }
+.kuwSuz i { margin-right: 0.3em; }
+.kuwSuz:hover, .kuwSuz:active, .kuwSuz:focus, .kuwSuz span { color: inherit; }
+.kuwSuz span { display: initial; }
+.lcHmGL { word-break: break-word; }
+.lcHmGL span { font-weight: inherit; text-decoration: inherit; }
+.lcHmGL i { margin-right: 0.3em; }
+.jklmHY { padding: var(--pf-s-lg); }
+@media (max-width: 1199px) and (min-width: 992px) {
+  .jklmHY { padding: var(--pf-s-md); }
+}
+@media (max-width: 991px) and (min-width: 768px) {
+  .jklmHY { padding: var(--pf-s-sm); }
+}
+@media (max-width: 767px) {
+  .jklmHY { padding: var(--pf-s-xs); }
+}
+.fTyjzF { position: relative; }
+.eYzxUD { margin: 0 calc(-1 * var(--pf-s-lg)); }
+@media (max-width: 1199px) and (min-width: 992px) {
+  .eYzxUD { margin: 0 calc(-1 * var(--pf-s-md)); }
+}
+@media (max-width: 991px) and (min-width: 768px) {
+  .eYzxUD { margin: 0 calc(-1 * var(--pf-s-sm)); }
+}
+@media (max-width: 767px) {
+  .eYzxUD { margin: 0 calc(-1 * var(--pf-s-xs)); }
+}
+.bjKdkd__parallax { position: absolute; top: 0px; left: 0px; width: 100%; height: 100%; overflow: hidden; pointer-events: none; }
+.bjKdkd { padding: 15px 0px; position: relative; }
+.iVVzrr { position: relative; list-style: inherit; margin: 0 0 var(--line-spacing); }
+.iVVzrr:last-child { margin: 0px; }
+.iVVzrr::before { content: ""; display: inline-block; width: var(--text-indent); }
+.iVVzrr > i { padding: 5px; margin-right: 5px; }
+.iVVzrr > span { display: inline; }
+.bMMcvF { margin: 0px; padding: 10px; }
+.cbrLgP > span:last-child { line-height: inherit; display: block; margin-right: 0px !important; }
+#editor-dnd-wrapper .cbrLgP span + span[contenteditable] { display: block; }
+#editor-dnd-wrapper .cbrLgP span + span[contenteditable]:empty::after { display: inline; }
+.cbrLgP ol, .cbrLgP ul { list-style-position: inside; }
+.cbrLgP blockquote { font-size: inherit; }
+.fnmilh { display: inline-block; }
+.fnmilh[contenteditable="true"] { user-select: text; }
+.fnmilh { vertical-align: baseline; word-break: break-word; }
+.fnmilh:focus { outline: none; }
+.fnmilh::after { display: inline; }
+						/* PageFly Styles */
+						
+@media all {
+	.__pf .pf-ebaf553d {
+		font-size: 48px;
+		 font-family: "Source Sans Pro";
+		 line-height: 2em;
+		 letter-spacing: 0.5px;
+		 margin-top: 0px;
+		 font-weight: 700;
+		 padding-top: 0px;
+		 color: rgb(255, 255, 255);
+		 margin-bottom: 0px;
+	}
+	.__pf .pf-ccef669e {
+		font-family: "Source Sans Pro";
+		 line-height: 2em;
+		 letter-spacing: 0.5px;
+		 margin-top: 0px;
+		 font-weight: 700;
+		 padding-top: 0px;
+		 color: rgb(255, 255, 255);
+		 font-size: 35px;
+		 margin-bottom: 0px;
+	}
+	.__pf .pf-d3c446df {
+		background-position: 50% 0%;
+		 text-align: center;
+		 margin-top: 0px;
+		 padding-bottom: 200px;
+		 background-size: cover;
+		 padding-top: 200px;
+		 background-image: url("https://cdn.shopify.com/s/files/1/0071/4748/7305/t/11/assets/pf-2cc3c74a--tent-in-the-snow-winter-camping-Edited.jpg?v=1609436294");
+	}
+	.__pf .pf-475f89ee {
+		font-family: "Source Sans Pro";
+		 font-size: 14px;
+		 padding-left: 50px;
+		 margin-top: 0px;
+		 margin-bottom: 0px;
+		 color: rgb(74, 74, 74);
+	}
+	.__pf .pf-ad2f3c7a {
+		padding-bottom: 0px;
+		 padding-top: 15px;
+	}
+	.__pf .pf-c58dc8f4 {
+		padding-left: 50px;
+		 padding-right: 50px;
+		 margin-top: 0px;
+		 margin-bottom: 0px;
+		 font-family: "Source Sans Pro";
+		 font-size: 20px;
+		 line-height: 2em;
+		 letter-spacing: 0.5px;
+		 text-align: justify;
+		 color: rgb(74, 74, 74);
+	}
+	.__pf .pf-c8f48f08 {
+		margin-top: 20px;
+	}
+	.__pf .pf-088cde56 {
+		padding-top: 0px;
+		 padding-bottom: 0px;
+		 letter-spacing: 0.5px;
+	}
+	.__pf .pf-aebc6460 {
+		font-family: "Source Sans Pro";
+		 margin: 0px 50px 20px;
+		 font-size: 25px;
+		 font-weight: 700;
+		 text-align: left;
+		 color: rgb(74, 74, 74);
+	}
+	.__pf .pf-ad8e4488 {
+		font-family: "Source Sans Pro";
+		 margin: 0px 50px;
+		 font-size: 20px;
+		 font-weight: 700;
+		 text-align: left;
+		 color: rgb(74, 74, 74);
+	}
+	.__pf .pf-3c130e8e {
+		padding-left: 50px;
+		 padding-right: 50px;
+		 margin-top: 20px;
+		 margin-bottom: 10px;
+		 font-family: "Source Sans Pro";
+		 font-size: 18px;
+		 line-height: 2em;
+		 letter-spacing: 0.5px;
+		 text-align: justify;
+		 color: rgb(74, 74, 74);
+	}
+	.__pf .pf-3d7c220e {
+		text-align: justify;
+		 font-size: 18px;
+	}
+	.__pf .pf-220ef705 {
+		text-align: justify;
+		 font-size: 18px;
+	}
+	.__pf .pf-f7057cdd {
+		text-align: justify;
+		 font-size: 18px;
+	}
+	.__pf .pf-7cddeaa3 {
+		list-style-position: outside;
+		 list-style-type: disc;
+		 padding: 0px 120px;
+		 font-family: "Source Sans Pro";
+		 font-size: 16px;
+		 letter-spacing: 0.5px;
+		 line-height: 2em;
+		 color: rgb(74, 74, 74);
+	}
+	.__pf .pf-2f97acf0 {
+		margin-top: 0px;
+	}
+	.__pf .pf-7023ccb1 {
+		font-family: "Source Sans Pro";
+		 margin: 0px 50px;
+		 font-size: 20px;
+		 font-weight: 700;
+		 text-align: left;
+		 color: rgb(74, 74, 74);
+	}
+	.__pf .pf-ccb10823 {
+		padding-left: 50px;
+		 padding-right: 50px;
+		 margin-top: 20px;
+		 margin-bottom: 10px;
+		 font-family: "Source Sans Pro";
+		 font-size: 18px;
+		 line-height: 2em;
+		 letter-spacing: 0.5px;
+		 text-align: justify;
+		 color: rgb(74, 74, 74);
+	}
+	.__pf .pf-8fa4d1d9 {
+		text-align: justify;
+		 font-size: 18px;
+	}
+	.__pf .pf-d1d95936 {
+		text-align: justify;
+		 font-size: 18px;
+	}
+	.__pf .pf-59368c3c {
+		text-align: justify;
+		 font-size: 18px;
+	}
+	.__pf .pf-8c3c60f3 {
+		text-align: justify;
+		 font-size: 18px;
+	}
+	.__pf .pf-9effec05 {
+		text-align: justify;
+		 font-size: 18px;
+	}
+	.__pf .pf-60f3df0f {
+		list-style-position: outside;
+		 list-style-type: disc;
+		 padding: 0px 120px;
+		 font-family: "Source Sans Pro";
+		 font-size: 16px;
+		 letter-spacing: 0.5px;
+		 line-height: 2em;
+		 color: rgb(74, 74, 74);
+	}
+	.__pf .pf-08239388 {
+		margin-top: 0px;
+		 padding-left: 0px;
+		 padding-right: 0px;
+	}
+	.__pf .pf-67adfd6f {
+		font-family: "Source Sans Pro";
+		 margin: 0px 50px;
+		 font-size: 20px;
+		 font-weight: 700;
+		 text-align: left;
+		 color: rgb(74, 74, 74);
+	}
+	.__pf .pf-fd6f3085 {
+		padding-left: 50px;
+		 padding-right: 50px;
+		 margin-top: 20px;
+		 margin-bottom: 10px;
+		 font-family: "Source Sans Pro";
+		 font-size: 18px;
+		 line-height: 2em;
+		 letter-spacing: 0.5px;
+		 text-align: justify;
+		 color: rgb(74, 74, 74);
+	}
+	.__pf .pf-80973ddf {
+		text-align: justify;
+		 font-size: 18px;
+	}
+	.__pf .pf-3ddf1051 {
+		text-align: justify;
+		 font-size: 18px;
+	}
+	.__pf .pf-10515285 {
+		text-align: justify;
+		 font-size: 18px;
+	}
+	.__pf .pf-ccca83ff {
+		text-align: justify;
+		 font-size: 18px;
+	}
+	.__pf .pf-32cb2cc3 {
+		text-align: justify;
+		 font-size: 18px;
+	}
+	.__pf .pf-976efb1a {
+		list-style-position: outside;
+		 list-style-type: disc;
+		 padding: 0px 120px;
+		 font-family: "Source Sans Pro";
+		 font-size: 16px;
+		 letter-spacing: 0.5px;
+		 line-height: 2em;
+		 color: rgb(74, 74, 74);
+	}
+	.__pf .pf-30857a6f {
+		margin-top: 0px;
+		 padding-left: 0px;
+		 padding-right: 0px;
+	}
+	.__pf .pf-f05fee74 {
+		padding-top: 0px;
+		 padding-bottom: 0px;
+		 letter-spacing: 0.5px;
+	}
+	.__pf .pf-86eedf53 {
+		width: 800px;
+		 height: auto;
+	}
+	.__pf .pf-b5601466 {
+		text-align: center;
+	}
+	.__pf .pf-86662972 {
+		font-family: "Source Sans Pro";
+		 margin: 0px 50px;
+		 font-size: 25px;
+		 font-weight: 700;
+		 text-align: left;
+		 color: rgb(74, 74, 74);
+	}
+	.__pf .pf-6cb92f97 {
+		padding-left: 50px;
+		 padding-right: 50px;
+		 margin-top: 20px;
+		 margin-bottom: 0px;
+		 font-family: "Source Sans Pro";
+		 font-size: 18px;
+		 line-height: 2em;
+		 letter-spacing: 0.5px;
+		 text-align: justify;
+		 color: rgb(74, 74, 74);
+	}
+	.__pf .pf-102506fd {
+		font-family: "Source Sans Pro";
+		 margin: 0px 50px;
+		 font-size: 20px;
+		 font-weight: 700;
+		 text-align: left;
+		 color: rgb(74, 74, 74);
+	}
+	.__pf .pf-06fdc461 {
+		padding-left: 50px;
+		 padding-right: 50px;
+		 margin-top: 0px;
+		 margin-bottom: 0px;
+		 font-family: "Source Sans Pro";
+		 font-size: 18px;
+		 line-height: 2em;
+		 letter-spacing: 0.5px;
+		 text-align: justify;
+		 color: rgb(74, 74, 74);
+	}
+	.__pf .pf-c4612e47 {
+		margin-top: 0px;
+		 padding-left: 50px;
+		 padding-right: 50px;
+	}
+	.__pf .pf-09fe5da2 {
+		font-family: "Source Sans Pro";
+		 margin: 0px 50px;
+		 font-size: 20px;
+		 font-weight: 700;
+		 text-align: left;
+		 color: rgb(74, 74, 74);
+	}
+	.__pf .pf-5da27a6b {
+		padding-left: 50px;
+		 padding-right: 50px;
+		 margin-top: 0px;
+		 margin-bottom: 0px;
+		 font-family: "Source Sans Pro";
+		 font-size: 18px;
+		 line-height: 2em;
+		 letter-spacing: 0.5px;
+		 text-align: justify;
+		 color: rgb(74, 74, 74);
+	}
+	.__pf .pf-7a6b8672 {
+		margin-top: 0px;
+		 padding-left: 50px;
+		 padding-right: 50px;
+	}
+	.__pf .pf-8dfa0f1d {
+		font-family: "Source Sans Pro";
+		 margin: 0px 50px;
+		 font-size: 20px;
+		 font-weight: 700;
+		 text-align: left;
+		 color: rgb(74, 74, 74);
+	}
+	.__pf .pf-0f1d61d9 {
+		padding-left: 50px;
+		 padding-right: 50px;
+		 margin-top: 0px;
+		 margin-bottom: 0px;
+		 font-family: "Source Sans Pro";
+		 font-size: 18px;
+		 line-height: 2em;
+		 letter-spacing: 0.5px;
+		 text-align: justify;
+		 color: rgb(74, 74, 74);
+	}
+	.__pf .pf-61d9843a {
+		margin-top: 0px;
+		 padding-left: 50px;
+		 padding-right: 50px;
+	}
+	.__pf .pf-804d86ee {
+		padding-top: 0px;
+		 padding-bottom: 0px;
+		 letter-spacing: 0.5px;
+		 margin-top: 20px;
+	}
+	.__pf .pf-c74a9e05 {
+		width: 800px;
+		 height: auto;
+	}
+	.__pf .pf-9e0534d2 {
+		text-align: center;
+	}
+	.__pf .pf-df660f95 {
+		font-family: "Source Sans Pro";
+		 margin: 0px 50px 20px;
+		 font-size: 25px;
+		 font-weight: 700;
+		 text-align: left;
+		 color: rgb(74, 74, 74);
+	}
+	.__pf .pf-486d0459 {
+		text-align: justify;
+		 font-size: 18px;
+	}
+	.__pf .pf-04597c47 {
+		text-align: justify;
+		 font-size: 18px;
+	}
+	.__pf .pf-7c478973 {
+		text-align: justify;
+		 font-size: 18px;
+	}
+	.__pf .pf-8973f8f0 {
+		text-align: justify;
+		 font-size: 18px;
+	}
+	.__pf .pf-f8f044fd {
+		text-align: justify;
+		 font-size: 18px;
+	}
+	.__pf .pf-44fd2769 {
+		list-style-position: outside;
+		 list-style-type: disc;
+		 padding: 0px 120px;
+		 font-family: "Source Sans Pro";
+		 font-size: 16px;
+		 letter-spacing: 0.5px;
+		 line-height: 2em;
+		 color: rgb(74, 74, 74);
+	}
+	.__pf .pf-d94fcd26 {
+		margin-top: 20px;
+	}
+	.__pf .pf-260425c3 {
+		padding-top: 0px;
+		 padding-bottom: 0px;
+		 letter-spacing: 0.5px;
+	}
+	.__pf .pf-03161122 {
+		padding-left: 50px;
+		 padding-right: 50px;
+		 margin-top: 0px;
+		 font-family: "Source Sans Pro";
+		 font-size: 28px;
+		 line-height: 2em;
+		 letter-spacing: 0.5px;
+		 text-align: center;
+		 margin-bottom: 30px;
+	}
+	.__pf .pf-816164cd {
+		padding-top: 0px;
+		 padding-bottom: 0px;
+		 letter-spacing: 0.5px;
+		 margin-top: 20px;
+	}
+	.__pf .pf-06bba51f {
+		background-color: rgb(240, 127, 8);
+		 color: rgb(255, 255, 255);
+		 font-family: "Source Sans Pro";
+		 font-size: 16px;
+		 padding: 15px 30px;
+		 letter-spacing: 0.3px;
+		 font-weight: 700;
+	}
+	.__pf .pf-06bba51f:hover {
+		color: rgb(255, 255, 255);
+		 background-color: rgb(0, 0, 0);
+	}
+	.__pf .pf-a51f6ba5 {
+		padding: 115px 20px;
+		 background-size: cover;
+		 background-image: url("https://cdn.shopify.com/s/files/1/0071/4748/7305/t/11/assets/pf-ecd630bb--woman-wearing-layers-in-iceland.jpg?v=1604267138");
+		 background-position: 50% 50%;
+	}
+	.__pf .pf-d2463df1 {
+		background-color: rgb(240, 127, 8);
+		 color: rgb(255, 255, 255);
+		 font-family: "Source Sans Pro";
+		 font-size: 16px;
+		 font-weight: 700;
+		 padding: 15px 30px;
+		 letter-spacing: 0.3px;
+	}
+	.__pf .pf-d2463df1:hover {
+		color: rgb(255, 255, 255);
+		 background-color: rgb(0, 0, 0);
+	}
+	.__pf .pf-3df130d5 {
+		padding: 115px 20px;
+		 background-size: cover;
+		 background-image: url("https://cdn.shopify.com/s/files/1/0071/4748/7305/t/11/assets/pf-3b3b2f03--MVIMG20190726100448-Edited.jpg?v=1602098676");
+	}
+	.__pf .pf-30d53536 {
+		text-align: center;
+		 font-family: "Source Sans Pro";
+	}
+	.__pf .pf-35364081 {
+		padding-top: 35px;
+		 padding-bottom: 65px;
+	}
+}
+@media only screen and (max-width: 767px) {
+	.__pf .pf-ebaf553d {
+		font-size: 35px;
+		 padding-top: 0px;
+		 margin-top: 0px;
+		 padding-bottom: 0px;
+	}
+	.__pf .pf-ccef669e {
+		padding-top: 0px;
+		 margin-top: 0px;
+		 padding-bottom: 0px;
+		 font-size: 20px;
+	}
+	.__pf .pf-f792d3c4 {
+		padding-top: 0px;
+		 background-position: 100% 0%;
+		 background-size: cover;
+		 background-repeat: no-repeat;
+	}
+	.__pf .pf-d3c446df {
+		background-position: 50% 50%;
+		 background-size: cover;
+		 padding-bottom: 0px;
+		 padding-top: 120px;
+	}
+	.__pf .pf-475f89ee {
+		padding-left: 0px;
+		 font-size: 12px;
+	}
+	.__pf .pf-ad2f3c7a {
+		background-position: 0% 50%;
+		 background-size: cover;
+	}
+	.__pf .pf-c58dc8f4 {
+		font-size: 14px;
+		 padding-left: 0px;
+		 padding-right: 0px;
+	}
+	.__pf .pf-aebc6460 {
+		font-size: 16px;
+		 margin: 0px 10px 0px 0px;
+	}
+	.__pf .pf-ad8e4488 {
+		font-size: 14px;
+		 margin: 20px 10px 0px 0px;
+	}
+	.__pf .pf-3c130e8e {
+		font-size: 14px;
+		 padding-left: 0px;
+		 padding-right: 0px;
+		 margin-top: 0px;
+	}
+	.__pf .pf-3d7c220e {
+		text-align: left;
+		 font-size: 12px;
+	}
+	.__pf .pf-220ef705 {
+		text-align: left;
+		 font-size: 12px;
+	}
+	.__pf .pf-f7057cdd {
+		text-align: left;
+		 font-size: 12px;
+	}
+	.__pf .pf-7cddeaa3 {
+		font-size: 12px;
+		 padding-left: 10px;
+		 padding-right: 0px;
+	}
+	.__pf .pf-7023ccb1 {
+		font-size: 14px;
+		 margin: 10px 10px 0px 0px;
+	}
+	.__pf .pf-ccb10823 {
+		font-size: 14px;
+		 padding-left: 0px;
+		 padding-right: 0px;
+		 margin-top: 0px;
+	}
+	.__pf .pf-8fa4d1d9 {
+		text-align: left;
+		 font-size: 12px;
+	}
+	.__pf .pf-d1d95936 {
+		text-align: left;
+		 font-size: 12px;
+	}
+	.__pf .pf-59368c3c {
+		text-align: left;
+		 font-size: 12px;
+	}
+	.__pf .pf-8c3c60f3 {
+		text-align: left;
+		 font-size: 12px;
+	}
+	.__pf .pf-9effec05 {
+		text-align: left;
+		 font-size: 12px;
+	}
+	.__pf .pf-60f3df0f {
+		font-size: 12px;
+		 padding-left: 10px;
+		 padding-right: 0px;
+	}
+	.__pf .pf-67adfd6f {
+		font-size: 14px;
+		 margin: 10px 10px 0px 0px;
+	}
+	.__pf .pf-fd6f3085 {
+		font-size: 14px;
+		 padding-left: 0px;
+		 padding-right: 0px;
+		 margin-top: 0px;
+	}
+	.__pf .pf-80973ddf {
+		text-align: left;
+		 font-size: 12px;
+	}
+	.__pf .pf-3ddf1051 {
+		text-align: left;
+		 font-size: 12px;
+	}
+	.__pf .pf-10515285 {
+		text-align: left;
+		 font-size: 12px;
+	}
+	.__pf .pf-ccca83ff {
+		text-align: left;
+		 font-size: 12px;
+	}
+	.__pf .pf-32cb2cc3 {
+		text-align: left;
+		 font-size: 12px;
+	}
+	.__pf .pf-976efb1a {
+		font-size: 12px;
+		 padding-left: 10px;
+		 padding-right: 0px;
+	}
+	.__pf .pf-86eedf53 {
+		width: 100%;
+		 height: auto;
+	}
+	.__pf .pf-86662972 {
+		font-size: 16px;
+		 margin: 0px 10px 0px 0px;
+	}
+	.__pf .pf-6cb92f97 {
+		font-size: 14px;
+		 padding-left: 0px;
+		 padding-right: 0px;
+	}
+	.__pf .pf-102506fd {
+		font-size: 14px;
+		 padding-left: 0px;
+		 padding-right: 0px;
+		 margin-left: 0px;
+	}
+	.__pf .pf-06fdc461 {
+		font-size: 14px;
+		 padding-left: 0px;
+		 padding-right: 0px;
+	}
+	.__pf .pf-c4612e47 {
+		padding-left: 20px;
+		 padding-right: 20px;
+	}
+	.__pf .pf-09fe5da2 {
+		font-size: 14px;
+		 padding-left: 0px;
+		 padding-right: 0px;
+		 margin-left: 0px;
+	}
+	.__pf .pf-5da27a6b {
+		font-size: 14px;
+		 padding-left: 0px;
+		 padding-right: 0px;
+	}
+	.__pf .pf-7a6b8672 {
+		padding-left: 20px;
+		 padding-right: 20px;
+	}
+	.__pf .pf-8dfa0f1d {
+		font-size: 14px;
+		 padding-left: 0px;
+		 padding-right: 0px;
+		 margin-left: 0px;
+	}
+	.__pf .pf-0f1d61d9 {
+		font-size: 14px;
+		 padding-left: 0px;
+		 padding-right: 0px;
+	}
+	.__pf .pf-61d9843a {
+		padding-left: 20px;
+		 padding-right: 20px;
+	}
+	.__pf .pf-c74a9e05 {
+		width: 100%;
+		 height: auto;
+	}
+	.__pf .pf-df660f95 {
+		font-size: 16px;
+		 margin: 0px 10px 20px 0px;
+	}
+	.__pf .pf-486d0459 {
+		text-align: left;
+		 font-size: 12px;
+	}
+	.__pf .pf-04597c47 {
+		text-align: left;
+		 font-size: 12px;
+	}
+	.__pf .pf-7c478973 {
+		text-align: left;
+		 font-size: 12px;
+	}
+	.__pf .pf-8973f8f0 {
+		text-align: left;
+		 font-size: 12px;
+	}
+	.__pf .pf-f8f044fd {
+		text-align: left;
+		 font-size: 12px;
+	}
+	.__pf .pf-44fd2769 {
+		font-size: 12px;
+		 padding-left: 10px;
+		 padding-right: 0px;
+	}
+	.__pf .pf-03161122 {
+		font-size: 18px;
+		 padding-left: 0px;
+		 padding-right: 0px;
+	}
+	.__pf .pf-816164cd {
+		padding-top: 0px;
+	}
+	.__pf .pf-06bba51f {
+		font-size: 12px;
+	}
+	.__pf .pf-a51f6ba5 {
+		background-image: url("https://cdn.shopify.com/s/files/1/0071/4748/7305/t/11/assets/pf-ecd630bb--woman-wearing-layers-in-iceland.jpg?v=1604267138&selected");
+		 padding-top: 90px;
+		 padding-bottom: 90px;
+		 background-position: 0% 50%;
+	}
+	.__pf .pf-d2463df1 {
+		font-size: 12px;
+	}
+	.__pf .pf-3df130d5 {
+		background-image: url("https://cdn.shopify.com/s/files/1/0071/4748/7305/t/11/assets/pf-3b3b2f03--MVIMG20190726100448-Edited.jpg?v=1602098676&selected");
+		 padding-top: 90px;
+		 padding-bottom: 90px;
+	}
+	.__pf .pf-35364081 {
+		padding-top: 15px;
+		 padding-bottom: 45px;
+	}
+}
+@media only screen and (min-width: 992px) and (max-width: 1199px) {
+	.__pf .pf-d3c446df {
+		background-position: 50% 50%;
+		 text-align: center;
+		 background-size: cover;
+		 padding-top: 150px;
+		 padding-bottom: 150px;
+	}
+	.__pf .pf-c58dc8f4 {
+		font-size: 18px;
+	}
+	.__pf .pf-aebc6460 {
+		font-size: 22px;
+	}
+	.__pf .pf-ad8e4488 {
+		font-size: 18px;
+	}
+	.__pf .pf-3c130e8e {
+		font-size: 16px;
+	}
+	.__pf .pf-3d7c220e {
+		font-size: 16px;
+	}
+	.__pf .pf-220ef705 {
+		font-size: 16px;
+	}
+	.__pf .pf-f7057cdd {
+		font-size: 16px;
+	}
+	.__pf .pf-7cddeaa3 {
+		font-size: 16px;
+	}
+	.__pf .pf-7023ccb1 {
+		font-size: 18px;
+	}
+	.__pf .pf-ccb10823 {
+		font-size: 16px;
+	}
+	.__pf .pf-8fa4d1d9 {
+		font-size: 16px;
+	}
+	.__pf .pf-d1d95936 {
+		font-size: 16px;
+	}
+	.__pf .pf-59368c3c {
+		font-size: 16px;
+	}
+	.__pf .pf-8c3c60f3 {
+		font-size: 16px;
+	}
+	.__pf .pf-9effec05 {
+		font-size: 16px;
+	}
+	.__pf .pf-67adfd6f {
+		font-size: 18px;
+	}
+	.__pf .pf-fd6f3085 {
+		font-size: 16px;
+	}
+	.__pf .pf-80973ddf {
+		font-size: 16px;
+	}
+	.__pf .pf-3ddf1051 {
+		font-size: 16px;
+	}
+	.__pf .pf-10515285 {
+		font-size: 16px;
+	}
+	.__pf .pf-ccca83ff {
+		font-size: 16px;
+	}
+	.__pf .pf-32cb2cc3 {
+		font-size: 16px;
+	}
+	.__pf .pf-86662972 {
+		font-size: 22px;
+	}
+	.__pf .pf-6cb92f97 {
+		font-size: 16px;
+	}
+	.__pf .pf-102506fd {
+		font-size: 18px;
+	}
+	.__pf .pf-06fdc461 {
+		font-size: 16px;
+	}
+	.__pf .pf-09fe5da2 {
+		font-size: 18px;
+	}
+	.__pf .pf-5da27a6b {
+		font-size: 16px;
+	}
+	.__pf .pf-8dfa0f1d {
+		font-size: 18px;
+	}
+	.__pf .pf-0f1d61d9 {
+		font-size: 16px;
+	}
+	.__pf .pf-df660f95 {
+		font-size: 22px;
+	}
+	.__pf .pf-486d0459 {
+		font-size: 16px;
+	}
+	.__pf .pf-04597c47 {
+		font-size: 16px;
+	}
+	.__pf .pf-7c478973 {
+		font-size: 16px;
+	}
+	.__pf .pf-8973f8f0 {
+		font-size: 16px;
+	}
+	.__pf .pf-f8f044fd {
+		font-size: 16px;
+	}
+	.__pf .pf-a51f6ba5 {
+		background-image: url("https://cdn.shopify.com/s/files/1/0071/4748/7305/t/11/assets/pf-ecd630bb--woman-wearing-layers-in-iceland.jpg?v=1604267138&selected");
+	}
+	.__pf .pf-3df130d5 {
+		background-image: url("https://cdn.shopify.com/s/files/1/0071/4748/7305/t/11/assets/pf-3b3b2f03--MVIMG20190726100448-Edited.jpg?v=1602098676&selected");
+	}
+}
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+	.__pf .pf-ebaf553d {
+		padding-top: 0px;
+		 font-size: 40px;
+		 margin-top: 80px;
+	}
+	.__pf .pf-ccef669e {
+		padding-top: 0px;
+		 font-size: 30px;
+	}
+	.__pf .pf-d3c446df {
+		background-position: 50% 50%;
+		 padding-top: 50px;
+		 padding-bottom: 100px;
+	}
+	.__pf .pf-475f89ee {
+		padding-left: 0px;
+	}
+	.__pf .pf-c58dc8f4 {
+		font-size: 16px;
+		 padding-left: 0px;
+		 padding-right: 0px;
+	}
+	.__pf .pf-aebc6460 {
+		font-size: 20px;
+		 margin-left: 0px;
+	}
+	.__pf .pf-ad8e4488 {
+		font-size: 18px;
+		 margin-left: 0px;
+	}
+	.__pf .pf-3c130e8e {
+		font-size: 16px;
+		 padding-left: 0px;
+		 padding-right: 0px;
+	}
+	.__pf .pf-3d7c220e {
+		font-size: 14px;
+	}
+	.__pf .pf-220ef705 {
+		font-size: 14px;
+	}
+	.__pf .pf-f7057cdd {
+		font-size: 14px;
+	}
+	.__pf .pf-7cddeaa3 {
+		padding-left: 50px;
+		 padding-right: 50px;
+	}
+	.__pf .pf-7023ccb1 {
+		font-size: 18px;
+		 margin-left: 0px;
+	}
+	.__pf .pf-ccb10823 {
+		font-size: 16px;
+		 padding-left: 0px;
+		 padding-right: 0px;
+	}
+	.__pf .pf-8fa4d1d9 {
+		font-size: 14px;
+	}
+	.__pf .pf-d1d95936 {
+		font-size: 14px;
+	}
+	.__pf .pf-59368c3c {
+		font-size: 14px;
+	}
+	.__pf .pf-8c3c60f3 {
+		font-size: 14px;
+	}
+	.__pf .pf-9effec05 {
+		font-size: 14px;
+	}
+	.__pf .pf-60f3df0f {
+		padding-left: 50px;
+		 padding-right: 50px;
+	}
+	.__pf .pf-67adfd6f {
+		font-size: 18px;
+		 margin-left: 0px;
+	}
+	.__pf .pf-fd6f3085 {
+		font-size: 16px;
+		 padding-left: 0px;
+		 padding-right: 0px;
+	}
+	.__pf .pf-80973ddf {
+		font-size: 14px;
+	}
+	.__pf .pf-3ddf1051 {
+		font-size: 14px;
+	}
+	.__pf .pf-10515285 {
+		font-size: 14px;
+	}
+	.__pf .pf-ccca83ff {
+		font-size: 14px;
+	}
+	.__pf .pf-32cb2cc3 {
+		font-size: 14px;
+	}
+	.__pf .pf-976efb1a {
+		padding-left: 50px;
+		 padding-right: 50px;
+	}
+	.__pf .pf-86662972 {
+		font-size: 20px;
+		 margin-left: 0px;
+	}
+	.__pf .pf-6cb92f97 {
+		font-size: 16px;
+		 padding-left: 0px;
+		 padding-right: 0px;
+	}
+	.__pf .pf-102506fd {
+		font-size: 16px;
+		 padding-left: 0px;
+		 padding-right: 0px;
+		 margin-left: 0px;
+	}
+	.__pf .pf-06fdc461 {
+		font-size: 14px;
+		 padding-left: 0px;
+		 padding-right: 0px;
+	}
+	.__pf .pf-09fe5da2 {
+		font-size: 16px;
+		 padding-left: 0px;
+		 padding-right: 0px;
+		 margin-left: 0px;
+	}
+	.__pf .pf-5da27a6b {
+		font-size: 14px;
+		 padding-left: 0px;
+		 padding-right: 0px;
+	}
+	.__pf .pf-8dfa0f1d {
+		font-size: 16px;
+		 padding-left: 0px;
+		 padding-right: 0px;
+		 margin-left: 0px;
+	}
+	.__pf .pf-0f1d61d9 {
+		font-size: 14px;
+		 padding-left: 0px;
+		 padding-right: 0px;
+	}
+	.__pf .pf-df660f95 {
+		font-size: 20px;
+		 margin-left: 0px;
+	}
+	.__pf .pf-486d0459 {
+		font-size: 14px;
+	}
+	.__pf .pf-04597c47 {
+		font-size: 14px;
+	}
+	.__pf .pf-7c478973 {
+		font-size: 14px;
+	}
+	.__pf .pf-8973f8f0 {
+		font-size: 14px;
+	}
+	.__pf .pf-f8f044fd {
+		font-size: 14px;
+	}
+	.__pf .pf-44fd2769 {
+		padding-left: 50px;
+		 padding-right: 50px;
+	}
+	.__pf .pf-03161122 {
+		padding-left: 0px;
+		 padding-right: 0px;
+		 font-size: 20px;
+	}
+	.__pf .pf-06bba51f {
+		font-size: 14px;
+	}
+	.__pf .pf-a51f6ba5 {
+		background-image: url("https://cdn.shopify.com/s/files/1/0071/4748/7305/t/11/assets/pf-ecd630bb--woman-wearing-layers-in-iceland.jpg?v=1604267138&selected");
+		 background-position: 0% 50%;
+		 padding-bottom: 90px;
+		 padding-top: 90px;
+	}
+	.__pf .pf-d2463df1 {
+		font-size: 14px;
+	}
+	.__pf .pf-3df130d5 {
+		background-image: url("https://cdn.shopify.com/s/files/1/0071/4748/7305/t/11/assets/pf-3b3b2f03--MVIMG20190726100448-Edited.jpg?v=1602098676&selected");
+		 padding-top: 90px;
+		 padding-bottom: 90px;
+	}
+}
+						

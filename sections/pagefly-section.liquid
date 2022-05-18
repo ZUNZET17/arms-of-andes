@@ -1,0 +1,91 @@
+
+{% if request.design_mode %}
+<style>.pf-ph{font-size:14px!important;background:#fafafa;padding:20px;text-align:center;border:1px solid #f0f0f0;border-radius:4px;margin:15px}.pf-ph span{display:block;background:#e6f7ff;padding:8px 15px;border:1px solid #91d5ff}</style>
+{% endif %}
+{% if section.settings.section_id.size > 0 %}
+  {% assign snippet_name = section.settings.section_id %}
+  {% capture content %}{% include snippet_name %}{% endcapture %}
+  {% if content contains "Liquid error" %}
+    
+    {% if request.design_mode %}
+      <div class="pf-ph">
+        <h3>PageFly Section</h3>
+        <span>No section selected. Please select your section from the list</span>
+      </div>
+    {% endif %}
+  
+  {% else %}
+    {% render 'pagefly-settings' %}
+    {% include snippet_name %}
+  {% endif %}
+  {% else %}
+    
+    {% if request.design_mode %}
+      <div class="pf-ph">
+        <h3>PageFly Section</h3>
+        <span>No section selected. Please select your section from the list</span>
+      </div>
+    {% endif %}
+  
+{% endif %}
+
+{% schema %}
+{
+  "name": "PageFly Section",
+  "settings": [
+    {
+      "id": "section_id",
+      "type": "select",
+      "label": "Sections",
+      "options": [
+        {
+          "label": "Select section",
+          "value": ""
+        },
+        {
+          "label": "product page icons",
+          "value": "pf-6079707d"
+        },
+        {
+          "label": "3 squares",
+          "value": "pf-0279edf1"
+        },
+        {
+          "label": "Collection Banner",
+          "value": "pf-565025ed"
+        },
+        {
+          "label": "Video-Home",
+          "value": "pf-fcac35c2"
+        },
+        {
+          "label": "HeaderSection",
+          "value": "pf-fd4523a5"
+        },
+        {
+          "label": "all alpaca banner",
+          "value": "pf-06f58577"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": "Find and edit your section on the [section listing](https://apps.pagefly.io/sections)"
+    },
+    {
+      "type": "paragraph",
+      "content": "To add block to a section, please use the App Block element on PageFly section editor."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "@app"
+    }
+  ],
+  "presets": [
+    {
+      "name": "PageFly Section"
+    }
+  ]
+}
+{% endschema %}

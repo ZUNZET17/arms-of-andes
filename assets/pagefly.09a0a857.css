@@ -1,0 +1,281 @@
+/* PageFly Element Styles */
+						.kuwSuz { display: inline-block; line-height: 1; padding: 12px 20px; text-align: center; text-decoration: none; outline: 0px; }
+.kuwSuz i { margin-right: 0.3em; }
+.kuwSuz:hover, .kuwSuz:active, .kuwSuz:focus, .kuwSuz span { color: inherit; }
+.kuwSuz span { display: initial; }
+.lcHmGL { word-break: break-word; }
+.lcHmGL span { font-weight: inherit; text-decoration: inherit; }
+.lcHmGL i { margin-right: 0.3em; }
+.fLDHlO { position: relative; overflow: hidden; display: inline-flex; justify-content: flex-start; align-items: flex-start; max-width: 100%; vertical-align: middle; }
+.fLDHlO img { display: inline-block; object-fit: cover; height: auto; width: 100%; }
+.jklmHY { padding: var(--pf-s-lg); }
+@media (max-width: 1199px) and (min-width: 992px) {
+  .jklmHY { padding: var(--pf-s-md); }
+}
+@media (max-width: 991px) and (min-width: 768px) {
+  .jklmHY { padding: var(--pf-s-sm); }
+}
+@media (max-width: 767px) {
+  .jklmHY { padding: var(--pf-s-xs); }
+}
+.fTyjzF { position: relative; }
+.eYzxUD { margin: 0 calc(-1 * var(--pf-s-lg)); }
+@media (max-width: 1199px) and (min-width: 992px) {
+  .eYzxUD { margin: 0 calc(-1 * var(--pf-s-md)); }
+}
+@media (max-width: 991px) and (min-width: 768px) {
+  .eYzxUD { margin: 0 calc(-1 * var(--pf-s-sm)); }
+}
+@media (max-width: 767px) {
+  .eYzxUD { margin: 0 calc(-1 * var(--pf-s-xs)); }
+}
+.bjKdkd__parallax { position: absolute; top: 0px; left: 0px; width: 100%; height: 100%; overflow: hidden; pointer-events: none; }
+.bjKdkd { padding: 15px 0px; position: relative; }
+.cbrLgP > span:last-child { line-height: inherit; display: block; margin-right: 0px !important; }
+#editor-dnd-wrapper .cbrLgP span + span[contenteditable] { display: block; }
+#editor-dnd-wrapper .cbrLgP span + span[contenteditable]:empty::after { display: inline; }
+.cbrLgP ol, .cbrLgP ul { list-style-position: inside; }
+.cbrLgP blockquote { font-size: inherit; }
+.fnmilh { display: inline-block; }
+.fnmilh[contenteditable="true"] { user-select: text; }
+.fnmilh { vertical-align: baseline; word-break: break-word; }
+.fnmilh:focus { outline: none; }
+.fnmilh::after { display: inline; }
+						/* PageFly Styles */
+						
+@media all {
+	.__pf .pf-ee723fec {
+		font-family: Karla;
+		 font-size: 50px;
+		 color: rgb(240, 127, 8);
+		 text-align: center;
+		 letter-spacing: 0.6px;
+	}
+	.__pf .pf-cd49fd7d {
+		background-size: cover;
+		 padding-top: 220px;
+		 padding-bottom: 220px;
+		 background-position: 50% 50%;
+		 background-image: url("https://cdn.shopify.com/s/files/1/0071/4748/7305/t/14/assets/pf-2646d535--MVIMG20190117153947.jpg?v=1582713629");
+	}
+	.__pf .pf-511f813b {
+		font-family: Karla;
+		 font-weight: 700;
+		 letter-spacing: 2px;
+		 color: rgb(240, 127, 8);
+		 margin-top: 0px;
+		 margin-bottom: 10px;
+		 font-size: 15px;
+	}
+	.__pf .pf-15ae1794 {
+		font-family: Karla;
+		 font-size: 50px;
+		 font-weight: 700;
+		 margin-top: 0px;
+		 margin-bottom: 0px;
+		 letter-spacing: 0.6px;
+	}
+	.__pf .pf-b41ba114 {
+		color: rgb(0, 0, 0);
+		 font-size: 15px;
+		 line-height: 1.6em;
+		 font-family: Karla;
+		 font-weight: 400;
+		 margin-top: 0px;
+		 margin-bottom: 0px;
+		 letter-spacing: 0.6px;
+	}
+	.__pf .pf-f7c2b9ad {
+		padding-left: 100px;
+	}
+	.__pf .pf-36a6e5c2 {
+		padding-top: 105px;
+		 padding-bottom: 105px;
+	}
+	.__pf .pf-5e2e0ff9 {
+		font-family: Karla;
+		 font-weight: 700;
+		 letter-spacing: 2px;
+		 color: rgb(240, 127, 8);
+		 margin-top: 0px;
+		 margin-bottom: 10px;
+		 font-size: 15px;
+	}
+	.__pf .pf-5b36c349 {
+		font-family: Karla;
+		 font-size: 30px;
+		 font-weight: 700;
+		 margin-top: 0px;
+		 margin-bottom: 0px;
+		 line-height: 1.6em;
+		 letter-spacing: 0.6px;
+	}
+	.__pf .pf-4de38db0 {
+		padding-left: 100px;
+	}
+	.__pf .pf-1339281b {
+		display: flex;
+		 align-items: center;
+		 margin-bottom: 90px;
+	}
+	.__pf .pf-c9cd3c10 {
+		font-family: Karla;
+		 font-weight: 700;
+		 letter-spacing: 2px;
+		 color: rgb(240, 127, 8);
+		 margin-top: 0px;
+		 margin-bottom: 10px;
+		 font-size: 15px;
+	}
+	.__pf .pf-8ad0dc86 {
+		font-family: Karla;
+		 font-size: 30px;
+		 font-weight: 700;
+		 margin-top: 0px;
+		 margin-bottom: 20px;
+		 line-height: 1.6em;
+		 letter-spacing: 0.6px;
+	}
+	.__pf .pf-1e409b36 {
+		color: rgb(0, 0, 0);
+		 font-size: 15px;
+		 line-height: 1.6em;
+		 font-family: Karla;
+		 font-weight: 400;
+		 margin-top: 0px;
+		 margin-bottom: 0px;
+		 letter-spacing: 0.6px;
+	}
+	.__pf .pf-01bc5c95 {
+		text-align: right;
+	}
+	.__pf .pf-3eedba0d {
+		display: flex;
+		 align-items: center;
+	}
+	.__pf .pf-8f680b7e {
+		padding-top: 105px;
+		 padding-bottom: 105px;
+	}
+	.__pf .pf-4b10dccc {
+		background-color: rgb(240, 127, 8);
+		 color: rgb(255, 255, 255);
+		 font-family: Karla;
+		 font-size: 16px;
+		 padding: 15px 30px;
+		 letter-spacing: 0.3px;
+		 font-weight: 700;
+	}
+	.__pf .pf-4b10dccc:hover {
+		color: rgb(255, 255, 255);
+		 background-color: rgb(0, 0, 0);
+	}
+	.__pf .pf-0b7f9330 {
+		padding: 115px 20px;
+		 background-size: cover;
+		 background-image: url("https://cdn.shopify.com/s/files/1/0071/4748/7305/t/14/assets/pf-39082e30--IMG5699-1-Edited-1.jpg?v=1582652349");
+	}
+	.__pf .pf-75806b33 {
+		background-color: rgb(240, 127, 8);
+		 color: rgb(255, 255, 255);
+		 font-family: Karla;
+		 font-size: 16px;
+		 font-weight: 700;
+		 padding: 15px 30px;
+		 letter-spacing: 0.3px;
+	}
+	.__pf .pf-75806b33:hover {
+		color: rgb(255, 255, 255);
+		 background-color: rgb(0, 0, 0);
+	}
+	.__pf .pf-9fd120fc {
+		padding: 115px 20px;
+		 background-size: cover;
+		 background-image: url("https://cdn.shopify.com/s/files/1/0071/4748/7305/t/14/assets/pf-34d7fad7--IMG5698-2-Edited.jpg?v=1582652497");
+	}
+	.__pf .pf-9803e65c {
+		text-align: center;
+	}
+	.__pf .pf-6163ed65 {
+		padding-top: 35px;
+		 padding-bottom: 65px;
+	}
+}
+@media only screen and (max-width: 767px) {
+	.__pf .pf-cd49fd7d {
+		padding-top: 80px;
+		 padding-bottom: 80px;
+		 background-image: url("https://cdn.shopify.com/s/files/1/0071/4748/7305/t/14/assets/pf-2646d535--MVIMG20190117153947.jpg?v=1582713629");
+	}
+	.__pf .pf-15ae1794 {
+		font-size: 30px;
+	}
+	.__pf .pf-f7c2b9ad {
+		padding-left: 0px;
+	}
+	.__pf .pf-36a6e5c2 {
+		padding-top: 40px;
+		 padding-bottom: 40px;
+	}
+	.__pf .pf-5b36c349 {
+		font-size: 20px;
+	}
+	.__pf .pf-4de38db0 {
+		padding-left: 0px;
+	}
+	.__pf .pf-1339281b {
+		margin-bottom: 30px;
+	}
+	.__pf .pf-8ad0dc86 {
+		font-size: 20px;
+	}
+	.__pf .pf-3eedba0d {
+		display: flex;
+		 flex-direction: column-reverse;
+	}
+	.__pf .pf-8f680b7e {
+		padding-top: 40px;
+		 padding-bottom: 40px;
+	}
+	.__pf .pf-0b7f9330 {
+		background-image: url("https://cdn.shopify.com/s/files/1/0071/4748/7305/t/14/assets/pf-39082e30--IMG5699-1-Edited-1.jpg?v=1582652349");
+	}
+	.__pf .pf-9fd120fc {
+		background-image: url("https://cdn.shopify.com/s/files/1/0071/4748/7305/t/14/assets/pf-34d7fad7--IMG5698-2-Edited.jpg?v=1582652497");
+	}
+	.__pf .pf-6163ed65 {
+		padding-top: 15px;
+		 padding-bottom: 45px;
+	}
+}
+@media only screen and (min-width: 992px) and (max-width: 1199px) {
+	.__pf .pf-cd49fd7d {
+		background-image: url("https://cdn.shopify.com/s/files/1/0071/4748/7305/t/14/assets/pf-2646d535--MVIMG20190117153947.jpg?v=1582713629");
+	}
+	.__pf .pf-0b7f9330 {
+		background-image: url("https://cdn.shopify.com/s/files/1/0071/4748/7305/t/14/assets/pf-39082e30--IMG5699-1-Edited-1.jpg?v=1582652349");
+	}
+	.__pf .pf-9fd120fc {
+		background-image: url("https://cdn.shopify.com/s/files/1/0071/4748/7305/t/14/assets/pf-34d7fad7--IMG5698-2-Edited.jpg?v=1582652497");
+	}
+}
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+	.__pf .pf-cd49fd7d {
+		padding-top: 170px;
+		 padding-bottom: 170px;
+		 background-image: url("https://cdn.shopify.com/s/files/1/0071/4748/7305/t/14/assets/pf-2646d535--MVIMG20190117153947.jpg?v=1582713629");
+	}
+	.__pf .pf-f7c2b9ad {
+		padding-left: 0px;
+	}
+	.__pf .pf-4de38db0 {
+		padding-left: 0px;
+	}
+	.__pf .pf-0b7f9330 {
+		background-image: url("https://cdn.shopify.com/s/files/1/0071/4748/7305/t/14/assets/pf-39082e30--IMG5699-1-Edited-1.jpg?v=1582652349");
+	}
+	.__pf .pf-9fd120fc {
+		background-image: url("https://cdn.shopify.com/s/files/1/0071/4748/7305/t/14/assets/pf-34d7fad7--IMG5698-2-Edited.jpg?v=1582652497");
+	}
+}
+						

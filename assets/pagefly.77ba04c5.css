@@ -1,0 +1,1135 @@
+/* PageFly Element Styles */
+						.kuwSuz { display: inline-block; line-height: 1; padding: 12px 20px; text-align: center; text-decoration: none; outline: 0px; }
+.kuwSuz i { margin-right: 0.3em; }
+.kuwSuz:hover, .kuwSuz:active, .kuwSuz:focus, .kuwSuz span { color: inherit; }
+.kuwSuz span { display: initial; }
+.lcHmGL { word-break: break-word; }
+.lcHmGL span { font-weight: inherit; text-decoration: inherit; }
+.lcHmGL i { margin-right: 0.3em; }
+.jklmHY { padding: var(--pf-s-lg); }
+@media (max-width: 1199px) and (min-width: 992px) {
+  .jklmHY { padding: var(--pf-s-md); }
+}
+@media (max-width: 991px) and (min-width: 768px) {
+  .jklmHY { padding: var(--pf-s-sm); }
+}
+@media (max-width: 767px) {
+  .jklmHY { padding: var(--pf-s-xs); }
+}
+.fTyjzF { position: relative; }
+.eYzxUD { margin: 0 calc(-1 * var(--pf-s-lg)); }
+@media (max-width: 1199px) and (min-width: 992px) {
+  .eYzxUD { margin: 0 calc(-1 * var(--pf-s-md)); }
+}
+@media (max-width: 991px) and (min-width: 768px) {
+  .eYzxUD { margin: 0 calc(-1 * var(--pf-s-sm)); }
+}
+@media (max-width: 767px) {
+  .eYzxUD { margin: 0 calc(-1 * var(--pf-s-xs)); }
+}
+.bjKdkd__parallax { position: absolute; top: 0px; left: 0px; width: 100%; height: 100%; overflow: hidden; pointer-events: none; }
+.bjKdkd { padding: 15px 0px; position: relative; }
+.iVVzrr { position: relative; list-style: inherit; margin: 0 0 var(--line-spacing); }
+.iVVzrr:last-child { margin: 0px; }
+.iVVzrr::before { content: ""; display: inline-block; width: var(--text-indent); }
+.iVVzrr > i { padding: 5px; margin-right: 5px; }
+.iVVzrr > span { display: inline; }
+.bMMcvF { margin: 0px; padding: 10px; }
+.cbrLgP > span:last-child { line-height: inherit; display: block; margin-right: 0px !important; }
+#editor-dnd-wrapper .cbrLgP span + span[contenteditable] { display: block; }
+#editor-dnd-wrapper .cbrLgP span + span[contenteditable]:empty::after { display: inline; }
+.cbrLgP ol, .cbrLgP ul { list-style-position: inside; }
+.cbrLgP blockquote { font-size: inherit; }
+.fnmilh { display: inline-block; }
+.fnmilh[contenteditable="true"] { user-select: text; }
+.fnmilh { vertical-align: baseline; word-break: break-word; }
+.fnmilh:focus { outline: none; }
+.fnmilh::after { display: inline; }
+						/* PageFly Styles */
+						
+@media all {
+	.__pf .pf-0861aacb {
+		text-align: center;
+		 font-family: "Source Sans Pro";
+		 margin-top: 15px;
+		 margin-bottom: 0px;
+		 color: rgb(0, 0, 0);
+		 letter-spacing: 0.5px;
+		 font-size: 40px;
+	}
+	.__pf .pf-c7d80e80 {
+		padding-bottom: 200px;
+		 padding-top: 200px;
+		 background-position: 50% 50%;
+		 background-size: cover;
+		 background-image: url("https://cdn.shopify.com/s/files/1/0071/4748/7305/t/11/assets/pf-b86d4380--LRMEXPORT3000384055945420190725081934794.jpg?v=1594702285");
+	}
+	.__pf .pf-db1d7959 {
+		font-family: "Source Sans Pro";
+		 font-size: 14px;
+		 padding-left: 50px;
+		 margin-top: 0px;
+		 margin-bottom: 0px;
+	}
+	.__pf .pf-77e5148c {
+		padding-bottom: 0px;
+		 padding-top: 15px;
+	}
+	.__pf .pf-109bdc2e {
+		font-family: "Source Sans Pro";
+		 margin: 20px 50px 0px;
+		 font-weight: 700;
+		 text-align: center;
+		 font-size: 27px;
+	}
+	.__pf .pf-fac62330 {
+		font-family: "Source Sans Pro";
+	}
+	.__pf .pf-dc2efac6 {
+		padding-left: 50px;
+		 padding-right: 50px;
+		 margin-top: 0px;
+		 margin-bottom: 0px;
+		 font-family: "Source Sans Pro";
+		 line-height: 2em;
+		 letter-spacing: 0.5px;
+		 text-align: justify;
+		 font-size: 20px;
+	}
+	.__pf .pf-eb7d62cd {
+		padding-left: 50px;
+		 padding-right: 50px;
+		 margin-bottom: 10px;
+		 font-family: "Source Sans Pro";
+		 line-height: 2em;
+		 letter-spacing: 0.5px;
+		 margin-top: 10px;
+		 text-align: center;
+		 font-weight: 700;
+		 font-size: 20px;
+	}
+	.__pf .pf-3bebd0ad {
+		padding-top: 0px;
+		 padding-bottom: 0px;
+		 letter-spacing: 0.5px;
+	}
+	.__pf .pf-8133bfb5 {
+		padding-left: 50px;
+		 padding-right: 50px;
+	}
+	.__pf .pf-12832066 {
+		font-family: "Source Sans Pro";
+		 margin: 0px 50px;
+		 font-size: 25px;
+		 font-weight: 700;
+		 text-align: left;
+	}
+	.__pf .pf-97149574 {
+		font-family: "Source Sans Pro";
+	}
+	.__pf .pf-2066389c {
+		padding-left: 50px;
+		 padding-right: 50px;
+		 margin-top: 0px;
+		 margin-bottom: 0px;
+		 font-family: "Source Sans Pro";
+		 font-size: 18px;
+		 line-height: 2em;
+		 letter-spacing: 0.5px;
+		 text-align: justify;
+	}
+	.__pf .pf-bcd6bdc4 {
+		list-style-position: outside;
+		 list-style-type: disc;
+		 padding-left: 0px;
+		 margin-right: 100px;
+		 font-family: "Source Sans Pro";
+		 font-size: 18px;
+		 margin-left: 100px;
+		 text-align: justify;
+		 line-height: 1.5em;
+		 letter-spacing: 0.5px;
+	}
+	.__pf .pf-0fdb1366 {
+		padding-top: 0px;
+		 padding-bottom: 0px;
+		 letter-spacing: 0.5px;
+	}
+	.__pf .pf-1f7b0261 {
+		font-family: "Source Sans Pro";
+		 margin: 0px 50px;
+		 font-size: 25px;
+		 font-weight: 700;
+		 text-align: left;
+	}
+	.__pf .pf-7124efb0 {
+		font-family: "Source Sans Pro";
+	}
+	.__pf .pf-02617ea9 {
+		padding-left: 50px;
+		 padding-right: 50px;
+		 margin-top: 0px;
+		 margin-bottom: 0px;
+		 font-family: "Source Sans Pro";
+		 font-size: 18px;
+		 line-height: 2em;
+		 letter-spacing: 0.5px;
+		 text-align: justify;
+	}
+	.__pf .pf-3653f067 {
+		padding-left: 50px;
+		 padding-right: 50px;
+		 margin-bottom: 0px;
+		 font-family: "Source Sans Pro";
+		 font-size: 18px;
+		 line-height: 2em;
+		 letter-spacing: 0.5px;
+		 text-align: justify;
+		 margin-top: 20px;
+	}
+	.__pf .pf-5b55c048 {
+		padding-top: 0px;
+		 padding-bottom: 0px;
+		 letter-spacing: 0.5px;
+	}
+	.__pf .pf-d6729559 {
+		text-align: center;
+	}
+	.__pf .pf-9559edbd {
+		text-align: center;
+	}
+	.__pf .pf-edbd6321 {
+		text-align: center;
+	}
+	.__pf .pf-6cecef4e {
+		font-family: "Source Sans Pro";
+		 margin: 0px 50px;
+		 font-size: 25px;
+		 font-weight: 700;
+		 text-align: left;
+	}
+	.__pf .pf-689f87fe {
+		font-size: 16px;
+		 font-family: "Source Sans Pro";
+		 padding-left: 50px;
+		 margin-bottom: 0px;
+		 margin-top: 0px;
+	}
+	.__pf .pf-5d6b74f6 {
+		font-family: "Source Sans Pro";
+		 font-size: 16px;
+	}
+	.__pf .pf-5fc949f1 {
+		font-family: "Source Sans Pro";
+		 font-size: 16px;
+	}
+	.__pf .pf-da7550a0 {
+		font-family: "Source Sans Pro";
+		 font-size: 16px;
+	}
+	.__pf .pf-9189667c {
+		list-style-position: outside;
+		 list-style-type: disc;
+		 font-size: 16px;
+		 font-family: "Source Sans Pro";
+		 padding-left: 70px;
+		 line-height: 1.5em;
+		 letter-spacing: 0.5px;
+		 padding-bottom: 0px;
+	}
+	.__pf .pf-c02c35ed {
+		font-size: 16px;
+		 font-family: "Source Sans Pro";
+		 padding-left: 50px;
+		 margin-bottom: 0px;
+		 margin-top: 0px;
+	}
+	.__pf .pf-803af602 {
+		font-family: "Source Sans Pro";
+		 font-size: 16px;
+	}
+	.__pf .pf-ee251a9e {
+		font-family: "Source Sans Pro";
+		 font-size: 16px;
+	}
+	.__pf .pf-af2196a2 {
+		font-family: "Source Sans Pro";
+		 font-size: 16px;
+	}
+	.__pf .pf-15029b7e {
+		list-style-position: outside;
+		 list-style-type: disc;
+		 font-size: 16px;
+		 font-family: "Source Sans Pro";
+		 padding-left: 70px;
+		 line-height: 1.5em;
+		 letter-spacing: 0.5px;
+		 padding-bottom: 0px;
+	}
+	.__pf .pf-a89589cb {
+		padding-right: 50px;
+	}
+	.__pf .pf-5b5f9689 {
+		font-size: 16px;
+		 font-family: "Source Sans Pro";
+		 padding-left: 50px;
+		 margin-bottom: 0px;
+		 margin-top: 0px;
+	}
+	.__pf .pf-e70e678e {
+		font-family: "Source Sans Pro";
+		 font-size: 16px;
+	}
+	.__pf .pf-678e91c1 {
+		font-family: "Source Sans Pro";
+		 font-size: 16px;
+	}
+	.__pf .pf-91c1f1f6 {
+		font-family: "Source Sans Pro";
+		 font-size: 16px;
+	}
+	.__pf .pf-f1f61439 {
+		list-style-position: outside;
+		 list-style-type: disc;
+		 font-size: 16px;
+		 font-family: "Source Sans Pro";
+		 padding-left: 70px;
+		 line-height: 1.5em;
+		 letter-spacing: 0.5px;
+		 padding-bottom: 0px;
+	}
+	.__pf .pf-8e487882 {
+		font-size: 16px;
+		 font-family: "Source Sans Pro";
+		 padding-left: 50px;
+		 margin-bottom: 0px;
+		 margin-top: 0px;
+	}
+	.__pf .pf-d260185c {
+		font-family: "Source Sans Pro";
+		 font-size: 16px;
+	}
+	.__pf .pf-3cdc232a {
+		font-family: "Source Sans Pro";
+		 font-size: 16px;
+	}
+	.__pf .pf-185c3cdc {
+		font-family: "Source Sans Pro";
+		 font-size: 16px;
+	}
+	.__pf .pf-232a2ae2 {
+		list-style-position: outside;
+		 list-style-type: disc;
+		 font-size: 16px;
+		 font-family: "Source Sans Pro";
+		 padding-left: 70px;
+		 line-height: 1.5em;
+		 letter-spacing: 0.5px;
+		 padding-bottom: 0px;
+		 padding-right: 50px;
+	}
+	.__pf .pf-6565f9f9 {
+		font-size: 16px;
+		 font-family: "Source Sans Pro";
+		 padding-left: 50px;
+		 margin-bottom: 0px;
+		 margin-top: 0px;
+	}
+	.__pf .pf-26039ca5 {
+		font-family: "Source Sans Pro";
+		 font-size: 16px;
+	}
+	.__pf .pf-9ca54c5c {
+		font-family: "Source Sans Pro";
+		 font-size: 16px;
+	}
+	.__pf .pf-4c5ca1bf {
+		font-family: "Source Sans Pro";
+		 font-size: 16px;
+	}
+	.__pf .pf-a1bfdd88 {
+		list-style-position: outside;
+		 list-style-type: disc;
+		 font-size: 16px;
+		 font-family: "Source Sans Pro";
+		 padding-left: 70px;
+		 line-height: 1.5em;
+		 letter-spacing: 0.5px;
+		 padding-bottom: 0px;
+	}
+	.__pf .pf-6985934e {
+		font-size: 16px;
+		 font-family: "Source Sans Pro";
+		 padding-left: 50px;
+		 margin-bottom: 0px;
+		 margin-top: 0px;
+	}
+	.__pf .pf-1a9e2902 {
+		list-style-position: outside;
+		 list-style-type: disc;
+		 font-size: 16px;
+		 font-family: "Source Sans Pro";
+		 padding-left: 0px;
+		 line-height: 1.5em;
+		 letter-spacing: 0.5px;
+		 padding-bottom: 0px;
+	}
+	.__pf .pf-2902dec8 {
+		font-family: "Source Sans Pro";
+		 font-size: 16px;
+	}
+	.__pf .pf-dec861ec {
+		font-family: "Source Sans Pro";
+		 font-size: 16px;
+	}
+	.__pf .pf-9b7e9073 {
+		list-style-position: outside;
+		 list-style-type: disc;
+		 font-size: 16px;
+		 font-family: "Source Sans Pro";
+		 padding-left: 70px;
+		 line-height: 1.5em;
+		 letter-spacing: 0.5px;
+		 padding-bottom: 0px;
+		 padding-right: 50px;
+	}
+	.__pf .pf-56c78d9d {
+		font-size: 16px;
+		 font-family: "Source Sans Pro";
+		 padding-left: 50px;
+		 margin-bottom: 0px;
+		 margin-top: 0px;
+	}
+	.__pf .pf-9690481e {
+		font-family: "Source Sans Pro";
+		 font-size: 16px;
+	}
+	.__pf .pf-481e1ba6 {
+		font-family: "Source Sans Pro";
+		 font-size: 16px;
+	}
+	.__pf .pf-1ba6e65c {
+		font-family: "Source Sans Pro";
+		 font-size: 16px;
+	}
+	.__pf .pf-e65c1239 {
+		list-style-position: outside;
+		 list-style-type: disc;
+		 font-size: 16px;
+		 font-family: "Source Sans Pro";
+		 padding-left: 70px;
+		 line-height: 1.5em;
+		 letter-spacing: 0.5px;
+		 padding-bottom: 0px;
+	}
+	.__pf .pf-9c4e3a4a {
+		font-size: 16px;
+		 font-family: "Source Sans Pro";
+		 padding-left: 50px;
+		 margin-bottom: 0px;
+		 margin-top: 0px;
+	}
+	.__pf .pf-3503454a {
+		font-family: "Source Sans Pro";
+		 font-size: 16px;
+	}
+	.__pf .pf-356d3503 {
+		font-family: "Source Sans Pro";
+		 font-size: 16px;
+	}
+	.__pf .pf-bc64ac14 {
+		font-family: "Source Sans Pro";
+		 font-size: 16px;
+	}
+	.__pf .pf-ca73452c {
+		list-style-position: outside;
+		 list-style-type: disc;
+		 font-size: 16px;
+		 font-family: "Source Sans Pro";
+		 padding-left: 70px;
+		 line-height: 1.5em;
+		 letter-spacing: 0.5px;
+		 padding-bottom: 0px;
+		 padding-right: 50px;
+	}
+	.__pf .pf-4de6bc9d {
+		font-size: 16px;
+		 font-family: "Source Sans Pro";
+		 padding-left: 50px;
+		 margin-bottom: 0px;
+		 margin-top: 0px;
+	}
+	.__pf .pf-13d8a4d2 {
+		font-family: "Source Sans Pro";
+		 font-size: 16px;
+	}
+	.__pf .pf-a4d27307 {
+		font-family: "Source Sans Pro";
+		 font-size: 16px;
+	}
+	.__pf .pf-7307a530 {
+		font-family: "Source Sans Pro";
+		 font-size: 16px;
+	}
+	.__pf .pf-a530b605 {
+		list-style-position: outside;
+		 list-style-type: disc;
+		 font-size: 16px;
+		 font-family: "Source Sans Pro";
+		 padding-left: 70px;
+		 line-height: 1.5em;
+		 letter-spacing: 0.5px;
+		 padding-bottom: 0px;
+	}
+	.__pf .pf-73c68213 {
+		background-color: rgb(240, 127, 8);
+		 color: rgb(255, 255, 255);
+		 font-family: "Source Sans Pro";
+		 font-size: 16px;
+		 font-weight: 700;
+		 padding: 15px 30px;
+		 letter-spacing: 0.3px;
+		 text-align: center;
+		 margin-top: 20px;
+	}
+	.__pf .pf-73c68213:hover {
+		color: rgb(255, 255, 255);
+		 background-color: rgb(0, 0, 0);
+	}
+	.__pf .pf-82132add {
+		padding-top: 115px;
+		 padding-left: 0px;
+		 background-size: cover;
+		 background-image: url("https://cdn.shopify.com/s/files/1/0071/4748/7305/t/11/assets/pf-bc83a3d9--Alpaca-wool-base-layers-mens-and-womens-arms-of-andes.jpg?v=1597131395");
+		 text-align: center;
+		 margin-left: 50px;
+		 padding-bottom: 60px;
+		 margin-right: 50px;
+	}
+	.__pf .pf-2addf097 {
+		padding-left: 50px;
+		 padding-right: 50px;
+	}
+	.__pf .pf-25019ab9 {
+		padding-top: 0px;
+	}
+	.__pf .pf-97531aa5 {
+		padding-left: 50px;
+		 padding-right: 50px;
+		 margin-bottom: 0px;
+		 font-family: "Source Sans Pro";
+		 line-height: 2em;
+		 letter-spacing: 0.5px;
+		 text-align: justify;
+		 margin-top: 20px;
+		 font-size: 20px;
+	}
+	.__pf .pf-0d8450ed {
+		font-family: "Source Sans Pro";
+		 font-size: 20px;
+		 text-align: center;
+		 margin-top: 0px;
+		 margin-bottom: 0px;
+	}
+	.__pf .pf-a4d41c74 {
+		background-color: rgb(240, 127, 8);
+		 color: rgb(255, 255, 255);
+		 font-family: "Source Sans Pro";
+		 font-size: 16px;
+		 padding: 15px 30px;
+		 letter-spacing: 0.3px;
+		 font-weight: 700;
+	}
+	.__pf .pf-a4d41c74:hover {
+		color: rgb(255, 255, 255);
+		 background-color: rgb(0, 0, 0);
+	}
+	.__pf .pf-8e66e5c9 {
+		padding: 115px 20px;
+		 background-size: cover;
+		 background-image: url("https://cdn.shopify.com/s/files/1/0071/4748/7305/t/11/assets/pf-a3f21db2--testWoolThermals-Edited.jpg?v=1597716624");
+	}
+	.__pf .pf-1c748e66 {
+		background-color: rgb(240, 127, 8);
+		 color: rgb(255, 255, 255);
+		 font-family: "Source Sans Pro";
+		 font-size: 16px;
+		 font-weight: 700;
+		 padding: 15px 30px;
+		 letter-spacing: 0.3px;
+	}
+	.__pf .pf-1c748e66:hover {
+		color: rgb(255, 255, 255);
+		 background-color: rgb(0, 0, 0);
+	}
+	.__pf .pf-e5c954c1 {
+		padding: 115px 20px;
+		 background-size: cover;
+		 background-image: url("https://cdn.shopify.com/s/files/1/0071/4748/7305/t/11/assets/pf-8e820791--Untitled-design-2.jpg?v=1594804621");
+		 background-position: 50% 50%;
+	}
+	.__pf .pf-54c15912 {
+		text-align: center;
+		 font-family: "Source Sans Pro";
+	}
+	.__pf .pf-5912d299 {
+		padding-top: 0px;
+		 padding-bottom: 35px;
+	}
+}
+@media only screen and (max-width: 767px) {
+	.__pf .pf-0861aacb {
+		font-size: 25px;
+	}
+	.__pf .pf-c7d80e80 {
+		background-position: 100% 50%;
+		 background-size: cover;
+	}
+	.__pf .pf-db1d7959 {
+		text-align: left;
+		 padding-left: 0px;
+	}
+	.__pf .pf-109bdc2e {
+		font-size: 18px;
+		 margin-top: 20px;
+		 margin-left: 0px;
+		 margin-right: 0px;
+	}
+	.__pf .pf-dc2efac6 {
+		font-size: 14px;
+		 padding-left: 0px;
+		 padding-right: 0px;
+	}
+	.__pf .pf-eb7d62cd {
+		font-size: 16px;
+		 padding-left: 0px;
+		 padding-right: 0px;
+		 margin-top: 20px;
+		 margin-bottom: 0px;
+	}
+	.__pf .pf-8133bfb5 {
+		padding-left: 0px;
+		 padding-right: 0px;
+	}
+	.__pf .pf-12832066 {
+		font-size: 16px;
+		 margin-top: 20px;
+		 margin-left: 0px;
+		 margin-right: 0px;
+	}
+	.__pf .pf-2066389c {
+		font-size: 14px;
+		 margin-left: 0px;
+		 padding-left: 0px;
+		 padding-right: 0px;
+	}
+	.__pf .pf-b3143fba {
+		font-size: 14px;
+	}
+	.__pf .pf-bcd6bdc4 {
+		margin-right: 0px;
+		 margin-left: 20px;
+		 font-family: "Source Sans Pro";
+		 font-size: 14px;
+		 text-align: left;
+	}
+	.__pf .pf-1f7b0261 {
+		font-size: 16px;
+		 margin-top: 20px;
+		 margin-left: 0px;
+		 margin-right: 0px;
+	}
+	.__pf .pf-02617ea9 {
+		font-size: 14px;
+		 padding-left: 0px;
+		 padding-right: 0px;
+	}
+	.__pf .pf-3653f067 {
+		font-size: 14px;
+		 padding-left: 0px;
+		 padding-right: 0px;
+	}
+	.__pf .pf-6cecef4e {
+		font-size: 16px;
+		 margin-top: 0px;
+		 margin-left: 0px;
+		 margin-right: 0px;
+	}
+	.__pf .pf-689f87fe {
+		padding-left: 0px;
+		 font-size: 14px;
+	}
+	.__pf .pf-5d6b74f6 {
+		font-family: "Source Sans Pro";
+		 font-size: 14px;
+	}
+	.__pf .pf-5fc949f1 {
+		font-family: "Source Sans Pro";
+		 font-size: 14px;
+	}
+	.__pf .pf-da7550a0 {
+		font-family: "Source Sans Pro";
+		 font-size: 14px;
+	}
+	.__pf .pf-9189667c {
+		padding-left: 20px;
+		 padding-right: 0px;
+		 font-family: "Source Sans Pro";
+		 font-size: 14px;
+	}
+	.__pf .pf-c02c35ed {
+		padding-left: 0px;
+		 font-size: 14px;
+	}
+	.__pf .pf-803af602 {
+		font-family: "Source Sans Pro";
+		 font-size: 14px;
+	}
+	.__pf .pf-ee251a9e {
+		font-family: "Source Sans Pro";
+		 font-size: 14px;
+	}
+	.__pf .pf-af2196a2 {
+		font-family: "Source Sans Pro";
+		 font-size: 14px;
+	}
+	.__pf .pf-15029b7e {
+		padding-left: 20px;
+		 padding-right: 0px;
+		 font-family: "Source Sans Pro";
+		 font-size: 14px;
+	}
+	.__pf .pf-a89589cb {
+		padding-right: 0px;
+	}
+	.__pf .pf-5b5f9689 {
+		padding-left: 0px;
+		 font-size: 14px;
+	}
+	.__pf .pf-e70e678e {
+		font-family: "Source Sans Pro";
+		 font-size: 14px;
+	}
+	.__pf .pf-678e91c1 {
+		font-family: "Source Sans Pro";
+		 font-size: 14px;
+	}
+	.__pf .pf-91c1f1f6 {
+		font-family: "Source Sans Pro";
+		 font-size: 14px;
+	}
+	.__pf .pf-f1f61439 {
+		padding-left: 20px;
+		 padding-right: 0px;
+		 font-family: "Source Sans Pro";
+		 font-size: 14px;
+	}
+	.__pf .pf-8e487882 {
+		padding-left: 0px;
+		 font-size: 14px;
+	}
+	.__pf .pf-d260185c {
+		font-family: "Source Sans Pro";
+		 font-size: 14px;
+	}
+	.__pf .pf-3cdc232a {
+		font-family: "Source Sans Pro";
+		 font-size: 14px;
+	}
+	.__pf .pf-185c3cdc {
+		font-family: "Source Sans Pro";
+		 font-size: 14px;
+	}
+	.__pf .pf-232a2ae2 {
+		padding-left: 20px;
+		 padding-right: 0px;
+		 font-family: "Source Sans Pro";
+		 font-size: 14px;
+	}
+	.__pf .pf-6565f9f9 {
+		padding-left: 0px;
+		 font-size: 14px;
+	}
+	.__pf .pf-26039ca5 {
+		font-family: "Source Sans Pro";
+		 font-size: 14px;
+	}
+	.__pf .pf-9ca54c5c {
+		font-family: "Source Sans Pro";
+		 font-size: 14px;
+	}
+	.__pf .pf-4c5ca1bf {
+		font-family: "Source Sans Pro";
+		 font-size: 14px;
+	}
+	.__pf .pf-a1bfdd88 {
+		padding-left: 20px;
+		 padding-right: 0px;
+		 font-family: "Source Sans Pro";
+		 font-size: 14px;
+	}
+	.__pf .pf-6985934e {
+		padding-left: 0px;
+		 font-size: 14px;
+	}
+	.__pf .pf-1a9e2902 {
+		padding-left: 0px;
+		 padding-right: 0px;
+		 font-family: "Source Sans Pro";
+		 font-size: 14px;
+	}
+	.__pf .pf-2902dec8 {
+		font-family: "Source Sans Pro";
+		 font-size: 14px;
+	}
+	.__pf .pf-dec861ec {
+		font-family: "Source Sans Pro";
+		 font-size: 14px;
+	}
+	.__pf .pf-9b7e9073 {
+		padding-left: 20px;
+		 padding-right: 0px;
+		 font-family: "Source Sans Pro";
+		 font-size: 14px;
+	}
+	.__pf .pf-56c78d9d {
+		padding-left: 0px;
+		 font-size: 14px;
+	}
+	.__pf .pf-9690481e {
+		font-family: "Source Sans Pro";
+		 font-size: 14px;
+	}
+	.__pf .pf-481e1ba6 {
+		font-family: "Source Sans Pro";
+		 font-size: 14px;
+	}
+	.__pf .pf-1ba6e65c {
+		font-family: "Source Sans Pro";
+		 font-size: 14px;
+	}
+	.__pf .pf-e65c1239 {
+		padding-left: 20px;
+		 padding-right: 0px;
+		 font-family: "Source Sans Pro";
+		 font-size: 14px;
+	}
+	.__pf .pf-9c4e3a4a {
+		padding-left: 0px;
+		 font-size: 14px;
+	}
+	.__pf .pf-3503454a {
+		font-family: "Source Sans Pro";
+		 font-size: 14px;
+	}
+	.__pf .pf-356d3503 {
+		font-family: "Source Sans Pro";
+		 font-size: 14px;
+	}
+	.__pf .pf-bc64ac14 {
+		font-family: "Source Sans Pro";
+		 font-size: 14px;
+	}
+	.__pf .pf-ca73452c {
+		padding-left: 20px;
+		 padding-right: 0px;
+		 font-family: "Source Sans Pro";
+		 font-size: 14px;
+	}
+	.__pf .pf-4de6bc9d {
+		padding-left: 0px;
+		 font-size: 14px;
+	}
+	.__pf .pf-13d8a4d2 {
+		font-family: "Source Sans Pro";
+		 font-size: 14px;
+	}
+	.__pf .pf-a4d27307 {
+		font-family: "Source Sans Pro";
+		 font-size: 14px;
+	}
+	.__pf .pf-7307a530 {
+		font-family: "Source Sans Pro";
+		 font-size: 14px;
+	}
+	.__pf .pf-a530b605 {
+		padding-left: 20px;
+		 padding-right: 0px;
+		 font-family: "Source Sans Pro";
+		 font-size: 14px;
+	}
+	.__pf .pf-82132add {
+		background-image: url("https://cdn.shopify.com/s/files/1/0071/4748/7305/t/11/assets/pf-7fde7353--mens-alpaca-baselayer-womens-alpaca-baselayer.jpg?v=1597093002&selected");
+		 background-position: 50% 50%;
+		 margin-left: 0px;
+		 margin-right: 0px;
+		 padding-bottom: 50px;
+		 padding-top: 80px;
+	}
+	.__pf .pf-0be33104 {
+		margin-left: 0px;
+		 margin-right: 0px;
+	}
+	.__pf .pf-2addf097 {
+		padding-left: 0px;
+		 padding-right: 0px;
+	}
+	.__pf .pf-97531aa5 {
+		font-size: 14px;
+		 padding-left: 0px;
+		 padding-right: 0px;
+	}
+	.__pf .pf-8e66e5c9 {
+		background-image: url("https://cdn.shopify.com/s/files/1/0071/4748/7305/t/11/assets/pf-a3f21db2--testWoolThermals-Edited.jpg?v=1597716624&selected");
+		 background-position: 50% 50%;
+	}
+	.__pf .pf-e5c954c1 {
+		background-image: url("https://cdn.shopify.com/s/files/1/0071/4748/7305/t/11/assets/pf-00dfab83--arms-of-andes-alpacas.jpg?v=1594902217&selected");
+	}
+	.__pf .pf-5912d299 {
+		padding-top: 15px;
+		 padding-bottom: 45px;
+	}
+}
+@media only screen and (min-width: 992px) and (max-width: 1199px) {
+	.__pf .pf-82132add {
+		background-image: url("https://cdn.shopify.com/s/files/1/0071/4748/7305/t/14/assets/pf-34d7fad7--IMG5698-2-Edited.jpg?v=1582652497");
+	}
+	.__pf .pf-8e66e5c9 {
+		background-image: url("https://cdn.shopify.com/s/files/1/0071/4748/7305/t/14/assets/pf-39082e30--IMG5699-1-Edited-1.jpg?v=1582652349");
+	}
+	.__pf .pf-e5c954c1 {
+		background-image: url("https://cdn.shopify.com/s/files/1/0071/4748/7305/t/14/assets/pf-34d7fad7--IMG5698-2-Edited.jpg?v=1582652497");
+	}
+}
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+	.__pf .pf-109bdc2e {
+		font-size: 20px;
+	}
+	.__pf .pf-dc2efac6 {
+		font-size: 16px;
+	}
+	.__pf .pf-eb7d62cd {
+		font-size: 18px;
+	}
+	.__pf .pf-12832066 {
+		font-size: 20px;
+	}
+	.__pf .pf-2066389c {
+		font-family: "Source Sans Pro";
+		 font-size: 16px;
+	}
+	.__pf .pf-bcd6bdc4 {
+		font-size: 14px;
+		 font-family: "Source Sans Pro";
+	}
+	.__pf .pf-1f7b0261 {
+		font-size: 20px;
+	}
+	.__pf .pf-02617ea9 {
+		font-size: 15px;
+	}
+	.__pf .pf-3653f067 {
+		font-size: 15px;
+	}
+	.__pf .pf-d46a3236 {
+		padding-bottom: 0px;
+	}
+	.__pf .pf-6cecef4e {
+		font-size: 20px;
+		 margin-left: 50px;
+		 margin-right: 50px;
+	}
+	.__pf .pf-689f87fe {
+		padding-left: 50px;
+		 font-size: 14px;
+	}
+	.__pf .pf-5d6b74f6 {
+		font-size: 14px;
+	}
+	.__pf .pf-5fc949f1 {
+		font-size: 14px;
+	}
+	.__pf .pf-da7550a0 {
+		font-size: 14px;
+	}
+	.__pf .pf-9189667c {
+		padding-left: 70px;
+		 padding-right: 0px;
+		 font-family: "Source Sans Pro";
+		 font-size: 14px;
+	}
+	.__pf .pf-c02c35ed {
+		padding-left: 10px;
+		 font-size: 14px;
+	}
+	.__pf .pf-803af602 {
+		font-size: 14px;
+	}
+	.__pf .pf-ee251a9e {
+		font-size: 14px;
+	}
+	.__pf .pf-af2196a2 {
+		font-size: 14px;
+	}
+	.__pf .pf-15029b7e {
+		padding-left: 30px;
+		 font-family: "Source Sans Pro";
+		 font-size: 14px;
+		 padding-right: 10px;
+	}
+	.__pf .pf-5b5f9689 {
+		padding-left: 50px;
+		 font-size: 14px;
+	}
+	.__pf .pf-e70e678e {
+		font-size: 14px;
+	}
+	.__pf .pf-678e91c1 {
+		font-size: 14px;
+	}
+	.__pf .pf-91c1f1f6 {
+		font-size: 14px;
+	}
+	.__pf .pf-f1f61439 {
+		padding-left: 70px;
+		 padding-right: 0px;
+		 font-family: "Source Sans Pro";
+		 font-size: 14px;
+	}
+	.__pf .pf-8e487882 {
+		padding-left: 10px;
+		 font-size: 14px;
+	}
+	.__pf .pf-d260185c {
+		font-size: 14px;
+	}
+	.__pf .pf-3cdc232a {
+		font-size: 14px;
+	}
+	.__pf .pf-185c3cdc {
+		font-size: 14px;
+	}
+	.__pf .pf-232a2ae2 {
+		padding-left: 30px;
+		 padding-right: 1px;
+	}
+	.__pf .pf-6565f9f9 {
+		padding-left: 50px;
+		 font-size: 14px;
+	}
+	.__pf .pf-26039ca5 {
+		font-size: 14px;
+	}
+	.__pf .pf-9ca54c5c {
+		font-size: 14px;
+	}
+	.__pf .pf-4c5ca1bf {
+		font-size: 14px;
+	}
+	.__pf .pf-a1bfdd88 {
+		padding-left: 70px;
+		 padding-right: 0px;
+		 font-family: "Source Sans Pro";
+		 font-size: 14px;
+	}
+	.__pf .pf-6985934e {
+		padding-left: 10px;
+		 font-size: 14px;
+	}
+	.__pf .pf-1a9e2902 {
+		font-size: 14px;
+		 padding-left: 0px;
+	}
+	.__pf .pf-2902dec8 {
+		font-size: 14px;
+	}
+	.__pf .pf-dec861ec {
+		font-size: 14px;
+	}
+	.__pf .pf-9b7e9073 {
+		padding-left: 30px;
+		 padding-right: 10px;
+	}
+	.__pf .pf-56c78d9d {
+		padding-left: 50px;
+		 font-size: 14px;
+	}
+	.__pf .pf-9690481e {
+		font-size: 14px;
+	}
+	.__pf .pf-481e1ba6 {
+		font-size: 14px;
+	}
+	.__pf .pf-1ba6e65c {
+		font-size: 14px;
+	}
+	.__pf .pf-e65c1239 {
+		padding-left: 70px;
+		 padding-right: 0px;
+		 font-family: "Source Sans Pro";
+		 font-size: 14px;
+	}
+	.__pf .pf-9c4e3a4a {
+		padding-left: 10px;
+		 font-size: 14px;
+	}
+	.__pf .pf-3503454a {
+		font-size: 14px;
+	}
+	.__pf .pf-356d3503 {
+		font-size: 14px;
+	}
+	.__pf .pf-bc64ac14 {
+		font-size: 14px;
+	}
+	.__pf .pf-ca73452c {
+		padding-left: 30px;
+		 padding-right: 10px;
+	}
+	.__pf .pf-4de6bc9d {
+		padding-left: 50px;
+		 font-size: 14px;
+	}
+	.__pf .pf-13d8a4d2 {
+		font-size: 14px;
+	}
+	.__pf .pf-a4d27307 {
+		font-size: 14px;
+	}
+	.__pf .pf-7307a530 {
+		font-size: 14px;
+	}
+	.__pf .pf-a530b605 {
+		padding-left: 70px;
+		 padding-right: 0px;
+		 font-family: "Source Sans Pro";
+		 font-size: 14px;
+	}
+	.__pf .pf-82132add {
+		background-image: url("https://cdn.shopify.com/s/files/1/0071/4748/7305/t/11/assets/pf-7fde7353--mens-alpaca-baselayer-womens-alpaca-baselayer.jpg?v=1597093002&selected");
+		 margin-left: 0px;
+		 margin-right: 0px;
+		 background-position: 50% 50%;
+		 padding-top: 80px;
+	}
+	.__pf .pf-2addf097 {
+		padding-right: 0px;
+		 padding-left: 0px;
+	}
+	.__pf .pf-97531aa5 {
+		font-size: 16px;
+	}
+	.__pf .pf-1310a85e {
+		padding-top: 0px;
+	}
+	.__pf .pf-8e66e5c9 {
+		background-image: url("https://cdn.shopify.com/s/files/1/0071/4748/7305/t/11/assets/pf-a3f21db2--testWoolThermals-Edited.jpg?v=1597716624&selected");
+		 background-position: 50% 50%;
+	}
+	.__pf .pf-e5c954c1 {
+		background-image: url("https://cdn.shopify.com/s/files/1/0071/4748/7305/t/11/assets/pf-00dfab83--arms-of-andes-alpacas.jpg?v=1594902217&selected");
+		 background-position: 50% 50%;
+	}
+}
+						
