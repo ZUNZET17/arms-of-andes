@@ -404,7 +404,7 @@
                     {% if option.name == 'Color' %}
                       <fieldset class="js product-form__input color-swatches">
                         <div class="color-group">
-                          <legend class="form__label" style="margin-bottom: 1rem; font-size: 14px; font-weight: 700;" >{{ block.settings.group_1_title }}:</legend>
+                          <legend class="form__label" style="margin-bottom: 1rem; font-size: 14px; font-weight: 700;" >{{ block.settings.group_1_title }}: <span id="js-color-group-title1"></span></legend>
                           <div class="color-options">
                             {%- for value in option.values -%}
                               {% capture swatch_idx %}swatch1{{-forloop.index-}}{% endcapture %}
@@ -422,7 +422,7 @@
                                       form="{{ product_form_id }}"
                                       {% if option.selected_value == value %}checked{% endif %}
                                 >
-                                <label class="color-swatch__label swatch1{{-forloop.index-}} js-color-label" for="{{ section.id }}-{{ option.position }}-{{ forloop.index0 }}">
+                                <label class="color-swatch__label swatch1{{-forloop.index}} js-color-label" for="{{ section.id }}-{{ option.position }}-{{ forloop.index0 }}" swatch-color="{{ value}}" group-number="1">
                                   <span class="color-swatch__pin">{{value}}</span>
                                 </label>
                               {% endif %}
@@ -430,9 +430,15 @@
                           </div>
                         </div>
                         <div class="color-group">
-                          <legend class="form__label" style="margin-bottom: 1rem; font-size: 14px; font-weight: 700;">{{ block.settings.group_2_title }}:</legend>
+                          <legend class="form__label" style="margin-bottom: 1rem; font-size: 14px; font-weight: 700;">{{ block.settings.group_2_title }}: <span id="js-color-group-title2"></span></legend>
                           <div class="color-options">
                             {%- for value in option.values -%}
+                              {% capture swatch_idx %}swatch2{{-forloop.index-}}{% endcapture %}
+                              {% style %}
+                                .{{-swatch_idx-}} {
+                                  background-color: {{- block.settings[swatch_idx] -}};
+                                }
+                              {% endstyle %}
                               {%- capture colorop2 -%}color-2{{-forloop.index-}}{%- endcapture -%}
                               {% comment %}<p>{{colorop2}}</p>{% endcomment %}
                               {%- if block.settings[colorop2] -%}
@@ -442,7 +448,7 @@
                                       form="{{ product_form_id }}"
                                       {% if option.selected_value == value %}checked{% endif %}
                                 >
-                                <label class="color-swatch__label swatch2{{-forloop.index-}} js-color-label" for="{{ section.id }}-{{ option.position }}-{{ forloop.index0 }}">
+                                <label class="color-swatch__label swatch2{{-forloop.index}} js-color-label" for="{{ section.id }}-{{ option.position }}-{{ forloop.index0 }}" swatch-color="{{ value }}" group-number="2">
                                   <span class="color-swatch__pin">{{value}}</span>
                                 </label>
                               {% endif %}
@@ -463,8 +469,9 @@
                                 form="{{ product_form_id }}"
                                 {% if option.selected_value == value %}checked{% endif %}
                           >
-                          <label for="{{ section.id }}-{{ option.position }}-{{ forloop.index0 }}">
+                          <label class="product-size-label" for="{{ section.id }}-{{ option.position }}-{{ forloop.index0 }}">
                             {{ value }}
+                            <span class="color-swatch__pin">{{value}}</span>
                           </label>
                         {%- endfor -%}
                       </fieldset>

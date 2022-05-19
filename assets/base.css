@@ -2955,8 +2955,26 @@ details-disclosure > details {
     display: ruby;
   }
 
-  .color-swatch__label:hover .color-swatch__pin {
+  .color-swatch__label:hover .color-swatch__pin,
+  .product-size-label:hover .color-swatch__pin {
     opacity: 1;
     visibility: visible;
     margin-bottom: 15px;
+  }
+
+  .product-size-label {
+    border-color: #e9e9e9;
+    color: #000;
+    background-color: #e9e9e9;
+    padding: 5px 10px;
+    display: block;
+    text-align: center;
+    border: 1px solid transparent;
+    color: black;
+    border-radius: .5rem;
+    transition: all 0.2s ease-in-out;
+  }
+
+  .product-size-label:hover {
+    border: var(--variant-pills-border-width) solid rgba(var(--color-foreground), var(--variant-pills-border-opacity));
   }

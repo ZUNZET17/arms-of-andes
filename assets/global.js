@@ -916,3 +916,22 @@ function openTab(evt, cityName) {
   evt.currentTarget.className += " active";
 }
 document.getElementById("tab-cus-active").click();
+
+// Display swaches color name
+
+const colorLabels = document.querySelectorAll('.js-color-label');
+
+const displaySwatchColor = function (ev) {
+  const input = ev.target;
+  const value = input.getAttribute("swatch-color")
+  const groupNumber = input.getAttribute("group-number")
+  const titleContainer = document.getElementById(`js-color-group-title${groupNumber}`)
+
+  titleContainer.innerText = value;
+  console.log(value, groupNumber, titleContainer)
+  console.log(colorLabels)
+}
+
+colorLabels.forEach(label => {
+  label.addEventListener('click', displaySwatchColor, false)
+})

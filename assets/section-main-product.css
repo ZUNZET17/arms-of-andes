@@ -182,8 +182,7 @@ fieldset.product-form__input .form__label {
   width: 1px;
 }
 
-.product-form__input input[type='radio'] + label {
-  border: var(--variant-pills-border-width) solid rgba(var(--color-foreground), var(--variant-pills-border-opacity));
+.product-form__input input[type='radio'] + label{
   /* background-color: rgb(var(--color-background)); */
   color: rgba(var(--color-foreground));
   /* border-radius: var(--variant-pills-radius); */
@@ -198,6 +197,10 @@ fieldset.product-form__input .form__label {
   /* transition: border var(--duration-short) ease; */
   cursor: pointer;
   position: relative;
+}
+
+.product-form__input input[type='radio'] + label:not(.product-size-label){
+  border: var(--variant-pills-border-width) solid rgba(var(--color-foreground), var(--variant-pills-border-opacity));
 }
 
 .product-form__input input[type='radio'] + label:before {
@@ -218,7 +221,7 @@ fieldset.product-form__input .form__label {
 
 .product-form__input input[type='radio']:checked + label {
   /* background-color: rgb(var(--color-foreground)); */
-  color: rgb(var(--color-background));
+  /* color: rgb(var(--color-background)); */
 }
 
 @media screen and (forced-colors: active) {
