@@ -401,24 +401,45 @@
               {%- if block.settings.picker_type == 'button' -%}
                 <variant-radios class="no-js-hidden" data-section="{{ section.id }}" data-url="{{ product.url }}" {{ block.shopify_attributes }}>
                   {%- for option in product.options_with_values -%}
+                    {% if option.name == 'Color' %}
                       <fieldset class="js product-form__input">
                         <legend class="form__label">{{ option.name }}</legend>
                         {%- for value in option.values -%}
-                          <input type="radio" id="{{ section.id }}-{{ option.position }}-{{ forloop.index0 }}"
-                                name="{{ option.name }}"
-                                value="{{ value | escape }}"
-                                form="{{ product_form_id }}"
-                                {% if option.selected_value == value %}checked{% endif %}
-                          >
-                          <label for="{{ section.id }}-{{ option.position }}-{{ forloop.index0 }}">
-                            {{ value }}
-                          </label>
+                          {%- capture colorop1 -%}color-1{{-forloop.index-}}{%- endcapture -%}
+                          {% comment %}<p>{{colorop1}}</p>{% endcomment %}
+                          {%- if block.settings[colorop1] -%}
+                            <input type="radio" id="{{ section.id }}-{{ option.position }}-{{ forloop.index0 }}"
+                                  name="{{ option.name }}"
+                                  value="{{ value | escape }}"
+                                  form="{{ product_form_id }}"
+                                  {% if option.selected_value == value %}checked{% endif %}
+                            >
+                            <label for="{{ section.id }}-{{ option.position }}-{{ forloop.index0 }}">
+                              {{ value }}
+                            </label>
+                          {% endif %}
                         {%- endfor -%}
+                        <legend class="form__label">{{ option.name }}</legend>
+                        {%- for value in option.values -%}
+                          {%- capture colorop2 -%}color-2{{-forloop.index-}}{%- endcapture -%}
+                          {% comment %}<p>{{colorop2}}</p>{% endcomment %}
+                          {%- if block.settings[colorop2] -%}
+                            <input type="radio" id="{{ section.id }}-{{ option.position }}-{{ forloop.index0 }}"
+                                  name="{{ option.name }}"
+                                  value="{{ value | escape }}"
+                                  form="{{ product_form_id }}"
+                                  {% if option.selected_value == value %}checked{% endif %}
+                            >
+                            <label for="{{ section.id }}-{{ option.position }}-{{ forloop.index0 }}">
+                              {{ value }}
+                            </label>
+                          {% endif %}
+                        {%- endfor -%}                        
                       </fieldset>
-                  {%- endfor -%}
+                    {% endif %}
+                  {%- endfor -%}   
                   {%- for option in product.options_with_values -%}
-                  <p>hgfd</p>
-                    {% if option == 'Color' %}
+                    {% if option.name == 'Size' %}
                       <fieldset class="js product-form__input">
                         <legend class="form__label">{{ option.name }}</legend>
                         {%- for value in option.values -%}
@@ -434,7 +455,7 @@
                         {%- endfor -%}
                       </fieldset>
                     {% endif %}
-                  {%- endfor -%}                  
+                  {%- endfor -%}                                
                   <script type="application/json">
                     {{ product.variants | json }}
                   </script>
@@ -870,6 +891,134 @@
       "name": "t:sections.main-product.blocks.variant_picker.name",
       "limit": 1,
       "settings": [
+        {
+          "type": "header",
+          "content": "Color group 1"
+        },
+        {
+          "type": "checkbox",
+          "id": "color-11",
+          "label": "Color option 1",
+          "default": true
+        },   
+        {
+          "type": "checkbox",
+          "id": "color-12",
+          "label": "Color option 2",
+          "default": true
+        }, 
+        {
+          "type": "checkbox",
+          "id": "color-13",
+          "label": "Color option 3",
+          "default": true
+        }, 
+        {
+          "type": "checkbox",
+          "id": "color-14",
+          "label": "Color option 4",
+          "default": true
+        }, 
+        {
+          "type": "checkbox",
+          "id": "color-15",
+          "label": "Color option 5",
+          "default": true
+        }, 
+        {
+          "type": "checkbox",
+          "id": "color-16",
+          "label": "Color option 6",
+          "default": true
+        }, 
+        {
+          "type": "checkbox",
+          "id": "color-17",
+          "label": "Color option 7",
+          "default": true
+        }, 
+        {
+          "type": "checkbox",
+          "id": "color-18",
+          "label": "Color option 8",
+          "default": true
+        }, 
+        {
+          "type": "checkbox",
+          "id": "color-19",
+          "label": "Color option 9",
+          "default": true
+        }, 
+        {
+          "type": "checkbox",
+          "id": "color-110",
+          "label": "Color option 10",
+          "default": true
+        },    
+        {
+          "type": "header",
+          "content": "Color group 2"
+        },
+        {
+          "type": "checkbox",
+          "id": "color-21",
+          "label": "Color option 1",
+          "default": true
+        },   
+        {
+          "type": "checkbox",
+          "id": "color-22",
+          "label": "Color option 2",
+          "default": true
+        }, 
+        {
+          "type": "checkbox",
+          "id": "color-23",
+          "label": "Color option 3",
+          "default": true
+        }, 
+        {
+          "type": "checkbox",
+          "id": "color-24",
+          "label": "Color option 4",
+          "default": true
+        }, 
+        {
+          "type": "checkbox",
+          "id": "color-25",
+          "label": "Color option 5",
+          "default": true
+        }, 
+        {
+          "type": "checkbox",
+          "id": "color-26",
+          "label": "Color option 6",
+          "default": true
+        }, 
+        {
+          "type": "checkbox",
+          "id": "color-27",
+          "label": "Color option 7",
+          "default": true
+        }, 
+        {
+          "type": "checkbox",
+          "id": "color-28",
+          "label": "Color option 8",
+          "default": true
+        }, 
+        {
+          "type": "checkbox",
+          "id": "color-29",
+          "label": "Color option 9",
+          "default": true
+        }, 
+        {
+          "type": "checkbox",
+          "id": "color-210",
+          "label": "Color option 10",
+          "default": true
+        },  
         {
           "type": "select",
           "id": "picker_type",
