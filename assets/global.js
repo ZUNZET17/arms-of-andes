@@ -925,11 +925,14 @@ const displaySwatchColor = function (ev) {
   const input = ev.target;
   const value = input.getAttribute("swatch-color")
   const groupNumber = input.getAttribute("group-number")
-  const titleContainer = document.getElementById(`js-color-group-title${groupNumber}`)
+  const allTitleContainers = document.querySelectorAll(".js-color-group-title")
 
-  titleContainer.innerText = value;
-  console.log(value, groupNumber, titleContainer)
-  console.log(colorLabels)
+  allTitleContainers.forEach((container, idx) => {
+    container.innerText = "";
+    if (container.id == `js-color-group-title${groupNumber}`) {
+      container.innerText = value;
+    }
+  })
 }
 
 colorLabels.forEach(label => {
