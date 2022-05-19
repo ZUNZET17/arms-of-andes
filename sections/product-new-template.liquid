@@ -416,7 +416,7 @@
                               {%- capture colorop1 -%}color-1{{-forloop.index-}}{%- endcapture -%}
                               {% comment %}<p>{{colorop1}}</p>{% endcomment %}
                               {%- if block.settings[colorop1] -%}
-                                <input type="radio" id="{{ section.id }}-{{ option.position }}-{{ forloop.index0 }}"
+                                <input class="variant-option-input" type="radio" id="{{ section.id }}-{{ option.position }}-{{ forloop.index0 }}"
                                       name="{{ option.name }}"
                                       value="{{ value | escape }}"
                                       form="{{ product_form_id }}"
@@ -442,7 +442,7 @@
                               {%- capture colorop2 -%}color-2{{-forloop.index-}}{%- endcapture -%}
                               {% comment %}<p>{{colorop2}}</p>{% endcomment %}
                               {%- if block.settings[colorop2] -%}
-                                <input type="radio" id="{{ section.id }}-{{ option.position }}-{{ forloop.index0 }}"
+                                <input class="variant-option-input" type="radio" id="{{ section.id }}-{{ option.position }}-{{ forloop.index0 }}"
                                       name="{{ option.name }}"
                                       value="{{ value | escape }}"
                                       form="{{ product_form_id }}"
@@ -463,7 +463,7 @@
                       <fieldset class="js product-form__input">
                         <legend class="form__label">{{ option.name }}</legend>
                         {%- for value in option.values -%}
-                          <input type="radio" id="{{ section.id }}-{{ option.position }}-{{ forloop.index0 }}"
+                          <input class="variant-option-input" type="radio" id="{{ section.id }}-{{ option.position }}-{{ forloop.index0 }}"
                                 name="{{ option.name }}"
                                 value="{{ value | escape }}"
                                 form="{{ product_form_id }}"
