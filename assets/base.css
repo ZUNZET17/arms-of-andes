@@ -2886,3 +2886,77 @@ details-disclosure > details {
   .globo-swatch-product-detail .globo-detail-size-small.globo-detail-border-style-double{
     font-size: 0 !important;
   }
+
+  /* aoa custom styling */
+
+  .animate-opacity{animation:opac 0.8s}@keyframes opac{from{opacity:0} to{opacity:1}}
+
+  .color-swatches {
+    display: flex;
+    row-gap: 2rem;
+    flex-direction: column;
+  }
+
+  .color-options {
+    display: flex;
+    gap: 1rem;
+  }
+
+  .color-swatch__label {
+    width: 100%;
+    height: 100%;
+    min-width: 3.5rem;
+    min-height: 3.5rem;
+    max-width: 3.5rem;
+    max-height: 3.5rem;
+    border: 1px solid transparent;
+    border-color: #ecebeb;
+    border-radius: 0;
+    transition: all 0.2s ease-in-out;
+  }
+  
+  .color-swatch__label:hover {
+    transform: scale(1.2);
+  }
+  
+  .color-swatch__pin {
+    font-size: 14px;
+    position: absolute;
+    bottom: 80%;
+    text-indent: 0;
+    background: #000;
+    padding: 5px 10px;
+    line-height: 1;
+    border-radius: 4px;
+    margin-bottom: 10px;
+    min-width: 50px;
+    color: #fff;
+    left: 50%;
+    white-space: pre;
+    text-align: center;
+    text-transform: none;
+    transform: translate(-50%);
+    -webkit-transform: translate(-50%,0);
+    visibility: hidden;
+    opacity: 0;
+    transition: all .25s ease-out;
+  }
+
+  .color-swatch__pin:after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    bottom: -9px;
+    border-width: 4px 4px 0 4px;
+    border-style: solid;
+    border-color: #000 transparent transparent transparent;
+    margin-bottom: 6px;
+    margin-left: -4px;
+    display: ruby;
+  }
+
+  .color-swatch__label:hover .color-swatch__pin {
+    opacity: 1;
+    visibility: visible;
+    margin-bottom: 15px;
+  }
