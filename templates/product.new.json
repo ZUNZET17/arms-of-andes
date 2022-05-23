@@ -3,16 +3,16 @@
     "main": {
       "type": "product-new-template",
       "blocks": {
-        "title": {
-          "type": "title",
-          "settings": {
-          }
-        },
         "vendor": {
           "type": "text",
           "settings": {
             "text": "Luxurious Pima. Unbelievably Soft. Perfectly Constructed.",
             "text_style": "uppercase"
+          }
+        },
+        "title": {
+          "type": "title",
+          "settings": {
           }
         },
         "price": {
@@ -23,7 +23,60 @@
         "variant_picker": {
           "type": "variant_picker",
           "settings": {
+            "swatch_display": "circle",
+            "legend_size": 1.4,
+            "legend_weight": "medium",
+            "swatch_size": 3.5,
+            "group_1_title": "Synthetic Dyes",
+            "color-11": true,
+            "swatch11": "#5e6064",
+            "color-12": true,
+            "swatch12": "#161f39",
+            "color-13": false,
+            "swatch13": "#446489",
+            "color-14": false,
+            "swatch14": "#e1e0da",
+            "color-15": true,
+            "swatch15": "#000000",
+            "color-16": false,
+            "swatch16": "#81807e",
+            "color-17": false,
+            "swatch17": "#000000",
+            "color-18": false,
+            "swatch18": "#000000",
+            "color-19": false,
+            "swatch19": "#000000",
+            "color-110": false,
+            "swatch110": "#000000",
+            "group_2_title": "Natural Dyes",
+            "color-21": false,
+            "swatch21": "#000000",
+            "color-22": false,
+            "swatch22": "#000000",
+            "color-23": true,
+            "swatch23": "#446489",
+            "color-24": true,
+            "swatch24": "#e1e0da",
+            "color-25": false,
+            "swatch25": "#000000",
+            "color-26": true,
+            "swatch26": "#81807e",
+            "color-27": false,
+            "swatch27": "#000000",
+            "color-28": false,
+            "swatch28": "#000000",
+            "color-29": false,
+            "swatch29": "#000000",
+            "color-210": false,
+            "swatch210": "#000000",
             "picker_type": "button"
+          }
+        },
+        "2f055291-c07b-4006-9c2d-c04cb0a8565c": {
+          "type": "popup",
+          "settings": {
+            "text": "Leave No Trace Apparel",
+            "page": "leave-no-trace-apparel-joff"
           }
         },
         "quantity_selector": {
@@ -43,20 +96,15 @@
           "settings": {
             "border_on": false,
             "tab_icon_size": 3,
-            "btn_bk_active": "#F4F4F4",
-            "icon_color_hover": "#1E90FF",
-            "tab1_image": "shopify:\/\/shop_images\/icon2.png",
+            "tab_content_size": 1.6,
+            "btn_bk_active": "#f4f4f4",
+            "icon_color_hover": "#1e90ff",
+            "tab1_title": "Tab 1 title",
             "tab1_content": "<p><strong>Microplastic-Free World<\/strong><\/p><p>WE SAID NO TO ENVIRONMENTAL POLLUTION.<\/p><p><br\/>We use only organic materials: 100% Organic Cotton fabric sewn with 100% Cotton threads. Even our labels are 100% Cotton.<\/p><p>This is the first step in making our entire catalog <strong>plastic-free and biodegradable.<\/strong><\/p>",
-            "tab2_image": "shopify:\/\/shop_images\/2.png",
+            "tab2_title": "Tab 2 title",
             "tab2_content": "<p><strong>One-Country Supply Chain<\/strong><\/p><p>WE PERFECTED THE SUPPLY CHAIN MODEL.<\/p><p><strong>No more international supply chain<\/strong> with high carbon footprint and low transparency.<\/p><p>Our Organic Pima Cotton is cultivated, spun into yarn, knitted into fabric and sewn into the perfectly designed garment in our production studio - all sustainably and exclusively in Peru.<\/p>",
-            "tab3_image": "shopify:\/\/shop_images\/4.png",
+            "tab3_title": "Tab 3 title",
             "tab3_content": "<p><strong>100% Organic Pima<\/strong><\/p><p>WE REDEFINED SUSTAINABILITY.<\/p><p>This is not just another organic shirt. This is 100% Organic Pima Cotton. Pima Cotton is native to Peru and requires zero toxic chemicals.<\/p><p>Peruvian Pima is the parent fiber to all premium cotton, unbelievably soft and breathable.<\/p><p><strong>Your next purchase makes a difference. Wear what's best for the Earth.<\/strong><\/p>"
-          }
-        },
-        "description": {
-          "type": "description",
-          "disabled": true,
-          "settings": {
           }
         },
         "collapsible-row-0": {
@@ -76,39 +124,19 @@
             "content": "<p>Our {{ product.title }} is made using sustainable practices and materials.<\/p><p><strong>Fiber: <\/strong>100% Organic Pima Cotton<\/p><p><strong>Thread: <\/strong>100% Cotton<\/p><p><strong>Label:<\/strong> 100% Organic Cotton + GOTS Certified Ink<\/p><p><strong>Dyes: <\/strong>Low Impact Dyes (GOTS) & 100% Natural Dyes<\/p><p><strong>Finishing: <\/strong>OEKO-TEX Certified<\/p><p><\/p><p><strong>Care:<\/strong> Tumble dry low. Machine wash cold.<\/p>",
             "page": ""
           }
-        },
-        "collapsible-row-1": {
-          "type": "collapsible_tab",
-          "disabled": true,
-          "settings": {
-            "heading": "Shipping & Returns",
-            "icon": "truck",
-            "content": "",
-            "page": ""
-          }
-        },
-        "dd229e45-2bc5-4b2d-b844-2a1e7ec681a2": {
-          "type": "popup",
-          "disabled": true,
-          "settings": {
-            "text": "Free Returns",
-            "page": ""
-          }
         }
       },
       "block_order": [
-        "title",
         "vendor",
+        "title",
         "price",
         "variant_picker",
+        "2f055291-c07b-4006-9c2d-c04cb0a8565c",
         "quantity_selector",
         "buy_buttons",
         "tabs",
-        "description",
         "collapsible-row-0",
-        "collapsible-row-3",
-        "collapsible-row-1",
-        "dd229e45-2bc5-4b2d-b844-2a1e7ec681a2"
+        "collapsible-row-3"
       ],
       "settings": {
         "enable_sticky_info": true,
@@ -172,7 +200,6 @@
         "image-with-text-1"
       ],
       "settings": {
-        "image": "shopify:\/\/shop_images\/1.png",
         "height": "small",
         "desktop_image_width": "medium",
         "layout": "text_first",
@@ -218,7 +245,6 @@
         "165055703693697682-1"
       ],
       "settings": {
-        "image": "shopify:\/\/shop_images\/3.png",
         "height": "adapt",
         "desktop_image_width": "medium",
         "layout": "image_first",
