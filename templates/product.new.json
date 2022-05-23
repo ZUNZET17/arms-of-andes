@@ -75,8 +75,8 @@
         "2f055291-c07b-4006-9c2d-c04cb0a8565c": {
           "type": "popup",
           "settings": {
-            "text": "Leave No Trace Apparel",
-            "page": "leave-no-trace-apparel-information"
+            "text": "Size Guide",
+            "page": "sizing-chart-men-upper-layer"
           }
         },
         "quantity_selector": {
