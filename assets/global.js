@@ -917,3 +917,25 @@ function openTab(evt, cityName) {
   evt.currentTarget.className += " active";
 }
 document.getElementById("tab-cus-active").click();
+
+// Display swaches color name
+
+const colorLabels = document.querySelectorAll('.js-color-label');
+
+const displaySwatchColor = function (ev) {
+  const input = ev.target;
+  const value = input.getAttribute("swatch-color")
+  const groupNumber = input.getAttribute("group-number")
+  const allTitleContainers = document.querySelectorAll(".js-color-group-title")
+
+  allTitleContainers.forEach((container, idx) => {
+    container.innerText = "";
+    if (container.id == `js-color-group-title${groupNumber}`) {
+      container.innerText = value;
+    }
+  })
+}
+
+colorLabels.forEach(label => {
+  label.addEventListener('click', displaySwatchColor, false)
+})
