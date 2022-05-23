@@ -150,8 +150,8 @@
 /* Form Elements */
 .product-form__input {
   flex: 0 0 100%;
-  padding: 0;
-  margin: 0 0 1.2rem 0;
+  /* padding: 0; */
+  /* margin: 0 0 1.2rem 0; */
   max-width: 37rem;
   min-width: fit-content;
   border: none;
@@ -182,22 +182,25 @@ fieldset.product-form__input .form__label {
   width: 1px;
 }
 
-.product-form__input input[type='radio'] + label {
-  border: var(--variant-pills-border-width) solid rgba(var(--color-foreground), var(--variant-pills-border-opacity));
-  background-color: rgb(var(--color-background));
+.product-form__input input[type='radio'] + label{
+  /* background-color: rgb(var(--color-background)); */
   color: rgba(var(--color-foreground));
-  border-radius: var(--variant-pills-radius);
+  /* border-radius: var(--variant-pills-radius); */
   color: rgb(var(--color-foreground));
   display: inline-block;
-  margin: 0.7rem 0.5rem 0.2rem 0;
-  padding: 1rem 2rem;
+  /* margin: 0.7rem 0.5rem 0.2rem 0;
+  padding: 1rem 2rem; */
   font-size: 1.4rem;
   letter-spacing: 0.1rem;
   line-height: 1;
   text-align: center;
-  transition: border var(--duration-short) ease;
+  /* transition: border var(--duration-short) ease; */
   cursor: pointer;
   position: relative;
+}
+
+.product-form__input input[type='radio'] + label:not(.product-size-label){
+  border: var(--variant-pills-border-width) solid rgba(var(--color-foreground), var(--variant-pills-border-opacity));
 }
 
 .product-form__input input[type='radio'] + label:before {
@@ -217,8 +220,8 @@ fieldset.product-form__input .form__label {
 }
 
 .product-form__input input[type='radio']:checked + label {
-  background-color: rgb(var(--color-foreground));
-  color: rgb(var(--color-background));
+  /* background-color: rgb(var(--color-foreground)); */
+  /* color: rgb(var(--color-background)); */
 }
 
 @media screen and (forced-colors: active) {
