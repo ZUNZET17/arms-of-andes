@@ -205,8 +205,39 @@
               {{- block.settings.text -}}
             </p>
           {%- when 'title' -%}
+            {%- liquid
+              case block.settings.product_title_weight
+                when "medium"
+                  assign title_weight = 500
+                when "bold"
+                  assign title_weight = 700
+                else
+                  assign title_weight = 400
+            endcase -%}
+            {%- liquid
+              case block.settings.product_subtitle_weight
+                when "medium"
+                  assign subtitle_weight = 500
+                when "bold"
+                  assign subtitle_weight = 700
+                else
+                  assign subtitle_weight = 400
+            endcase -%}
+            {% style %}
+              .product__title h1 {
+                font-size: {{- block.settings.product_title_size -}}rem;
+                font-weight: {{- title_weight -}};
+              }
+
+              .product__subtitle {
+                font-size: {{- block.settings.product_subtitle_size -}}rem;
+                font-weight: {{- subtitle_weight -}};
+              }
+            {% endstyle %}
             <div class="product__title" {{ block.shopify_attributes }}>
-              <h1>{{ product.title | escape }}</h1>
+              {% assign product_title = product.title | split: ": " %}
+              <h1>{{ product_title[0] | escape }}</h1>
+              <p class="product__subtitle">{{- product_title[1] -}}</p>
               <a href="{{ product.url }}" class="product__title">
                 <h2 class="h1">
                   {{ product.title | escape }}
@@ -217,6 +248,7 @@
             <div class="no-js-hidden" id="price-{{ section.id }}" role="status" {{ block.shopify_attributes }}>
               {%- render 'price', product: product, use_variant: true, show_badges: true, price_class: 'price--large' -%}
             </div>
+            {% comment %}
             {%- if shop.taxes_included or shop.shipping_policy.body != blank -%}
               <div class="product__tax caption rte">
                 {%- if shop.taxes_included -%}
@@ -227,6 +259,7 @@
                 {%- endif -%}
               </div>
             {%- endif -%}
+            {% endcomment %}
             <div {{ block.shopify_attributes }}>
               {%- assign product_form_installment_id = 'product-form-installment-' | append: section.id -%}
               {%- form 'product', product, id: product_form_installment_id, class: 'installment caption-large' -%}
@@ -829,7 +862,69 @@
     {
       "type": "title",
       "name": "t:sections.main-product.blocks.title.name",
-      "limit": 1
+      "limit": 1,
+      "settings": [
+        {
+          "type": "range",
+          "id": "product_title_size",
+          "label":"Product Title Size",
+          "min": 1,
+          "max": 5,
+          "step": 0.1,
+          "unit": "rem",
+          "default": 1.8
+        },
+        {
+          "type": "select",
+          "id": "product_title_weight",
+          "label": "Product Title Weight",
+          "options": [
+            {
+              "value": "regular",
+              "label": "Regular"
+            },
+            {
+              "value": "medium",
+              "label": "Medium"
+            },
+            {
+              "value": "bold",
+              "label": "Bold"
+            }
+          ],
+          "default": "regular"
+        },
+        {
+          "type": "range",
+          "id": "product_subtitle_size",
+          "label":"Product Subtitle Size",
+          "min": 1,
+          "max": 5,
+          "step": 0.1,
+          "unit": "rem",
+          "default": 1.6
+        },
+        {
+          "type": "select",
+          "id": "product_subtitle_weight",
+          "label": "Product Subtitle Weight",
+          "options": [
+            {
+              "value": "regular",
+              "label": "Regular"
+            },
+            {
+              "value": "medium",
+              "label": "Medium"
+            },
+            {
+              "value": "bold",
+              "label": "Bold"
+            }
+          ],
+          "default": "regular"
+        }
+      ]
     },
     {
       "type": "price",
