@@ -2891,24 +2891,33 @@ details-disclosure > details {
 
   .animate-opacity{animation:opac 0.8s}@keyframes opac{from{opacity:0} to{opacity:1}}
 
+  .color-swatches-block {
+    padding: 3rem 0;
+  }
+
   .color-swatches {
     display: flex;
-    row-gap: 2rem;
+    row-gap: 3.5rem;
     flex-direction: column;
   }
 
   .color-options {
     display: flex;
+    flex-wrap: wrap;
     gap: 1rem;
   }
 
+  .color-group-title {
+    font-weight: normal;
+  }
+
   .color-swatch__label {
-    width: 100%;
-    height: 100%;
+    /* width: 100%;
+    height: 100%; */
     min-width: 3.5rem;
     min-height: 3.5rem;
-    max-width: 3.5rem;
-    max-height: 3.5rem;
+    /* max-width: 3.5rem;
+    max-height: 3.5rem; */
     border: 1px solid transparent;
     border-color: #ecebeb;
     border-radius: 0;
@@ -2933,21 +2942,22 @@ details-disclosure > details {
   .variant-option-input:checked + .color-swatch__label:after {
     border-color: rgb(116, 121, 124);
     transition-duration: 250ms;
-    inset: -.4rem;
+    inset: -.75rem;
   }
   
   .color-swatch__pin {
-    font-size: 14px;
+    font-size: 1.2rem;
     position: absolute;
     bottom: 80%;
     text-indent: 0;
-    background: #000;
+    background: #fff;
     padding: 5px 10px;
     line-height: 1;
+    border: var(--variant-pills-border-width) solid rgba(var(--color-foreground), var(--variant-pills-border-opacity));
     border-radius: 4px;
     margin-bottom: 10px;
     min-width: 50px;
-    color: #fff;
+    color: #000;
     left: 50%;
     white-space: pre;
     text-align: center;
@@ -2963,7 +2973,7 @@ details-disclosure > details {
     content: "";
     position: absolute;
     left: 50%;
-    bottom: -9px;
+    bottom: -10px;
     border-width: 4px 4px 0 4px;
     border-style: solid;
     border-color: #000 transparent transparent transparent;
@@ -2983,10 +2993,15 @@ details-disclosure > details {
     border-color: black;
   }
 
+  .size-options {
+    margin-top: 3rem;
+  }
+
   .product-size-label {
     border-color: #e9e9e9;
     color: #000;
     background-color: #e9e9e9;
+    margin-bottom: .5rem;
     padding: 5px 10px;
     display: block;
     text-align: center;

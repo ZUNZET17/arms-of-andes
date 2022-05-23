@@ -397,23 +397,50 @@
             </share-button>
             <script src="{{ 'share.js' | asset_url }}" defer="defer"></script>
           {%- when 'variant_picker' -%}
+          {% style %}
+            .color-group-legend {
+              font-size: {{- block.settings.legend_size -}}rem;
+              {%- liquid
+                case block.settings.legend_weight
+                  when "medium"
+                    assign weight = 500
+                  when "bold"
+                    assign weight = 700
+                  else
+                    assign weight = 400
+              endcase -%}
+              font-weight: {{- weight -}};
+            }
+            .color-swatch__label {
+              min-width: {{- block.settings.swatch_size -}}rem;
+              min-height: {{- block.settings.swatch_size -}}rem;
+              {% if block.settings.swatch_display == "rectangle" %}
+              min-width: {{- block.settings.swatch_size | times: 1.35 -}}rem;
+              {% endif %}
+              {% if block.settings.swatch_display == "circle" %}
+              border-radius: 50%;
+              {% endif %}
+            }
+            {% if block.settings.swatch_display == "rectangle" or block.settings.swatch_display == "square" %}
+            .color-swatch__label:after {
+              border-radius: 0;
+            }
+            {% endif %}            
+          {% endstyle %}
             {%- unless product.has_only_default_variant -%}
               {%- if block.settings.picker_type == 'button' -%}
-                <variant-radios class="no-js-hidden" data-section="{{ section.id }}" data-url="{{ product.url }}" {{ block.shopify_attributes }}>
+                <variant-radios class="no-js-hidden color-swatches-block" data-section="{{ section.id }}" data-url="{{ product.url }}" {{ block.shopify_attributes }}>
                   {%- for option in product.options_with_values -%}
                     {% if option.name == 'Color' %}
                       <fieldset class="js product-form__input color-swatches">
                         <div class="color-group">
-                          <legend class="form__label" style="margin-bottom: 1rem; font-size: 14px; font-weight: 700;" >{{ block.settings.group_1_title }}: <span id="js-color-group-title1" class="js-color-group-title"></span></legend>
+                          <legend class="form__label color-group-legend" style="margin-bottom: 1rem;" >{{ block.settings.group_1_title }}: <span id="js-color-group-title1" class="js-color-group-title color-group-title"></span></legend>
                           <div class="color-options">
                             {%- for value in option.values -%}
                               {% capture swatch_idx %}swatch1{{-forloop.index-}}{% endcapture %}
                               {% style %}
                                 .{{-swatch_idx-}} {
                                   background-color: {{- block.settings[swatch_idx] -}};
-                                  {% if block.settings.circle_on %}
-                                  border-radius: 50%;
-                                  {% endif %}
                                 }
                               {% endstyle %}
                               {%- capture colorop1 -%}color-1{{-forloop.index-}}{%- endcapture -%}
@@ -433,7 +460,7 @@
                           </div>
                         </div>
                         <div class="color-group">
-                          <legend class="form__label" style="margin-bottom: 1rem; font-size: 14px; font-weight: 700;">{{ block.settings.group_2_title }}: <span id="js-color-group-title2" class="js-color-group-title"></span></legend>
+                          <legend class="form__label color-group-legend" style="margin-bottom: 1rem;">{{ block.settings.group_2_title }}: <span id="js-color-group-title2" class="js-color-group-title color-group-title"></span></legend>
                           <div class="color-options">
                             {%- for value in option.values -%}
                               {% capture swatch_idx %}swatch2{{-forloop.index-}}{% endcapture %}
@@ -466,7 +493,7 @@
                   {%- endfor -%}   
                   {%- for option in product.options_with_values -%}
                     {% if option.name == 'Size' %}
-                      <fieldset class="js product-form__input">
+                      <fieldset class="js product-form__input size-options">
                         <legend class="form__label">{{ option.name }}</legend>
                         {%- for value in option.values -%}
                           <input class="variant-option-input" type="radio" id="{{ section.id }}-{{ option.position }}-{{ forloop.index0 }}"
@@ -919,10 +946,64 @@
       "limit": 1,
       "settings": [
         {
-          "type": "checkbox",
-          "id": "circle_on",
-          "label": "Circle display",
-          "default": true
+          "type": "select",
+          "id": "swatch_display",
+          "label": "Swatch display type",
+          "options": [
+            {
+              "value": "circle",
+              "label": "Circle"
+            },
+            {
+              "value": "square",
+              "label": "Square"
+            },
+            {
+              "value": "rectangle",
+              "label": "Rectangle"
+            }
+          ],
+          "default": "circle"
+        },
+        {
+          "type": "range",
+          "id": "legend_size",
+          "label": "Color options legend size",
+          "unit": "rem",
+          "min": 1,
+          "max": 3,
+          "step": 0.1,
+          "default": 1.4
+        },
+        {
+          "type": "select",
+          "id": "legend_weight",
+          "label": "Color options legend weight",
+          "options": [
+            {
+              "value": "regular",
+              "label": "Regular"
+            },
+            {
+              "value": "medium",
+              "label": "Medium"
+            },
+            {
+              "value": "bold",
+              "label": "Bold"
+            }
+          ],
+          "default": "bold"
+        },      
+        {
+          "type": "range",
+          "id": "swatch_size",
+          "label": "Swatch size",
+          "unit": "rem",
+          "min": 1,
+          "max": 6,
+          "step": 0.5,
+          "default": 3.5
         },
         {
           "type": "header",
