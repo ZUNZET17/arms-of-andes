@@ -900,6 +900,7 @@ class VariantRadios extends VariantSelects {
 
 customElements.define('variant-radios', VariantRadios);
 
+
 // aoa custom scrtipts
 
 function openTab(evt, cityName) {

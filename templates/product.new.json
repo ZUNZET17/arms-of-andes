@@ -3,6 +3,11 @@
     "main": {
       "type": "product-new-template",
       "blocks": {
+        "title": {
+          "type": "title",
+          "settings": {
+          }
+        },
         "vendor": {
           "type": "text",
           "settings": {
@@ -200,6 +205,7 @@
         "image-with-text-1"
       ],
       "settings": {
+        "image": "shopify:\/\/shop_images\/1.png",
         "height": "small",
         "desktop_image_width": "medium",
         "layout": "text_first",
@@ -245,6 +251,7 @@
         "165055703693697682-1"
       ],
       "settings": {
+        "image": "shopify:\/\/shop_images\/3.png",
         "height": "adapt",
         "desktop_image_width": "medium",
         "layout": "image_first",

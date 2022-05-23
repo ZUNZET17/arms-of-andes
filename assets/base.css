@@ -2887,6 +2887,7 @@ details-disclosure > details {
     font-size: 0 !important;
   }
 
+
   /* aoa custom styling */
 
   .animate-opacity{animation:opac 0.8s}@keyframes opac{from{opacity:0} to{opacity:1}}
