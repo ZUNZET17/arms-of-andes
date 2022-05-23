@@ -76,7 +76,7 @@
           "type": "popup",
           "settings": {
             "text": "Leave No Trace Apparel",
-            "page": "leave-no-trace-apparel-joff"
+            "page": "leave-no-trace-apparel-information"
           }
         },
         "quantity_selector": {
