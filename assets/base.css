@@ -2907,6 +2907,10 @@ details-disclosure > details {
     gap: 1rem;
   }
 
+  .color-group-legend-btn {
+    text-decoration: none;
+  }
+
   .color-group-title {
     font-weight: normal;
   }
@@ -3015,6 +3019,12 @@ details-disclosure > details {
     color: #ffffff;
     background-color: #434442;
     border-color: #000000;
+  }
+
+  .sizes-options__header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1.5rem;
   }
 
   .product-size-label:hover {
