@@ -72,13 +72,6 @@
             "picker_type": "button"
           }
         },
-        "2f055291-c07b-4006-9c2d-c04cb0a8565c": {
-          "type": "popup",
-          "settings": {
-            "text": "Size Guide",
-            "page": "sizing-chart-men-upper-layer"
-          }
-        },
         "quantity_selector": {
           "type": "quantity_selector",
           "disabled": true,
