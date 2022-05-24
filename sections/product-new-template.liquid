@@ -460,11 +460,7 @@
             }
             {% endif %}            
           {% endstyle %}
-          <modal-opener class="product-popup-modal__opener no-js-hidden quick-add-hidden" data-modal="#PopupModal-{{ block.id }}" {{ block.shopify_attributes }}>
-            <button id="ProductPopup-{{ block.id }}" class="product-popup-modal__button link" type="button" aria-haspopup="dialog">{{ block.settings.text | default: block.settings.page.title }}zxc</button>
-            <p>{{ block.settings.page.content }}</p>
-          </modal-opener>
-          <a href="{{ block.settings.page.url }}" class="product-popup-modal__button link no-js">{{ block.settings.text }}abc</a>
+          <a href="{{ block.settings.page.url }}" class="product-popup-modal__button link no-js">{{ block.settings.text }}</a>
             {%- unless product.has_only_default_variant -%}
               {%- if block.settings.picker_type == 'button' -%}
                 <variant-radios class="no-js-hidden color-swatches-block" data-section="{{ section.id }}" data-url="{{ product.url }}" {{ block.shopify_attributes }}>
@@ -472,7 +468,20 @@
                     {% if option.name == 'Color' %}
                       <fieldset class="js product-form__input color-swatches">
                         <div class="color-group">
-                          <legend class="form__label color-group-legend" style="margin-bottom: 1rem;" >{{ block.settings.group_1_title }}: <span id="js-color-group-title1" class="js-color-group-title color-group-title"></span></legend>
+                          <modal-opener class="product-popup-modal__opener no-js-hidden quick-add-hidden" data-modal="#PopupModal-{{- block.settings.group_1_title | remove: ' ' -}}" {{ block.shopify_attributes }}>
+                            <button id="ProductPopup-{{ block.id }}" class="product-popup-modal__button link color-group-legend-btn" type="button" aria-haspopup="dialog">
+                              <legend class="form__label color-group-legend" style="margin-bottom: 1rem;" >{{ block.settings.group_1_title }}: <span id="js-color-group-title1" class="js-color-group-title color-group-title"></span></legend>
+                            </button>
+                          </modal-opener>
+                          <modal-dialog id="PopupModal-{{- block.settings.group_1_title | remove: ' ' -}}" class="product-popup-modal" {{ block.shopify_attributes }}>
+                            <div role="dialog" aria-label="{{ block.settings.text }}" aria-modal="true" class="product-popup-modal__content" tabindex="-1">
+                              <button id="ModalClose-{{- block.settings.group_1_title -}}}" type="button" class="product-popup-modal__toggle" aria-label="{{ 'accessibility.close' | t }}">{% render 'icon-close' %}</button>
+                              <div class="product-popup-modal__content-info">
+                                <h1 class="h2">{{ block.settings.color_group1_page.title }}</h1>
+                                {{ block.settings.color_group1_page.content }}
+                              </div>
+                            </div>
+                          </modal-dialog>
                           <div class="color-options">
                             {%- for value in option.values -%}
                               {% capture swatch_idx %}swatch1{{-forloop.index-}}{% endcapture %}
@@ -498,7 +507,20 @@
                           </div>
                         </div>
                         <div class="color-group">
-                          <legend class="form__label color-group-legend" style="margin-bottom: 1rem;">{{ block.settings.group_2_title }}: <span id="js-color-group-title2" class="js-color-group-title color-group-title"></span></legend>
+                          <modal-opener class="product-popup-modal__opener no-js-hidden quick-add-hidden" data-modal="#PopupModal-{{- block.settings.group_2_title | remove: " " -}}" {{ block.shopify_attributes }}>
+                            <button id="ProductPopup-{{ block.id }}" class="product-popup-modal__button link color-group-legend-btn" type="button" aria-haspopup="dialog">
+                              <legend class="form__label color-group-legend" style="margin-bottom: 1rem;">{{ block.settings.group_2_title }}: <span id="js-color-group-title2" class="js-color-group-title color-group-title"></span></legend>
+                            </button>
+                          </modal-opener>
+                          <modal-dialog id="PopupModal-{{- block.settings.group_2_title | remove: " " -}}" class="product-popup-modal" {{ block.shopify_attributes }}>
+                            <div role="dialog" aria-label="{{ block.settings.text }}" aria-modal="true" class="product-popup-modal__content" tabindex="-1">
+                              <button id="ModalClose-{{- block.settings.group_2_title -}}}" type="button" class="product-popup-modal__toggle" aria-label="{{ 'accessibility.close' | t }}">{% render 'icon-close' %}</button>
+                              <div class="product-popup-modal__content-info">
+                                <h1 class="h2">{{ block.settings.color_group2_page.title }}</h1>
+                                {{ block.settings.color_group2_page.content }}
+                              </div>
+                            </div>
+                          </modal-dialog>
                           <div class="color-options">
                             {%- for value in option.values -%}
                               {% capture swatch_idx %}swatch2{{-forloop.index-}}{% endcapture %}
@@ -532,7 +554,12 @@
                   {%- for option in product.options_with_values -%}
                     {% if option.name == 'Size' %}
                       <fieldset class="js product-form__input size-options">
-                        <legend class="form__label">{{ option.name }}</legend>
+                        <div class="sizes-options__header">
+                          <legend class="form__label">{{ option.name }}</legend>
+                          <modal-opener class="product-popup-modal__opener no-js-hidden quick-add-hidden" data-modal="#PopupModal-{{ block.id }}" {{ block.shopify_attributes }}>
+                            <button id="ProductPopup-{{ block.id }}" class="product-popup-modal__button link" type="button" aria-haspopup="dialog">{{ block.settings.text | default: block.settings.page.title }}</button>
+                          </modal-opener>
+                        </div>
                         {%- for value in option.values -%}
                           <input class="variant-option-input" type="radio" id="{{ section.id }}-{{ option.position }}-{{ forloop.index0 }}"
                                 name="{{ option.name }}"
@@ -745,9 +772,7 @@
 
   {% assign variant_picker_popups = section.blocks | where: "type", "variant_picker" %}
   {%- for block in variant_picker_popups -%}
-    <modal-dialog zxc="zunzet" id="PopupModal-{{ block.id }}" class="product-popup-modal" {{ block.shopify_attributes }}>
-      {{ variant_picker_popups | size }}
-      {{ forloop.index }} index
+    <modal-dialog id="PopupModal-{{ block.id }}" class="product-popup-modal" {{ block.shopify_attributes }}>
       <div role="dialog" aria-label="{{ block.settings.text }}" aria-modal="true" class="product-popup-modal__content" tabindex="-1">
         <button id="ModalClose-{{ block.id }}" type="button" class="product-popup-modal__toggle" aria-label="{{ 'accessibility.close' | t }}">{% render 'icon-close' %}</button>
         <div class="product-popup-modal__content-info">
@@ -1061,9 +1086,23 @@
       "limit": 1,
       "settings": [
         {
+          "type": "header",
+          "content": "Pop-up Pages"
+        },
+        {
+          "type": "page",
+          "id": "color_group1_page",
+          "label": "color-group-page"
+        }, 
+        {
+          "type": "page",
+          "id": "color_group2_page",
+          "label": "color-group-page"
+        }, 
+        {
           "type": "text",
           "id": "text",
-          "default": "Pop-up link text",
+          "default": "Size Guide",
           "label": "Pop-up link text"
         },
         {
