@@ -460,6 +460,11 @@
             }
             {% endif %}            
           {% endstyle %}
+          <modal-opener class="product-popup-modal__opener no-js-hidden quick-add-hidden" data-modal="#PopupModal-{{ block.id }}" {{ block.shopify_attributes }}>
+            <button id="ProductPopup-{{ block.id }}" class="product-popup-modal__button link" type="button" aria-haspopup="dialog">{{ block.settings.text | default: block.settings.page.title }}zxc</button>
+            <p>{{ block.settings.page.content }}</p>
+          </modal-opener>
+          <a href="{{ block.settings.page.url }}" class="product-popup-modal__button link no-js">{{ block.settings.text }}abc</a>
             {%- unless product.has_only_default_variant -%}
               {%- if block.settings.picker_type == 'button' -%}
                 <variant-radios class="no-js-hidden color-swatches-block" data-section="{{ section.id }}" data-url="{{ product.url }}" {{ block.shopify_attributes }}>
@@ -728,6 +733,21 @@
   {% assign popups = section.blocks | where: "type", "popup" %}
   {%- for block in popups -%}
     <modal-dialog id="PopupModal-{{ block.id }}" class="product-popup-modal" {{ block.shopify_attributes }}>
+      <div role="dialog" aria-label="{{ block.settings.text }}" aria-modal="true" class="product-popup-modal__content" tabindex="-1">
+        <button id="ModalClose-{{ block.id }}" type="button" class="product-popup-modal__toggle" aria-label="{{ 'accessibility.close' | t }}">{% render 'icon-close' %}</button>
+        <div class="product-popup-modal__content-info">
+          <h1 class="h2">{{ block.settings.page.title }}</h1>
+          {{ block.settings.page.content }}
+        </div>
+      </div>
+    </modal-dialog>
+  {%- endfor -%}
+
+  {% assign variant_picker_popups = section.blocks | where: "type", "variant_picker" %}
+  {%- for block in variant_picker_popups -%}
+    <modal-dialog zxc="zunzet" id="PopupModal-{{ block.id }}" class="product-popup-modal" {{ block.shopify_attributes }}>
+      {{ variant_picker_popups | size }}
+      {{ forloop.index }} index
       <div role="dialog" aria-label="{{ block.settings.text }}" aria-modal="true" class="product-popup-modal__content" tabindex="-1">
         <button id="ModalClose-{{ block.id }}" type="button" class="product-popup-modal__toggle" aria-label="{{ 'accessibility.close' | t }}">{% render 'icon-close' %}</button>
         <div class="product-popup-modal__content-info">
@@ -1040,6 +1060,17 @@
       "name": "t:sections.main-product.blocks.variant_picker.name",
       "limit": 1,
       "settings": [
+        {
+          "type": "text",
+          "id": "text",
+          "default": "Pop-up link text",
+          "label": "Pop-up link text"
+        },
+        {
+          "type": "page",
+          "id": "page",
+          "label": "Page"
+        },      
         {
           "type": "select",
           "id": "swatch_display",
