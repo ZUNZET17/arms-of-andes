@@ -27,7 +27,7 @@
         "variant_picker": {
           "type": "variant_picker",
           "settings": {
-            "color_group1_page": "fiber-comparison-chart",
+            "color_group1_page": "sizing-chart-men-upper-layer",
             "color_group2_page": "",
             "size_guide_text": "Size Guide",
             "size_guide_page": "sizing-chart-women-upper-layer",
