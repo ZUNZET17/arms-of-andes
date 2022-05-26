@@ -568,9 +568,24 @@
                       <fieldset class="js product-form__input size-options">
                         <div class="sizes-options__header">
                           <legend class="form__label">{{ option.name }}</legend>
-                          <modal-opener class="product-popup-modal__opener no-js-hidden quick-add-hidden" data-modal="#PopupModal-{{ block.id }}" {{ block.shopify_attributes }}>
-                            <button id="ProductPopup-{{ block.id }}" class="product-popup-modal__button link" type="button" aria-haspopup="dialog">{{ block.settings.text | default: block.settings.page.title }}</button>
+                          <modal-opener class="product-popup-modal__opener no-js-hidden quick-add-hidden" data-modal="#PopupModal-{{ block.settings.size_guide_text | replace: " ", "" }}" {{ block.shopify_attributes }}>
+                            <button id="ProductPopup-{{ block.id }}" class="product-popup-modal__button link" type="button" aria-haspopup="dialog">{{ block.settings.size_guide_text | default: block.settings.page.title }}</button>
                           </modal-opener>
+                          {% assign pageId3 = block.settings.size_guide_page.template_suffix %}
+                          <modal-dialog id="PopupModal-{{ block.settings.size_guide_text | replace: " ", "" }}" class="product-popup-modal" {{ block.shopify_attributes }}>
+                            <div role="dialog" aria-label="{{ block.settings.size_guide_text }}" aria-modal="true" class="product-popup-modal__content" tabindex="-1">
+                              <button id="ModalClose-{{ block.settings.size_guide_text }}" type="button" class="product-popup-modal__toggle" aria-label="{{ 'accessibility.close' | t }}">{% render 'icon-close' %}</button>
+                              {{pageId3}}
+                              <div class="product-popup-modal__content-info {% unless block.settings.size_guide_page.content != blank %}js-page-{{-pageId3}} js-page-content{% endunless %}">
+                                {% if block.settings.size_guide_page.content != blank %}
+                                {{ block.settings.size_guide_page.content }}
+                              {% else %}
+                                {% capture pageStyle3 %}'pagefly.{{- pageId3 -}}.css' | asset_url{% endcapture%}
+                                <link rel="stylesheet" href="{{pageStyle3}}">
+                              {% endif %}
+                              </div>
+                            </div>
+                          </modal-dialog>
                         </div>
                         {%- for value in option.values -%}
                           <input class="variant-option-input" type="radio" id="{{ section.id }}-{{ option.position }}-{{ forloop.index0 }}"
@@ -777,25 +792,6 @@
         <div class="product-popup-modal__content-info">
           <h1 class="h2">{{ block.settings.page.title }}</h1>
           {{ block.settings.page.content }}
-        </div>
-      </div>
-    </modal-dialog>
-  {%- endfor -%}
-
-  {% assign variant_picker_popups = section.blocks | where: "type", "variant_picker" %}
-  {%- for block in variant_picker_popups -%}
-    {% assign pageId3 = block.settings.size_guide_page.template_suffix %}
-    <modal-dialog id="PopupModal-{{ block.id }}" class="product-popup-modal" {{ block.shopify_attributes }}>
-      <div role="dialog" aria-label="{{ block.settings.text }}" aria-modal="true" class="product-popup-modal__content" tabindex="-1">
-        <button id="ModalClose-{{ block.id }}" type="button" class="product-popup-modal__toggle" aria-label="{{ 'accessibility.close' | t }}">{% render 'icon-close' %}</button>
-        {{pageId3}}
-        <div class="product-popup-modal__content-info {% unless block.settings.size_guide_page.content != blank %}js-page-{{-pageId3}} js-page-content{% endunless %}">
-          {% if block.settings.size_guide_page.content != blank %}
-          {{ block.settings.size_guide_page.content }}
-        {% else %}
-          {% capture pageStyle3 %}'pagefly.{{- pageId3 -}}.css' | asset_url{% endcapture%}
-          <link rel="stylesheet" href="{{pageStyle3}}">
-        {% endif %}
         </div>
       </div>
     </modal-dialog>
@@ -1147,7 +1143,7 @@
         }, 
         {
           "type": "text",
-          "id": "text",
+          "id": "size_guide_text",
           "default": "Size Guide",
           "label": "Pop-up link text"
         },
