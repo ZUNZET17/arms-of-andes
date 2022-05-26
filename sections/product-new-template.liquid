@@ -515,7 +515,7 @@
                         <div class="color-group">
                           <modal-opener class="product-popup-modal__opener no-js-hidden quick-add-hidden" data-modal="#PopupModal-{{- block.settings.group_2_title | remove: " " -}}" {{ block.shopify_attributes }}>
                             {% assign pageId2 = block.settings.color_group2_page.template_suffix %}
-                            <button id="ProductPopup-{{ block.id }}" class="product-popup-modal__button link color-group-legend-btn" type="button" aria-haspopup="dialog">
+                            <button id="ProductPopup-{{ block.id }}" class="product-popup-modal__button link color-group-legend-btn js-pop-up-button" type="button" aria-haspopup="dialog" page-id="{{pageId2}}">
                               <legend class="form__label color-group-legend" style="margin-bottom: 1rem;">{{ block.settings.group_2_title }}: <span id="js-color-group-title2" class="js-color-group-title color-group-title"></span></legend>
                             </button>
                           </modal-opener>
@@ -568,13 +568,13 @@
                       <fieldset class="js product-form__input size-options">
                         <div class="sizes-options__header">
                           <legend class="form__label">{{ option.name }}</legend>
-                          <modal-opener class="product-popup-modal__opener no-js-hidden quick-add-hidden" data-modal="#PopupModal-{{ block.settings.size_guide_text | replace: " ", "" }}" {{ block.shopify_attributes }}>
-                            <button id="ProductPopup-{{ block.id }}" class="product-popup-modal__button link" type="button" aria-haspopup="dialog">{{ block.settings.size_guide_text | default: block.settings.page.title }}</button>
-                          </modal-opener>
                           {% assign pageId3 = block.settings.size_guide_page.template_suffix %}
+                          <modal-opener class="product-popup-modal__opener no-js-hidden quick-add-hidden " data-modal="#PopupModal-{{ block.settings.size_guide_text | replace: " ", "" }}" {{ block.shopify_attributes }}>
+                            <button id="ProductPopup-{{ block.id }}" class="product-popup-modal__button link js-pop-up-button" type="button" aria-haspopup="dialog" page-id="{{pageId3}}">{{ block.settings.size_guide_text | default: block.settings.page.title }}</button>
+                          </modal-opener>
                           <modal-dialog id="PopupModal-{{ block.settings.size_guide_text | replace: " ", "" }}" class="product-popup-modal" {{ block.shopify_attributes }}>
-                            <div role="dialog" aria-label="{{ block.settings.size_guide_text }}" aria-modal="true" class="product-popup-modal__content" tabindex="-1">
-                              <button id="ModalClose-{{ block.settings.size_guide_text }}" type="button" class="product-popup-modal__toggle" aria-label="{{ 'accessibility.close' | t }}">{% render 'icon-close' %}</button>
+                            <div role="dialog" aria-label="{{ block.settings.size_guide_text | replace: " ", "" }}" aria-modal="true" class="product-popup-modal__content" tabindex="-1">
+                              <button id="ModalClose-{{ block.settings.size_guide_text | replace: " ", "" }}" type="button" class="product-popup-modal__toggle" aria-label="{{ 'accessibility.close' | t }}">{% render 'icon-close' %}</button>
                               {{pageId3}}
                               <div class="product-popup-modal__content-info {% unless block.settings.size_guide_page.content != blank %}js-page-{{-pageId3}} js-page-content{% endunless %}">
                                 {% if block.settings.size_guide_page.content != blank %}
@@ -821,9 +821,9 @@
       container.innerHTML = pageContent[pageId]
       document.querySelector(`.js-page-${pageId}`).appendChild(container)
     }
-
+    if ( document.querySelector(`.js-page-${pageId} > html`) ) return
     const request = new XMLHttpRequest();
-
+    
     request.addEventListener('load', handleResponse);
     request.open('GET', `/?sections=${pageId}`, true);
     request.send()
