@@ -30,7 +30,7 @@
             "color_group1_page": "leave-no-trace-apparel-information",
             "color_group2_page": "",
             "text": "Size Guide",
-            "page": "sizing-chart-men-upper-layer",
+            "size_guide_page": "sizing-chart-men-upper-layer",
             "swatch_display": "circle",
             "legend_size": 1.4,
             "legend_weight": "medium",
