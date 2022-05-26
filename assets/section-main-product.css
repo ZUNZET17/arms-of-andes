@@ -849,7 +849,7 @@ a.product__text {
   height: 80%;
   margin: 0 auto;
   left: 50%;
-  transform: translateX(-50%);
+  transform: translate(-50%, 17.5%);
   /*margin-top: 5rem;*/
   width: 92%;
   position: absolute;
@@ -875,10 +875,10 @@ a.product__text {
 
 @media screen and (min-width: 750px) {
   .product-popup-modal__content {
-    padding-right: 1.5rem;
+    /* padding-right: 1.5rem; */
     /*margin-top: 10rem;*/
     width: 70%;
-    padding: 0 3rem;
+    /* padding: 0 3rem; */
   }
 
   .product-media-modal__dialog .global-media-settings--no-shadow {
@@ -928,7 +928,7 @@ a.product__text {
 }
 
 .product-popup-modal__content-info {
-  padding-right: 4.4rem;
+  height: 100%;
 }
 
 .product-popup-modal__content-info > * {

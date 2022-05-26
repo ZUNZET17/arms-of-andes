@@ -455,11 +455,11 @@ class ModalDialog extends HTMLElement {
     }
   }
 
-  // connectedCallback() {
-  //   if (this.moved) return;
-  //   this.moved = true;
-  //   document.body.appendChild(this);
-  // }
+  connectedCallback() {
+    if (this.moved) return;
+    this.moved = true;
+    document.body.append(this);
+  }
 
   show(opener) {
     this.openedBy = opener;
