@@ -575,7 +575,6 @@
                           <modal-dialog id="PopupModal-{{ block.settings.size_guide_text | replace: " ", "" }}" class="product-popup-modal" {{ block.shopify_attributes }}>
                             <div role="dialog" aria-label="{{ block.settings.size_guide_text | replace: " ", "" }}" aria-modal="true" class="product-popup-modal__content" tabindex="-1">
                               <button id="ModalClose-{{ block.settings.size_guide_text | replace: " ", "" }}" type="button" class="product-popup-modal__toggle" aria-label="{{ 'accessibility.close' | t }}">{% render 'icon-close' %}</button>
-                              {{pageId3}}
                               <div class="product-popup-modal__content-info {% unless block.settings.size_guide_page.content != blank %}js-page-{{-pageId3}} js-page-content{% endunless %}">
                                 {% if block.settings.size_guide_page.content != blank %}
                                 {{ block.settings.size_guide_page.content }}
