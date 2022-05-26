@@ -13,6 +13,10 @@
         "title": {
           "type": "title",
           "settings": {
+            "product_title_size": 1.8,
+            "product_title_weight": "regular",
+            "product_subtitle_size": 1.6,
+            "product_subtitle_weight": "regular"
           }
         },
         "price": {
@@ -23,6 +27,10 @@
         "variant_picker": {
           "type": "variant_picker",
           "settings": {
+            "color_group1_page": "leave-no-trace-apparel-information",
+            "color_group2_page": "",
+            "text": "Size Guide",
+            "page": "sizing-chart-men-upper-layer",
             "swatch_display": "circle",
             "legend_size": 1.4,
             "legend_weight": "medium",
@@ -124,7 +132,6 @@
         "title",
         "price",
         "variant_picker",
-        "2f055291-c07b-4006-9c2d-c04cb0a8565c",
         "quantity_selector",
         "buy_buttons",
         "tabs",
