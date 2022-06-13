@@ -3107,3 +3107,7 @@ aoa styles
   .product-size-label:hover {
     border: var(--variant-pills-border-width) solid rgba(var(--color-foreground), var(--variant-pills-border-opacity));
   }
+
+  .text-block p {
+    margin: 0!Important;
+  }

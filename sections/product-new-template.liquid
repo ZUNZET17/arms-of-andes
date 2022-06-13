@@ -338,7 +338,7 @@
               }
             {% endif %}
           {% endstyle %}
-            <div class="text-block-{{-block.id}} product__text{% if block.settings.text_style == 'uppercase' %} caption-with-letter-spacing{% elsif block.settings.text_style == 'subtitle' %} subtitle{% endif %}" {{ block.shopify_attributes }}>
+            <div class="text-block text-block-{{-block.id}} product__text{% if block.settings.text_style == 'uppercase' %} caption-with-letter-spacing{% elsif block.settings.text_style == 'subtitle' %} subtitle{% endif %}" {{ block.shopify_attributes }}>
               {{- block.settings.text -}}
             </div>
           {%- when 'title' -%}
@@ -558,7 +558,7 @@
                   }
                   {% endif %}
                   {% endstyle %}
-                  <div class="tabcontent__title">{{ block.settings.tab3_title }}</div>div>
+                  <div class="tabcontent__title">{{ block.settings.tab3_title }}</div>
                   <div class="tabcontent__title tab3_title2">{{ block.settings.tab3_title2 }}</div>
                   <div class="tab__content">{{ block.settings.tab3_content }}</div>
                 </div>
@@ -587,6 +587,9 @@
                 }
                 .tabcontent__title {
                   width: 100%;
+                }
+                .tabcontent__title p {
+                  margin: 0;
                 }
                 </style>
               </div>
