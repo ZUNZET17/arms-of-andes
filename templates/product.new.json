@@ -100,11 +100,11 @@
             "tab_content_size": 1.6,
             "btn_bk_active": "#f4f4f4",
             "icon_color_hover": "#1e90ff",
-            "tab1_title": "Tab 1 title",
+            "tab1_title": "<p>Tab 1 title</p>",
             "tab1_content": "<p><strong>Microplastic-Free World<\/strong><\/p><p>WE SAID NO TO ENVIRONMENTAL POLLUTION.<\/p><p><br\/>We use only organic materials: 100% Organic Cotton fabric sewn with 100% Cotton threads. Even our labels are 100% Cotton.<\/p><p>This is the first step in making our entire catalog <strong>plastic-free and biodegradable.<\/strong><\/p>",
-            "tab2_title": "Tab 2 title",
+            "tab2_title": "<p>Tab 2 title</p>",
             "tab2_content": "<p><strong>One-Country Supply Chain<\/strong><\/p><p>WE PERFECTED THE SUPPLY CHAIN MODEL.<\/p><p><strong>No more international supply chain<\/strong> with high carbon footprint and low transparency.<\/p><p>Our Organic Pima Cotton is cultivated, spun into yarn, knitted into fabric and sewn into the perfectly designed garment in our production studio - all sustainably and exclusively in Peru.<\/p>",
-            "tab3_title": "Tab 3 title",
+            "tab3_title": "<p>Tab 3 title</p>",
             "tab3_content": "<p><strong>100% Organic Pima<\/strong><\/p><p>WE REDEFINED SUSTAINABILITY.<\/p><p>This is not just another organic shirt. This is 100% Organic Pima Cotton. Pima Cotton is native to Peru and requires zero toxic chemicals.<\/p><p>Peruvian Pima is the parent fiber to all premium cotton, unbelievably soft and breathable.<\/p><p><strong>Your next purchase makes a difference. Wear what's best for the Earth.<\/strong><\/p>"
           }
         },

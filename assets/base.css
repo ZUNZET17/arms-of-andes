@@ -3108,6 +3108,11 @@ aoa styles
     border: var(--variant-pills-border-width) solid rgba(var(--color-foreground), var(--variant-pills-border-opacity));
   }
 
+  .text-block {
+    margin: 0!important;
+  }
+
   .text-block p {
     margin: 0!Important;
+    line-height: 1!Important;
   }
