@@ -902,6 +902,8 @@ customElements.define('variant-radios', VariantRadios);
 
 // aoa custom scrtipts
 
+/* Tabs script */
+
 function openTab(evt, cityName) {
   var i, tabcontent, tablinks;
   tabcontent = document.getElementsByClassName("tabcontent-cus");
@@ -917,13 +919,55 @@ function openTab(evt, cityName) {
 }
 document.getElementById("tab-cus-active").click();
 
+/* Swatches + sizes combination availability */
+
+const optionsAvailability = function () {
+  const variantList = JSON.parse(document.querySelector('.js-variant-list').value)
+  const colorsOptions = Array.from(document.querySelectorAll('.js-color-label'))
+  const colorsArr = colorsOptions.map(x => x.getAttribute('swatch-color').toLowerCase().replace(" ", "-"))
+  const sizesOptions = Array.from(document.querySelectorAll('.js-variant-option-size'))
+  const sizesArr = sizesOptions.map(x => x.value.toLowerCase())
+
+  colorsOptions.forEach((x, i) => {
+    let overAllAvailability = []
+    sizesArr.forEach((y, idx) => {
+      const variantCombination = `${colorsArr[i]}-${y}`
+      overAllAvailability.push(variantList[variantCombination]);
+    })
+    if(!overAllAvailability.some(x => x == true )) {
+      x.disabled
+      x.classList.add('unavailable-swatch')
+      return
+    }
+    x.classList.remove('unavailable-swatch')
+  })
+}
+
+const sizesAvailability = function (option) {
+  const colorOption = option.getAttribute('swatch-color').toLowerCase().replace(" ", "-")
+  const sizesOptions = Array.from(document.querySelectorAll('.js-variant-option-size'))
+  const sizesArr = sizesOptions.map(x => x.value.toLowerCase())
+
+  sizesOptions.forEach((x, i) => {
+    const variantList = JSON.parse(document.querySelector('.js-variant-list').value)
+    const optionCombination = `${colorOption}-${sizesArr[i]}`
+    if(!variantList[optionCombination]) {
+      x.nextElementSibling.disabled
+      x.nextElementSibling.classList.add('unavailable')
+      return
+    }
+    x.nextElementSibling.classList.remove('unavailable')
+  })
+}
+
 // Display swaches color name
 
 const colorLabels = document.querySelectorAll('.js-color-label');
 
 const displaySwatchColor = function (ev) {
-  const input = ev.target;
+  const input = ev.target == document ? document.querySelector('.js-variant-option-color:checked + .js-color-label') : ev.target;
   const value = input.getAttribute("swatch-color")
+  const size = document.querySelector('.js-variant-option-size:checked').value
   const groupNumber = input.getAttribute("group-number")
   const allTitleContainers = document.querySelectorAll(".js-color-group-title")
 
@@ -933,8 +977,40 @@ const displaySwatchColor = function (ev) {
       container.innerText = value;
     }
   })
+
+  sizesAvailability(input)
 }
 
 colorLabels.forEach(label => {
   label.addEventListener('click', displaySwatchColor, false)
+})
+
+// Sort Color Variant Picture
+let selectedColor;
+const sortVariantPictures = function (ev) {
+  const input = ev.target !== document ? ev.target : document.querySelector('.js-color-label.selected');
+  const value = input.getAttribute('swatch-color').toLowerCase().replace(' ', '-');
+  if(selectedColor == value) return;
+  selectedColor = value;
+
+  const picturesArray = Array.from(document.querySelectorAll('.product__media-item'));
+  const filteredArray = picturesArray.filter( x => x.getAttribute('media-alt').toLowerCase() === value)
+
+  if(filteredArray.length > 0 ) {
+    picturesArray.map(x => {
+      if( filteredArray.includes(x) ) {
+        x.style.display = 'block'
+        return
+      }
+      x.style.display = 'none'
+    })
+  }
+};
+
+document.addEventListener("DOMContentLoaded", sortVariantPictures)
+document.addEventListener("DOMContentLoaded", optionsAvailability)
+document.addEventListener("DOMContentLoaded", displaySwatchColor)
+
+colorLabels.forEach(label => {
+  label.addEventListener('click', sortVariantPictures, false)
 })

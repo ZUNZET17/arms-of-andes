@@ -2887,9 +2887,12 @@ details-disclosure > details {
     font-size: 0 !important;
   }
 
-  /* aoa custom styling */
+aoa styles
 
-  .animate-opacity{animation:opac 0.8s}@keyframes opac{from{opacity:0} to{opacity:1}}
+.animate-opacity{animation:opac 0.8s}@keyframes opac{from{opacity:0} to{opacity:1}}
+  .globo-swatch-product-detail .swatch--gl li .globo-border-color-swatch,.globo-swatch-product-detail .swatch--gl li .globo-border-color-swatch{
+    font-size: 0 !important;
+  }
 
   /* slider buttons */
   .slider-button--prev,
@@ -2913,7 +2916,7 @@ details-disclosure > details {
 
   /* Product media gallery */
   .slider-mobile-gutter {
-    margin-bottom: 1rem;
+    margin-bottom: 1.5rem;
   }
 
   /* product price */
@@ -2945,6 +2948,15 @@ details-disclosure > details {
     margin-bottom: 0!important;
   }
 
+  /* swatches */
+
+  .unavailable {
+    background-color: transparent!important;
+    color: #ddd!important;
+    border-color: #ddd!important;
+    pointer-events: none;
+  }
+
   .color-swatches-block {
     padding: 3rem 0;
   }
@@ -2959,6 +2971,10 @@ details-disclosure > details {
     display: flex;
     flex-wrap: wrap;
     gap: 1rem;
+  }
+
+  .color-group-legend {
+    margin-bottom: 0!important;
   }
 
   .color-group-legend-btn {
@@ -2994,9 +3010,10 @@ details-disclosure > details {
   }
 
   .variant-option-input:checked + .color-swatch__label:after {
-    border-color: rgb(116, 121, 124);
     transition-duration: 250ms;
-    inset: -.75rem;
+    border: 3px solid #ffffff; 
+    border-radius: 50%; 
+    box-shadow: 0 0 0 2pt rgb(116, 121, 124);
   }
   
   .color-swatch__pin {
@@ -3052,6 +3069,7 @@ details-disclosure > details {
     margin-top: 0;
     padding-bottom: 0;
     padding-right: 0!important;
+    padding-left: 0!important;
   }
 
   .product-size-label {
@@ -3078,7 +3096,12 @@ details-disclosure > details {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 1.5rem;
+  }
+
+  .sizes-list {
+    width: max-content;
+    display: flex;
+    column-gap: .5rem
   }
 
   .product-size-label:hover {

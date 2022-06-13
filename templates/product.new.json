@@ -6,7 +6,7 @@
         "vendor": {
           "type": "text",
           "settings": {
-            "text": "Luxurious Pima. Unbelievably Soft. Perfectly Constructed.",
+            "text": "<p>Luxurious Pima. Unbelievably Soft. Perfectly Constructed.</p>",
             "text_style": "uppercase"
           }
         },
