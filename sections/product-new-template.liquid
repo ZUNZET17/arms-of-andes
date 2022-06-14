@@ -455,15 +455,6 @@
             {% endstyle %}
               <div class="tabs-block">
                 <div class="tab-customize">
-                  {% liquid
-                    case block.settings.tab_title_weight
-                      when 'medium'
-                        assign tab_title_weight = 500
-                      when 'bold'
-                        assign tab_title_weight = 700
-                      else
-                        assign tab_title_weight = 400
-                  endcase %}
                   {% style %}
                     .tabcontent-cus {
                       display: none;
@@ -473,10 +464,23 @@
                       border-top: none;
                       {% endif %}
                     }
-                    .tabcontent__title {
-                      font-size: {{ block.settings.tab_title_size -}}rem;
-                      font-weight: {{- tab_title_weight -}};
-                      text-align: {{ block.settings.tab_title_justify -}};
+                    .tab1-title-1,
+                    .tab1-title-2 {
+                      font-size: {{ block.settings.tab_title1_size -}}rem;
+                      font-weight: {{- block.settings.tab_title1_weight -}};
+                      text-align: {{ block.settings.tab_title1_justify -}};
+                    }
+                    .tab2-title-1,
+                    .tab2-title-2 {
+                      font-size: {{ block.settings.tab_title2_size -}}rem;
+                      font-weight: {{- block.settings.tab_title2_weight -}};
+                      text-align: {{ block.settings.tab_title2_justify -}};
+                    }
+                    .tab3-title-1,
+                    .tab3-title-2 {
+                      font-size: {{ block.settings.tab_title3_size -}}rem;
+                      font-weight: {{- block.settings.tab_title3_weight -}};
+                      text-align: {{ block.settings.tab_title3_justify -}};
                     }
                     .tab__content {
                       font-size: {{ block.settings.tab_content_size -}}rem;
@@ -524,42 +528,42 @@
                   {% style %}
                   {% if block.settings.tab1_title2_hide_mobile %}
                   @media screen and (max-width: 750px) {
-                    .tab1_title2 {
+                    .tab1-title-2 {
                       display: none;
                     }
                   }
                   {% endif %}
                   {% endstyle %}
-                  <div class="tabcontent__title">{{ block.settings.tab1_title }}</div>
-                  <div class="tabcontent__title tab1_title2">{{ block.settings.tab1_title2 }}</div>
+                  <div class="tabcontent__title tab1-title-1">{{ block.settings.tab1_title }}</div>
+                  <div class="tabcontent__title tab1-title-2">{{ block.settings.tab1_title2 }}</div>
                   <div class="tab__content">{{ block.settings.tab1_content }}</div>
                 </div>
                 <div id="tab-2" class="tabcontent-cus animate-opacity">
                   {% style %}
                   {% if block.settings.tab2_title2_hide_mobile %}
                   @media screen and (max-width: 750px) {
-                    .tab2_title2 {
+                    .tab2-title-2 {
                       display: none;
                     }
                   }
                   {% endif %}
                   {% endstyle %}
-                  <div class="tabcontent__title">{{ block.settings.tab2_title }}</div>
-                  <div class="tabcontent__title tab2_title2 ">{{ block.settings.tab2_title2 }}</div>
+                  <div class="tabcontent__title tab2-title-1">{{ block.settings.tab2_title }}</div>
+                  <div class="tabcontent__title tab2-title-2 ">{{ block.settings.tab2_title2 }}</div>
                   <div class="tab__content">{{ block.settings.tab2_content }}</div>
                 </div>
                 <div id="tab-3" class="tabcontent-cus animate-opacity">
                   {% style %}
                   {% if block.settings.tab3_title2_hide_mobile %}
                   @media screen and (max-width: 750px) {
-                    .tab3_title2 {
+                    .tab3-title-2 {
                       display: none;
                     }
                   }
                   {% endif %}
                   {% endstyle %}
-                  <div class="tabcontent__title">{{ block.settings.tab3_title }}</div>
-                  <div class="tabcontent__title tab3_title2">{{ block.settings.tab3_title2 }}</div>
+                  <div class="tabcontent__title tab3-title-1">{{ block.settings.tab3_title }}</div>
+                  <div class="tabcontent__title tab3-title-2">{{ block.settings.tab3_title2 }}</div>
                   <div class="tab__content">{{ block.settings.tab3_content }}</div>
                 </div>
                 <style>
@@ -761,12 +765,14 @@
                                   .{{-swatch_idx-}} {
                                     background-color: {{- block.settings[swatch_idx] -}};
                                   }
+                                  {% comment %}
                                   .{{-swatch_idx-}}.unavailable-swatch {
                                     {% unless request.design_mode %}
                                     background-color: {{- block.settings[swatch_idx] -}}75!important;
                                     {% endunless %}
                                     border-color: #dddddd40!important;
                                   }
+                                  {% endcomment %}
                                   .unavailable-swatch:after {
                                     content: "X";
                                     font-size: {{- block.settings.swatch_size -}}rem;
@@ -829,10 +835,12 @@
                                     border-radius: 50%;
                                     {% endif %}
                                   }
+                                  {% comment %}
                                   .{{-swatch_idx-}}.unavailable-swatch {
                                     background-color: {{- block.settings[swatch_idx] -}}75!important;
                                     border-color: #dddddd40!important;
                                   }
+                                  {% endcomment %}
                                 {% endstyle %}
                                 {%- capture colorop2 -%}color-2{{-forloop.index-}}{%- endcapture -%}
                                 {% comment %}<p>{{colorop2}}</p>{% endcomment %}
@@ -1119,6 +1127,7 @@
     const input = ev.currentTarget;
     const pageId = input.getAttribute('page-id');
     let pageContent;  
+    console.log('requested')
     function handleResponse() {
       pageContent = JSON.parse(this.responseText);
       console.log('afterload', pageContent[pageId])
@@ -1458,12 +1467,12 @@
         },
         {
           "type": "header",
-          "content": "Tab title options",
+          "content": "Tab 1 title options",
           "info": "Size, weight and justification"
         },
         {
           "type": "range",
-          "id": "tab_title_size",
+          "id": "tab_title1_size",
           "min": 1,
           "max": 3,
           "step": 0.1,
@@ -1473,27 +1482,137 @@
         },
         {
           "type": "select",
-          "id": "tab_title_weight",
+          "id": "tab_title1_weight",
           "label": "Tab title weight",
           "options": [
             {
-              "value": "regular",
+              "value": "400",
               "label": "Regular"
             },
             {
-              "value": "medium",
+              "value": "500",
               "label": "Medium"
             },
             {
-              "value": "bold",
+              "value": "700",
               "label": "Bold"
             }
           ],
-          "default": "bold"
+          "default": "400"
         },
         {
           "type": "select",
-          "id": "tab_title_justify",
+          "id": "tab_title1_justify",
+          "label": "Tab title justify",
+          "options": [
+            {
+              "value": "left",
+              "label": "Left"
+            },
+            {
+              "value": "center",
+              "label": "Center"
+            },
+            {
+              "value": "right",
+              "label": "Right"
+            }
+          ],
+          "default": "center"
+        },
+        {
+          "type": "header",
+          "content": "Tab 2 title options",
+          "info": "Size, weight and justification"
+        },
+        {
+          "type": "range",
+          "id": "tab_title2_size",
+          "min": 1,
+          "max": 3,
+          "step": 0.1,
+          "unit": "rem",
+          "label": "Tab title size",
+          "default": 1.5
+        },
+        {
+          "type": "select",
+          "id": "tab_title2_weight",
+          "label": "Tab title weight",
+          "options": [
+            {
+              "value": "400",
+              "label": "Regular"
+            },
+            {
+              "value": "500",
+              "label": "Medium"
+            },
+            {
+              "value": "700",
+              "label": "Bold"
+            }
+          ],
+          "default": "400"
+        },
+        {
+          "type": "select",
+          "id": "tab_title2_justify",
+          "label": "Tab title justify",
+          "options": [
+            {
+              "value": "left",
+              "label": "Left"
+            },
+            {
+              "value": "center",
+              "label": "Center"
+            },
+            {
+              "value": "right",
+              "label": "Right"
+            }
+          ],
+          "default": "center"
+        },
+        {
+          "type": "header",
+          "content": "Tab 3 title options",
+          "info": "Size, weight and justification"
+        },
+        {
+          "type": "range",
+          "id": "tab_title3_size",
+          "min": 1,
+          "max": 3,
+          "step": 0.1,
+          "unit": "rem",
+          "label": "Tab title size",
+          "default": 1.5
+        },
+        {
+          "type": "select",
+          "id": "tab_title3_weight",
+          "label": "Tab title weight",
+          "options": [
+            {
+              "value": "400",
+              "label": "Regular"
+            },
+            {
+              "value": "500",
+              "label": "Medium"
+            },
+            {
+              "value": "700",
+              "label": "Bold"
+            }
+          ],
+          "default": "400"
+        },
+        {
+          "type": "select",
+          "id": "tab_title3_justify",
           "label": "Tab title justify",
           "options": [
             {
