@@ -342,35 +342,23 @@
               {{- block.settings.text -}}
             </div>
           {%- when 'title' -%}
-            {%- liquid
-              case block.settings.product_title_weight
-                when "medium"
-                  assign title_weight = 500
-                when "bold"
-                  assign title_weight = 700
-                else
-                  assign title_weight = 400
-            endcase -%}
-            {%- liquid
-              case block.settings.product_subtitle_weight
-                when "medium"
-                  assign subtitle_weight = 500
-                when "bold"
-                  assign subtitle_weight = 700
-                else
-                  assign subtitle_weight = 400
-            endcase -%}
-            {% style %}
-              .product__title h1 {
-                font-size: {{- block.settings.product_title_size -}}rem;
-                font-weight: {{- title_weight -}};
-              }
-
-              .product__subtitle {
-                font-size: {{- block.settings.product_subtitle_size -}}rem;
-                font-weight: {{- subtitle_weight -}};
-              }
-            {% endstyle %}
+          {% liquid
+            case block.settings.title_weight
+              when 'medium'
+                assign title_weight = 500
+              when 'bold'
+                assign title_weight = 700
+              else
+                assign title_weight = 400
+          endcase %}
+          {% style %}
+            .product__title h1 {
+              color: {{ block.settings.title_color }};
+              font-size: {{ block.settings.title_size -}}rem;
+              font-weight: {{ title_weight -}};
+              text-align: {{ block.settings.title_justify }};
+            }
+          {% endstyle %}
             <div class="product__title" {{ block.shopify_attributes }}>
               {% assign product_title = product.title | split: ": " %}
               <h1>{{ product_title[0] | escape }}</h1>
@@ -413,18 +401,31 @@
           {%- when 'custom_liquid' -%}
             {{ block.settings.custom_liquid }}
           {%- when 'collapsible_tab' -%}
-            {% style %}
-              {% if block.settings.hide_mobile %}
-                @media screen and (max-width: 750px) {
-                  .accordion--{{- block.id -}} {
-                    display: none;
-                  }
-                }
-              {% endif %}  
-            {% endstyle %}          
+          {% style %}
+          {% if block.settings.hide_mobile %}
+            @media screen and (max-width: 750px) {
+              .accordion--{{- block.id -}} {
+                display: none;
+              }
+            }
+          {% endif %}
+          .accordion__title{{block.id}} {
+            width: 100%;
+            font-size: {{ block.settings.accordion_title_size }}rem;
+            font-weight: {{ block.settings.accordion_title_weight }};
+            color: {{ block.settings.accordion_title_color }};
+            text-align: {{ block.settings.accordion_title_align }}
+          }
+          .accordion__content{{ block.id }} {
+            font-size: {{ block.settings.accordion_content_size }}rem;
+            font-weight: {{ block.settings.accordion_content_weight }};
+            color: {{ block.settings.accordion_content_color }};
+            text-align: {{ block.settings.accordion_content_align }}
+          }
+        {% endstyle %}         
             <div class="product__accordion accordion quick-add-hidden accordion--{{- block.id -}}" {{ block.shopify_attributes }}>
-              <details id="Details-{{ block.id }}-{{ section.id }}">
-                <summary>
+              <details class="js-accordion-details" id="Details-{{ block.id }}-{{ section.id }}">
+                <summary class="js-accordion-summary" >
                   <div class="summary__title">
                     {% render 'icon-accordion', icon: block.settings.icon %}
                     <h2 class="h4 accordion__title">
@@ -456,59 +457,105 @@
               <div class="tabs-block">
                 <div class="tab-customize">
                   {% style %}
-                    .tabcontent-cus {
-                      display: none;
-                      padding: 6px 12px;
-                      {% if block.settings.border_on %}
-                      border: 1px solid #ccc;
-                      border-top: none;
-                      {% endif %}
-                    }
-                    .tab1-title-1,
-                    .tab1-title-2 {
-                      font-size: {{ block.settings.tab_title1_size -}}rem;
-                      font-weight: {{- block.settings.tab_title1_weight -}};
-                      text-align: {{ block.settings.tab_title1_justify -}};
-                    }
-                    .tab2-title-1,
-                    .tab2-title-2 {
-                      font-size: {{ block.settings.tab_title2_size -}}rem;
-                      font-weight: {{- block.settings.tab_title2_weight -}};
-                      text-align: {{ block.settings.tab_title2_justify -}};
-                    }
-                    .tab3-title-1,
-                    .tab3-title-2 {
-                      font-size: {{ block.settings.tab_title3_size -}}rem;
-                      font-weight: {{- block.settings.tab_title3_weight -}};
-                      text-align: {{ block.settings.tab_title3_justify -}};
-                    }
-                    .tab__content {
-                      font-size: {{ block.settings.tab_content_size -}}rem;
-                      text-align: {{ block.settings.tab_content_justify -}};
-                    }
-                    .tab-customize button.active {
-                      background-color: {{ block.settings.btn_bk_active }};
-                    }
-                    .tab-customize button.active .tab-button__image {
-                      display: none;
-                    }
-                    .tab-customize button .tab-button__image--white {
-                      display: none;
-                    }
-                    .tab-customize button.active .tab-button__image--white {
-                      display: block;
-                    }
-                    .tab-button__image,
-                    .tab-button__image--white {
-                      width: 100%;
-                      height: 100%;
-                      max-width: {{ block.settings.tab_icon_size }}rem;
-                      max-height: {{ block.settings.tab_icon_size }}rem;
-                    }
-                    .tablinks-cus:hover .tab-button__image {
-                      filter: opacity(0.9) drop-shadow(0 0 0 {{ block.settings.icon_color_hover }});
-                    }
-                  {% endstyle %}
+                  .tabcontent-cus {
+                    display: none;
+                    padding: 6px 12px;
+                    {% if block.settings.border_on %}
+                    border: 1px solid #ccc;
+                    border-top: none;
+                    {% endif %}
+                  }
+
+                  .tab1-title-1{
+                    color: {{ block.settings.tab1_title_color }};
+                    font-size: {{ block.settings.tab_title1_size -}}rem;
+                    font-weight: {{- block.settings.tab_title1_weight -}};
+                    text-align: {{ block.settings.tab_title1_justify -}};
+                    padding-top: {{ block.settings.tab1_title_padding_top -}}rem;
+                    padding-bottom: {{ block.settings.tab1_title_padding_bottom -}}rem;
+                  }
+                  .tab1-title-2 {
+                    color: {{ block.settings.tab1_title2_color }};
+                    font-size: {{ block.settings.tab_title12_size -}}rem;
+                    font-weight: {{- block.settings.tab_title12_weight -}};
+                    text-align: {{ block.settings.tab_title12_justify -}};
+                    padding-top: {{ block.settings.tab1_title2_padding_top -}}rem;
+                    padding-bottom: {{ block.settings.tab1_title2_padding_bottom -}}rem;
+                  }
+
+                  .tab2-title-1 {
+                    color: {{ block.settings.tab2_title_color }};
+                    font-size: {{ block.settings.tab_title2_size -}}rem;
+                    font-weight: {{- block.settings.tab_title2_weight -}};
+                    text-align: {{ block.settings.tab_title2_justify -}};
+                    padding-top: {{ block.settings.tab2_title_padding_top -}}rem;
+                    padding-bottom: {{ block.settings.tab2_title_padding_bottom -}}rem;
+                  }
+                  .tab2-title-2 {
+                    color: {{ block.settings.tab2_title2_color }};
+                    font-size: {{ block.settings.tab_title22_size -}}rem;
+                    font-weight: {{- block.settings.tab_title22_weight -}};
+                    text-align: {{ block.settings.tab_title22_justify -}};
+                    padding-top: {{ block.settings.tab2_title2_padding_top -}}rem;
+                    padding-bottom: {{ block.settings.tab2_title2_padding_bottom -}}rem;
+                  }
+
+                  .tab3-title-1 {
+                    color: {{ block.settings.tab3_title_color }};
+                    font-size: {{ block.settings.tab_title3_size -}}rem;
+                    font-weight: {{- block.settings.tab_title3_weight -}};
+                    text-align: {{ block.settings.tab_title3_justify -}};
+                    padding-top: {{ block.settings.tab3_title_padding_top -}}rem;
+                    padding-bottom: {{ block.settings.tab3_title_padding_bottom -}}rem;
+                  }
+                  .tab3-title-2 {
+                    color: {{ block.settings.tab3_title2_color }};
+                    font-size: {{ block.settings.tab_title32_size -}}rem;
+                    font-weight: {{- block.settings.tab_title32_weight -}};
+                    text-align: {{ block.settings.tab_title32_justify -}};
+                    padding-top: {{ block.settings.tab3_title2_padding_top -}}rem;
+                    padding-bottom: {{ block.settings.tab3_title2_padding_bottom -}}rem;
+                  }
+                  
+                  .tab1__content {
+                    color: {{ block.settings.tab1_content_color }};
+                    font-size: {{ block.settings.tab1_content_size -}}rem;
+                    text-align: {{ block.settings.tab1_content_justify -}};
+                  }
+                  .tab2__content {
+                    color: {{ block.settings.tab2_content_color }};
+                    font-size: {{ block.settings.tab2_content_size -}}rem;
+                    text-align: {{ block.settings.tab2_content_justify -}};
+                  }
+                  .tab3__content {
+                    color: {{ block.settings.tab3_content_color }};
+                    font-size: {{ block.settings.tab3_content_size -}}rem;
+                    text-align: {{ block.settings.tab3_content_justify -}};
+                  }
+
+                  .tab-customize button.active {
+                    background-color: {{ block.settings.btn_bk_active }};
+                  }
+                  .tab-customize button.active .tab-button__image {
+                    display: none;
+                  }
+                  .tab-customize button .tab-button__image--white {
+                    display: none;
+                  }
+                  .tab-customize button.active .tab-button__image--white {
+                    display: block;
+                  }
+                  .tab-button__image,
+                  .tab-button__image--white {
+                    width: 100%;
+                    height: 100%;
+                    max-width: {{ block.settings.tab_icon_size }}rem;
+                    max-height: {{ block.settings.tab_icon_size }}rem;
+                  }
+                  .tablinks-cus:hover .tab-button__image {
+                    filter: opacity(0.9) drop-shadow(0 0 0 {{ block.settings.icon_color_hover }});
+                  }
+                {% endstyle %}
                   {% assign default_img = 'aya-pic.webp' | asset_url %}
                   <button class="tablinks-cus" onclick="openTab(event, 'tab-1')" id="tab-cus-active" >
                     <img class="tab-button__image" src="{% if block.settings.tab1_image != blank %} {{ block.settings.tab1_image | img_url: 'medium'}} {% else %} {{ default_img }} {% endif %}" alt="">
@@ -666,43 +713,56 @@
             <script src="{{ 'share.js' | asset_url }}" defer="defer"></script>
             {%- when 'variant_picker' -%}
             {% style %}
-              .color-swatches-block {
-                padding-top: {{ block.settings.swatches_padding_top -}}rem;
-                padding-bottom: {{ block.settings.swatches_padding_bottom -}}rem;
-              }
-              .color-group-legend {
-                font-size: {{- block.settings.legend_size -}}rem;
-                {%- liquid
-                  case block.settings.legend_weight
-                    when "medium"
-                      assign weight = 500
-                    when "bold"
-                      assign weight = 700
-                    else
-                      assign weight = 400
-                endcase -%}
-                font-weight: {{- weight -}};
-              }
-              .sizes-legend {
-                font-size: {{ block.settings.sizes_legend_size -}}rem;
-                font-weight: {{ block.settings.sizes_legend_weight }};
-              }
-              .color-swatch__label {
-                min-width: {{- block.settings.swatch_size -}}rem;
-                min-height: {{- block.settings.swatch_size -}}rem;
-                {% if block.settings.swatch_display == "rectangle" %}
-                min-width: {{- block.settings.swatch_size | times: 1.35 -}}rem;
-                {% endif %}
-                {% if block.settings.swatch_display == "circle" %}
-                border-radius: 50%;
-                {% endif %}
-              }
-              {% if block.settings.swatch_display == "rectangle" or block.settings.swatch_display == "square" %}
-              .color-swatch__label:after {
-                border-radius: 0;
-              }
-              {% endif %}            
-            {% endstyle %}
+            .color-swatches-block {
+              padding-top: {{ block.settings.swatches_padding_top -}}rem;
+              padding-bottom: {{ block.settings.swatches_padding_bottom -}}rem;
+            }
+            .color-group-legend {
+              font-size: {{- block.settings.legend_size -}}rem;
+              {%- liquid
+                case block.settings.legend_weight
+                  when "medium"
+                    assign weight = 500
+                  when "bold"
+                    assign weight = 700
+                  else
+                    assign weight = 400
+              endcase -%}
+              font-weight: {{- weight -}};
+            }
+            .sizes-legend {
+              font-size: {{ block.settings.sizes_legend_size -}}rem;
+              font-weight: {{ block.settings.sizes_legend_weight }};
+            }
+            .color-group2-page2-legend {
+              color: {{ block.settings.group22_legend_color }};
+              font-size: {{ block.settings.color_group2_page2_legend_size -}}rem;
+              font-weight: {{ block.settings.color_group2_page2_weight }};
+            }
+            .color-swatch__label {
+              display: flex!important;
+              justify-content: center;
+              align-items: center;
+              min-width: {{- block.settings.swatch_size -}}rem;
+              min-height: {{- block.settings.swatch_size -}}rem;
+              {% if block.settings.swatch_display == "rectangle" %}
+              min-width: {{- block.settings.swatch_size | times: 1.35 -}}rem;
+              {% endif %}
+              {% if block.settings.swatch_display == "circle" %}
+              border-radius: 50%;
+              {% endif %}
+            }
+            .color-swatch__label svg {
+              display: none;
+              color: 
+            }
+            .color-swatch__label.unavailable-swatch svg {
+              display: block;
+            }
+            .variant-option-input:checked + .color-swatch__label {
+              border-width: .2rem!important;
+            }           
+          {% endstyle %}
             <a href="{{ block.settings.page.url }}" class="product-popup-modal__button link no-js">{{ block.settings.text }}</a>
               {%- unless product.has_only_default_variant -%}
                 {%- if block.settings.picker_type == 'button' -%}
@@ -740,9 +800,9 @@
                                   padding-bottom: {{ block.settings.color_group_1_legend_padding_bottom -}}rem;
                                 }
                               {% endstyle %}
-                              <button id="ProductPopup-{{ block.id }}" class="product-popup-modal__button link color-group-legend-btn js-pop-up-button" type="button" aria-haspopup="dialog" page-id="{{pageId}}">
+                              <{% if pageId %}button{% else %}a{% endif %} id="ProductPopup-{{ block.id }}" class="product-popup-modal__button link color-group-legend-btn js-pop-up-button" type="button" aria-haspopup="dialog" page-id="{{pageId}}">
                                 <legend class="form__label color-group-legend color-group-legend-1">{{ block.settings.group_1_title }}: <span id="js-color-group-title1" class="js-color-group-title color-group-title"></span></legend>
-                              </button>
+                              </{% if pageId %}button{% else %}a{% endif %}>
                             </modal-opener>
                             <modal-dialog id="PopupModal-{{- block.settings.group_1_title | remove: ' ' -}}" class="product-popup-modal" {{ block.shopify_attributes }}>
                               <div role="dialog" aria-label="{{ block.settings.text }}" aria-modal="true" class="product-popup-modal__content" tabindex="-1">
@@ -762,27 +822,27 @@
                               {%- for value in option.values -%}
                                 {% capture swatch_idx %}swatch1{{-forloop.index-}}{% endcapture %}
                                 {% style %}
-                                  .{{-swatch_idx-}} {
-                                    background-color: {{- block.settings[swatch_idx] -}};
-                                  }
-                                  {% comment %}
-                                  .{{-swatch_idx-}}.unavailable-swatch {
-                                    {% unless request.design_mode %}
-                                    background-color: {{- block.settings[swatch_idx] -}}75!important;
-                                    {% endunless %}
-                                    border-color: #dddddd40!important;
-                                  }
-                                  {% endcomment %}
-                                  .unavailable-swatch:after {
-                                    content: "X";
-                                    font-size: {{- block.settings.swatch_size -}}rem;
-                                    position: absolute;
-                                    display: flex;
-                                    justify-content: center;
-                                    align-items: center;
-                                    color: #dddddd40;
-                                  }
-                                {% endstyle %}
+                                .{{-swatch_idx-}} {
+                                  background-color: {{- block.settings[swatch_idx] -}};
+                                }
+                                {% comment %}
+                                .{{-swatch_idx-}}.unavailable-swatch {
+                                  {% unless request.design_mode %}
+                                  background-color: {{- block.settings[swatch_idx] -}}75!important;
+                                  {% endunless %}
+                                  border-color: #dddddd40!important;
+                                }
+                                {% endcomment %}
+                                .unavailable-swatch:after {
+                                  content: "";
+                                  font-size: {{- block.settings.swatch_size -}}rem;
+                                  position: absolute;
+                                  display: flex;
+                                  justify-content: center;
+                                  align-items: center;
+                                  color: #dddddd40;
+                                }
+                              {% endstyle %}
                                 {%- capture colorop1 -%}color-1{{-forloop.index-}}{%- endcapture -%}
                                 {% comment %}<p>{{colorop1}}</p>{% endcomment %}
                                 {%- if block.settings[colorop1] -%}
@@ -800,31 +860,58 @@
                             </div>
                           </div>
                           <div class="color-group color-group--2">
-                            <modal-opener class="product-popup-modal__opener no-js-hidden quick-add-hidden" data-modal="#PopupModal-{{- block.settings.group_2_title | remove: " " -}}" {{ block.shopify_attributes }}>
-                              {% assign pageId2 = block.settings.color_group2_page.template_suffix %}
-                              {% style %}
-                                .color-group-legend-2 {
-                                  padding-bottom: {{ block.settings.color_group_2_legend_padding_bottom -}}rem;
-                                }
-                              {% endstyle %}
-                              <button id="ProductPopup-{{ block.id }}" class="product-popup-modal__button link color-group-legend-btn js-pop-up-button" type="button" aria-haspopup="dialog" page-id="{{pageId2}}">
-                                <legend class="form__label color-group-legend color-group-legend-2">{{ block.settings.group_2_title }}: <span id="js-color-group-title2" class="js-color-group-title color-group-title"></span></legend>
-                              </button>
-                            </modal-opener>
-                            <modal-dialog id="PopupModal-{{- block.settings.group_2_title | remove: " " -}}" class="product-popup-modal" {{ block.shopify_attributes }}>
-                              <div role="dialog" aria-label="{{ block.settings.text }}" aria-modal="true" class="product-popup-modal__content" tabindex="-1">
-                                <button id="ModalClose-{{- block.settings.group_2_title -}}}" type="button" class="product-popup-modal__toggle" aria-label="{{ 'accessibility.close' | t }}">{% render 'icon-close' %}</button>
-                                <div class="product-popup-modal__content-info {% unless block.settings.color_group2_page.content != blank %}js-page-{{-pageId2}} js-page-content{% endunless %}">
-                                  {% if block.settings.color_group2_page.content != blank %}
-                                    {{ block.settings.color_group2_page.content }}
-                                  {% else %}
-                                    {% capture pageStyle2 %}'pagefly.{{- pageId2 -}}.css' | asset_url{% endcapture%}
-                                    
-                                    <link rel="stylesheet" href="{{pageStyle2}}">
-                                  {% endif %}
+                          {% style %}
+                            .color-options-2__header {
+                              display: flex;
+                              {% if block.settings.pop_up_alignment %}
+                              justify-content: space-between;
+                              {% endif %}
+                              column-gap: {{ block.settings.pop_up_gap }};
+                              align-items: center;
+                            }
+                            .color-group-legend-2 {
+                              color: {{ block.settings.group2_legend_color}};
+                              padding-bottom: {{ block.settings.color_group_2_legend_padding_bottom -}}rem;
+                            }
+                          {% endstyle %}                            
+                            <div class="color-options-2__header">
+                              <modal-opener class="product-popup-modal__opener no-js-hidden quick-add-hidden" data-modal="#PopupModal-{{- block.settings.group_2_title | remove: " " -}}" {{ block.shopify_attributes }}>
+                                {% assign pageId2 = block.settings.color_group2_page.template_suffix %}
+                                <{% if pageId2 %}button{% else %}a{% endif %} role="button" id="ProductPopup-{{ block.id }}" href="{{block.settings.color_group2_link}}" target="_blank" class="product-popup-modal__button link color-group-legend-btn {% if pageId2 %}js-pop-up-button{% endif %}" type="button" aria-haspopup="dialog" page-id="{{pageId2}}">
+                                  <legend class="form__label color-group-legend color-group-legend-2 {{ block.settings.group_2_title_family }}">{{ block.settings.group_2_title }} <span id="js-color-group-title2" class="js-color-group-title color-group-title"></span></legend>
+                                </{% if pageId2 %}button{% else %}a{% endif %}>
+                              </modal-opener>
+                              <modal-dialog id="PopupModal-{{- block.settings.group_2_title | remove: " " -}}" class="product-popup-modal" {{ block.shopify_attributes }}>
+                                <div role="dialog" aria-label="{{ block.settings.text }}" aria-modal="true" class="product-popup-modal__content" tabindex="-1">
+                                  <button id="ModalClose-{{- block.settings.group_2_title -}}}" type="button" class="product-popup-modal__toggle" aria-label="{{ 'accessibility.close' | t }}">{% render 'icon-close' %}</button>
+                                  <div class="product-popup-modal__content-info {% unless block.settings.color_group2_page.content != blank %}js-page-{{-pageId2}} js-page-content{% endunless %}">
+                                    {% if block.settings.color_group2_page.content != blank %}
+                                      {{ block.settings.color_group2_page.content }}
+                                    {% else %}
+                                      {% capture pageStyle2 %}'pagefly.{{- pageId2 -}}.css' | asset_url{% endcapture%}
+                                      <link rel="stylesheet" href="{{pageStyle2}}">
+                                    {% endif %}
+                                  </div>
                                 </div>
-                              </div>
-                            </modal-dialog>
+                              </modal-dialog>
+                              <modal-opener class="product-popup-modal__opener no-js-hidden quick-add-hidden sizes-guide-opener" data-modal="#PopupModal-{{ block.settings.color_group_2_popup_title | replace: " ", "" | replace: '?', '' }}" {{ block.shopify_attributes }}>
+                                {% assign pageId22 = block.settings.color_group2_page2.template_suffix %}
+                                <{% if pageId22 %}button{% else %}a{% endif %} id="ProductPopup-{{ block.id }}" href="{{ block.settings.color_group2_page2_link }}" target="_blank" class="product-popup-modal__button link color-group2-page2-legend {% if pageId22 %}js-pop-up-button{% endif %} sizes-guide {{ block.settings.color_group_2_popup_title_family }}" type="button" aria-haspopup="dialog" page-id="{{pageId22}}">{{ block.settings.color_group_2_popup_title | default: block.settings.page.title }}</{% if pageId22 %}button{% else %}a{% endif %}>
+                              </modal-opener>
+                              <modal-dialog id="PopupModal-{{ block.settings.color_group_2_popup_title | replace: " ", "" | replace : '?', '' }}" class="product-popup-modal" {{ block.shopify_attributes }}>
+                                <div role="dialog" aria-label="{{ block.settings.color_group_2_popup_title | replace: " ", "" }}" aria-modal="true" class="product-popup-modal__content" tabindex="-1">
+                                  <button id="ModalClose-{{ block.settings.color_group_2_popup_title | replace: " ", "" | replace: '?', '' }}" type="button" class="product-popup-modal__toggle" aria-label="{{ 'accessibility.close' | t }}">{% render 'icon-close' %}</button>
+                                  <div class="product-popup-modal__content-info {% unless block.settings.color_group2_page2.content != blank %}js-page-{{-pageId22}} js-page-content{% endunless %}">
+                                    {% if block.settings.color_group2_page2.content != blank %}
+                                    {{ block.settings.color_group2_page2.content }}
+                                  {% else %}
+                                    {% capture color_group2_page2_style %}'pagefly.{{- pageId22-}}.css' | asset_url{% endcapture%}
+                                    <link rel="stylesheet" href="{{color_group2_page2_style}}">
+                                  {% endif %}
+                                  </div>
+                                </div>
+                              </modal-dialog>
+                            </div>
                             <div class="color-options">
                               {%- for value in option.values -%}
                                 {% capture swatch_idx %}swatch2{{-forloop.index-}}{% endcapture %}
@@ -863,26 +950,27 @@
                     {%- endfor -%}   
                     {%- for option in product.options_with_values -%}
                       {% if option.name == 'Size' %}
-                        {% style %}
-                          .sizes-guide {
-                            font-size: {{ block.settings.sizes_guide_size -}}rem;
-                            font-weight: {{ block.settings.sizes_guide_weight -}};
-                            {% if block.settings.sizes_guide_underline %}
-                            text-decoration: underline;
-                            {% else %}
-                            text-decoration: none!Important;
-                            {% endif %}
-                          }
-                          .sizes-options__header {
-                            padding-bottom: {{ block.settings.sizes_options_header_padding_bottom -}}rem;
-                          }
-                        {% endstyle %}
+                      {% style %}
+                        .sizes-guide {
+                          color: {{ block.settings.sizes_guide_color }};
+                          font-size: {{ block.settings.sizes_guide_size -}}rem;
+                          font-weight: {{ block.settings.sizes_guide_weight -}};
+                          {% if block.settings.sizes_guide_underline %}
+                          text-decoration: underline;
+                          {% else %}
+                          text-decoration: none!Important;
+                          {% endif %}
+                        }
+                        .sizes-options__header {
+                          padding-bottom: {{ block.settings.sizes_options_header_padding_bottom -}}rem;
+                        }
+                      {% endstyle %}
                         <fieldset class="js product-form__input size-options">
                           <div class="sizes-options__header">
                             <legend class="form__label sizes-legend">{{ option.name }}</legend>
                             {% assign pageId3 = block.settings.size_guide_page.template_suffix %}
                             <modal-opener class="product-popup-modal__opener no-js-hidden quick-add-hidden sizes-guide-opener" data-modal="#PopupModal-{{ block.settings.size_guide_text | replace: " ", "" }}" {{ block.shopify_attributes }}>
-                              <button id="ProductPopup-{{ block.id }}" class="product-popup-modal__button link js-pop-up-button sizes-guide" type="button" aria-haspopup="dialog" page-id="{{pageId3}}">{{ block.settings.size_guide_text | default: block.settings.page.title }}</button>
+                              <{% if pageId3 %}button{% else %}a{% endif %} id="ProductPopup-{{ block.id }}" class="product-popup-modal__button link js-pop-up-button sizes-guide" type="button" aria-haspopup="dialog" page-id="{{pageId3}}">{{ block.settings.size_guide_text | default: block.settings.page.title }}</{% if pageId3 %}button{% else %}a{% endif %}>
                             </modal-opener>
                             <modal-dialog id="PopupModal-{{ block.settings.size_guide_text | replace: " ", "" }}" class="product-popup-modal" {{ block.shopify_attributes }}>
                               <div role="dialog" aria-label="{{ block.settings.size_guide_text | replace: " ", "" }}" aria-modal="true" class="product-popup-modal__content" tabindex="-1">
@@ -987,6 +1075,14 @@
                 {%- form 'product', product, id: product_form_id, class: 'form', novalidate: 'novalidate', data-type: 'add-to-cart-form' -%}
                   <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}" disabled>
                   <div class="product-form__buttons">
+                    {% style %}
+                    .product-form__submit {
+                      background: {{ block.settings.button_bk }};
+                      color: {{ block.settings.button_color }};
+                      width: 100%;
+                      min-width: 100%;
+                    }
+                    {% endstyle %}                    
                     <button
                       type="submit"
                       name="add"
@@ -1123,33 +1219,33 @@
   {%- endif -%}
 
   <script>
-  const requestPageSection = function (ev) { 
-    const input = ev.currentTarget;
-    const pageId = input.getAttribute('page-id');
-    let pageContent;  
-    console.log('requested')
-    function handleResponse() {
-      pageContent = JSON.parse(this.responseText);
-      console.log('afterload', pageContent[pageId])
-      let container = document.createElement( 'html' );
-      container.innerHTML = pageContent[pageId]
-      document.querySelector(`.js-page-${pageId}`).appendChild(container)
+    const requestPageSection = function (ev) { 
+      const input = ev.currentTarget;
+      const pageId = input.getAttribute('page-id');
+      let pageContent;  
+      function handleResponse() {
+        pageContent = JSON.parse(this.responseText);
+        console.log('afterload', pageContent)
+        let container = document.createElement( 'html' );
+        container.innerHTML = pageContent[pageId]
+        document.querySelector(`.js-page-${pageId}`).appendChild(container)
+      }
+      if ( document.querySelector(`.js-page-${pageId} > html`) ) return
+      const request = new XMLHttpRequest();
+      
+      request.addEventListener('load', handleResponse);
+      request.open('GET', `/?sections=${pageId}`, true);
+      request.send()
     }
-    if ( document.querySelector(`.js-page-${pageId} > html`) ) return
-    const request = new XMLHttpRequest();
-    
-    request.addEventListener('load', handleResponse);
-    request.open('GET', `/?sections=${pageId}`, true);
-    request.send()
-  }
+  
+    if ( document.querySelector('.js-page-content') ) {
+      const popUpButtons = document.querySelectorAll('.js-pop-up-button');
+      popUpButtons.forEach(btn => {
+        btn.addEventListener('click', requestPageSection, false)
+      });
+    }
 
-  if ( document.querySelector('.js-page-content') ) {
-    const popUpButtons = document.querySelectorAll('.js-pop-up-button');
-    popUpButtons.forEach(btn => {
-      btn.addEventListener('click', requestPageSection, false)
-    });
-  }
-  </script>
+    </script>
 
   <script>
     document.addEventListener('DOMContentLoaded', function() {
@@ -1184,15 +1280,20 @@
 
   <script>
     const triggerProductInfo = (ev) => {
-      const input = ev.currentTarget;
-      const onImageTextContent = document.querySelector('.js-on-picture-text');
-      const onImageTextTrigger = document.querySelector('.js-on-image-text-mobile-trigger')
+      const input = ev.currentTarget.classList.contains('js-on-image-text-mobile-trigger') ? ev.currentTarget : ev.currentTarget.parentElement.nextElementSibling ;
+      const onImageTextContent = input.classList.contains('js-on-picture-close') ? input.closest('div') : input.previousElementSibling;
 
       onImageTextContent.classList.toggle('active')
-      onImageTextTrigger.classList.toggle('active')
+      input.classList.toggle('active')
     }
-    document.querySelector('.js-on-image-text-mobile-trigger').addEventListener('click', triggerProductInfo, false)
-    document.querySelector('.js-on-picture-close').addEventListener('click', triggerProductInfo, false)
+    const triggers = document.querySelectorAll('.js-on-image-text-mobile-trigger')
+    const xs = document.querySelectorAll('.js-on-picture-close')
+    triggers.forEach(t => {
+      t.addEventListener('click', triggerProductInfo, false)
+    })
+    xs.forEach(x => {
+      x.addEventListener('click', triggerProductInfo, false)
+    })
   </script>
 
   <script type="application/ld+json">
@@ -1257,6 +1358,11 @@
           "label": "t:sections.main-product.blocks.text.settings.text.label"
         },
         {
+          "type": "color",
+          "id": "text_color",
+          "label": "Color"
+        },
+        {
           "type": "range",
           "id": "padding_top",
           "label": "Padding top",
@@ -1275,6 +1381,22 @@
           "step": 0.1,
           "unit": "rem",
           "default": 0
+        },
+        {
+          "type": "select",
+          "id": "text_family",
+          "label": "Font family",
+          "options": [
+            {
+              "value": "default",
+              "label": "Default"
+            },
+            {
+              "value": "hind",
+              "label": "Hind"
+            }
+          ],
+          "default": "default"
         },
         {
           "type": "select",
@@ -1352,19 +1474,9 @@
       "limit": 1,
       "settings": [
         {
-          "type": "range",
-          "id": "product_title_size",
-          "label":"Product Title Size",
-          "min": 1,
-          "max": 5,
-          "step": 0.1,
-          "unit": "rem",
-          "default": 1.8
-        },
-        {
           "type": "select",
-          "id": "product_title_weight",
-          "label": "Product Title Weight",
+          "id": "title_weight",
+          "label": "Title weight",
           "options": [
             {
               "value": "regular",
@@ -1378,45 +1490,55 @@
               "value": "bold",
               "label": "Bold"
             }
-          ],
-          "default": "regular"
+          ]
+        },
+        {
+          "type": "color",
+          "id": "title_color",
+          "label": "Color"
         },
         {
           "type": "range",
-          "id": "product_subtitle_size",
-          "label":"Product Subtitle Size",
+          "id": "title_size",
+          "label": "Title_size",
           "min": 1,
           "max": 5,
           "step": 0.1,
-          "unit": "rem",
-          "default": 1.6
+          "default": 1.7,
+          "unit": "rem"
         },
         {
           "type": "select",
-          "id": "product_subtitle_weight",
-          "label": "Product Subtitle Weight",
+          "id": "title_justify",
+          "label": "Title justify",
           "options": [
             {
-              "value": "regular",
-              "label": "Regular"
+              "value": "left",
+              "label": "Left"
             },
             {
-              "value": "medium",
-              "label": "Medium"
+              "value": "center",
+              "label": "Center"
             },
             {
-              "value": "bold",
-              "label": "Bold"
+              "value": "right",
+              "label": "Right"
             }
-          ],
-          "default": "regular"
+          ]
         }
       ]
     },
     {
       "type": "price",
       "name": "t:sections.main-product.blocks.price.name",
-      "limit": 1
+      "limit": 1,
+      "settings":[
+        {
+          "type": "color",
+          "id": "price_color",
+          "label": "Color"
+        }
+      ]
     },
     {
       "type": "tabs",
@@ -1520,6 +1642,56 @@
           ],
           "default": "center"
         },
+      {
+        "type": "range",
+        "id": "tab_title12_size",
+        "min": 1,
+        "max": 3,
+        "step": 0.1,
+        "unit": "rem",
+        "label": "Tab title size",
+        "default": 1.5
+      },
+      {
+        "type": "select",
+        "id": "tab_title12_weight",
+        "label": "Tab title weight",
+        "options": [
+          {
+            "value": "400",
+            "label": "Regular"
+          },
+          {
+            "value": "500",
+            "label": "Medium"
+          },
+          {
+            "value": "700",
+            "label": "Bold"
+          }
+        ],
+        "default": "400"
+      },
+      {
+        "type": "select",
+        "id": "tab_title12_justify",
+        "label": "Tab title justify",
+        "options": [
+          {
+            "value": "left",
+            "label": "Left"
+          },
+          {
+            "value": "center",
+            "label": "Center"
+          },
+          {
+            "value": "right",
+            "label": "Right"
+          }
+        ],
+        "default": "center"
+      },
         {
           "type": "header",
           "content": "Tab 2 title options",
@@ -1558,6 +1730,56 @@
         {
           "type": "select",
           "id": "tab_title2_justify",
+          "label": "Tab title justify",
+          "options": [
+            {
+              "value": "left",
+              "label": "Left"
+            },
+            {
+              "value": "center",
+              "label": "Center"
+            },
+            {
+              "value": "right",
+              "label": "Right"
+            }
+          ],
+          "default": "center"
+        },
+        {
+          "type": "range",
+          "id": "tab_title22_size",
+          "min": 1,
+          "max": 3,
+          "step": 0.1,
+          "unit": "rem",
+          "label": "Tab title size",
+          "default": 1.5
+        },
+        {
+          "type": "select",
+          "id": "tab_title22_weight",
+          "label": "Tab title weight",
+          "options": [
+            {
+              "value": "400",
+              "label": "Regular"
+            },
+            {
+              "value": "500",
+              "label": "Medium"
+            },
+            {
+              "value": "700",
+              "label": "Bold"
+            }
+          ],
+          "default": "400"
+        },
+        {
+          "type": "select",
+          "id": "tab_title22_justify",
           "label": "Tab title justify",
           "options": [
             {
@@ -1631,24 +1853,39 @@
           "default": "center"
         },
         {
-          "type": "header",
-          "content": "Tab content options",
-          "info": "Size, weight and justification"
-        },
-        {
           "type": "range",
-          "id": "tab_content_size",
+          "id": "tab_title32_size",
           "min": 1,
           "max": 3,
           "step": 0.1,
           "unit": "rem",
-          "label": "Tab content size",
+          "label": "Tab title size",
           "default": 1.5
         },
         {
           "type": "select",
-          "id": "tab_content_justify",
-          "label": "Tab content justify",
+          "id": "tab_title32_weight",
+          "label": "Tab title weight",
+          "options": [
+            {
+              "value": "400",
+              "label": "Regular"
+            },
+            {
+              "value": "500",
+              "label": "Medium"
+            },
+            {
+              "value": "700",
+              "label": "Bold"
+            }
+          ],
+          "default": "400"
+        },
+        {
+          "type": "select",
+          "id": "tab_title32_justify",
+          "label": "Tab title justify",
           "options": [
             {
               "value": "left",
@@ -1664,7 +1901,117 @@
             }
           ],
           "default": "center"
-        },       
+        },
+        {
+          "type": "header",
+          "content": "Tab content options",
+          "info": "Size, weight and justification"
+        },
+        {
+          "type": "range",
+          "id": "tab1_content_size",
+          "min": 1,
+          "max": 3,
+          "step": 0.1,
+          "unit": "rem",
+          "label": "Tab 1 content size",
+          "default": 1.5
+        },
+        {
+          "type": "color",
+          "id": "tab1_content_color",
+          "label": "Tab 1 content color"
+        },
+        {
+          "type": "select",
+          "id": "tab1_content_justify",
+          "label": "Tab 1 content justify",
+          "options": [
+            {
+              "value": "left",
+              "label": "Left"
+            },
+            {
+              "value": "center",
+              "label": "Center"
+            },
+            {
+              "value": "right",
+              "label": "Right"
+            }
+          ],
+          "default": "center"
+        }, 
+        {
+          "type": "range",
+          "id": "tab2_content_size",
+          "min": 1,
+          "max": 3,
+          "step": 0.1,
+          "unit": "rem",
+          "label": "Tab 2 content size",
+          "default": 1.5
+        },
+        {
+          "type": "color",
+          "id": "tab2_content_color",
+          "label": "Tab 2 content color"
+        },
+        {
+          "type": "select",
+          "id": "tab2_content_justify",
+          "label": "Tab 2 content justify",
+          "options": [
+            {
+              "value": "left",
+              "label": "Left"
+            },
+            {
+              "value": "center",
+              "label": "Center"
+            },
+            {
+              "value": "right",
+              "label": "Right"
+            }
+          ],
+          "default": "center"
+        },
+        {
+          "type": "range",
+          "id": "tab3_content_size",
+          "min": 1,
+          "max": 3,
+          "step": 0.1,
+          "unit": "rem",
+          "label": "Tab 3 content size",
+          "default": 1.5
+        },
+        {
+          "type": "color",
+          "id": "tab3_content_color",
+          "label": "Tab 3 content color"
+        },
+        {
+          "type": "select",
+          "id": "tab3_content_justify",
+          "label": "Tab 3 content justify",
+          "options": [
+            {
+              "value": "left",
+              "label": "Left"
+            },
+            {
+              "value": "center",
+              "label": "Center"
+            },
+            {
+              "value": "right",
+              "label": "Right"
+            }
+          ],
+          "default": "center"
+        },   
         {
           "type": "color",
           "id": "btn_bk_active",
@@ -1696,10 +2043,92 @@
           "default": "<p>Tab 1 title</p>"
         },
         {
+          "type": "select",
+          "id": "tab1_title_family",
+          "label": "tab 1 title font family",
+          "options": [
+            {
+              "value": "default",
+              "label": "Default"
+            },
+            {
+              "value": "hind",
+              "label": "Hind"
+            }
+          ],
+          "default": "default"
+        },
+        {
+          "type": "range",
+          "id": "tab1_title_padding_top",
+          "label": "Title 1 padding top",
+          "min": 0,
+          "max": 5,
+          "unit": "rem",
+          "default": 0,
+          "step": 0.1
+        },
+        {
+          "type": "range",
+          "id": "tab1_title_padding_bottom",
+          "label": "Title 1 padding bottom",
+          "min": 0,
+          "max": 5,
+          "unit": "rem",
+          "default": 0,
+          "step": 0.1
+        },
+        {
+          "type": "color",
+          "id": "tab1_title_color",
+          "label": "Tab 1 title color"
+        },
+        {
           "type": "richtext",
           "id": "tab1_title2",
           "label": "Tab 1 title 2",
           "default": "<p>Tab 1 title 2</p>"
+        },
+        {
+          "type": "select",
+          "id": "tab1_title2_family",
+          "label": "tab 1 title 2 font family",
+          "options": [
+            {
+              "value": "default",
+              "label": "Default"
+            },
+            {
+              "value": "hind",
+              "label": "Hind"
+            }
+          ],
+          "default": "default"
+        },
+        {
+          "type": "range",
+          "id": "tab1_title2_padding_top",
+          "label": "Title 2 padding top",
+          "min": 0,
+          "max": 5,
+          "unit": "rem",
+          "default": 0,
+          "step": 0.1
+        },
+        {
+          "type": "range",
+          "id": "tab1_title2_padding_bottom",
+          "label": "Title 2 padding bottom",
+          "min": 0,
+          "max": 5,
+          "unit": "rem",
+          "default": 0,
+          "step": 0.1
+        },
+        {
+          "type": "color",
+          "id": "tab1_title2_color",
+          "label": "Tab 1 title 2 color"
         },
         {
           "type": "checkbox",
@@ -1712,7 +2141,23 @@
           "id": "tab1_content",
           "label": "tab1 content",
           "default": "<p>tab1 content</p>"
-        },        
+        }, 
+        {
+          "type": "select",
+          "id": "tab1_content_family",
+          "label": "tab 1 content font family",
+          "options": [
+            {
+              "value": "default",
+              "label": "Default"
+            },
+            {
+              "value": "hind",
+              "label": "Hind"
+            }
+          ],
+          "default": "default"
+        },       
         {
           "type": "image_picker",
           "id": "tab2_image",
@@ -1732,10 +2177,92 @@
           "default": "<p>Tab 2 title</p>"
         },
         {
+          "type": "select",
+          "id": "tab2_title_family",
+          "label": "tab 2 title font family",
+          "options": [
+            {
+              "value": "default",
+              "label": "Default"
+            },
+            {
+              "value": "hind",
+              "label": "Hind"
+            }
+          ],
+          "default": "default"
+        },
+        {
+          "type": "range",
+          "id": "tab2_title_padding_top",
+          "label": "Title padding top",
+          "min": 0,
+          "max": 5,
+          "unit": "rem",
+          "default": 0,
+          "step": 0.1
+        },
+        {
+          "type": "range",
+          "id": "tab2_title_padding_bottom",
+          "label": "Title padding bottom",
+          "min": 0,
+          "max": 5,
+          "unit": "rem",
+          "default": 0,
+          "step": 0.1
+        },
+        {
+          "type": "color",
+          "id": "tab2_title_color",
+          "label": "Tab 2 title color"
+        },
+        {
           "type": "richtext",
           "id": "tab2_title2",
           "label": "Tab 2 title 2",
           "default": "<p>Tab 2 title 2</p>"
+        },
+        {
+          "type": "select",
+          "id": "tab2_title2_family",
+          "label": "tab 2 title 2 font family",
+          "options": [
+            {
+              "value": "default",
+              "label": "Default"
+            },
+            {
+              "value": "hind",
+              "label": "Hind"
+            }
+          ],
+          "default": "default"
+        },
+        {
+          "type": "range",
+          "id": "tab2_title2_padding_top",
+          "label": "Title 2 padding top",
+          "min": 0,
+          "max": 5,
+          "unit": "rem",
+          "default": 0,
+          "step": 0.1
+        },
+        {
+          "type": "range",
+          "id": "tab2_title2_padding_bottom",
+          "label": "Title 2 padding bottom",
+          "min": 0,
+          "max": 5,
+          "unit": "rem",
+          "default": 0,
+          "step": 0.1
+        },
+        {
+          "type": "color",
+          "id": "tab2_title2_color",
+          "label": "Tab 2 title 2 color"
         },
         {
           "type": "checkbox",
@@ -1749,6 +2276,22 @@
           "label": "tab2 content",
           "default": "<p>tab2 content</p>"
         }, 
+        {
+          "type": "select",
+          "id": "tab2_content_family",
+          "label": "tab 2 content",
+          "options": [
+            {
+              "value": "default",
+              "label": "Default"
+            },
+            {
+              "value": "hind",
+              "label": "Hind"
+            }
+          ],
+          "default": "default"
+        },
         {
           "type": "image_picker",
           "id": "tab3_image",
@@ -1768,10 +2311,92 @@
           "default": "<p>Tab 3 title</p>"
         },
         {
+          "type": "select",
+          "id": "tab3_title_family",
+          "label": "tab 3 title font family",
+          "options": [
+            {
+              "value": "default",
+              "label": "Default"
+            },
+            {
+              "value": "hind",
+              "label": "Hind"
+            }
+          ],
+          "default": "default"
+        },
+        {
+          "type": "range",
+          "id": "tab3_title_padding_top",
+          "label": "Title 3 padding top",
+          "min": 0,
+          "max": 5,
+          "unit": "rem",
+          "default": 0,
+          "step": 0.1
+        },
+        {
+          "type": "range",
+          "id": "tab3_title_padding_bottom",
+          "label": "Title 3 padding bottom",
+          "min": 0,
+          "max": 5,
+          "unit": "rem",
+          "default": 0,
+          "step": 0.1
+        },
+        {
+          "type": "color",
+          "id": "tab3_title_color",
+          "label": "Tab 3 title color"
+        },
+        {
           "type": "richtext",
           "id": "tab3_title2",
           "label": "Tab 3 title 2",
           "default": "<p>Tab 3 title 2</p>"
+        },
+        {
+          "type": "select",
+          "id": "tab3_title2_family",
+          "label": "tab 3 title 2 font family",
+          "options": [
+            {
+              "value": "default",
+              "label": "Default"
+            },
+            {
+              "value": "hind",
+              "label": "Hind"
+            }
+          ],
+          "default": "default"
+        },
+        {
+          "type": "range",
+          "id": "tab3_title2_padding_top",
+          "label": "Title 2 padding top",
+          "min": 0,
+          "max": 5,
+          "unit": "rem",
+          "default": 0,
+          "step": 0.1
+        },
+        {
+          "type": "range",
+          "id": "tab3_title2_padding_bottom",
+          "label": "Title 2 padding bottom",
+          "min": 0,
+          "max": 5,
+          "unit": "rem",
+          "default": 0,
+          "step": 0.1
+        },
+        {
+          "type": "color",
+          "id": "tab3_title2_color",
+          "label": "Tab 3 title 2 color"
         },
         {
           "type": "checkbox",
@@ -1784,6 +2409,22 @@
           "id": "tab3_content",
           "label": "tab3 content",
           "default": "<p>tab3 content</p>"
+        },
+        {
+          "type": "select",
+          "id": "tab3_content_family",
+          "label": "tab 1 title font family",
+          "options": [
+            {
+              "value": "default",
+              "label": "Default"
+            },
+            {
+              "value": "hind",
+              "label": "Hind"
+            }
+          ],
+          "default": "default"
         }
       ]
     },
@@ -1914,6 +2555,11 @@
           "default": 1.6
         },
         {
+          "type": "color",
+          "id": "sizes_guide_color",
+          "label": "Sizes guide color"
+        },
+        {
           "type": "select",
           "id": "sizes_guide_weight",
           "label": "Sizes guide weight",
@@ -1943,11 +2589,73 @@
           "type": "page",
           "id": "color_group1_page",
           "label": "color-group-page"
+        },
+        {
+          "type": "url",
+          "id": "color_group1_link",
+          "label": "color-group1-link"
         }, 
         {
           "type": "page",
           "id": "color_group2_page",
           "label": "color-group-page"
+        },
+        {
+          "type": "url",
+          "id": "color_group2_link",
+          "label": "color-group2-link"
+        }, 
+        {
+          "type": "header",
+          "content": "Second page for color group"
+        },
+        {
+          "type": "checkbox",
+          "id": "pop_up_alignment",
+          "label": "Pop up alignment",
+          "default": true
+        },
+        {
+          "type": "range",
+          "id": "pop_up_gap",
+          "label": "Button gap",
+          "min": 0,
+          "max": 5,
+          "step": 0.1,
+          "unit": "rem",
+          "default": 1.6
+        },
+        {
+          "type": "text",
+          "id": "color_group_2_popup_title",
+          "default": "pop-up",
+          "label": "Pop-up link text"
+        },
+        {
+          "type": "select",
+          "id": "color_group_2_popup_title_family",
+          "label": "color_group_2_popup_title_family",
+          "options": [
+            {
+              "value": "default",
+              "label": "Default"
+            },
+            {
+              "value": "hind",
+              "label": "Hind"
+            }
+          ],
+          "default": "default"
+        },
+        {
+          "type": "page",
+          "id": "color_group2_page2",
+          "label": "color group 2 page 2"
+        },
+        {
+          "type": "url",
+          "id": "color_group2_page2_link",
+          "label": "color-group2-page2 link"
         }, 
         {
           "type": "text",
@@ -1956,10 +2664,31 @@
           "label": "Pop-up link text"
         },
         {
+          "type": "select",
+          "id": "size_guide_text_family",
+          "label": "size_guide_text_family",
+          "options": [
+            {
+              "value": "default",
+              "label": "Default"
+            },
+            {
+              "value": "hind",
+              "label": "Hind"
+            }
+          ],
+          "default": "default"
+        },
+        {
           "type": "page",
           "id": "size_guide_page",
           "label": "Page"
-        },      
+        },
+        {
+          "type": "url",
+          "id": "size_guide_link",
+          "label": "size-guide-link"
+        },  
         {
           "type": "select",
           "id": "swatch_display",
@@ -2012,6 +2741,36 @@
         },
         {
           "type": "range",
+          "id": "color_group2_page2_size",
+          "label": "Color group 2 page 2 text size",
+          "unit": "rem",
+          "min": 1,
+          "max": 3,
+          "step": 0.1,
+          "default": 1.4
+        },
+        {
+          "type": "select",
+          "id": "color_group2_page2_weight",
+          "label": "Color group 2 page 2 text weight",
+          "options": [
+            {
+              "value": "400",
+              "label": "regular"
+            },
+            {
+              "value": "500",
+              "label": "medium"
+            },
+            {
+              "value": "700",
+              "label": "bold"
+            }
+          ],
+          "default": "400"
+        },
+        {
+          "type": "range",
           "id": "sizes_legend_size",
           "label": "Sizes legend size",
           "unit": "rem",
@@ -2059,6 +2818,27 @@
           "id": "group_1_title",
           "label": "Color group 1 title",
           "default": "Color group 1 title"
+        },
+        {
+          "type": "select",
+          "id": "group_1_title_family",
+          "label": "Group 1 title font family",
+          "options": [
+            {
+              "value": "default",
+              "label": "Default"
+            },
+            {
+              "value": "hind",
+              "label": "Hind"
+            }
+          ],
+          "default": "default"
+        },
+        {
+          "type": "color",
+          "id": "group1_legend_color",
+          "label": "Color group 1 legend color"
         },
         {
           "type": "checkbox",
@@ -2189,6 +2969,27 @@
           "id": "group_2_title",
           "label": "Color group 2 title",
           "default": "Color group 2 title"
+        },
+        {
+          "type": "select",
+          "id": "group_2_title_family",
+          "label": "Group 1 title font family",
+          "options": [
+            {
+              "value": "default",
+              "label": "Default"
+            },
+            {
+              "value": "hind",
+              "label": "Hind"
+            }
+          ],
+          "default": "default"
+        },
+        {
+          "type": "color",
+          "id": "group2_legend_color",
+          "label": "Color group 2 legend color"
         },
         {
           "type": "checkbox",
@@ -2339,6 +3140,18 @@
           "default": true,
           "label": "t:sections.main-product.blocks.buy_buttons.settings.show_dynamic_checkout.label",
           "info": "t:sections.main-product.blocks.buy_buttons.settings.show_dynamic_checkout.info"
+        },
+        {
+          "type": "color",
+          "id": "button_bk",
+          "label": "Add to cart background color",
+          "default": "#434442"
+        },
+        {
+          "type": "color",
+          "id": "button_color",
+          "label": "Add to cart text color",
+          "default": "#ffffff"
         }
       ]
     },
@@ -2389,13 +3202,88 @@
           "id": "hide_mobile",
           "label": "Hide on mobile",
           "default": false
-        },      
+        },
         {
           "type": "text",
           "id": "heading",
           "default": "Collapsible row",
           "info": "t:sections.main-product.blocks.collapsible_tab.settings.heading.info",
           "label": "t:sections.main-product.blocks.collapsible_tab.settings.heading.label"
+        },
+        {
+          "type": "range",
+          "id": "accordion_title_size",
+          "label": "Accordion title font size",
+          "min": 1,
+          "max": 5,
+          "step": 0.1,
+          "default": 1.5,
+          "unit": "rem"
+        },
+        {
+          "type": "select",
+          "id": "accordion_title_weight",
+          "label": "Accordion title weight",
+          "options": [
+            {
+              "value": "400",
+              "label": "Regular"
+            },
+            {
+              "value": "500",
+              "label": "Medium"
+            },
+            {
+              "value": "700",
+              "label": "Bold"
+            }
+          ],
+          "default": "400"
+        },
+        {
+          "type": "select",
+          "id": "accordion_title_family",
+          "label": "Accordion title font family",
+          "options": [
+            {
+              "value": "default",
+              "label": "Default"
+            },
+            {
+              "value": "hind",
+              "label": "Hind"
+            }
+          ],
+          "default": "default"
+        },
+        {
+          "type": "color",
+          "id": "accordion_title_color",
+          "label": "Accordion title color"
+        },
+        {
+          "type": "select",
+          "id": "accordion_title_align",
+          "label": "Accordion title alignment",
+          "options": [
+            {
+              "value": "left",
+              "label": "Left"
+            },
+            {
+              "value": "center",
+              "label": "Center"
+            },
+            {
+              "value": "right",
+              "label": "Right"
+            },
+            {
+              "value": "justify",
+              "label": "Justify"
+            }
+          ],
+          "default": "left"
         },
         {
           "type": "select",
@@ -2587,6 +3475,81 @@
           "label": "t:sections.main-product.blocks.collapsible_tab.settings.content.label"
         },
         {
+          "type": "range",
+          "id": "accordion_content_size",
+          "label": "Accordion content font size",
+          "min": 1,
+          "max": 5,
+          "step": 0.1,
+          "default": 1.5,
+          "unit": "rem"
+        },
+        {
+          "type": "select",
+          "id": "accordion_content_weight",
+          "label": "Accordion content weight",
+          "options": [
+            {
+              "value": "400",
+              "label": "Regular"
+            },
+            {
+              "value": "500",
+              "label": "Medium"
+            },
+            {
+              "value": "700",
+              "label": "Bold"
+            }
+          ],
+          "default": "400"
+        },
+        {
+          "type": "select",
+          "id": "accordion_content_family",
+          "label": "Accordion content font family",
+          "options": [
+            {
+              "value": "default",
+              "label": "Default"
+            },
+            {
+              "value": "hind",
+              "label": "Hind"
+            }
+          ],
+          "default": "default"
+        },
+        {
+          "type": "color",
+          "id": "accordion_content_color",
+          "label": "Accordion content color"
+        },
+        {
+          "type": "select",
+          "id": "accordion_content_align",
+          "label": "Accordion content alignment",
+          "options": [
+            {
+              "value": "left",
+              "label": "Left"
+            },
+            {
+              "value": "center",
+              "label": "Center"
+            },
+            {
+              "value": "right",
+              "label": "Right"
+            },
+            {
+              "value": "justify",
+              "label": "Justify"
+            }
+          ],
+          "default": "left"
+        },
+        {
           "type": "page",
           "id": "page",
           "label": "t:sections.main-product.blocks.collapsible_tab.settings.page.label"
@@ -2672,10 +3635,14 @@
       "default": false
     },
     {
-      "type": "text",
+      "type": "header",
+      "content": "On picture text options"
+    },
+    {
+      "type": "richtext",
       "id": "on_picture_text",
       "label": "On picture text",
-      "default": "Lorem ipsum dolorem sit ammet dignissimos."
+      "default": "<p>Lorem ipsum dolorem sit ammet dignissimos.</p>"
     },
     {
       "type": "range",
@@ -2728,6 +3695,30 @@
       "default": "flex-end"
     },
     {
+      "type": "select",
+      "id": "on_image_text_content_align",
+      "label": "On image text content alignment",
+      "options": [
+        {
+          "value": "left",
+          "label": "Left"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        },
+        {
+          "value": "right",
+          "label": "Right"
+        },
+        {
+          "value": "justify",
+          "label": "Justify"
+        }
+      ],
+      "default": "left"
+    },
+    {
       "type": "color",
       "id": "on_picture_text_color",
       "label": "On picture text color",
@@ -2740,10 +3731,108 @@
       "default": "#dddddd40"
     },
     {
-      "type": "text",
+      "type": "richtext",
+      "id": "on_picture_text_natural",
+      "label": "On picture text for natural",
+      "default": "<p>Lorem ipsum dolorem sit ammet dignissimos.</p>"
+    },
+    {
+      "type": "range",
+      "id": "on_image_text_size_natural",
+      "label": "On image text size",
+      "min": 1,
+      "max": 3,
+      "step": 0.1,
+      "default": 1.2,
+      "unit": "rem"
+    },
+    {
+      "type": "select",
+      "id": "on_image_text_weight_natural",
+      "label": "On image text weight",
+      "options": [
+        {
+          "value": "400",
+          "label": "regular"
+        },
+        {
+          "value": "500",
+          "label": "medium"
+        },
+        {
+          "value": "700",
+          "label": "bold"
+        }
+      ],
+      "default": "400"
+    },
+    {
+      "type": "select",
+      "id": "on_image_text_align_natural",
+      "label": "On image text alignment",
+      "options": [
+        {
+          "value": "flex-end",
+          "label": "right"
+        },
+        {
+          "value": "flex-start",
+          "label": "left"
+        },
+        {
+          "value": "center",
+          "label": "center"
+        }
+      ],
+      "default": "flex-end"
+    },
+    {
+      "type": "select",
+      "id": "on_image_text_content_align_natural",
+      "label": "On image text content alignment",
+      "options": [
+        {
+          "value": "left",
+          "label": "Left"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        },
+        {
+          "value": "right",
+          "label": "Right"
+        },
+        {
+          "value": "justify",
+          "label": "Justify"
+        }
+      ],
+      "default": "left"
+    },
+    {
+      "type": "color",
+      "id": "on_picture_text_color_natural",
+      "label": "On picture text color",
+      "default": "#000"
+    },
+    {
+      "type": "color_background",
+      "id": "on_image_bk_natural",
+      "label": "On picture text background color",
+      "default": "#dddddd40"
+    },    
+    {
+      "type": "textarea",
       "id": "on_picture_trigger_text",
       "label": "On picture mobile trigger button text",
       "default": "Model Info"
+    },
+    {
+      "type": "textarea",
+      "id": "on_picture_trigger_text_natural",
+      "label": "On picture mobile trigger button text for natural colors",
+      "default": "Model Info Natural"
     },
     {
       "type": "header",
@@ -2769,6 +3858,12 @@
       ],
       "default": "stacked",
       "label": "t:sections.main-product.settings.gallery_layout.label"
+    },
+    {
+      "type": "checkbox",
+      "id": "grid_display",
+      "label": "Grid display",
+      "default": false
     },
     {
       "type": "select",
