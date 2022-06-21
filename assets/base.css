@@ -1116,7 +1116,8 @@ summary::-webkit-details-marker {
   }
 
   .grid--peek.slider--mobile .grid__item {
-    box-sizing: content-box;
+    /* box-sizing: content-box; */
+    box-sizing: border-box;
     margin: 0;
   }
 
@@ -1125,7 +1126,7 @@ summary::-webkit-details-marker {
   }
 
   .grid--peek.slider .grid__item:first-of-type {
-    margin-left: 1.5rem;
+    /* margin-left: 1.5rem; */
   }
 
   .grid--peek.slider .grid__item:last-of-type {
@@ -2875,19 +2876,13 @@ details-disclosure > details {
 .font-body-bold {
   font-weight: var(--font-body-weight-bold);
 }
-
-/* Change by Matt M. @ Shopify Theme Support | May 02 2022*/
-  #ProductCountDesktop {
-  display: none;
-  }
-/* End of change by Matt M. @ Shopify Theme Support | May 02 2022*/
- 
-  .product__title h1 {
-    font-size: 18px;
+@media screen and (min-width: 990px){
+.header__heading-logo {width: 100% !important;}
+.header {padding-top: 0.5rem !important;padding-bottom: 0.5rem !important;}
 }
-  .globo-swatch-product-detail .globo-detail-size-small.globo-detail-border-style-double{
-    font-size: 0 !important;
-  }
+  .product__title h1 {
+    font-size: 17.5px;
+}
 
 /* aoa styles */
 

@@ -49,35 +49,61 @@
             {% endunless %}
             .on-picture-text-container {
               width: 100%;
-              display: flex;
+              display: none;
               justify-content: {{ section.settings.on_image_text_align }};
               position: absolute;
               padding: 0 1.5rem;
               bottom: 1.5rem;
               z-index: 7;
             }
-            @media screen and (min-width: 750px) {
-              .on-picture-text-container {
-                display: none;
-              }
-            }
             .product__media-item.is-active .on-picture-text-container {
               display: flex;
+            }
+            .product__media-item.natural.is-active > .on-picture-text-container {
+              display: none;
+            }
+            .on-picture-text-container--natural {
+              width: 100%;
+              display: none!important;
+              justify-content: {{ section.settings.on_image_text_align_natural }};
+              position: absolute;
+              padding: 0 1.5rem;
+              bottom: 1.5rem;
+              z-index: 7;
+            }
+            .product__media-item.natural.is-active > .on-picture-text-container--natural {
+              display: flex!important;
             }
             .on-picture-text {
               display: none;
               width: max-content;
-              padding: .5rem;
+              padding: 1.5rem;
               color: {{ section.settings.on_picture_text_color }};
               font-size: {{ section.settings.on_image_text_size }}rem;
               font-weight: {{ section.settings.on_image_text_weight }};
-              word-break: break-all;
+              text-align: {{ section.settings.on_image_text_content_align }};
+              word-break: break-word;
               background: {{ section.settings.on_image_bk }};
+              line-height: normal;
+            }
+            .on-picture-text p {
+              margin: 0;
+            }
+            .on-picture-text--natural {
+              display: none;
+              width: max-content;
+              padding: .5rem;
+              color: {{ section.settings.on_picture_text_color_natural }};
+              font-size: {{ section.settings.on_image_text_size_natural }}rem;
+              font-weight: {{ section.settings.on_image_text_weight_natural }};
+              text-align: {{ section.settings.on_image_text_content_align_natural }};
+              word-break: break-word;
+              background: {{ section.settings.on_image_bk_natural }};
               line-height: normal;
             }
             .on-picture-text__close{
               position: absolute;
-              content: 'X';
+              content: '';
               display: flex;
               background: rgb(255 255 255);
               color: #000000;
@@ -89,6 +115,7 @@
               justify-content: center;
               align-items: center;
               line-height: 1;
+              cursor: pointer;
             }
             .on-picture-text__mobile-trigger {
               display: block;
@@ -100,19 +127,23 @@
               padding: .5rem 1rem;
               border-radius: 10rem;
               text-align: center;
+              cursor: pointer;
+            }
+            .on-picture-text__mobile-trigger--natural {
+              display: block;
+              color: {{ section.settings.on_picture_text_color_natural }};
+              font-size: {{ section.settings.on_image_text_size_natural }}rem;
+              font-weight: {{ section.settings.on_image_text_weight_natural }};
+              background: {{ section.settings.on_image_bk_natural }};
+              width: max-content;
+              padding: .5rem 1rem;
+              border-radius: 10rem;
+              text-align: center;
+              cursor: pointer;
             }
             @media screen and (min-width: 750px) {
-              .on-picture-text {
-                display: block;
-              }
-              .on-picture-text__mobile-trigger {
-                display: none;
-              }
               .on-picture-text-container {
                 bottom: 1.5rem;
-              }
-              .on-picture-text__close {
-                display: none;
               }
             }
             .on-picture-text__close > svg {
@@ -152,8 +183,21 @@
                 {%- assign media_position = 1 -%}
                 {% render 'product-thumbnail', media: featured_media, position: media_position, loop: section.settings.enable_video_looping, modal_id: section.id, xr_button: true, media_width: media_width, lazy_load: false %}
                 <div class="on-picture-text-container">
-                  <div class="on-picture-text">
-                    {{ section.settings.on_picture_text }}
+                  <div class="on-picture-text js-on-picture-text">
+                    {{ section.settings.on_picture_text | newline_to_br }}
+                    <span class="on-picture-text__close js-on-picture-close">{% render 'icon-close' %}</span>
+                  </div>
+                  <div class="on-picture-text__mobile-trigger js-on-image-text-mobile-trigger">
+                    {{ section.settings.on_picture_trigger_text | newline_to_br }}
+                  </div>
+                </div>
+                <div class="on-picture-text-container on-picture-text-container--natural">
+                  <div class="on-picture-text on-picture-text--natural js-on-picture-text">
+                    {{ section.settings.on_picture_text_natural | newline_to_br }}
+                    <span class="on-picture-text__close js-on-picture-close">{% render 'icon-close' %}</span>
+                  </div>
+                  <div class="on-picture-text__mobile-trigger on-picture-text__mobile-trigger--natural js-on-image-text-mobile-trigger">
+                    {{ section.settings.on_picture_trigger_text_natural | newline_to_br }}
                   </div>
                 </div>
               </li>
@@ -164,8 +208,21 @@
                   {%- assign media_position = media_position | default: 0 | plus: 1 -%}
                   {% render 'product-thumbnail', media: media, position: media_position, loop: section.settings.enable_video_looping, modal_id: section.id, xr_button: true, media_width: media_width, lazy_load: true %}
                   <div class="on-picture-text-container">
-                    <div class="on-picture-text">
-                      {{ section.settings.on_picture_text }}
+                    <div class="on-picture-text js-on-picture-text">
+                      {{ section.settings.on_picture_text | newline_to_br }}
+                      <span class="on-picture-text__close js-on-picture-close">{% render 'icon-close' %}</span>
+                    </div>
+                    <div class="on-picture-text__mobile-trigger js-on-image-text-mobile-trigger">
+                      {{ section.settings.on_picture_trigger_text | newline_to_br }}
+                    </div>
+                  </div>
+                  <div class="on-picture-text-container on-picture-text-container--natural">
+                    <div class="on-picture-text on-picture-text--natural js-on-picture-text">
+                      {{ section.settings.on_picture_text_natural | newline_to_br }}
+                      <span class="on-picture-text__close js-on-picture-close">{% render 'icon-close' %}</span>
+                    </div>
+                    <div class="on-picture-text__mobile-trigger on-picture-text__mobile-trigger--natural js-on-image-text-mobile-trigger">
+                      {{ section.settings.on_picture_trigger_text_natural | newline_to_br }}
                     </div>
                   </div>
                 </li>
