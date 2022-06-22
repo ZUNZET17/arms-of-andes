@@ -91,8 +91,6 @@
             }
             .on-picture-text--natural {
               display: none;
-              width: max-content;
-              padding: .5rem;
               color: {{ section.settings.on_picture_text_color_natural }};
               font-size: {{ section.settings.on_image_text_size_natural }}rem;
               font-weight: {{ section.settings.on_image_text_weight_natural }};
@@ -128,6 +126,9 @@
               border-radius: 10rem;
               text-align: center;
               cursor: pointer;
+              {% if section.settings.on_picture_trigger_text_underline %}
+              text-decoration: underline;
+              {% endif %}
             }
             .on-picture-text__mobile-trigger--natural {
               display: block;
@@ -140,6 +141,9 @@
               border-radius: 10rem;
               text-align: center;
               cursor: pointer;
+              {% if section.settings.on_picture_trigger_text_natural_underline %}
+              text-decoration: underline;
+              {% endif %}
             }
             @media screen and (min-width: 750px) {
               .on-picture-text-container {
@@ -910,6 +914,7 @@
                                         {% if option.selected_value == value %}checked{% endif %}
                                   >
                                   <label class="color-swatch__label swatch1{{-forloop.index}} js-color-label {% if forloop.index == 1 %}selected{% endif %}" for="{{ section.id }}-{{ option.position }}-{{ forloop.index0 }}" swatch-color="{{ value}}" group-number="1">
+                                    {% render 'icon-close' %}
                                     <span class="color-swatch__pin">{{value}}</span>
                                   </label>
                                 {% endif %}
@@ -996,6 +1001,7 @@
                                         {% if option.selected_value == value %}checked{% endif %}
                                   >
                                   <label class="color-swatch__label swatch2{{-forloop.index}} js-color-label" for="{{ section.id }}-{{ option.position }}-{{ forloop.index0 }}" swatch-color="{{ value }}" group-number="2">
+                                    {% render 'icon-close' %}
                                     <span class="color-swatch__pin">{{value}}</span>
                                   </label>
                                 {% endif %}
@@ -3886,10 +3892,22 @@
       "default": "Model Info"
     },
     {
+      "type": "checkbox",
+      "id": "on_picture_trigger_text_underline",
+      "label": "underline",
+      "default": false
+    },
+    {
       "type": "textarea",
       "id": "on_picture_trigger_text_natural",
       "label": "On picture mobile trigger button text for natural colors",
       "default": "Model Info Natural"
+    },
+    {
+      "type": "checkbox",
+      "id": "on_picture_trigger_text_natural_underline",
+      "label": "underline natural",
+      "default": false
     },
     {
       "type": "header",
