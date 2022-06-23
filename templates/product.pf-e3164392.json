@@ -14,7 +14,7 @@
             "text_family": "roboto",
             "text_style": "uppercase",
             "text_weight": "regular",
-            "text_size": 1,
+            "text_size": 1.1,
             "text_justify": "left"
           }
         },
@@ -36,15 +36,15 @@
         "variant_picker": {
           "type": "variant_picker",
           "settings": {
-            "swatches_padding_top": 0,
-            "swatches_padding_bottom": 3,
+            "swatches_padding_top": 1,
+            "swatches_padding_bottom": 3.3,
             "color_group_1_legend_padding_bottom": 0,
             "color_group_1_padding_top": 0,
             "color_group_1_padding_bottom": 0,
             "color_group_2_legend_padding_bottom": 0,
-            "color_group_2_padding_top": 0,
-            "color_group_2_padding_bottom": 2,
-            "sizes_options_header_padding_bottom": 0.9,
+            "color_group_2_padding_top": 0.8,
+            "color_group_2_padding_bottom": 2.5,
+            "sizes_options_header_padding_bottom": 1,
             "sizes_guide_size": 1,
             "sizes_guide_color": "",
             "sizes_guide_weight": "400",
@@ -53,15 +53,15 @@
             "color_group1_link": "",
             "color_group2_page": "",
             "color_group2_link": "",
-            "pop_up_alignment": false,
-            "pop_up_gap": 0,
-            "color_group_2_popup_title": "",
+            "pop_up_alignment": true,
+            "pop_up_gap": 1.7,
+            "color_group_2_popup_title": "Why are they different?",
             "color_group_2_popup_title_family": "default",
             "color_group2_page2": "",
             "color_group2_page2_link": "",
             "size_guide_text": "Size Guide",
             "size_guide_text_family": "default",
-            "size_guide_page": "men-size-chart-upper-layer",
+            "size_guide_page": "fiber-comparison-chart",
             "size_guide_link": "",
             "swatch_display": "circle",
             "legend_size": 1.2,
@@ -71,14 +71,14 @@
             "sizes_legend_size": 1.2,
             "sizes_legend_weight": "400",
             "swatch_size": 3,
-            "group_1_title": "",
+            "group_1_title": "Low Impact Dyes:",
             "group_1_title_family": "default",
             "group1_legend_color": "",
-            "color-11": false,
+            "color-11": true,
             "swatch11": "#5e6064",
-            "color-12": false,
+            "color-12": true,
             "swatch12": "#161f39",
-            "color-13": false,
+            "color-13": true,
             "swatch13": "#446489",
             "color-14": false,
             "swatch14": "#e1e0da",
@@ -94,20 +94,20 @@
             "swatch19": "#000000",
             "color-110": false,
             "swatch110": "#000000",
-            "group_2_title": "Low Impact Dyes:",
+            "group_2_title": "Natural Dyes:",
             "group_2_title_family": "default",
             "group2_legend_color": "",
-            "color-21": true,
+            "color-21": false,
             "swatch21": "#000000",
-            "color-22": true,
-            "swatch22": "#5e6064",
-            "color-23": true,
-            "swatch23": "#161f39",
+            "color-22": false,
+            "swatch22": "#000000",
+            "color-23": false,
+            "swatch23": "#446489",
             "color-24": true,
-            "swatch24": "#ffffff",
-            "color-25": false,
+            "swatch24": "#e1e0da",
+            "color-25": true,
             "swatch25": "#000000",
-            "color-26": false,
+            "color-26": true,
             "swatch26": "#81807e",
             "color-27": false,
             "swatch27": "#000000",
@@ -136,7 +136,6 @@
         },
         "tabs": {
           "type": "tabs",
-          "disabled": true,
           "settings": {
             "hide_mobile": false,
             "border_on": false,
@@ -221,17 +220,16 @@
         },
         "collapsible-row-0": {
           "type": "collapsible_tab",
-          "disabled": true,
           "settings": {
             "hide_mobile": false,
-            "heading": "Product Details",
+            "heading": "Shipping & Returns",
             "accordion_title_size": 1.3,
             "accordion_title_weight": "400",
             "accordion_title_family": "default",
             "accordion_title_color": "",
             "accordion_title_align": "left",
             "icon": "none",
-            "content": "<p>• Regular Fit<\/p><p>• Model is 6'1\", has 34\" chest and 32\" hips<\/p>",
+            "content": "<p>Free <a href=\"\/pages\/shipping-and-returns\" target=\"_blank\" title=\"Shipping & Return Policy\">Shipping & Returns<\/a> on all U.S. orders.<\/p>",
             "accordion_content_size": 1.3,
             "accordion_content_weight": "400",
             "accordion_content_family": "default",
@@ -245,15 +243,35 @@
           "disabled": true,
           "settings": {
             "hide_mobile": false,
-            "heading": "Fabric Care",
+            "heading": "Size & Fit",
             "accordion_title_size": 1.3,
             "accordion_title_weight": "400",
             "accordion_title_family": "default",
             "accordion_title_color": "",
             "accordion_title_align": "left",
             "icon": "none",
-            "content": "<p>• Machine wash cold<br\/>• Tumble dry low<\/p>",
+            "content": "<p>• Model <br\/>• Tumble dry low<\/p>",
             "accordion_content_size": 1.3,
+            "accordion_content_weight": "400",
+            "accordion_content_family": "default",
+            "accordion_content_color": "",
+            "accordion_content_align": "left",
+            "page": ""
+          }
+        },
+        "fd8f76a4-1ff6-4660-a377-0acd0e9ea048": {
+          "type": "collapsible_tab",
+          "settings": {
+            "hide_mobile": false,
+            "heading": "Fabric Care",
+            "accordion_title_size": 1.5,
+            "accordion_title_weight": "400",
+            "accordion_title_family": "default",
+            "accordion_title_color": "",
+            "accordion_title_align": "left",
+            "icon": "check_mark",
+            "content": "",
+            "accordion_content_size": 1.5,
             "accordion_content_weight": "400",
             "accordion_content_family": "default",
             "accordion_content_color": "",
@@ -271,7 +289,8 @@
         "buy_buttons",
         "tabs",
         "collapsible-row-0",
-        "collapsible-row-3"
+        "collapsible-row-3",
+        "fd8f76a4-1ff6-4660-a377-0acd0e9ea048"
       ],
       "settings": {
         "enable_sticky_info": true,
@@ -329,41 +348,11 @@
       "type": "pf-e3164392",
       "settings": {
       }
-    },
-    "1652126468d1cb395f": {
-      "type": "rich-text",
-      "disabled": true,
-      "blocks": {
-        "16521264688fdd6954-0": {
-          "type": "heading",
-          "settings": {
-            "heading": "THE BEST THERMAL SOCKS",
-            "heading_size": "h2"
-          }
-        },
-        "16521264688fdd6954-1": {
-          "type": "text",
-          "settings": {
-            "text": "<p>Our thermal wool socks were designed to go the extra mile ensuring your comfort on your outdoor adventures. Made with soft and durable alpaca wool blend, these socks are highly moisture-wicking, anti-bacterial and odor resistant, which makes them ideal for long hikes and running. Alpaca wool socks are the perfect option for any outdoor activities as they keep your feet dry and warm in all conditions year-round.<\/p>"
-          }
-        }
-      },
-      "block_order": [
-        "16521264688fdd6954-0",
-        "16521264688fdd6954-1"
-      ],
-      "settings": {
-        "color_scheme": "accent-1",
-        "full_width": false,
-        "padding_top": 68,
-        "padding_bottom": 52
-      }
     }
   },
   "order": [
     "main",
     "product-recommendations",
-    "pf-e3164392",
-    "1652126468d1cb395f"
+    "pf-e3164392"
   ]
 }

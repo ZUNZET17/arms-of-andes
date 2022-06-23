@@ -56,7 +56,7 @@
           "settings": {
             "heading": "Shipping & Returns",
             "icon": "none",
-            "content": "<p>Free Shipping & Returns on all U.S. orders.<\/p>",
+            "content": "<p>Free <a href=\"\/pages\/shipping-and-returns\" target=\"_blank\" title=\"Shipping & Return Policy\">Shipping & Returns<\/a> on all U.S. orders.<\/p>",
             "page": ""
           }
         }
