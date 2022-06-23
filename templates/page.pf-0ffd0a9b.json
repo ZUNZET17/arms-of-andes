@@ -1,1 +1,13 @@
-{"sections":{"pf-0ffd0a9b":{"type":"pf-0ffd0a9b","settings":{}}},"order":["pf-0ffd0a9b"]}
+{
+  "sections": {
+    "pf-0ffd0a9b": {
+      "type": "pf-0ffd0a9b",
+      "settings": {
+      }
+    }
+  },
+  "order": [
+    "pf-0ffd0a9b"
+  ],
+  "layout": "theme.pagefly"
+}
