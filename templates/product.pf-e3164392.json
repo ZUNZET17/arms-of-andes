@@ -21,7 +21,7 @@
         "title": {
           "type": "title",
           "settings": {
-            "title_weight": "regular",
+            "title_weight": "medium",
             "title_color": "",
             "title_size": 1.7,
             "title_justify": "left"
@@ -55,9 +55,9 @@
             "color_group2_link": "",
             "pop_up_alignment": true,
             "pop_up_gap": 1.7,
-            "color_group_2_popup_title": "Why are they different?",
+            "color_group_2_popup_title": "Why Are They Different?",
             "color_group_2_popup_title_family": "default",
-            "color_group2_page2": "",
+            "color_group2_page2": "leave-no-trace-apparel",
             "color_group2_page2_link": "",
             "size_guide_text": "Size Guide",
             "size_guide_text_family": "default",
