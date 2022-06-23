@@ -40,13 +40,18 @@
             {{ "accessibility.skip_to_product_info" | t }}
           </a>
           {% style %}
-            {% unless section.settings.grid_display %}
+            {% if section.settings.grid_display %}
+              .product__media-list .product__media-item:first-child,
+              .product__media-list .product__media-item--full {
+                max-width: calc(50% - var(--grid-desktop-horizontal-spacing) / 2);
+              }
+            {% else %}
               .product__media-list .product__media-item:first-child,
               .product__media-list .product__media-item--full {
                 width: 100%;
                 max-width: 100%;
               }
-            {% endunless %}
+            {% endif %}
             .on-picture-text-container {
               width: 100%;
               display: none;
@@ -164,7 +169,8 @@
               bottom: 4rem;
             }
             {% endif %}
-          {% endstyle %}          
+          {% endstyle %}
+          <input class="js-zoom-image-amount" type="hidden" x-amount="{{ section.settings.zoom_thumb_amount }}">          
           <ul id="Slider-Gallery-{{ section.id }}" class="product__media-list contains-media grid grid--peek list-unstyled slider slider--mobile" role="list">
             {%- liquid
               assign variant_images = product.images | where: 'attached_to_variant?', true | map: 'src'
@@ -183,9 +189,9 @@
             -%}
             {%- if product.selected_or_first_available_variant.featured_media != null -%}
               {%- assign featured_media = product.selected_or_first_available_variant.featured_media -%}
-              <li style="position: relative; display:block"  id="Slide-{{ section.id }}-{{ featured_media.id }}" class="{% if featured_media.alt contains 'natural' %}natural{% endif %} product__media-item grid__item slider__slide is-active{% if featured_media.media_type != 'image' %} product__media-item--full{% endif %}{% if section.settings.hide_variants and variant_images contains featured_media.src %} product__media-item--variant{% endif %}" data-media-id="{{ section.id }}-{{ featured_media.id }}" media-alt="{{ featured_media.alt }}">
+              <li style="position: relative; display:block"  id="Slide-{{ section.id }}-{{ featured_media.id }}" class="js-zoom-thumb zoom-thumb {% if featured_media.alt contains 'natural' %}natural{% endif %} product__media-item grid__item slider__slide is-active{% if featured_media.media_type != 'image' %} product__media-item--full{% endif %}{% if section.settings.hide_variants and variant_images contains featured_media.src %} product__media-item--variant{% endif %}" data-media-id="{{ section.id }}-{{ featured_media.id }}" media-alt="{{ featured_media.alt }}">
                 {%- assign media_position = 1 -%}
-                {% render 'product-thumbnail', media: featured_media, position: media_position, loop: section.settings.enable_video_looping, modal_id: section.id, xr_button: true, media_width: media_width, lazy_load: false %}
+                {% render 'product-thumbnail', media: featured_media, position: media_position, loop: section.settings.enable_video_looping, modal_id: section.id, xr_button: true, media_width: media_width, lazy_load: false %}              
                 <div class="on-picture-text-container">
                   <div class="on-picture-text js-on-picture-text">
                     {{ section.settings.on_picture_text | newline_to_br }}
@@ -204,6 +210,28 @@
                     {{ section.settings.on_picture_trigger_text_natural | newline_to_br }}
                   </div>
                 </div>
+                {%- if featured_media.media_type == 'image' -%}
+                  <img
+                    class="global-media-settings global-media-settings--no-shadow zoom-image js-zoom-image"
+                      srcset="{%- if featured_media.preview_image.width >= 550 -%}{{ featured_media.preview_image | image_url: width: 550 }} 550w,{%- endif -%}
+                              {%- if featured_media.preview_image.width >= 1100 -%}{{ featured_media.preview_image | image_url: width: 1100 }} 1100w,{%- endif -%}
+                              {%- if featured_media.preview_image.width >= 1445 -%}{{ featured_media.preview_image | image_url: width: 1445 }} 1445w,{%- endif -%}
+                              {%- if featured_media.preview_image.width >= 1680 -%}{{ featured_media.preview_image | image_url: width: 1680 }} 1680w,{%- endif -%}
+                              {%- if featured_media.preview_image.width >= 2048 -%}{{ featured_media.preview_image | image_url: width: 2048 }} 2048w,{%- endif -%}
+                              {%- if featured_media.preview_image.width >= 2200 -%}{{ featured_media.preview_image | image_url: width: 2200 }} 2200w,{%- endif -%}
+                              {%- if featured_media.preview_image.width >= 2890 -%}{{ featured_media.preview_image | image_url: width: 2890 }} 2890w,{%- endif -%}
+                              {%- if featured_media.preview_image.width >= 4096 -%}{{ featured_media.preview_image | image_url: width: 4096 }} 4096w,{%- endif -%}
+                              {{ featured_media.preview_image | image_url }} {{ featured_media.preview_image.width }}w"
+                      sizes="(min-width: 750px) calc(100vw - 22rem), 1100px"
+                      src="{{ featured_media.preview_image | image_url: width: 1445 }}"
+                      alt="{{ featured_media.alt | escape }}"
+                      loading="lazy"
+                      width="1100"
+                      height="{{ 1100 | divided_by: featured_media.preview_image.aspect_ratio | ceil }}"
+                      data-media-id="{{ featured_media.id }}"
+                      {% if variant_image %}class="product__media-item--variant"{% endif %}
+                    >
+                {%- endif -%}  
               </li>
             {%- endif -%}
             {%- for media in product.media -%}
@@ -211,6 +239,28 @@
                 <li id="Slide-{{ section.id }}-{{ media.id }}" class="{% if media.alt contains 'natural' %}natural{% endif %} product__media-item grid__item slider__slide{% if product.selected_or_first_available_variant.featured_media == null and forloop.index == 1 %} is-active{% endif %}{% if media.media_type != 'image' %} product__media-item--full{% endif %}{% if section.settings.hide_variants and variant_images contains media.src %} product__media-item--variant{% endif %}" data-media-id="{{ section.id }}-{{ media.id }}" style="position: relative; display: none" media-alt="{{ media.alt }}">
                   {%- assign media_position = media_position | default: 0 | plus: 1 -%}
                   {% render 'product-thumbnail', media: media, position: media_position, loop: section.settings.enable_video_looping, modal_id: section.id, xr_button: true, media_width: media_width, lazy_load: true %}
+                  {%- if media.media_type == 'image' -%}
+                  <img
+                    class="global-media-settings global-media-settings--no-shadow zoom-image js-zoom-image"
+                      srcset="{%- if media.preview_image.width >= 550 -%}{{ media.preview_image | image_url: width: 550 }} 550w,{%- endif -%}
+                              {%- if media.preview_image.width >= 1100 -%}{{ media.preview_image | image_url: width: 1100 }} 1100w,{%- endif -%}
+                              {%- if media.preview_image.width >= 1445 -%}{{ media.preview_image | image_url: width: 1445 }} 1445w,{%- endif -%}
+                              {%- if media.preview_image.width >= 1680 -%}{{ media.preview_image | image_url: width: 1680 }} 1680w,{%- endif -%}
+                              {%- if media.preview_image.width >= 2048 -%}{{ media.preview_image | image_url: width: 2048 }} 2048w,{%- endif -%}
+                              {%- if media.preview_image.width >= 2200 -%}{{ media.preview_image | image_url: width: 2200 }} 2200w,{%- endif -%}
+                              {%- if media.preview_image.width >= 2890 -%}{{ media.preview_image | image_url: width: 2890 }} 2890w,{%- endif -%}
+                              {%- if media.preview_image.width >= 4096 -%}{{ media.preview_image | image_url: width: 4096 }} 4096w,{%- endif -%}
+                              {{ media.preview_image | image_url }} {{ media.preview_image.width }}w"
+                      sizes="(min-width: 750px) calc(100vw - 22rem), 1100px"
+                      src="{{ media.preview_image | image_url: width: 1445 }}"
+                      alt="{{ media.alt | escape }}"
+                      loading="lazy"
+                      width="1100"
+                      height="{{ 1100 | divided_by: media.preview_image.aspect_ratio | ceil }}"
+                      data-media-id="{{ media.id }}"
+                      {% if variant_image %}class="product__media-item--variant"{% endif %}
+                    >
+                {%- endif -%}                  
                   <div class="on-picture-text-container">
                     <div class="on-picture-text js-on-picture-text">
                       {{ section.settings.on_picture_text }}
@@ -419,6 +469,12 @@
               font-weight: {{ title_weight -}};
               text-align: {{ block.settings.title_justify }};
             }
+            .product__subtitle {
+              color: {{ block.settings.subtitle_color }};
+              font-size: {{ block.settings.subtitle_size -}}rem;
+              font-weight: {{ title_weight -}};
+              text-align: {{ block.settings.subtitle_justify }};
+            }            
           {% endstyle %}
             <div class="product__title" {{ block.shopify_attributes }}>
               {% assign product_title = product.title | split: ": " %}
@@ -1357,6 +1413,52 @@
     xs.forEach(x => {
       x.addEventListener('click', triggerProductInfo, false)
     })
+
+    let wasClicked = false;
+
+    function updateCords (ev) {
+        const input = ev.target;
+        const inputHeight = input.offsetHeight;
+        const inputWidth = input.offsetWidth;
+        let xCord = (100 - (ev.offsetX / inputHeight * 100)) + '%';
+        let yCord = ((ev.offsetY / inputWidth * 100)) + '%';
+        const zoomedImg = Array.from(input.children).filter(c => c.tagName == 'IMG')[0]         
+
+        console.log(input.offsetHeight, input.offsetWidth)
+        console.log(xCord, '-'+yCord)
+        zoomedImg.style.transform = `translate(${xCord}, -${yCord})`
+
+        input.onmouseleave = () => {
+          zoomedImg.style.transform = 'translate(50%, -50%)'
+          input.removeEventListener('mousemove', updateCords)
+          zoomedImg.style.display = 'none'
+          console.log('zunzet')
+      }
+    }
+
+    const zoomThumbs = (ev) => {
+      wasClicked = true;
+      const input = ev.target;
+      const inputHeight = input.offsetHeight;
+      const inputWidth = input.offsetWidth;
+      const zoomAmount = document.querySelector('.js-zoom-image-amount').getAttribute('x-amount')
+      const zoomedImg = Array.from(input.children).filter(c => c.tagName == 'IMG')[0]
+      console.log('zoomThumbs')
+      console.log(zoomedImg)
+      zoomedImg.style.display = 'block'
+      zoomedImg.style.height = `${Number(inputHeight) * Number(zoomAmount)}px`
+      zoomedImg.style.width = `${Number(inputWidth) * Number(zoomAmount)}px`
+      console.log('newHeight', Number(inputHeight) * Number(zoomAmount), 'newWidth', Number(inputWidth) * Number(zoomAmount))
+
+      if (wasClicked) {
+        input.addEventListener('mousemove', updateCords)
+      }
+    }
+
+    const thumbsArr = Array.from(document.querySelectorAll('.js-zoom-thumb'));
+    thumbsArr.forEach(t => {
+      t.addEventListener('click', zoomThumbs)
+    })
   </script>
 
   <script type="application/ld+json">
@@ -1588,7 +1690,61 @@
               "label": "Right"
             }
           ]
-        }
+        },
+        {
+          "type": "select",
+          "id": "subtitle_weight",
+          "label": "Title weight",
+          "options": [
+            {
+              "value": "400",
+              "label": "Regular"
+            },
+            {
+              "value": "500",
+              "label": "Medium"
+            },
+            {
+              "value": "700",
+              "label": "Bold"
+            }
+          ],
+          "default": "400"
+        },
+        {
+          "type": "color",
+          "id": "subtitle_color",
+          "label": "Color"
+        },
+        {
+          "type": "range",
+          "id": "subtitle_size",
+          "label": "Title_size",
+          "min": 1,
+          "max": 5,
+          "step": 0.1,
+          "default": 1.7,
+          "unit": "rem"
+        },
+        {
+          "type": "select",
+          "id": "subtitle_justify",
+          "label": "Title justify",
+          "options": [
+            {
+              "value": "left",
+              "label": "Left"
+            },
+            {
+              "value": "center",
+              "label": "Center"
+            },
+            {
+              "value": "right",
+              "label": "Right"
+            }
+          ]
+        }        
       ]
     },
     {
@@ -3696,6 +3852,20 @@
       "id": "bc_is_uppercase",
       "label": "Breadcrumbs uppercase",
       "default": false
+    },
+    {
+      "type": "header",
+      "content": "Zoom Thumbnails Options"
+    },
+    {
+      "type": "range",
+      "id": "zoom_thumb_amount",
+      "label": "Zoom amount",
+      "min": 1,
+      "max": 5,
+      "step": 0.5,
+      "default": 1,
+      "unit": "X"
     },
     {
       "type": "header",

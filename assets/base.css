@@ -3127,3 +3127,23 @@ details-disclosure > details {
   .roboto {
     font-family: 'Roboto Mono', monospace;
   }
+
+  /* Zoom Image */
+  
+  .zoom-thumb modal-opener{
+    pointer-events: none;
+  }
+  .js-zoom-thumb {
+    overflow: hidden;
+  }
+  .product__media-item > .zoom-image {
+    display: none;
+    position: absolute!important;
+    transform: translate(50%, -50%);
+    width: 750px;
+    height: 750px;
+    top: 50%;
+    right: 50%;
+    transform-origin: 50% 50%;
+    pointer-events: none;
+  }
