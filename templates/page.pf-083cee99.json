@@ -1,1 +1,13 @@
-{"sections":{"pf-083cee99":{"type":"pf-083cee99","settings":{}}},"order":["pf-083cee99"]}
+{
+  "sections": {
+    "pf-083cee99": {
+      "type": "pf-083cee99",
+      "settings": {
+      }
+    }
+  },
+  "order": [
+    "pf-083cee99"
+  ],
+  "layout": "theme.pagefly"
+}
