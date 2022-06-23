@@ -36,20 +36,20 @@
         "variant_picker": {
           "type": "variant_picker",
           "settings": {
-            "swatches_padding_top": 1,
-            "swatches_padding_bottom": 3.3,
-            "color_group_1_legend_padding_bottom": 0,
-            "color_group_1_padding_top": 0,
-            "color_group_1_padding_bottom": 0,
-            "color_group_2_legend_padding_bottom": 0,
-            "color_group_2_padding_top": 0.8,
+            "swatches_padding_top": 2.9,
+            "swatches_padding_bottom": 2.9,
+            "color_group_1_legend_padding_bottom": 2.7,
+            "color_group_1_padding_top": 2.7,
+            "color_group_1_padding_bottom": 2.8,
+            "color_group_2_legend_padding_bottom": 2.6,
+            "color_group_2_padding_top": 2.5,
             "color_group_2_padding_bottom": 2.5,
-            "sizes_options_header_padding_bottom": 1,
-            "sizes_guide_size": 1,
+            "sizes_options_header_padding_bottom": 2.6,
+            "sizes_guide_size": 2.6,
             "sizes_guide_color": "",
             "sizes_guide_weight": "400",
             "sizes_guide_underline": true,
-            "color_group1_page": "sizing-chart-men-bottoms",
+            "color_group1_page": "",
             "color_group1_link": "",
             "color_group2_page": "",
             "color_group2_link": "",
@@ -61,24 +61,24 @@
             "color_group2_page2_link": "",
             "size_guide_text": "Size Guide",
             "size_guide_text_family": "default",
-            "size_guide_page": "fiber-comparison-chart",
+            "size_guide_page": "",
             "size_guide_link": "",
             "swatch_display": "circle",
-            "legend_size": 1.2,
+            "legend_size": 2,
             "legend_weight": "regular",
-            "color_group2_page2_size": 1.2,
+            "color_group2_page2_size": 2,
             "color_group2_page2_weight": "400",
-            "sizes_legend_size": 1.2,
+            "sizes_legend_size": 2.1,
             "sizes_legend_weight": "400",
             "swatch_size": 3,
             "group_1_title": "Low Impact Dyes:",
             "group_1_title_family": "default",
             "group1_legend_color": "",
-            "color-11": true,
+            "color-11": false,
             "swatch11": "#5e6064",
-            "color-12": true,
+            "color-12": false,
             "swatch12": "#161f39",
-            "color-13": true,
+            "color-13": false,
             "swatch13": "#446489",
             "color-14": false,
             "swatch14": "#e1e0da",
@@ -103,11 +103,11 @@
             "swatch22": "#000000",
             "color-23": false,
             "swatch23": "#446489",
-            "color-24": true,
+            "color-24": false,
             "swatch24": "#e1e0da",
-            "color-25": true,
+            "color-25": false,
             "swatch25": "#000000",
-            "color-26": true,
+            "color-26": false,
             "swatch26": "#81807e",
             "color-27": false,
             "swatch27": "#000000",
@@ -117,7 +117,7 @@
             "swatch29": "#000000",
             "color-210": false,
             "swatch210": "#000000",
-            "picker_type": "button"
+            "picker_type": "dropdown"
           }
         },
         "quantity_selector": {
@@ -136,6 +136,7 @@
         },
         "tabs": {
           "type": "tabs",
+          "disabled": true,
           "settings": {
             "hide_mobile": false,
             "border_on": false,
@@ -220,6 +221,7 @@
         },
         "collapsible-row-0": {
           "type": "collapsible_tab",
+          "disabled": true,
           "settings": {
             "hide_mobile": false,
             "heading": "Shipping & Returns",
@@ -261,6 +263,7 @@
         },
         "fd8f76a4-1ff6-4660-a377-0acd0e9ea048": {
           "type": "collapsible_tab",
+          "disabled": true,
           "settings": {
             "hide_mobile": false,
             "heading": "Fabric Care",
@@ -328,6 +331,7 @@
     },
     "image-with-text": {
       "type": "image-with-text",
+      "disabled": true,
       "blocks": {
         "image-with-text-0": {
           "type": "heading",
