@@ -1,0 +1,13 @@
+{
+  "sections": {
+    "pf-bbe0d008": {
+      "type": "pf-bbe0d008",
+      "settings": {
+      }
+    }
+  },
+  "order": [
+    "pf-bbe0d008"
+  ],
+  "layout": "theme.pagefly"
+}
