@@ -191,7 +191,6 @@
     {% endstyle %}
 
     {{ 'base.css' | asset_url | stylesheet_tag }}
-    {{ 'image-zoom.css' | asset_url | stylesheet_tag }}
 
     {%- unless settings.type_body_font.system? -%}
       <link rel="preload" as="font" href="{{ settings.type_body_font | font_url }}" type="font/woff2" crossorigin>
@@ -211,7 +210,6 @@
     </script>
   <script>var scaaffCheck = false;</script>
 {{ 'sca_affiliate.js' | asset_url | script_tag }}
-{{ 'jquery.min.js' | asset_utl | script_tag }}
 
   {% render 'qikify-apps' %}
 {% include 'analyzify-gtm-body' %}
