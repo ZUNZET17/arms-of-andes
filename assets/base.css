@@ -1,4 +1,5 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
 
 /* Color custom properties */
 
@@ -3114,6 +3115,10 @@ details-disclosure > details {
     border: var(--variant-pills-border-width) solid rgba(var(--color-foreground), var(--variant-pills-border-opacity));
   }
 
+  .text-block {
+    line-height: 1;
+  }
+
   .text-block p {
     margin: 0!Important;
   }
@@ -3126,6 +3131,10 @@ details-disclosure > details {
 
   .roboto {
     font-family: 'Roboto Mono', monospace;
+  }
+
+  .poppins {
+    font-family: 'Poppins', sans-serif;
   }
 
   /* Zoom Image */

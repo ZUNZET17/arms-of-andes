@@ -431,18 +431,9 @@
             {% render block %}
           {%- when 'text' -%}
           {% style %}
-            {% liquid
-              case block.settings.text_weight
-                when "medium"
-                  assign textWeight = 500
-                when "bold"
-                  assign text_weight = 700
-                else
-                  assign text_weight = 400
-            endcase %}
             .text-block-{{-block.id-}} {
               font-size: {{ block.settings.text_size -}}rem;
-              font-weight: {{- text_weight -}};
+              font-weight: {{- block.settings.text_weight -}};
               text-align: {{- block.settings.text_justify -}};
               padding-top: {{- block.settings.padding_top -}}rem;
               padding-bottom: {{- block.settings.padding_bottom -}}rem;
@@ -459,20 +450,11 @@
               {{- block.settings.text -}}
             </div>
           {%- when 'title' -%}
-          {% liquid
-            case block.settings.title_weight
-              when 'medium'
-                assign title_weight = 500
-              when 'bold'
-                assign title_weight = 700
-              else
-                assign title_weight = 400
-          endcase %}
           {% style %}
             .product__title h1 {
               color: {{ block.settings.title_color }};
               font-size: {{ block.settings.title_size -}}rem;
-              font-weight: {{ title_weight -}};
+              font-weight: {{ block.settings.title_weight -}};
               text-align: {{ block.settings.title_justify }};
             }
             .product__subtitle {
@@ -916,16 +898,16 @@
                       {% if option.name == 'Color' %}
                         <fieldset class="js product-form__input color-swatches">
                           <div class="color-group color-group--1">
-                            <modal-opener class="product-popup-modal__opener no-js-hidden quick-add-hidden" data-modal="#PopupModal-{{- block.settings.group_1_title | remove: ' ' -}}" {{ block.shopify_attributes }}>
+                            <modal-opener {% if block.settings.color_group1_page %}style="pointer-events: none"{% endif %}  class="product-popup-modal__opener no-js-hidden quick-add-hidden" data-modal="#PopupModal-{{- block.settings.group_1_title | remove: ' ' -}}" {{ block.shopify_attributes }}>
                               {% assign pageId = block.settings.color_group1_page.template_suffix %}
                               {% style %}
                                 .color-group-legend-1{
                                   padding-bottom: {{ block.settings.color_group_1_legend_padding_bottom -}}rem;
                                 }
                               {% endstyle %}
-                              <{% if pageId %}button{% else %}a{% endif %} id="ProductPopup-{{ block.id }}" class="product-popup-modal__button link color-group-legend-btn js-pop-up-button" type="button" aria-haspopup="dialog" page-id="{{pageId}}">
-                                <legend class="form__label color-group-legend color-group-legend-1 {{ block.settings.group_1_title_family }}">{{ block.settings.group_1_title }}: <span id="js-color-group-title1" class="js-color-group-title color-group-title"></span></legend>
-                              </{% if pageId %}button{% else %}a{% endif %}>
+                            <{% if pageId %}button{% else %}a{% endif %} role="button" id="ProductPopup-{{ block.id }}" href="{{ block.settings.color_group1_link }}" target="_blank" class="product-popup-modal__button link color-group-legend-btn {% if pageId %}js-pop-up-button{% endif %}" type="button" aria-haspopup="dialog" page-id="{{pageId}}">
+                              <legend class="form__label color-group-legend color-group-legend-1 {{ block.settings.group_1_title_family }}" >{{ block.settings.group_1_title }} <span id="js-color-group-title1" class="js-color-group-title color-group-title"></span></legend>
+                            </{% if pageId %}button{% else %}a{% endif %}>
                             </modal-opener>
                             <modal-dialog id="PopupModal-{{- block.settings.group_1_title | remove: ' ' -}}" class="product-popup-modal" {{ block.shopify_attributes }}>
                               <div role="dialog" aria-label="{{ block.settings.text }}" aria-modal="true" class="product-popup-modal__content" tabindex="-1">
@@ -999,7 +981,7 @@
                             }
                           {% endstyle %}                            
                             <div class="color-options-2__header">
-                              <modal-opener class="product-popup-modal__opener no-js-hidden quick-add-hidden" data-modal="#PopupModal-{{- block.settings.group_2_title | remove: " " -}}" {{ block.shopify_attributes }}>
+                              <modal-opener {% if block.settings.color_group2_page %}style="pointer-events: none"{% endif %} class="product-popup-modal__opener no-js-hidden quick-add-hidden" data-modal="#PopupModal-{{- block.settings.group_2_title | remove: " " -}}" {{ block.shopify_attributes }}>
                                 {% assign pageId2 = block.settings.color_group2_page.template_suffix %}
                                 <{% if pageId2 %}button{% else %}a{% endif %} role="button" id="ProductPopup-{{ block.id }}" href="{{block.settings.color_group2_link}}" target="_blank" class="product-popup-modal__button link color-group-legend-btn {% if pageId2 %}js-pop-up-button{% endif %}" type="button" aria-haspopup="dialog" page-id="{{pageId2}}">
                                   <legend class="form__label color-group-legend color-group-legend-2 {{ block.settings.group_2_title_family }}">{{ block.settings.group_2_title }} <span id="js-color-group-title2" class="js-color-group-title color-group-title"></span></legend>
@@ -1018,7 +1000,7 @@
                                   </div>
                                 </div>
                               </modal-dialog>
-                              <modal-opener class="product-popup-modal__opener no-js-hidden quick-add-hidden sizes-guide-opener" data-modal="#PopupModal-{{ block.settings.color_group_2_popup_title | replace: " ", "" | replace: '?', '' }}" {{ block.shopify_attributes }}>
+                              <modal-opener {% if block.settings.color_group2_page2 %}style="pointer-events: none"{% endif %} class="product-popup-modal__opener no-js-hidden quick-add-hidden sizes-guide-opener" data-modal="#PopupModal-{{ block.settings.color_group_2_popup_title | replace: " ", "" | replace: '?', '' }}" {{ block.shopify_attributes }}>
                                 {% assign pageId22 = block.settings.color_group2_page2.template_suffix %}
                                 <{% if pageId22 %}button{% else %}a{% endif %} id="ProductPopup-{{ block.id }}" href="{{ block.settings.color_group2_page2_link }}" target="_blank" class="product-popup-modal__button link color-group2-page2-legend {% if pageId22 %}js-pop-up-button{% endif %} sizes-guide {{ block.settings.color_group_2_popup_title_family }}" type="button" aria-haspopup="dialog" page-id="{{pageId22}}">{{ block.settings.color_group_2_popup_title | default: block.settings.page.title }}</{% if pageId22 %}button{% else %}a{% endif %}>
                               </modal-opener>
@@ -1094,7 +1076,7 @@
                           <div class="sizes-options__header">
                             <legend class="form__label sizes-legend">{{ option.name }}</legend>
                             {% assign pageId3 = block.settings.size_guide_page.template_suffix %}
-                            <modal-opener class="product-popup-modal__opener no-js-hidden quick-add-hidden sizes-guide-opener" data-modal="#PopupModal-{{ block.settings.size_guide_text | replace: " ", "" }}" {{ block.shopify_attributes }}>
+                            <modal-opener {% if block.settings.size_guide_page %}style="pointer-events: none"{% endif %} class="product-popup-modal__opener no-js-hidden quick-add-hidden sizes-guide-opener" data-modal="#PopupModal-{{ block.settings.size_guide_text | replace: " ", "" }}" {{ block.shopify_attributes }}>
                               <{% if pageId3 %}button{% else %}a{% endif %} id="ProductPopup-{{ block.id }}" class="product-popup-modal__button link js-pop-up-button sizes-guide {{ block.settings.size_guide_text_family }}" type="button" aria-haspopup="dialog" page-id="{{pageId3}}">{{ block.settings.size_guide_text | default: block.settings.page.title }}</{% if pageId3 %}button{% else %}a{% endif %}>
                             </modal-opener>
                             <modal-dialog id="PopupModal-{{ block.settings.size_guide_text | replace: " ", "" }}" class="product-popup-modal" {{ block.shopify_attributes }}>
@@ -1121,7 +1103,6 @@
                               >
                               <label class="product-size-label js-product-size-label" for="{{ section.id }}-{{ option.position }}-{{ forloop.index0 }}">
                                 {{ value }}
-                                <span class="color-swatch__pin">{{value}}</span>
                               </label>
                             {%- endfor -%}
                           </div>
@@ -1561,6 +1542,10 @@
             {
               "value": "roboto",
               "label": "Roboto"
+            },
+            {
+              "value": "poppins",
+              "label": "Poppins"
             }
           ],
           "default": "default"
@@ -1591,15 +1576,19 @@
           "label": "Text weight",
           "options":[
             {
-              "value": "regular",
+              "value": "400",
               "label": "regular"
             },
             {
-              "value": "medium",
+              "value": "500",
               "label":"Medium"
             },
             {
-              "value":"bold",
+              "value": "600",
+              "label": "Semibold"
+            },
+            {
+              "value":"700",
               "label":"Bold"
             }
           ]
@@ -1646,15 +1635,19 @@
           "label": "Title weight",
           "options": [
             {
-              "value": "regular",
+              "value": "400",
               "label": "Regular"
             },
             {
-              "value": "medium",
+              "value": "500",
               "label": "Medium"
             },
             {
-              "value": "bold",
+              "value": "600",
+              "label": "Semibold"
+            },
+            {
+              "value": "700",
               "label": "Bold"
             }
           ]
@@ -1705,6 +1698,10 @@
             {
               "value": "500",
               "label": "Medium"
+            },
+            {
+              "value":"600",
+              "label": "Semibold"
             },
             {
               "value": "700",
@@ -1837,6 +1834,10 @@
               "label": "Medium"
             },
             {
+              "value": "600",
+              "label": "Semibold"
+            },
+            {
               "value": "700",
               "label": "Bold"
             }
@@ -1885,6 +1886,10 @@
           {
             "value": "500",
             "label": "Medium"
+          },
+          {
+            "value": "600",
+            "label": "Semibold"
           },
           {
             "value": "700",
@@ -1942,6 +1947,10 @@
               "label": "Medium"
             },
             {
+              "value": "600",
+              "label": "Semibold"
+            },
+            {
               "value": "700",
               "label": "Bold"
             }
@@ -1990,6 +1999,10 @@
             {
               "value": "500",
               "label": "Medium"
+            },
+            {
+              "value": "600",
+              "label": "Semibold"
             },
             {
               "value": "700",
@@ -2047,6 +2060,10 @@
               "label": "Medium"
             },
             {
+              "value": "600",
+              "label": "Semibold"
+            },
+            {
               "value": "700",
               "label": "Bold"
             }
@@ -2095,6 +2112,10 @@
             {
               "value": "500",
               "label": "Medium"
+            },
+            {
+              "value": "600",
+              "label": "Semibold"
             },
             {
               "value": "700",
@@ -2275,6 +2296,10 @@
             {
               "value": "roboto",
               "label": "Roboto"
+            },
+            {
+              "value": "poppins",
+              "label": "Poppins"
             }
           ],
           "default": "default"
@@ -2322,6 +2347,10 @@
             {
               "value": "roboto",
               "label": "Roboto"
+            },
+            {
+              "value": "poppins",
+              "label": "Poppins"
             }
           ],
           "default": "default"
@@ -2375,6 +2404,10 @@
             {
               "value": "roboto",
               "label": "Roboto"
+            },
+            {
+              "value": "poppins",
+              "label": "Poppins"
             }
           ],
           "default": "default"
@@ -2409,6 +2442,10 @@
             {
               "value": "roboto",
               "label": "Roboto"
+            },
+            {
+              "value": "poppins",
+              "label": "Poppins"
             }
           ],
           "default": "default"
@@ -2456,6 +2493,10 @@
             {
               "value": "roboto",
               "label": "Roboto"
+            },
+            {
+              "value": "poppins",
+              "label": "Poppins"
             }
           ],
           "default": "default"
@@ -2509,6 +2550,10 @@
             {
               "value": "roboto",
               "label": "Roboto"
+            },
+            {
+              "value": "poppins",
+              "label": "Poppins"
             }
           ],
           "default": "default"
@@ -2543,6 +2588,10 @@
             {
               "value": "roboto",
               "label": "Roboto"
+            },
+            {
+              "value": "poppins",
+              "label": "Poppins"
             }
           ],
           "default": "default"
@@ -2590,6 +2639,10 @@
             {
               "value": "roboto",
               "label": "Roboto"
+            },
+            {
+              "value": "poppins",
+              "label": "Poppins"
             }
           ],
           "default": "default"
@@ -2643,6 +2696,10 @@
             {
               "value": "roboto",
               "label": "Roboto"
+            },
+            {
+              "value": "poppins",
+              "label": "Poppins"
             }
           ],
           "default": "default"
@@ -2794,6 +2851,10 @@
               "label": "medium"
             },
             {
+              "value": "600",
+              "label": "Semibold"
+            },
+            {
               "value": "700",
               "label": "bold"
             }
@@ -2864,6 +2925,10 @@
             {
               "value": "roboto",
               "label": "Roboto"
+            },
+            {
+              "value": "poppins",
+              "label": "Poppins"
             }
           ],
           "default": "default"
@@ -2896,6 +2961,10 @@
             {
               "value": "roboto",
               "label": "Roboto"
+            },
+            {
+              "value": "poppins",
+              "label": "Poppins"
             }
           ],
           "default": "default"
@@ -2984,6 +3053,10 @@
               "label": "medium"
             },
             {
+              "value": "600",
+              "label": "Semibold"
+            },
+            {
               "value": "700",
               "label": "bold"
             }
@@ -3012,6 +3085,10 @@
             {
               "value": "500",
               "label": "medium"
+            },
+            {
+              "value": "600",
+              "label": "Semibold"
             },
             {
               "value": "700",
@@ -3052,6 +3129,10 @@
             {
               "value": "roboto",
               "label": "Roboto"
+            },
+            {
+              "value": "poppins",
+              "label": "Poppins"
             }
           ],
           "default": "default"
@@ -3203,6 +3284,10 @@
             {
               "value": "roboto",
               "label": "Roboto"
+            },
+            {
+              "value": "poppins",
+              "label": "Poppins"
             }
           ],
           "default": "default"
@@ -3455,6 +3540,10 @@
               "label": "Medium"
             },
             {
+              "value": "600",
+              "label": "Semibold"
+            },
+            {
               "value": "700",
               "label": "Bold"
             }
@@ -3471,8 +3560,12 @@
               "label": "Default"
             },
             {
-              "value": "hind",
-              "label": "Hind"
+              "value": "roboto",
+              "label": "Roboto"
+            },
+            {
+              "value": "poppins",
+              "label": "Poppins"
             }
           ],
           "default": "default"
@@ -3719,6 +3812,10 @@
               "label": "Medium"
             },
             {
+              "value": "600",
+              "label": "Semibold"
+            },
+            {
               "value": "700",
               "label": "Bold"
             }
@@ -3735,8 +3832,12 @@
               "label": "Default"
             },
             {
-              "value": "hind",
-              "label": "Hind"
+              "value": "roboto",
+              "label": "Roboto"
+            },
+            {
+              "value": "poppins",
+              "label": "Poppins"
             }
           ],
           "default": "default"
@@ -3843,6 +3944,10 @@
           "label": "medium"
         },
         {
+          "value": "600",
+          "label": "Semibold"
+        },
+        {
           "value": "700",
           "label": "bold"
         }
@@ -3901,6 +4006,10 @@
         {
           "value": "500",
           "label": "medium"
+        },
+        {
+          "value": "600",
+          "label": "Semibold"
         },
         {
           "value": "700",
@@ -3993,6 +4102,10 @@
         {
           "value": "500",
           "label": "medium"
+        },
+        {
+          "value": "600",
+          "label": "Semibold"
         },
         {
           "value": "700",
