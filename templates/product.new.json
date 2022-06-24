@@ -10,7 +10,7 @@
             "text": "<p>NATURAL HIGH PERFORMANCE<\/p>",
             "text_color": "",
             "padding_top": 0,
-            "padding_bottom": 0.4,
+            "padding_bottom": 0,
             "text_family": "roboto",
             "text_style": "uppercase",
             "text_weight": "regular",
@@ -24,7 +24,11 @@
             "title_weight": "regular",
             "title_color": "",
             "title_size": 1.7,
-            "title_justify": "left"
+            "title_justify": "left",
+            "subtitle_weight": "400",
+            "subtitle_color": "",
+            "subtitle_size": 1.7,
+            "subtitle_justify": "left"
           }
         },
         "price": {
@@ -36,8 +40,8 @@
         "variant_picker": {
           "type": "variant_picker",
           "settings": {
-            "swatches_padding_top": 2.4,
-            "swatches_padding_bottom": 3.3,
+            "swatches_padding_top": 0.4,
+            "swatches_padding_bottom": 2.4,
             "color_group_1_legend_padding_bottom": 0,
             "color_group_1_padding_top": 0,
             "color_group_1_padding_bottom": 0,
@@ -276,6 +280,7 @@
         "bc_size": 1.2,
         "bc_weight": "500",
         "bc_is_uppercase": false,
+        "zoom_thumb_amount": 1,
         "on_picture_text": "<p><strong>Fiber: <\/strong>100% Organic Pima Cotton<br\/><strong>Thread: <\/strong>100% Cotton<br\/><strong>Label:<\/strong> 100% Organic Cotton + GOTS Certified Ink<br\/><strong>Dyes:<\/strong> Low Impact Dyes (GOTS) & 100% Natural Dyes<br\/><strong>Finishing:<\/strong> OEKO-TEX Certified<br\/><strong>Care:<\/strong> Tumble dry low. Machine wash cold.<\/p>",
         "on_image_text_size": 1.2,
         "on_image_text_weight": "500",
