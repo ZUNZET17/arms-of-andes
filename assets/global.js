@@ -988,8 +988,8 @@ colorLabels.forEach(label => {
 // Sort Color Variant Picture
 let selectedColor;
 const sortVariantPictures = function (ev) {
+  if (location.href.includes('variant=')) return
   const input = ev.target !== document ? ev.target : document.querySelector('.js-color-label.selected');
-  // const variantId = location.href.split('variant=')[1]
   // console.log(location.href)
   // this.variantData = this.variantData || JSON.parse(document.querySelector('.js-variants-data').textContent);
   // console.log(this.variantData)
