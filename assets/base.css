@@ -3172,3 +3172,7 @@ details-disclosure > details {
   .zoom-image.active-zoom {
     display: block!important;
   }
+
+  .product__title {
+    line-height: 1;
+  }

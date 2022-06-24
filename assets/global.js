@@ -989,7 +989,13 @@ colorLabels.forEach(label => {
 let selectedColor;
 const sortVariantPictures = function (ev) {
   const input = ev.target !== document ? ev.target : document.querySelector('.js-color-label.selected');
-  const value = input.getAttribute('swatch-color').toLowerCase().replace(' ', '-');
+  // const variantId = location.href.split('variant=')[1]
+  // console.log(location.href)
+  // this.variantData = this.variantData || JSON.parse(document.querySelector('.js-variants-data').textContent);
+  // console.log(this.variantData)
+  // console.log(value)
+  // console.log(this.variantData.find(v => v.id == variantId ).options[0])
+  const value = /*this.variantData.find(v => v.id == variantId ).options[0] ||*/ input.getAttribute('swatch-color').toLowerCase().replace(' ', '-');
   if(selectedColor == value) return;
   selectedColor = value;
 
