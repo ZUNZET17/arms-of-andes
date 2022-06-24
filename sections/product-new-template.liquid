@@ -1437,12 +1437,12 @@
       const zoomedImg = input.querySelector('.js-zoom-image')
 
       input.classList.add('zoomed')
-      zoomedImg.style.display = 'block'
+      zoomedImg.classList.toggle('active-zoom')
 
       input.onmouseleave = () => {
         zoomedImg.style.backgroundPosition = `50% 50%`
         input.removeEventListener('mousemove', updateCords)
-        zoomedImg.style.display = 'none'
+        zoomedImg.classList.remove('active-zoom')
       }
       input.height = inputHeight
       input.width = inputWidth
@@ -1451,10 +1451,16 @@
       input.addEventListener('mousemove', updateCords)
     }
 
+    let windowSize = window.matchMedia("(max-width: 990px)")
+
     const thumbsArr = Array.from(document.querySelectorAll('.js-zoom-thumb'));
-    thumbsArr.forEach(t => {
-      t.addEventListener('click', zoomThumbs)
-    })
+    if (windowSize.matches) {
+      console.log('less than 990px')
+    }else {
+      thumbsArr.forEach(t => {
+        t.addEventListener('click', zoomThumbs)
+      })
+    }
   </script>
 
   <script type="application/ld+json">
