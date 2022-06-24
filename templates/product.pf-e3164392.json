@@ -287,7 +287,7 @@
         "on_image_text_align": "flex-end",
         "on_image_text_content_align": "left",
         "on_picture_text_color": "#465b70",
-        "on_image_bk": "",
+        "on_image_bk": "linear-gradient(100deg, rgba(240, 240, 242, 1), rgba(240, 240, 242, 0), rgba(240, 240, 242, 1) 1%, rgba(240, 240, 242, 1) 100%)",
         "on_picture_text_natural": "<p>Materials & Ingredients<\/p>",
         "on_image_text_size_natural": 1,
         "on_image_text_weight_natural": "400",
