@@ -3139,6 +3139,10 @@ details-disclosure > details {
     overflow: hidden;
   }
 
+  .zoom-thumb.zoomed {
+    cursor: zoom-out;
+  }
+
   .zoom-thumb.zoomed .on-picture-text-container {
     pointer-events: none;
   }

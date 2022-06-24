@@ -1436,7 +1436,7 @@
       const zoomAmount = document.querySelector('.js-zoom-image-amount').getAttribute('x-amount')
       const zoomedImg = input.querySelector('.js-zoom-image')
 
-      input.classList.add('zoomed')
+      input.classList.toggle('zoomed')
       zoomedImg.classList.toggle('active-zoom')
 
       input.onmouseleave = () => {
