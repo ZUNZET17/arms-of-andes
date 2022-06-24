@@ -40,18 +40,20 @@
             {{ "accessibility.skip_to_product_info" | t }}
           </a>
           {% style %}
-            {% if section.settings.grid_display %}
+            @media screen and (min-width: 990px) {
+              {% if section.settings.grid_display %}
               .product__media-list .product__media-item:first-child,
               .product__media-list .product__media-item--full {
                 max-width: calc(50% - var(--grid-desktop-horizontal-spacing) / 2);
               }
-            {% else %}
-              .product__media-list .product__media-item:first-child,
-              .product__media-list .product__media-item--full {
-                width: 100%;
-                max-width: 100%;
+              {% else %}
+                .product__media-list .product__media-item:first-child,
+                .product__media-list .product__media-item--full {
+                  width: 100%;
+                  max-width: 100%;
+                }
+              {% endif %}
               }
-            {% endif %}
             .on-picture-text-container {
               width: 100%;
               display: none;
@@ -211,7 +213,8 @@
                   </div>
                 </div>
                 {%- if featured_media.media_type == 'image' -%}
-                  <img
+                  <div
+                    style="background-image: url({{ featured_media.preview_image | image_url: width: 1445 }});"
                     class="global-media-settings global-media-settings--no-shadow zoom-image js-zoom-image"
                       srcset="{%- if featured_media.preview_image.width >= 550 -%}{{ featured_media.preview_image | image_url: width: 550 }} 550w,{%- endif -%}
                               {%- if featured_media.preview_image.width >= 1100 -%}{{ featured_media.preview_image | image_url: width: 1100 }} 1100w,{%- endif -%}
@@ -231,16 +234,18 @@
                       data-media-id="{{ featured_media.id }}"
                       {% if variant_image %}class="product__media-item--variant"{% endif %}
                     >
+                  </div>
                 {%- endif -%}  
               </li>
             {%- endif -%}
             {%- for media in product.media -%}
               {%- unless media.id == product.selected_or_first_available_variant.featured_media.id -%}
-                <li id="Slide-{{ section.id }}-{{ media.id }}" class="{% if media.alt contains 'natural' %}natural{% endif %} product__media-item grid__item slider__slide{% if product.selected_or_first_available_variant.featured_media == null and forloop.index == 1 %} is-active{% endif %}{% if media.media_type != 'image' %} product__media-item--full{% endif %}{% if section.settings.hide_variants and variant_images contains media.src %} product__media-item--variant{% endif %}" data-media-id="{{ section.id }}-{{ media.id }}" style="position: relative; display: none" media-alt="{{ media.alt }}">
+                <li id="Slide-{{ section.id }}-{{ media.id }}" class="js-zoom-thumb zoom-thumb {% if media.alt contains 'natural' %}natural{% endif %} product__media-item grid__item slider__slide{% if product.selected_or_first_available_variant.featured_media == null and forloop.index == 1 %} is-active{% endif %}{% if media.media_type != 'image' %} product__media-item--full{% endif %}{% if section.settings.hide_variants and variant_images contains media.src %} product__media-item--variant{% endif %}" data-media-id="{{ section.id }}-{{ media.id }}" style="position: relative; display: none" media-alt="{{ media.alt }}">
                   {%- assign media_position = media_position | default: 0 | plus: 1 -%}
                   {% render 'product-thumbnail', media: media, position: media_position, loop: section.settings.enable_video_looping, modal_id: section.id, xr_button: true, media_width: media_width, lazy_load: true %}
                   {%- if media.media_type == 'image' -%}
-                  <img
+                  <div
+                    style="background-image: url({{ media.preview_image | image_url: width: 1445 }})"
                     class="global-media-settings global-media-settings--no-shadow zoom-image js-zoom-image"
                       srcset="{%- if media.preview_image.width >= 550 -%}{{ media.preview_image | image_url: width: 550 }} 550w,{%- endif -%}
                               {%- if media.preview_image.width >= 1100 -%}{{ media.preview_image | image_url: width: 1100 }} 1100w,{%- endif -%}
@@ -260,6 +265,7 @@
                       data-media-id="{{ media.id }}"
                       {% if variant_image %}class="product__media-item--variant"{% endif %}
                     >
+                    </div>
                 {%- endif -%}                  
                   <div class="on-picture-text-container">
                     <div class="on-picture-text js-on-picture-text">
@@ -1344,7 +1350,6 @@
       let pageContent;  
       function handleResponse() {
         pageContent = JSON.parse(this.responseText);
-        console.log('afterload', pageContent)
         let container = document.createElement( 'html' );
         container.innerHTML = pageContent[pageId]
         document.querySelector(`.js-page-${pageId}`).appendChild(container)
@@ -1414,45 +1419,36 @@
       x.addEventListener('click', triggerProductInfo, false)
     })
 
-    let wasClicked = false;
-
     function updateCords (ev) {
         const input = ev.target;
-        const inputHeight = input.offsetHeight;
-        const inputWidth = input.offsetWidth;
-        let xCord = (100 - (ev.offsetX / inputHeight * 100)) + '%';
-        let yCord = ((ev.offsetY / inputWidth * 100)) + '%';
-        const zoomedImg = Array.from(input.children).filter(c => c.tagName == 'IMG')[0]         
+        let xCord = (ev.offsetX / input.width) * 100;
+        let yCord = (ev.offsetY / input.height) * 100;
+        const zoomedImg = input.zoomedImage
 
-        console.log(input.offsetHeight, input.offsetWidth)
-        console.log(xCord, '-'+yCord)
-        zoomedImg.style.transform = `translate(${xCord}, -${yCord})`
-
-        input.onmouseleave = () => {
-          zoomedImg.style.transform = 'translate(50%, -50%)'
-          input.removeEventListener('mousemove', updateCords)
-          zoomedImg.style.display = 'none'
-          console.log('zunzet')
-      }
+        zoomedImg.style.backgroundSize = 100 * input.zoomAmount + '%'
+        zoomedImg.style.backgroundPosition = `${xCord}% ${yCord}%`
     }
 
     const zoomThumbs = (ev) => {
-      wasClicked = true;
       const input = ev.target;
       const inputHeight = input.offsetHeight;
       const inputWidth = input.offsetWidth;
       const zoomAmount = document.querySelector('.js-zoom-image-amount').getAttribute('x-amount')
-      const zoomedImg = Array.from(input.children).filter(c => c.tagName == 'IMG')[0]
-      console.log('zoomThumbs')
-      console.log(zoomedImg)
-      zoomedImg.style.display = 'block'
-      zoomedImg.style.height = `${Number(inputHeight) * Number(zoomAmount)}px`
-      zoomedImg.style.width = `${Number(inputWidth) * Number(zoomAmount)}px`
-      console.log('newHeight', Number(inputHeight) * Number(zoomAmount), 'newWidth', Number(inputWidth) * Number(zoomAmount))
+      const zoomedImg = input.querySelector('.js-zoom-image')
 
-      if (wasClicked) {
-        input.addEventListener('mousemove', updateCords)
+      input.classList.add('zoomed')
+      zoomedImg.style.display = 'block'
+
+      input.onmouseleave = () => {
+        zoomedImg.style.backgroundPosition = `50% 50%`
+        input.removeEventListener('mousemove', updateCords)
+        zoomedImg.style.display = 'none'
       }
+      input.height = inputHeight
+      input.width = inputWidth
+      input.zoomAmount = zoomAmount
+      input.zoomedImage = zoomedImg
+      input.addEventListener('mousemove', updateCords)
     }
 
     const thumbsArr = Array.from(document.querySelectorAll('.js-zoom-thumb'));
@@ -1694,7 +1690,7 @@
         {
           "type": "select",
           "id": "subtitle_weight",
-          "label": "Title weight",
+          "label": "subtitle weight",
           "options": [
             {
               "value": "400",
@@ -1714,12 +1710,12 @@
         {
           "type": "color",
           "id": "subtitle_color",
-          "label": "Color"
+          "label": "Subtitle Color"
         },
         {
           "type": "range",
           "id": "subtitle_size",
-          "label": "Title_size",
+          "label": "Subtitle_size",
           "min": 1,
           "max": 5,
           "step": 0.1,
@@ -1729,7 +1725,7 @@
         {
           "type": "select",
           "id": "subtitle_justify",
-          "label": "Title justify",
+          "label": "Subtitle justify",
           "options": [
             {
               "value": "left",
@@ -3864,7 +3860,7 @@
       "min": 1,
       "max": 5,
       "step": 0.5,
-      "default": 1,
+      "default": 2,
       "unit": "X"
     },
     {

@@ -993,13 +993,10 @@ const sortVariantPictures = function (ev) {
   if(selectedColor == value) return;
   selectedColor = value;
 
-  console.log(selectedColor)
-
   const picturesArray = Array.from(document.querySelectorAll('.product__media-item'));
   const filteredArray = picturesArray.filter( x => {
     const altArr = x.getAttribute('media-alt').split(' ');
     let xColor = altArr.slice(altArr.indexOf('color') + 1);
-    console.log('xColor', xColor.join('-').toLocaleLowerCase())
     return xColor.join('-').toLowerCase() === value
   })
 
