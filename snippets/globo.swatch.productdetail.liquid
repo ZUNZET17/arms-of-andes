@@ -133,18 +133,18 @@
       <ul class="value g-variant-color-detail">
         {% for variant in product.variants %}
         {% assign value_available = variant.options[option_index] %}
-        {% assign value_available_text = "&_&" | append: value_available %}
+        {% assign value_available_text = "&_&" | append: value_available | append: "&_&" %}
         {% unless values_available contains value_available_text or variant.available == false %}
-        {% assign values_available = values_available | append: "&_&" | append: value_available %}
+        {% assign values_available = values_available | append: "&_&" | append: value_available | append: "&_&" %}
         {% endunless %}
         {% endfor %}
         
         {% for variant in product.variants %}
         {% assign value = variant.options[option_index] %}
-        {% assign valuetext = "&_&" | append: value %}
+        {% assign valuetext = "&_&" | append: value | append: "&_&" %}
         {% assign option_value = option | append: "-" | append: value %}
         {% unless values contains valuetext %}
-        {% assign values = values | append: "&_&" | append: value %}
+        {% assign values = values | append: "&_&" | append: value | append: "&_&" %}
         <li class="select-option {{ class_stylesoldout }} {% if values_available contains valuetext %}available{% else %}globo-out-of-stock{% endif %}" data-attribute="pa_{{ value | handleize }}" data-value="{{ value | escape }}">
           <input id="swatch-detail-{{ variant.id }}-{{ option_index }}-{{ value | handle }}" data-variantId="{{ variant.id }}" type="radio" name="option-globo-{{ option_index }}" value="{{ value | escape }}" {% if configs.enableMandatory == false %}{% if forloop.first %} checked{% endif %}{% else %}required{% endif %} />
           <label title="{{ value }}" for="swatch-detail-{{ variant.id }}-{{ option_index }}-{{ value | handle }}"
@@ -171,18 +171,18 @@
       <ul class="value g-variant-color-detail">
         {% for variant in product.variants %}
         {% assign value_available = variant.options[option_index] %}
-        {% assign value_available_text = "&_&" | append: value_available %}
+        {% assign value_available_text = "&_&" | append: value_available | append: "&_&" %}
         {% unless values_available contains value_available_text or variant.available == false %}
-        {% assign values_available = values_available | append: "&_&" | append: value_available %}
+        {% assign values_available = values_available | append: "&_&" | append: value_available | append: "&_&" %}
         {% endunless %}
         {% endfor %}
         
         {% for variant in product.variants %}
         {% assign value = variant.options[option_index] %}
-        {% assign valuetext = "&_&" | append: value %}
+        {% assign valuetext = "&_&" | append: value | append: "&_&" %}
         {% assign option_value = option | append: "-" | append: value %}
         {% unless values contains valuetext %}
-        {% assign values = values | append: "&_&" | append: value %}
+        {% assign values = values | append: "&_&" | append: value | append: "&_&" %}
         <li class="select-option {{ class_stylesoldout }} {% if values_available contains valuetext %}available{% else %}globo-out-of-stock{% endif %}" data-attribute="pa_{{ value | handleize }}" data-value="{{ value | escape }}" {% if variant.featured_image.src %}data-image={{ variant.featured_image.src | img_url:"1024x1024" }}{% endif %}>
           <input id="swatch-detail-{{ variant.id }}-{{ option_index }}-{{ value | handle }}" data-variantId="{{ variant.id }}" type="radio" name="option-globo-{{ option_index }}" value="{{ value | escape }}" {% if configs.enableMandatory == false %}{% if forloop.first %} checked{% endif %}{% else %}required{% endif %} />
           <label title="{{ value }}" for="swatch-detail-{{ variant.id }}-{{ option_index }}-{{ value | handle }}" class="swatch-anchor swatch-other globo-border-color-swatch {{ class_swatch_shape }} {{ class_swatch_size }} {{ class_border_style }} {{ class_hover_effects }} {{ class_hover_effects_zoom }} {{ class_size_change }}" {% if variant.featured_image.src %}style="display: block; background-size: contain; background-position: center; background-repeat: no-repeat; background-image: url({% if swatch_size == "small" %}{{ variant.featured_image.src | img_url: "28x" }}{% elsif swatch_size == "medium" %}{{ variant.featured_image.src | img_url: "35x" }}{% else %}{{ variant.featured_image.src | img_url: "50x" }}{% endif%});"{% endif %}>
@@ -197,18 +197,18 @@
       <ul class="value">
         {% for variant in product.variants %}
         {% assign value_available = variant.options[option_index] %}
-        {% assign value_available_text = "&_&" | append: value_available %}
+        {% assign value_available_text = "&_&" | append: value_available | append: "&_&" %}
         {% unless values_available contains value_available_text or variant.available == false %}
-        {% assign values_available = values_available | append: "&_&" | append: value_available %}
+        {% assign values_available = values_available | append: "&_&" | append: value_available | append: "&_&" %}
         {% endunless %}
         {% endfor %}
         
         {% for variant in product.variants %}
         {% assign value = variant.options[option_index] %}
-        {% assign valuetext = "&_&" | append: value %}
+        {% assign valuetext = "&_&" | append: value | append: "&_&" %}
         {% assign option_value = option | append: "-" | append: value %}
         {% unless values contains valuetext %}
-        {% assign values = values | append: "&_&" | append: value %}
+        {% assign values = values | append: "&_&" | append: value | append: "&_&" %}
         <li class="select-option {{ class_stylesoldout }} {% if values_available contains valuetext %}available{% else %}globo-out-of-stock{% endif %}" data-attribute="pa_{{ value | handleize }}" data-value="{{ value | escape }}">
           <input id="swatch-detail-{{ variant.id }}-{{ option_index }}-{{ value | handle }}" data-variantId="{{ variant.id }}" type="radio" name="option-globo-{{ option_index }}" value="{{ value | escape }}"  {% if configs.enableMandatory == false %}{% if forloop.first %} checked{% endif %}{% else %}required{% endif %} />
           <label title="{{ value }}" for="swatch-detail-{{ variant.id }}-{{ option_index }}-{{ value | handle }}" class="swatch-anchor swatch-other globo-style--button {{ class_button_corner }} {{ class_button_size }} {{ class_text_style }} {{ class_hover_effects_button }}">
@@ -234,18 +234,18 @@
         {% endif %}
         {% for variant in product.variants %}
         {% assign value_available = variant.options[option_index] %}
-        {% assign value_available_text = "&_&" | append: value_available %}
+        {% assign value_available_text = "&_&" | append: value_available | append: "&_&" %}
         {% unless values_available contains value_available_text or variant.available == false %}
-        {% assign values_available = values_available | append: "&_&" | append: value_available %}
+        {% assign values_available = values_available | append: "&_&" | append: value_available | append: "&_&" %}
         {% endunless %}
         {% endfor %}
         
         {% for variant in product.variants %}
         {% assign value = variant.options[option_index] %}
-        {% assign valuetext = "&_&" | append: value %}
+        {% assign valuetext = "&_&" | append: value | append: "&_&" %}
         {% assign option_value = option | append: "-" | append: value %}
         {% unless values contains valuetext %}
-        {% assign values = values | append: "&_&" | append: value %}
+        {% assign values = values | append: "&_&" | append: value | append: "&_&" %}
         <li class="swatches-options select-option--dropdown select-option {% if values_available contains valuetext %}available{% else %}soldout{% endif %}" data-attribute="pa_{{ value | handleize }}">
           <input  id="swatch-detail-{{ variant.id }}-{{ option_index }}-{{ value | handle }}" type="radio" name="option-globo-{{ option_index }}" value="{{ value | escape }}" />
           <label title="{{ value | escape }}" for="swatch-detail-{{ variant.id }}-{{ option_index }}-{{ value | handle }}" class="swatch-anchor swatch-other">

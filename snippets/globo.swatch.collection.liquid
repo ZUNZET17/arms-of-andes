@@ -136,9 +136,9 @@
                     {% assign i = 0 %}
                     {% for variant in product.variants %}
                     {% assign value_available = variant.options[option_index] %}
-                    {% assign value_available_text = "&_&" | append: value_available %}
+                    {% assign value_available_text = "&_&" | append: value_available | append: "&_&" %}
                     {% unless values_available contains value_available_text or variant.available == false %}
-                    {% assign values_available = values_available | append: "&_&" | append: value_available %}
+                    {% assign values_available = values_available | append: "&_&" | append: value_available | append: "&_&" %}
                     {% endunless %}
                     {% endfor %}
                     
@@ -188,18 +188,19 @@
                     {% assign i = 0 %}
                     {% for variant in product.variants %}
                     {% assign value_available = variant.options[option_index] %}
-                    {% assign value_available_text = "&_&" | append: value_available %}
+                    {% assign value_available_text = "&_&" | append: value_available | append: "&_&" %}
                     {% unless values_available contains value_available_text or variant.available == false %}
-                    {% assign values_available = values_available | append: "&_&" | append: value_available %}
+                    {% assign values_available = values_available | append: "&_&" | append: value_available | append: "&_&" %}
                     {% endunless %}
                     {% endfor %}
                     
                     {% for variant in product.variants %}
                     {% assign value = variant.options[option_index] %}
-                    {% assign valuetext = "&_&" | append: value %}
+                    {% assign valuetext = "&_&" | append: value | append: "&_&" %}
+                    {% assign option_value = option | append: "-" | append: value %}
                     {% unless values contains valuetext %}
                     {% assign i = i | plus: 1 %}
-                    {% assign values = values | append: "&_&" | append: value %}
+                    {% assign values = values | append: "&_&" | append: value | append: "&_&" %}
                     {% if i <= configs.limit_variant  or configs.show_limit_variant == false %}
                     <li productId = "{{ product.id }}" {% if variant.featured_image.src %}productImage = {{ variant.featured_image.src | img_url: "grande" }}{% endif %} class="swatches-options {{ class_stylesoldout }} {% if values_available contains valuetext %}available{% else %}globo-out-of-stock{% endif %}" data-attribute="pa_{{ value | handleize }}">
                       <input id="swatch-{{ variant.id }}-{{ option_index }}-{{ value | handle }}" type="radio" name="option-{{ option_index }}-{{ product.id }}" value="{{ value | escape }}" {% if forloop.first %} checked{% endif %} />
@@ -229,18 +230,19 @@
                     {% assign i = 0 %}
                     {% for variant in product.variants %}
                     {% assign value_available = variant.options[option_index] %}
-                    {% assign value_available_text = "&_&" | append: value_available %}
+                    {% assign value_available_text = "&_&" | append: value_available | append: "&_&" %}
                     {% unless values_available contains value_available_text or variant.available == false %}
-                    {% assign values_available = values_available | append: "&_&" | append: value_available %}
+                    {% assign values_available = values_available | append: "&_&" | append: value_available | append: "&_&" %}
                     {% endunless %}
                     {% endfor %}
                     
                     {% for variant in product.variants %}
                     {% assign value = variant.options[option_index] %}
-                    {% assign valuetext = "&_&" | append: value %}
+                    {% assign valuetext = "&_&" | append: value | append: "&_&" %}
+                    {% assign option_value = option | append: "-" | append: value %}
                     {% unless values contains valuetext %}
                     {% assign i = i | plus: 1 %}
-                    {% assign values = values | append: "&_&" | append: value %}
+                    {% assign values = values | append: "&_&" | append: value | append: "&_&" %}
                     {% if i <= configs.limit_variant  or configs.show_limit_variant == false %}
                     <li productId = "{{ product.id }}" class="swatches-options {{ class_stylesoldout }} {% if values_available contains valuetext %}available{% else %}globo-out-of-stock{% endif %}" data-attribute="pa_{{ value | handleize }}">
                       <input  id="swatch-{{ variant.id }}-{{ option_index }}-{{ value | handle }}" type="radio" name="option-{{ option_index }}-{{ product.id }}" value="{{ value | escape }}" {% if forloop.first %} checked{% endif %} />
@@ -270,9 +272,9 @@
                   <ul class="ul-swatches-list value ul-globo-dropdown-option">
                     {% for variant in product.variants %}
                     {% assign value_available = variant.options[option_index] %}
-                    {% assign value_available_text = "&_&" | append: value_available %}
+                    {% assign value_available_text = "&_&" | append: value_available | append: "&_&" %}
                     {% unless values_available contains value_available_text or variant.available == false %}
-                    {% assign values_available = values_available | append: "&_&" | append: value_available %}
+                    {% assign values_available = values_available | append: "&_&" | append: value_available | append: "&_&" %}
                     {% endunless %}
                     {% endfor %}
                     
