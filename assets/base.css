@@ -3182,3 +3182,6 @@ details-disclosure > details {
     justify-content: center;
     align-items: center;
 }
+  .globo-out-of-stock.globo-sold-out-opacity {
+    display: none !important;
+}
