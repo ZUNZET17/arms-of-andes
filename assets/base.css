@@ -3176,3 +3176,9 @@ details-disclosure > details {
   .product__title {
     line-height: 1;
   }
+/*   globo css */
+  label.swatch-anchor.swatch-other.globo-border-color-swatch.globo-style-circle.globo-size-small.globo-border-style-double {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
