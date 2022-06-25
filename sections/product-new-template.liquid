@@ -195,20 +195,20 @@
                 {%- assign media_position = 1 -%}
                 {% render 'product-thumbnail', media: featured_media, position: media_position, loop: section.settings.enable_video_looping, modal_id: section.id, xr_button: true, media_width: media_width, lazy_load: false %}              
                 <div class="on-picture-text-container">
-                  <div class="on-picture-text js-on-picture-text">
+                  <div class="on-picture-text js-on-picture-text {{ section.settings.on_picture_text_family}}">
                     {{ section.settings.on_picture_text | newline_to_br }}
                     <span class="on-picture-text__close js-on-picture-close">{% render 'icon-close' %}</span>
                   </div>
-                  <div class="on-picture-text__mobile-trigger js-on-image-text-mobile-trigger">
+                  <div class="on-picture-text__mobile-trigger js-on-image-text-mobile-trigger {{ section.settings.on_picture_text_family}}">
                     {{ section.settings.on_picture_trigger_text | newline_to_br }}
                   </div>
                 </div>
-                <div class="on-picture-text-container on-picture-text-container--natural">
+                <div class="on-picture-text-container on-picture-text-container--natural {{ section.settings.on_picture_text_family_natural}}">
                   <div class="on-picture-text on-picture-text--natural js-on-picture-text">
                     {{ section.settings.on_picture_text_natural | newline_to_br }}
                     <span class="on-picture-text__close js-on-picture-close">{% render 'icon-close' %}</span>
                   </div>
-                  <div class="on-picture-text__mobile-trigger on-picture-text__mobile-trigger--natural js-on-image-text-mobile-trigger">
+                  <div class="on-picture-text__mobile-trigger on-picture-text__mobile-trigger--natural js-on-image-text-mobile-trigger {{ section.settings.on_picture_text_family_natural}}">
                     {{ section.settings.on_picture_trigger_text_natural | newline_to_br }}
                   </div>
                 </div>
@@ -268,20 +268,20 @@
                     </div>
                 {%- endif -%}                  
                   <div class="on-picture-text-container">
-                    <div class="on-picture-text js-on-picture-text">
+                    <div class="on-picture-text js-on-picture-text {{ section.settings.on_picture_text_family}}">
                       {{ section.settings.on_picture_text }}
                       <span class="on-picture-text__close js-on-picture-close">{% render 'icon-close' %}</span>
                     </div>
-                    <div class="on-picture-text__mobile-trigger js-on-image-text-mobile-trigger">
+                    <div class="on-picture-text__mobile-trigger js-on-image-text-mobile-trigger {{ section.settings.on_picture_text_family}}">
                       {{ section.settings.on_picture_trigger_text }}
                     </div>
                   </div>
                   <div class="on-picture-text-container on-picture-text-container--natural">
-                    <div class="on-picture-text on-picture-text--natural js-on-picture-text">
+                    <div class="on-picture-text on-picture-text--natural js-on-picture-text {{ section.settings.on_picture_text_family_natural}}">
                       {{ section.settings.on_picture_text_natural | newline_to_br }}
                       <span class="on-picture-text__close js-on-picture-close">{% render 'icon-close' %}</span>
                     </div>
-                    <div class="on-picture-text__mobile-trigger on-picture-text__mobile-trigger--natural js-on-image-text-mobile-trigger">
+                    <div class="on-picture-text__mobile-trigger on-picture-text__mobile-trigger--natural js-on-image-text-mobile-trigger {{ section.settings.on_picture_text_family_natural}}">
                       {{ section.settings.on_picture_trigger_text_natural | newline_to_br }}
                     </div>
                   </div>
@@ -474,20 +474,22 @@
                 </h2>
               </a>
             </div>
-          {%- when 'price' -%}
-            <div class="no-js-hidden" id="price-{{ section.id }}" role="status" {{ block.shopify_attributes }}>
-              {%- render 'price', product: product, use_variant: true, show_badges: true, price_class: 'price--large' -%}
+            {%- when 'price' -%}
+            <div class="no-js-hidden {{ block.settings.price_family }}" id="price-{{ section.id }}" role="status" {{ block.shopify_attributes }}>
+              {%- render 'price', product: product, use_variant: true, show_badges: true, price_class: 'price--large', price_color: {{ block.settings.price_color }} -%}
             </div>
             {% comment %}
             {%- if shop.taxes_included or shop.shipping_policy.body != blank -%}
-              <div class="product__tax caption rte">
+        
+              {% comment %}/*<div class="product__tax caption rte">
                 {%- if shop.taxes_included -%}
                   {{ 'products.product.include_taxes' | t }}
                 {%- endif -%}
                 {%- if shop.shipping_policy.body != blank -%}
                   {{ 'products.product.shipping_policy_html' | t: link: shop.shipping_policy.url }}
                 {%- endif -%}
-              </div>
+              </div>*/{% endcomment %}
+        
             {%- endif -%}
             {% endcomment %}
             <div {{ block.shopify_attributes }}>
@@ -1755,6 +1757,25 @@
           "type": "color",
           "id": "price_color",
           "label": "Color"
+        },
+        {
+          "type": "select",
+          "id": "price_family",
+          "label": "Price font family",
+          "options": [
+            {
+              "value": "default",
+              "label": "default"
+            },
+            {
+              "value": "roboto",
+              "label": "Roboto"
+            },
+            {
+              "value": "poppins",
+              "label": "Poppins"
+            }
+          ]
         }
       ]
     },
@@ -4069,6 +4090,26 @@
       "default": "#000"
     },
     {
+      "type": "select",
+      "id": "on_picture_text_family",
+      "label": "On Picture Font Family",
+      "options": [
+        {
+          "value": "default",
+          "label": "Default"
+        },
+        {
+          "value": "roboto",
+          "label": "Roboto"
+        },
+        {
+          "value": "poppins",
+          "label": "Poppins"
+        }
+      ],
+      "default": "default"
+    },
+    {
       "type": "color_background",
       "id": "on_image_bk",
       "label": "On picture text background color",
@@ -4163,6 +4204,26 @@
       "id": "on_picture_text_color_natural",
       "label": "On picture text color",
       "default": "#000"
+    },
+    {
+      "type": "select",
+      "id": "on_picture_text_family_natural",
+      "label": "On Picture Font Family",
+      "options": [
+        {
+          "value": "default",
+          "label": "Default"
+        },
+        {
+          "value": "roboto",
+          "label": "Roboto"
+        },
+        {
+          "value": "poppins",
+          "label": "Poppins"
+        }
+      ],
+      "defaut": "default"
     },
     {
       "type": "color_background",
