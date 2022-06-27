@@ -1325,35 +1325,8 @@
     </script>
     <script src="{{ 'product-model.js' | asset_url }}" defer></script>
   {%- endif -%}
-
-  <script>
-    const requestPageSection = function (ev) { 
-      const input = ev.currentTarget;
-      const pageId = input.getAttribute('page-id');
-      let pageContent;  
-      function handleResponse() {
-        pageContent = JSON.parse(this.responseText);
-        let container = document.createElement( 'html' );
-        container.innerHTML = pageContent[pageId]
-        document.querySelector(`.js-page-${pageId}`).appendChild(container)
-      }
-      if ( document.querySelector(`.js-page-${pageId} > html`) ) return
-      const request = new XMLHttpRequest();
-      
-      request.addEventListener('load', handleResponse);
-      request.open('GET', `/?sections=${pageId}`, true);
-      request.send()
-    }
-  
-    if ( document.querySelector('.js-page-content') ) {
-      const popUpButtons = document.querySelectorAll('.js-pop-up-button');
-      popUpButtons.forEach(btn => {
-        btn.addEventListener('click', requestPageSection, false)
-      });
-    }
-
-    </script>
-
+  <!-- AOA Scripts -->
+  <script src="{{ 'aoa-scripts.js' | asset_url }}" defer="defer"></script>
   <script>
     document.addEventListener('DOMContentLoaded', function() {
       function isIE() {
@@ -1384,67 +1357,6 @@
       assign seo_media = product.featured_media
     endif
   -%}
-
-  <script>
-    const triggerProductInfo = (ev) => {
-      const input = ev.currentTarget.classList.contains('js-on-image-text-mobile-trigger') ? ev.currentTarget : ev.currentTarget.parentElement.nextElementSibling ;
-      const onImageTextContent = input.classList.contains('js-on-picture-close') ? input.closest('div') : input.previousElementSibling;
-
-      onImageTextContent.classList.toggle('active')
-      input.classList.toggle('active')
-    }
-    const triggers = document.querySelectorAll('.js-on-image-text-mobile-trigger')
-    const xs = document.querySelectorAll('.js-on-picture-close')
-    triggers.forEach(t => {
-      t.addEventListener('click', triggerProductInfo, false)
-    })
-    xs.forEach(x => {
-      x.addEventListener('click', triggerProductInfo, false)
-    })
-
-    function updateCords (ev) {
-        const input = ev.target;
-        let xCord = (ev.offsetX / input.width) * 100;
-        let yCord = (ev.offsetY / input.height) * 100;
-        const zoomedImg = input.zoomedImage
-
-        zoomedImg.style.backgroundSize = 100 * input.zoomAmount + '%'
-        zoomedImg.style.backgroundPosition = `${xCord}% ${yCord}%`
-    }
-
-    const zoomThumbs = (ev) => {
-      const input = ev.target;
-      const inputHeight = input.offsetHeight;
-      const inputWidth = input.offsetWidth;
-      const zoomAmount = document.querySelector('.js-zoom-image-amount').getAttribute('x-amount')
-      const zoomedImg = input.querySelector('.js-zoom-image')
-
-      input.classList.toggle('zoomed')
-      zoomedImg.classList.toggle('active-zoom')
-
-      input.onmouseleave = () => {
-        zoomedImg.style.backgroundPosition = `50% 50%`
-        input.removeEventListener('mousemove', updateCords)
-        zoomedImg.classList.remove('active-zoom')
-      }
-      input.height = inputHeight
-      input.width = inputWidth
-      input.zoomAmount = zoomAmount
-      input.zoomedImage = zoomedImg
-      input.addEventListener('mousemove', updateCords)
-    }
-
-    let windowSize = window.matchMedia("(max-width: 990px)")
-
-    const thumbsArr = Array.from(document.querySelectorAll('.js-zoom-thumb'));
-    if (windowSize.matches) {
-      console.log('less than 990px')
-    }else {
-      thumbsArr.forEach(t => {
-        t.addEventListener('click', zoomThumbs)
-      })
-    }
-  </script>
 
   <script type="application/ld+json">
     {
@@ -4223,7 +4135,7 @@
           "label": "Poppins"
         }
       ],
-      "defaut": "default"
+      "default": "default"
     },
     {
       "type": "color_background",
