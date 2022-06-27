@@ -463,6 +463,7 @@
               font-size: {{ block.settings.subtitle_size -}}rem;
               font-weight: {{ title_weight -}};
               text-align: {{ block.settings.subtitle_justify }};
+              paddgin-bottom: {{ block.settings.subtitle_padding_bottom }}
             }            
           {% endstyle %}
             <div class="product__title" {{ block.shopify_attributes }}>
@@ -901,7 +902,7 @@
                       {% if option.name == 'Color' %}
                         <fieldset class="js product-form__input color-swatches">
                           <div class="color-group color-group--1">
-                            <modal-opener {% if block.settings.color_group1_page %}style="pointer-events: none"{% endif %}  class="product-popup-modal__opener no-js-hidden quick-add-hidden" data-modal="#PopupModal-{{- block.settings.group_1_title | remove: ' ' -}}" {{ block.shopify_attributes }}>
+                            <modal-opener {% unless block.settings.color_group1_page %}style="pointer-events: none"{% endunless %}  class="product-popup-modal__opener no-js-hidden quick-add-hidden" data-modal="#PopupModal-{{- block.settings.group_1_title | remove: ' ' -}}" {{ block.shopify_attributes }}>
                               {% assign pageId = block.settings.color_group1_page.template_suffix %}
                               {% style %}
                                 .color-group-legend-1{
@@ -984,7 +985,7 @@
                             }
                           {% endstyle %}                            
                             <div class="color-options-2__header">
-                              <modal-opener {% if block.settings.color_group2_page %}style="pointer-events: none"{% endif %} class="product-popup-modal__opener no-js-hidden quick-add-hidden" data-modal="#PopupModal-{{- block.settings.group_2_title | remove: " " -}}" {{ block.shopify_attributes }}>
+                              <modal-opener {% unless block.settings.color_group2_page %}style="pointer-events: none"{% endunless %} class="product-popup-modal__opener no-js-hidden quick-add-hidden" data-modal="#PopupModal-{{- block.settings.group_2_title | remove: " " -}}" {{ block.shopify_attributes }}>
                                 {% assign pageId2 = block.settings.color_group2_page.template_suffix %}
                                 <{% if pageId2 %}button{% else %}a{% endif %} role="button" id="ProductPopup-{{ block.id }}" href="{{block.settings.color_group2_link}}" target="_blank" class="product-popup-modal__button link color-group-legend-btn {% if pageId2 %}js-pop-up-button{% endif %}" type="button" aria-haspopup="dialog" page-id="{{pageId2}}">
                                   <legend class="form__label color-group-legend color-group-legend-2 {{ block.settings.group_2_title_family }}">{{ block.settings.group_2_title }} <span id="js-color-group-title2" class="js-color-group-title color-group-title"></span></legend>
@@ -1003,7 +1004,7 @@
                                   </div>
                                 </div>
                               </modal-dialog>
-                              <modal-opener {% if block.settings.color_group2_page2 %}style="pointer-events: none"{% endif %} class="product-popup-modal__opener no-js-hidden quick-add-hidden sizes-guide-opener" data-modal="#PopupModal-{{ block.settings.color_group_2_popup_title | replace: " ", "" | replace: '?', '' }}" {{ block.shopify_attributes }}>
+                              <modal-opener {% unless block.settings.color_group2_page2 %}style="pointer-events: none"{% endunless %} class="product-popup-modal__opener no-js-hidden quick-add-hidden sizes-guide-opener" data-modal="#PopupModal-{{ block.settings.color_group_2_popup_title | replace: " ", "" | replace: '?', '' }}" {{ block.shopify_attributes }}>
                                 {% assign pageId22 = block.settings.color_group2_page2.template_suffix %}
                                 <{% if pageId22 %}button{% else %}a{% endif %} id="ProductPopup-{{ block.id }}" href="{{ block.settings.color_group2_page2_link }}" target="_blank" class="product-popup-modal__button link color-group2-page2-legend {% if pageId22 %}js-pop-up-button{% endif %} sizes-guide {{ block.settings.color_group_2_popup_title_family }}" type="button" aria-haspopup="dialog" page-id="{{pageId22}}">{{ block.settings.color_group_2_popup_title | default: block.settings.page.title }}</{% if pageId22 %}button{% else %}a{% endif %}>
                               </modal-opener>
@@ -1079,7 +1080,7 @@
                           <div class="sizes-options__header">
                             <legend class="form__label sizes-legend">{{ option.name }}</legend>
                             {% assign pageId3 = block.settings.size_guide_page.template_suffix %}
-                            <modal-opener {% if block.settings.size_guide_page %}style="pointer-events: none"{% endif %} class="product-popup-modal__opener no-js-hidden quick-add-hidden sizes-guide-opener" data-modal="#PopupModal-{{ block.settings.size_guide_text | replace: " ", "" }}" {{ block.shopify_attributes }}>
+                            <modal-opener {% unless block.settings.size_guide_page %}style="pointer-events: none"{% endunless %} class="product-popup-modal__opener no-js-hidden quick-add-hidden sizes-guide-opener" data-modal="#PopupModal-{{ block.settings.size_guide_text | replace: " ", "" }}" {{ block.shopify_attributes }}>
                               <{% if pageId3 %}button{% else %}a{% endif %} id="ProductPopup-{{ block.id }}" class="product-popup-modal__button link js-pop-up-button sizes-guide {{ block.settings.size_guide_text_family }}" type="button" aria-haspopup="dialog" page-id="{{pageId3}}">{{ block.settings.size_guide_text | default: block.settings.page.title }}</{% if pageId3 %}button{% else %}a{% endif %}>
                             </modal-opener>
                             <modal-dialog id="PopupModal-{{ block.settings.size_guide_text | replace: " ", "" }}" class="product-popup-modal" {{ block.shopify_attributes }}>
@@ -1668,6 +1669,16 @@
               "label": "Right"
             }
           ]
+        },
+        {
+          "type": "range",
+          "id": "subtitle_padding_bottom",
+          "label": "Subtitle padding bottom",
+          "min": 0,
+          "max": 5,
+          "step": 0.1,
+          "default": 0,
+          "unit": "rem"
         }        
       ]
     },
