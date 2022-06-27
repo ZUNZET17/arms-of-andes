@@ -25,16 +25,19 @@
             "title_color": "",
             "title_size": 1.7,
             "title_justify": "left",
+            "title_padding_bottom": 0.4,
             "subtitle_weight": "400",
             "subtitle_color": "",
             "subtitle_size": 1.7,
-            "subtitle_justify": "left"
+            "subtitle_justify": "left",
+            "subtitle_padding_bottom": 1.7
           }
         },
         "price": {
           "type": "price",
           "settings": {
-            "price_color": ""
+            "price_color": "",
+            "price_family": "default"
           }
         },
         "variant_picker": {
@@ -313,6 +316,7 @@
         "on_image_text_align": "flex-end",
         "on_image_text_content_align": "left",
         "on_picture_text_color": "#17365c",
+        "on_picture_text_family": "default",
         "on_image_bk": "rgba(255,255,255,0.6)",
         "on_picture_text_natural": "<p>Fiber: 100% Organic Pima Cotton<br\/>Thread: 100% Cotton<br\/>Label : 100% Organic Cotton + GOTS Certified Ink<\/p>",
         "on_image_text_size_natural": 1.2,
@@ -320,6 +324,7 @@
         "on_image_text_align_natural": "flex-end",
         "on_image_text_content_align_natural": "left",
         "on_picture_text_color_natural": "#17365c",
+        "on_picture_text_family_natural": "default",
         "on_image_bk_natural": "rgba(255,255,255,0.6)",
         "on_picture_trigger_text": "Plastic-Free Ingredients",
         "on_picture_trigger_text_underline": true,
