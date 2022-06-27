@@ -21,7 +21,7 @@
         "title": {
           "type": "title",
           "settings": {
-            "title_weight": "500",
+            "title_weight": "600",
             "title_color": "",
             "title_size": 1.7,
             "title_justify": "left",
