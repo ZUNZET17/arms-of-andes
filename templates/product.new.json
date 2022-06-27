@@ -10,7 +10,7 @@
             "text": "<p>ULTIMATE PERFORMANCE<\/p>",
             "text_color": "",
             "padding_top": 0,
-            "padding_bottom": 1,
+            "padding_bottom": 0.5,
             "text_family": "roboto",
             "text_style": "body",
             "text_weight": "regular",
