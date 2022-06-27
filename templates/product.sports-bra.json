@@ -23,14 +23,14 @@
           "settings": {
             "title_weight": "600",
             "title_color": "",
-            "title_size": 1.7,
+            "title_size": 1.8,
             "title_justify": "left",
-            "title_padding_bottom": 0.4,
+            "title_padding_bottom": 0.5,
             "subtitle_weight": "400",
             "subtitle_color": "",
-            "subtitle_size": 1.6,
+            "subtitle_size": 1.4,
             "subtitle_justify": "left",
-            "subtitle_padding_bottom": 1.7
+            "subtitle_padding_bottom": 2
           }
         },
         "price": {
