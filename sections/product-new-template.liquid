@@ -456,6 +456,7 @@
               font-size: {{ block.settings.title_size -}}rem;
               font-weight: {{ block.settings.title_weight -}};
               text-align: {{ block.settings.title_justify }};
+              padding-bottom: {{ block.settings.title_padding_bottom }}rem;
             }
             .product__subtitle {
               color: {{ block.settings.subtitle_color }};
@@ -1599,6 +1600,16 @@
               "label": "Right"
             }
           ]
+        },
+        {
+          "type": "range",
+          "id": "title_padding_bottom",
+          "label": "Title padding bottom",
+          "min": 0,
+          "max": 5,
+          "step": 0.1,
+          "default": 0,
+          "unit": "rem"
         },
         {
           "type": "select",
