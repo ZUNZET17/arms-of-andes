@@ -141,36 +141,6 @@
             "button_color": "#ffffff"
           }
         },
-        "a2e921b7-a70f-4364-b6e6-a5399955b244": {
-          "type": "text",
-          "settings": {
-            "hide_mobile": false,
-            "text": "<p>EMBRACE THE JOURNEY<\/p>",
-            "text_color": "",
-            "padding_top": 0,
-            "padding_bottom": 0,
-            "text_family": "roboto",
-            "text_style": "uppercase",
-            "text_weight": "regular",
-            "text_size": 1.5,
-            "text_justify": "left"
-          }
-        },
-        "ff694956-c6ef-4d0e-9e3d-6e3101374dd4": {
-          "type": "text",
-          "settings": {
-            "hide_mobile": false,
-            "text": "<p>Alpaca Outperforms Merino<\/p>",
-            "text_color": "",
-            "padding_top": 0,
-            "padding_bottom": 0,
-            "text_family": "default",
-            "text_style": "body",
-            "text_weight": "bold",
-            "text_size": 2.1,
-            "text_justify": "left"
-          }
-        },
         "tabs": {
           "type": "tabs",
           "settings": {
@@ -303,8 +273,6 @@
         "variant_picker",
         "quantity_selector",
         "buy_buttons",
-        "a2e921b7-a70f-4364-b6e6-a5399955b244",
-        "ff694956-c6ef-4d0e-9e3d-6e3101374dd4",
         "tabs",
         "collapsible-row-0",
         "collapsible-row-3"
