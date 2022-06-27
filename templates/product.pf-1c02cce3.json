@@ -25,16 +25,19 @@
             "title_color": "",
             "title_size": 1.7,
             "title_justify": "left",
+            "title_padding_bottom": 0,
             "subtitle_weight": "400",
             "subtitle_color": "",
             "subtitle_size": 1.7,
-            "subtitle_justify": "left"
+            "subtitle_justify": "left",
+            "subtitle_padding_bottom": 0
           }
         },
         "price": {
           "type": "price",
           "settings": {
-            "price_color": ""
+            "price_color": "",
+            "price_family": "default"
           }
         },
         "variant_picker": {
@@ -205,8 +208,6 @@
             "tab3_content_justify": "left",
             "btn_bk_active": "#17365c",
             "icon_color_hover": "#17365c",
-            "tab1_image": "shopify:\/\/shop_images\/Anti-Bacterial_Blue.png",
-            "tab1_image_white": "shopify:\/\/shop_images\/Anti-Bacterial.png",
             "tab1_title": "",
             "tab1_title_family": "roboto",
             "tab1_title_padding_top": 1.2,
@@ -220,8 +221,6 @@
             "tab1_title2_hide_mobile": false,
             "tab1_content": "<p>We put a stop to plastic pollution.<\/p><p>We use only organic materials: 100% Organic Cotton fabric sewn with 100% Cotton threads. Even our labels are 100% Cotton.<\/p><p>This is the first step in making our entire catalog petroleum-free and biodegradable.<\/p>",
             "tab1_content_family": "default",
-            "tab2_image": "shopify:\/\/shop_images\/Lightweight_Blue.png",
-            "tab2_image_white": "shopify:\/\/shop_images\/Lightweight_76e6583e-48ee-4be8-b753-2833135b1ee9.png",
             "tab2_title": "",
             "tab2_title_family": "roboto",
             "tab2_title_padding_top": 1.2,
@@ -235,8 +234,6 @@
             "tab2_title2_hide_mobile": false,
             "tab2_content": "<p>We perfected the supply chain.<\/p><p>No more international supply chain with a high carbon footprint and no transparency.<\/p><p>Our cotton is cultivated, spun into yarn, knitted into fabric, and sewn into the perfect Tank Top in our studio, exclusively in Peru.<\/p>",
             "tab2_content_family": "default",
-            "tab3_image": "shopify:\/\/shop_images\/Quick-Drying_Blue.png",
-            "tab3_image_white": "shopify:\/\/shop_images\/Quick-Drying.png",
             "tab3_title": "",
             "tab3_title_family": "default",
             "tab3_title_padding_top": 1.2,
@@ -312,12 +309,14 @@
         "bc_size": 1.2,
         "bc_weight": "500",
         "bc_is_uppercase": false,
+        "zoom_amount": 2,
         "on_picture_text": "<p><strong>Fiber: <\/strong>100% Organic Pima Cotton<br\/><strong>Thread: <\/strong>100% Cotton<br\/><strong>Label:<\/strong> 100% Organic Cotton + GOTS Certified Ink<br\/><strong>Dyes:<\/strong> Low Impact Dyes (GOTS) & 100% Natural Dyes<br\/><strong>Finishing:<\/strong> OEKO-TEX Certified<br\/><strong>Care:<\/strong> Tumble dry low. Machine wash cold.<\/p>",
         "on_image_text_size": 1.2,
         "on_image_text_weight": "500",
         "on_image_text_align": "flex-end",
         "on_image_text_content_align": "left",
         "on_picture_text_color": "#17365c",
+        "on_picture_text_family": "default",
         "on_image_bk": "rgba(255,255,255,0.6)",
         "on_picture_text_natural": "<p>Fiber: 100% Organic Pima Cotton<br\/>Thread: 100% Cotton<br\/>Label : 100% Organic Cotton + GOTS Certified Ink<\/p>",
         "on_image_text_size_natural": 1.2,
@@ -325,6 +324,7 @@
         "on_image_text_align_natural": "flex-end",
         "on_image_text_content_align_natural": "left",
         "on_picture_text_color_natural": "#17365c",
+        "on_picture_text_family_natural": "default",
         "on_image_bk_natural": "rgba(255,255,255,0.6)",
         "on_picture_trigger_text": "Plastic-Free Ingredients",
         "on_picture_trigger_text_underline": true,
@@ -358,8 +358,14 @@
         "padding_bottom": 28
       }
     },
+    "pf-1c02cce3": {
+      "type": "pf-1c02cce3",
+      "settings": {
+      }
+    },
     "1655846331249d4e40": {
       "type": "apps",
+      "disabled": true,
       "blocks": {
         "e7765396-b452-4b0a-93fb-28018755cf73": {
           "type": "shopify:\/\/apps\/judge-me-product-reviews\/blocks\/review_widget\/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
@@ -368,6 +374,7 @@
         },
         "8c91ed5f-63be-48ad-b594-3346a05a6283": {
           "type": "shopify:\/\/apps\/judge-me-product-reviews\/blocks\/all_reviews_text\/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
+          "disabled": true,
           "settings": {
           }
         }
@@ -379,17 +386,12 @@
       "settings": {
         "include_margins": true
       }
-    },
-    "pf-1c02cce3": {
-      "type": "pf-1c02cce3",
-      "settings": {
-      }
     }
   },
   "order": [
     "main",
     "product-recommendations",
-    "1655846331249d4e40",
-    "pf-1c02cce3"
+    "pf-1c02cce3",
+    "1655846331249d4e40"
   ]
 }
