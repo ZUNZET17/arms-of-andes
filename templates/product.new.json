@@ -21,14 +21,14 @@
         "title": {
           "type": "title",
           "settings": {
-            "title_weight": "regular",
+            "title_weight": "600",
             "title_color": "",
             "title_size": 1.7,
             "title_justify": "left",
             "title_padding_bottom": 0.4,
             "subtitle_weight": "400",
             "subtitle_color": "",
-            "subtitle_size": 1.7,
+            "subtitle_size": 1.6,
             "subtitle_justify": "left",
             "subtitle_padding_bottom": 1.7
           }
