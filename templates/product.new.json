@@ -3,6 +3,21 @@
     "main": {
       "type": "product-new-template",
       "blocks": {
+        "19c23b36-da01-44fc-ad09-efa2f89181b9": {
+          "type": "text",
+          "settings": {
+            "hide_mobile": false,
+            "text": "<p>420 Midweight Full-Zip<\/p>",
+            "text_color": "",
+            "padding_top": 0,
+            "padding_bottom": 0.5,
+            "text_family": "default",
+            "text_style": "body",
+            "text_weight": "400",
+            "text_size": 1.3,
+            "text_justify": "left"
+          }
+        },
         "vendor": {
           "type": "text",
           "disabled": true,
@@ -147,7 +162,7 @@
           "settings": {
             "hide_mobile": false,
             "border_on": false,
-            "padding_top": 1.2,
+            "padding_top": 1.3,
             "padding_bottom": 0,
             "tab_icon_size": 5,
             "tab_title1_size": 1.3,
@@ -268,6 +283,7 @@
         }
       },
       "block_order": [
+        "19c23b36-da01-44fc-ad09-efa2f89181b9",
         "vendor",
         "title",
         "price",
