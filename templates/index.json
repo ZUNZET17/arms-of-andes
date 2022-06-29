@@ -7,11 +7,8 @@
     },
     "social_widget_38106": {
       "type": "social-widget",
-      "disabled": true,
       "settings": {
-        "social_widget_id": "38106",
-        "social_product_id": "none",
-        "social_widget_type": "none"
+        "social_widget_id": "38106"
       }
     }
   },
