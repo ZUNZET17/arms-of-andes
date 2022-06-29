@@ -1,0 +1,70 @@
+{
+  "sections": {
+    "banner": {
+      "type": "main-collection-banner",
+      "disabled": true,
+      "settings": {
+        "show_collection_description": true,
+        "show_collection_image": false,
+        "color_scheme": "background-1"
+      }
+    },
+    "pf-ba47460c": {
+      "type": "pf-ba47460c",
+      "settings": {
+      }
+    },
+    "product-grid": {
+      "type": "main-collection-product-grid",
+      "settings": {
+        "products_per_page": 16,
+        "columns_desktop": 3,
+        "image_ratio": "portrait",
+        "show_secondary_image": true,
+        "show_vendor": false,
+        "show_rating": false,
+        "enable_quick_add": false,
+        "enable_filtering": true,
+        "filter_type": "horizontal",
+        "enable_sorting": false,
+        "columns_mobile": "2",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "16521235077cfe24dc": {
+      "type": "rich-text",
+      "blocks": {
+        "1652123507727b623a-0": {
+          "type": "heading",
+          "settings": {
+            "heading": "Men's Alpaca Wool Apparel ",
+            "heading_size": "h2"
+          }
+        },
+        "1652123507727b623a-1": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Wool underwear, socks and cold weather accessories ensure your comfort and dryness during any activity. The soft and lightweight alpaca wool boxer briefs are moisture-wicking and anti-bacterial, providing extra days of use when you are on longer treks or hiking trips. Our versatile wool beanies and neck gaiters are designed for warmth and protection in extreme conditions. Made from Royal Alpaca Wool, these accessories will keep you comfortable on your adventures in nature.<\/p>"
+          }
+        }
+      },
+      "block_order": [
+        "1652123507727b623a-0",
+        "1652123507727b623a-1"
+      ],
+      "settings": {
+        "color_scheme": "background-1",
+        "full_width": true,
+        "padding_top": 40,
+        "padding_bottom": 52
+      }
+    }
+  },
+  "order": [
+    "banner",
+    "pf-ba47460c",
+    "product-grid",
+    "16521235077cfe24dc"
+  ]
+}
