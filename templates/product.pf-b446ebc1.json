@@ -83,9 +83,9 @@
             "group_1_title_family": "default",
             "group1_legend_color": "",
             "color-11": true,
-            "swatch11": "#000000",
+            "swatch11": "#5e6064",
             "color-12": true,
-            "swatch12": "#5e6064",
+            "swatch12": "#000000",
             "color-13": true,
             "swatch13": "#161f39",
             "color-14": true,
@@ -114,14 +114,14 @@
             "color-24": false,
             "swatch24": "#446489",
             "color-25": true,
-            "swatch25": "#446489",
-            "color-26": true,
+            "swatch25": "#e1e0da",
+            "color-26": false,
             "swatch26": "#81807e",
-            "color-27": true,
+            "color-27": false,
             "swatch27": "#7e2533",
-            "color-28": true,
+            "color-28": false,
             "swatch28": "#79aabb",
-            "color-29": true,
+            "color-29": false,
             "swatch29": "#e1e0da",
             "color-210": false,
             "swatch210": "#000000",
@@ -333,28 +333,6 @@
         "padding_bottom": 28
       }
     },
-    "1655846331249d4e40": {
-      "type": "apps",
-      "blocks": {
-        "e7765396-b452-4b0a-93fb-28018755cf73": {
-          "type": "shopify:\/\/apps\/judge-me-product-reviews\/blocks\/review_widget\/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
-          "settings": {
-          }
-        },
-        "8c91ed5f-63be-48ad-b594-3346a05a6283": {
-          "type": "shopify:\/\/apps\/judge-me-product-reviews\/blocks\/all_reviews_text\/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
-          "settings": {
-          }
-        }
-      },
-      "block_order": [
-        "e7765396-b452-4b0a-93fb-28018755cf73",
-        "8c91ed5f-63be-48ad-b594-3346a05a6283"
-      ],
-      "settings": {
-        "include_margins": true
-      }
-    },
     "pf-b446ebc1": {
       "type": "pf-b446ebc1",
       "settings": {
@@ -364,7 +342,6 @@
   "order": [
     "main",
     "product-recommendations",
-    "1655846331249d4e40",
     "pf-b446ebc1"
   ]
 }
