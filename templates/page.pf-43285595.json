@@ -1,1 +1,13 @@
-{"sections":{"pf-43285595":{"type":"pf-43285595","settings":{}}},"order":["pf-43285595"]}
+{
+  "sections": {
+    "pf-43285595": {
+      "type": "pf-43285595",
+      "settings": {
+      }
+    }
+  },
+  "order": [
+    "pf-43285595"
+  ],
+  "layout": "theme.pagefly"
+}
