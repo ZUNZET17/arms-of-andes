@@ -1,5 +1,11 @@
 {
   "sections": {
+    "16565170245c7dd8df": {
+      "type": "pagefly-section",
+      "settings": {
+        "section_id": "pf-ff16acec"
+      }
+    },
     "banner": {
       "type": "main-collection-banner",
       "disabled": true,
@@ -33,14 +39,14 @@
         "1652122763960d3347-0": {
           "type": "heading",
           "settings": {
-            "heading": "Alpaca Wool Hoodies & Jackets",
+            "heading": "Men's Alpaca Wool Apparel",
             "heading_size": "h2"
           }
         },
         "1652122763960d3347-1": {
           "type": "text",
           "settings": {
-            "text": "<p>Discover the most sustainable outdoor base layers and mid layers for men and women. Made from 100% Royal Alpaca Wool sourced in the Peruvian Andes.<\/p>"
+            "text": "<p>Wool underwear, socks and cold weather accessories ensure your comfort and dryness during any activity. The soft and lightweight alpaca wool boxer briefs are moisture-wicking and anti-bacterial, providing extra days of use when you are on longer treks or hiking trips. Our versatile wool beanies and neck gaiters are designed for warmth and protection in extreme conditions. Made from Royal Alpaca Wool, these accessories will keep you comfortable on your adventures in nature.<\/p>"
           }
         }
       },
@@ -57,6 +63,7 @@
     }
   },
   "order": [
+    "16565170245c7dd8df",
     "banner",
     "product-grid",
     "1652122764604552c1"
