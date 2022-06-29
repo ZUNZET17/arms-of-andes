@@ -1,5 +1,11 @@
 {
   "sections": {
+    "16565167781a3c5d28": {
+      "type": "pagefly-section",
+      "settings": {
+        "section_id": "pf-ff16acec"
+      }
+    },
     "banner": {
       "type": "main-collection-banner",
       "disabled": true,
@@ -62,6 +68,7 @@
     }
   },
   "order": [
+    "16565167781a3c5d28",
     "banner",
     "pf-ba47460c",
     "product-grid",
