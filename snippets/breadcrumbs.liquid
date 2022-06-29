@@ -87,12 +87,16 @@
       {%- when 'product' -%}
         {%- if collection.url -%}
           <li class="breadcrumbs__item">
-            {{ collection.title | link_to: collection.url }}
+            <a class="breadcrumbs__link" href="{{ collection.url }}" aria-current="page">&nbsp;{{ collection.title }}</a>
+          </li>
+          {% else %}
+          <li class="breadcrumbs__item">
+            <a class="breadcrumbs__link" href="{{ product.collections[0].url }}" aria-current="page">&nbsp;{{ product.collections[0].title }}</a>
           </li>
         {%- endif -%}
-        <li class="breadcrumbs__item">
+        <!-- <li class="breadcrumbs__item">
           <a class="breadcrumbs__link" href="{{ product.collections[0].url }}" aria-current="page">&nbsp;{{ product.collections[0].title }}</a>
-        </li>
+        </li> -->
         <!-- <li class="breadcrumbs__item">
           <a class="breadcrumbs__link" href="{{ product.url }}" aria-current="page">&nbsp;{{ product.title }}</a>
         </li> -->
@@ -102,8 +106,8 @@
             {{ collection.title | link_to: collection.url }}
           </li>
           <li class="breadcrumbs__item">
-            {%- capture tag_url -%}{{ collection.url }}/{{ current_tags | join: "+"}}{%- endcapture -%}
-            <a class="breadcrumbs__link" href="{{ tag_url }}" aria-current="page">{{ current_tags | join: " + "}}</a>
+            {%- capture tag_url -%}{{ collection.url }}/{{ current_tags | join: "+" }}{%- endcapture -%}
+            <a class="breadcrumbs__link" href="{{ tag_url }}" aria-current="page">{{ current_tags | join: " + " }}</a>
           </li>
         {%- else -%}
           <li class="breadcrumbs__item">
@@ -116,7 +120,7 @@
             {{ blog.title | link_to: blog.url }}
           </li>
           <li class="breadcrumbs__item">
-            {%- capture tag_url -%}{{blog.url}}/tagged/{{ current_tags | join: "+" }}{%- endcapture -%}
+            {%- capture tag_url -%}{{ blog.url }}/tagged/{{ current_tags | join: "+" }}{%- endcapture -%}
             <a class="breadcrumbs__link" href="{{ tag_url }}" aria-current="page">{{ current_tags | join: " + " }}</a>
           </li>
         {%- else -%}
