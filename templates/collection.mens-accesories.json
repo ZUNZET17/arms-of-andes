@@ -15,11 +15,6 @@
         "color_scheme": "background-1"
       }
     },
-    "pf-ba47460c": {
-      "type": "pf-ba47460c",
-      "settings": {
-      }
-    },
     "product-grid": {
       "type": "main-collection-product-grid",
       "settings": {
@@ -70,7 +65,6 @@
   "order": [
     "16565167781a3c5d28",
     "banner",
-    "pf-ba47460c",
     "product-grid",
     "16521235077cfe24dc"
   ]
