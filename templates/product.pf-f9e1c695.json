@@ -307,7 +307,7 @@
         "on_picture_trigger_text_natural": "Plastic-Free Ingredients",
         "on_picture_trigger_text_natural_underline": true,
         "gallery_layout": "stacked",
-        "grid_display": true,
+        "grid_display": false,
         "media_size": "large",
         "mobile_thumbnails": "hide",
         "hide_variants": true,
