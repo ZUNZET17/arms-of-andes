@@ -228,6 +228,7 @@
         },
         "collapsible-row-0": {
           "type": "collapsible_tab",
+          "disabled": true,
           "settings": {
             "hide_mobile": false,
             "heading": "Size & Fit",
