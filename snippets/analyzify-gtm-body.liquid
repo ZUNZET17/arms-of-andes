@@ -1,0 +1,444 @@
+<!-- Added with Analyzify V2.0 - Jul 5, 2022 7:34 pm -->
+
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','{{ shop.metafields.gtm.tracking_id }}');</script>
+<!-- End Google Tag Manager -->
+
+<script type="text/javascript">
+  var jQuery351;
+  window.dataLayer = window.dataLayer || [];
+
+  function analyzifyInitialize(){
+    window.analyzifyloadScript = function(url, callback) {
+      var script = document.createElement('script');
+      script.type = 'text/javascript';
+      // If the browser is Internet Explorer
+      if (script.readyState){
+        script.onreadystatechange = function() {
+          if (script.readyState == 'loaded' || script.readyState == 'complete') {
+            script.onreadystatechange = null;
+            callback();
+          }
+        };
+        // For any other browser
+      } else {
+        script.onload = function() {
+          callback();
+        };
+      }
+      script.src = url;
+      document.getElementsByTagName('head')[0].appendChild(script);
+    }
+
+    window.analyzifyAppStart = function(){
+      {% assign template_name = template.name %}
+      window.dataLayer.push({
+        event: "sh_info",
+        {% case template_name %}
+          {% when 'index' %}
+            page_type: "homepage",
+          {% when 'collection' %}
+            page_type: "collection",
+          {% when 'search' %}
+            page_type: "search",
+          {% when 'product' %}
+            page_type: "product",
+          {% when 'cart' %}
+            page_type: "cart",
+          {% else %}
+            page_type: "other",
+        {% endcase %}
+        page_currency: "{{ shop.currency }}",
+        {% if customer %}
+          user_type: "member",
+          user_id: "{{ customer.id | remove: "'" | remove: '"' }}",
+          user_r: "{{ customer.last_order.created_at | date: "%B %d, %Y %I:%M%p" }}",
+          user_f: "{{ customer.orders_count }}",
+          user_m: "{{ customer.total_spent | money_without_currency }}",
+          user_eh: "{{ customer.email | sha1 }}"
+        {% else %}
+          user_type: "visitor"
+        {% endif %}
+      });
+
+      window.analyzifyGetClickedProductPosition = function(elementHref, sku){
+        if(sku != ''){
+          var collection = {{ collection | json }};
+          {% for product in collection.products %}
+            var collectionProductsSku = "{{ product.selected_or_first_available_variant.sku | remove: "'" | remove: '"' }}";
+              if(sku == collectionProductsSku) {return {{ forloop.index }} ;}
+          {% endfor %}
+          return 0;
+        }else{
+          var elementIndex = -1
+          collectionProductsElements = document.querySelectorAll('a[href*="/products/"]');
+          collectionProductsElements.forEach(function(element,index){
+            if (element.href.includes(elementHref)) {elementIndex = index + 1};
+          });
+          return elementIndex
+        }
+      }
+
+      window.analyzifyCollectionPageHandle = function(){
+        var collection = {{ collection | json }};
+        var collectionAllProducts = {{ collection.products | json }};
+        var collectionTitle = "{{ collection.title | remove: "'" | remove: '"' }}";
+        var collectionId = "{{ collection.id }}";
+        var collectionProductsBrand = [];
+        var collectionProductsType = [];
+        var collectionProductsSku = [];
+        var collectionProductsName = [];
+        var collectionProductsId = [];
+        var collectionProductsPrice = [];
+        var collectionProductsPosition = []; // we need to talk about, this data can be taken from DOM only (filter ON/OFF)
+        var collectionGproductId = [];
+        var collectionVariantId = [];
+        {% for product in collection.products %}
+          collectionProductsBrand.push("{{ product.vendor | remove: "'" | remove: '"' }}")
+          collectionProductsType.push("{{ product.type | remove: "'" | remove: '"' }}")
+          collectionProductsSku.push("{{ product.selected_or_first_available_variant.sku | remove: "'" | remove: '"' }}")
+          collectionProductsName.push("{{ product.title | remove: "'" | remove: '"' }}")
+          collectionProductsId.push("{{ product.id }}")
+          collectionProductsPrice.push("{{ product.variants.first.price | times: 0.01 }}")
+          collectionProductsPosition.push({{ forloop.index }})
+          collectionGproductId.push("shopify_US_"+"{{ product.id }}"+"_"+"{{ product.selected_or_first_available_variant.id | default: product.variants[0].id }}")
+          collectionVariantId.push("{{ product.selected_or_first_available_variant.id | default: product.variants[0].id }}")
+        {% endfor %}
+        
+        window.dataLayer.push({
+          event: 'ee_productImpression',
+          category_name: collectionTitle,
+          category_id: collectionId,
+          category_product_brand: collectionProductsBrand,
+          category_product_type: collectionProductsType,
+          category_product_sku: collectionProductsSku,
+          category_product_name: collectionProductsName,
+          category_product_id: collectionProductsId,
+          category_product_price: collectionProductsPrice,
+          currency: "{{ shop.currency }}",
+          category_product_position: collectionProductsPosition,
+          g_product_id: collectionGproductId,
+          variant_id: collectionVariantId
+        });
+
+        jQuery351(document).on('click', 'a[href*="/products/"]', function(event) {
+          var href= jQuery351(this).attr('href');
+          if(collectionAllProducts.length < 1 ) return;
+          var handle = href.split('/products/')[1];
+          var clickedProduct = collectionAllProducts.filter(function(product) {
+              return product.handle === handle;
+          });
+          if (clickedProduct.length == 0 ) return;
+          window.dataLayer.push({
+            event: 'ee_productClick',
+            category_name: collectionTitle,
+            category_id: collectionId,
+            product_name: clickedProduct[0].title,
+            product_type: clickedProduct[0].type,
+            sku: clickedProduct[0].variants[0].sku,
+            product_id : clickedProduct[0].id.toString(),
+            product_price: (clickedProduct[0].price / 100).toFixed(2).toString(),
+            currency: "{{ shop.currency }}",
+            product_brand: clickedProduct[0].vendor,
+            product_position: analyzifyGetClickedProductPosition(href, clickedProduct[0].variants[0].sku),
+            variant_id: clickedProduct[0].variants[0].id
+          });
+        });
+      };
+
+      window.analyzifySearchPageHandle = function(){
+        var searchTerm = "{{ search.terms }}";
+        var searchResults = parseInt("{{ search.results_count }}");
+        var searchResultsJson = {{ search.results | json }};
+        var searchProductsBrand = [];
+        var searchProductsType = [];
+        var searchProductsSku = [];
+        var searchProductsNames = [];
+        var searchProductsIds = [];
+        var searchProductsPrices = [];
+        var searchProductsPosition = [];
+        var searchGproductId = [];
+        var searchVariantId = [];
+        
+        {% for product in search.results %}
+          searchProductsBrand.push("{{ product.vendor | remove: "'" | remove: '"' }}");
+          searchProductsType.push("{{ product.type | remove: "'" | remove: '"' }}")
+          searchProductsSku.push("{{ product.selected_or_first_available_variant.sku | remove: "'" | remove: '"' }}")
+          searchProductsNames.push("{{ product.title | remove: "'" | remove: '"' }}");
+          searchProductsIds.push("{{ product.id }}");
+          searchProductsPrices.push("{{ product.variants.first.price | times: 0.01 }}");
+          searchProductsPosition.push({{ forloop.index }})
+          searchGproductId.push("shopify_US_"+"{{ product.id }}"+"_"+"{{ product.selected_or_first_available_variant.id | default: product.variants[0].id }}")
+          searchVariantId.push("{{ product.selected_or_first_available_variant.id | default: product.variants[0].id }}")
+        {% endfor %}
+
+        window.dataLayer.push({
+          event: 'searchListInfo',
+          page_type: 'search',
+          search_term: searchTerm,
+          search_results: searchResults,
+          category_product_brand: searchProductsBrand,
+          category_product_type: searchProductsType,
+          category_product_sku: searchProductsSku,
+          category_product_name: searchProductsNames,
+          category_product_id: searchProductsIds,
+          category_product_price: searchProductsPrices,
+          currency: "{{ shop.currency }}",
+          category_product_position: searchProductsPosition,
+          g_product_id: searchGproductId,
+          variant_id: searchVariantId
+        });
+
+        
+        jQuery351(document).on('click', 'a[href*="/products/"]', function(event) {
+          if(searchResultsJson.length < 1 ) return;
+          var href= jQuery351(this).attr('href');
+          var handle = href.split('/products/')[1];
+          var clickedProduct = searchResultsJson.filter(function(product) {
+            return handle.includes(product.handle);
+          });
+          if (clickedProduct.length == 0 ) return;
+          
+          window.dataLayer.push({
+            event: 'ee_productClick',
+            product_name: clickedProduct[0].title,
+            product_type: clickedProduct[0].type,
+            sku: clickedProduct[0].variants[0].sku,
+            product_id : clickedProduct[0].id,
+            product_price: (clickedProduct[0].price / 100).toFixed(2).toString(),
+            currency: "{{ shop.currency }}",
+            product_brand: clickedProduct[0].vendor,
+            product_position: analyzifyGetClickedProductPosition(href, ""),
+            variant_id: clickedProduct[0].variants[0].id
+          });
+
+        });
+      };
+
+      window.analyzifyProductPageHandle = function(){
+        var productName = "{{ product.title | remove: "'" | remove: '"' }}";
+        var productId = "{{ product.id }}";
+        var productPrice = "{{ product.variants.first.price | times: 0.01 }}";
+        var productBrand = "{{ product.vendor | remove: "'" | remove: '"' }}";
+        var productType = "{{ product.type | remove: "'" | remove: '"' }}";
+        var productSku = "{{ product.selected_or_first_available_variant.sku | remove: "'" | remove: '"' }}";
+        var productCollection = "{{ product.collections.last.title | remove: "'" | remove: '"' }}";
+        
+        window.dataLayer.push({
+          event: 'ee_productDetail',
+          name: productName,
+          id: productId,
+          price: productPrice,
+          currency: "{{ shop.currency }}",
+          brand: productBrand,
+          product_type: productType,
+          sku: productSku,
+          category: productCollection,
+          g_product_id: "shopify_US_"+productId+"_"+"{{ product.selected_variant.id | default: product.variants[0].id }}",
+          variant_id: "{{ product.selected_variant.id | default: product.variants[0].id }}"
+        });
+        var first_atc = null;
+        var selectors = ["input[name='add']", "button[name='add']", "#add-to-cart", "#AddToCartText", "#AddToCart", ".gtmatc", ".product-form__cart-submit", "#AddToCart-product-template", ".product-form__add-to-cart"];
+        var found_selectors = 0;
+        selectors.forEach(function(selector) {
+          found_selectors += jQuery351(selector).length;
+          if (first_atc == null && found_selectors) {
+            first_atc = selector
+          }
+        });
+        if (jQuery351(first_atc).length > 0 ) {
+          jQuery351(document).on('click', first_atc, function(event) {
+            var productForm = jQuery351(this).parents('form[action="/cart/add"]');
+            var variantInput = productForm.find('*[name="id"]')
+            var quantityInput = productForm.find('input[name="quantity"]')
+            var itemQuantity = quantityInput.length > 0 ? quantityInput.val() : 1
+            window.dataLayer.push({
+              event: 'ee_addToCart',
+              name: productName,
+              id: productId,
+              price: productPrice,
+              currency: "{{ shop.currency }}",
+              brand: productBrand,
+              product_type: productType,
+              category: productCollection,
+              quantity: itemQuantity,
+              variant: variantInput.val(),
+              g_product_id: "shopify_US_"+productId+"_"+variantInput.val()
+            });
+          });
+        }
+      };
+
+      window.checkoutEvent = function(){
+        jQuery351.getJSON('/cart.js', function(cart) {
+          if(cart.items.length > 0){
+            var cartId = cart.token;
+            var cartTotalValue = cart.total_price;
+            var cartTotalQuantity = cart.item_count;
+            var cartCurrency = cart.currency;
+            var cartItemsName = [];
+            var cartItemsBrand = [];
+            var cartItemsType = [];
+            var cartItemsSku = [];
+            var cartItemsId = [];
+            var cartItemsVariantId = [];
+            var cartItemsVariantTitle = [];
+            var cartItemsPrice = [];
+            var cartItemsQuantity = [];
+            var cartItemsQuantity = [];
+            var cartGProductIds = [];
+
+            jQuery351.each(cart.items, function(key,val) {
+              cartItemsName.push(val.title);
+              cartItemsBrand.push(val.vendor);
+              cartItemsType.push(val.product_type);
+              cartItemsSku.push(val.sku);
+              cartItemsId.push(val.product_id);
+              cartItemsVariantId.push(val.variant_id);
+              cartItemsVariantTitle.push(val.title);
+              cartItemsPrice.push(parseFloat(parseInt(val.original_price)/100));
+              cartItemsQuantity.push(val.quantity);
+              cartGProductIds.push("shopify_US_"+val.product_id+"_"+val.variant_id);
+            });
+
+            window.dataLayer.push({
+              event: 'ee_checkout',
+              page_type: 'cart',
+              name: cartItemsName,
+              brand: cartItemsBrand,
+              product_type: cartItemsType,
+              sku: cartItemsSku,
+              id: cartItemsId,
+              variant_id: cartItemsVariantId,
+              variant: cartItemsVariantTitle,
+              price: cartItemsPrice,
+              quantity: cartItemsQuantity,
+              cart_id: cart.token,
+              currency: cartCurrency,
+              totalValue: parseFloat(cart.total_price)/100,
+              totalQuantity: cart.item_count,
+              g_product_id: cartGProductIds
+            });
+           }
+        });
+      };
+
+      window.analyzifyCartPageHandle = function(){
+        var cartTotalValue = "{{ cart.total_price | times: 0.01 }}";
+        var cartTotalQuantity = "{{ cart.item_count }}";
+        var cartCurrency = "{{ cart.currency.iso_code }}";
+        var cartItemsName = [];
+        var cartItemsCategory = [];
+        var cartItemsBrand = [];
+        var cartItemsType = [];
+        var cartItemsSku = [];
+        var cartItemsId = [];
+        var cartItemsVariantId = [];
+        var cartItemsVariantTitle = [];
+        var cartItemsPrice = [];
+        var cartItemsQuantity = [];
+        var cartItemsCategoryIds = [];
+
+        {% assign item_category_list = '' %}
+        {% assign item_category_ids_list = '' %}
+
+        {%- for item in cart.items -%}
+          cartItemsName.push("{{ item.title | remove: "'" | remove: '"' }}");
+          cartItemsCategory.push("{{ item.product.collections.last.title | remove: "'" | remove: '"' }}");
+          cartItemsBrand.push("{{ item.vendor | remove: "'" | remove: '"' }}");
+          cartItemsType.push("{{ item.product.type | remove: "'" | remove: '"' }}");
+          cartItemsSku.push("{{ item.sku | remove: "'" | remove: '"' }}");
+          cartItemsId.push("{{ item.product_id }}");
+          cartItemsVariantId.push("{{ item.variant_id }}");
+          cartItemsVariantTitle.push("{{ item.variant.title | remove: "'" | remove: '"' }}");
+          cartItemsPrice.push("{{ item.original_price | times: 0.01 }}");
+          cartItemsQuantity.push("{{ item.quantity }}");
+          cartItemsCategoryIds.push("{{ item.product.collections.last.id | remove: "'" | remove: '"' }}");
+        {% endfor %}
+
+        window.dataLayer.push({
+          event: 'ee_checkout',
+          page_type: 'cart',
+          name: cartItemsName,
+          category: cartItemsCategory,
+          brand: cartItemsBrand,
+          product_type: cartItemsType,
+          sku: cartItemsSku,
+          id: cartItemsId,
+          variant_id: cartItemsVariantId,
+          variant: cartItemsVariantTitle,
+          price: cartItemsPrice,
+          currency: "{{ shop.currency }}",
+          quantity: cartItemsQuantity,
+          category_id: cartItemsCategoryIds,
+          currency: cartCurrency,
+          totalValue: cartTotalValue,
+          totalQuantity: cartTotalQuantity * 1
+        });
+      };
+
+      {% case template_name %}
+        {% when 'collection' %}
+          analyzifyCollectionPageHandle()
+        {% when 'search' %}
+          analyzifySearchPageHandle()
+        {% when 'product' %}
+          analyzifyProductPageHandle()
+        {% when 'cart' %}
+          analyzifyCartPageHandle()
+      {% endcase %}
+      
+      {% unless template_name == 'product' %}
+        // jQuery351(document).on('click', cart_icon, function(event) {
+        // checkoutEvent();
+        // });
+        // jQuery351(document).on('click', first_atc, function(event) {
+        //   var productForm = jQuery351(this).parents('form');
+        //   var variantInput = productForm.find('*[name="id"]')
+        //   var quantityInput = productForm.find('input[name="quantity"]')
+        //   var itemQuantity = quantityInput.length > 0 ? quantityInput.val() : 1
+        //   window.dataLayer.push({
+        //     event: 'ee_addToCart',
+        //     name: productForm.find('.ptitle').val(),
+        //     id: productForm.find('.pid').val(),
+        //     price: productForm.find('.pprice').val(),
+        //     brand: productForm.find('.pbrand').val(),
+        //     product_type: productForm.find('.ptype').val(),
+        //     category: productForm.find('.pcollection').val(),
+        //     quantity: itemQuantity,
+        //     variant: variantInput.val(),
+        //     g_product_id: "shopify_US_"+productForm.find('.pid').val()+"_"+variantInput.val()
+        //   });
+        // });
+      {% endunless %}
+      var cartItemsJson = {{ cart | json }};
+      jQuery351(document).on('click', ".cart__remove", function(event) {
+        var removedvid = jQuery351(this).attr("data-vid");
+        var removedItemData = cartItemsJson.items.filter(function(item){
+          return item.variant_id.toString() === removedvid
+        })
+        var removedItem = removedItemData[0];
+        window.dataLayer.push({
+          event:'ee_removeFromCart',
+          name: removedItem.product_title,
+          id : removedItem.product_id.toString(),
+          variant : removedItem.id.toString(),
+          price: (removedItem.price / 100).toFixed(2).toString(),
+          currency: "{{ shop.currency }}",
+          brand: removedItem.vendor,
+          quantity: removedItem.quantity
+        });
+      });
+    }
+  }
+
+  analyzifyInitialize();
+  analyzifyloadScript('//ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js', function() {
+    jQuery351 = jQuery.noConflict(true);
+    analyzifyAppStart();
+  });
+</script>
