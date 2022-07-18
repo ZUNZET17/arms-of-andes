@@ -899,3 +899,251 @@ class VariantRadios extends VariantSelects {
 }
 
 customElements.define('variant-radios', VariantRadios);
+
+let hrefColor
+let dataSection
+class VariantRadiosBundle extends VariantRadios {
+  constructor() {
+    super();
+    this.colors = this.querySelectorAll('fieldset.color-swatches input')
+    this.sizes = this.querySelectorAll('fieldset.size-options input')
+    dataSection = this.dataset.section
+    this.addEventListener('change', this.onChangeHandler)
+    super.getVariantData()
+    this.existingVariant = location.href.split('variant=')[1]
+    this.existingColor = this.variantData.find(v => v.id == this.existingVariant)?.option1.toLowerCase() || null
+    super.updateOptions()
+    super.updateMasterId()
+    this.onChangeHandler()
+  }
+
+  onChangeHandler() {
+    this.setAvailability()
+    this.sortVariantPictures()
+    this.toggleAddButton()
+  }
+
+  toggleAddButton() {
+    console.log('newToggleFunction')
+  }
+
+  setAvailability() {
+    this.firstLoad && (this.colors = this.querySelectorAll('fieldset.color-swatches input:checked'))
+    this.colors.forEach(color => {
+      let colorAvailability = []
+
+      this.sizes.forEach(size => {
+        let currentOption = [color.value, size.value]
+        let optionVariant = this.getVariantData().find((variant) => {
+          return !variant.options.map((option, index) => {
+            return currentOption[index] === option;
+          }).includes(false);
+        })
+
+        if (!this.firstLoad) {
+          colorAvailability.push(optionVariant)
+          return
+        }
+
+        if (!optionVariant.available) {
+          size.nextElementSibling.classList.add('unavailable')
+          return
+        }
+        size.nextElementSibling.classList.remove('unavailable')
+      })
+
+      if (!this.firstLoad) {
+        if (colorAvailability.every(c => c.available == false)) {
+          color.nextElementSibling.classList.add('unavailable-swatch')
+          return
+        }
+        color.nextElementSibling.classList.remove('unavailable-swatch')
+      }
+    })
+
+    this.firstLoad = true;
+  }
+
+  sortVariantPictures() {
+    this.selectedColor = this.existingColor || this.querySelectorAll('fieldset.color-swatches input:checked')[0].value.toLowerCase()
+    this.picturesArray = Array.from(document.querySelectorAll('.product__media-item'));
+    this.filteredArray = this.picturesArray.filter( x => {
+      const altArr = x.getAttribute('media-alt').split(' ');
+      const pictureColor = altArr.slice(altArr.indexOf('color') + 1).toString().replace(',', ' ').toLowerCase();
+      if (x.getAttribute('media-alt').includes('cover')) {
+        return true
+      } else {
+        return pictureColor == this.selectedColor 
+        //&& x.getAttribute('media-alt').split('color')[0] == x.getAttribute('product-title')
+      }
+    })
+
+    if(this.filteredArray.length > 0 ) {
+      this.picturesArray.map(x => {
+        if( this.filteredArray.includes(x) ) {
+          x.style.display = 'block'
+          return
+        }
+        x.style.display = 'none'
+      })
+    }
+  };
+
+}
+
+customElements.define('variant-radios-bundle', VariantRadiosBundle)
+
+class Bundle extends HTMLElement {
+  constructor() {
+    super();
+  }
+}
+
+customElements.define('bundle-container', Bundle)
+
+class BundleSimple extends HTMLElement {
+  constructor() {
+    super();
+  }
+}
+
+customElements.define('bundle-container-simple', BundleSimple)
+
+let selectedVariants
+
+//Product Bundle option accordion
+
+const bundleAccordion = function (ev) {
+  if (this.querySelector('select')) {
+    const selectValue = this.querySelector('select').value
+    const variantRadios = this.querySelectorAll('variant-radios-bundle')
+  
+    variantRadios.forEach( v => {
+      let product = v.getAttribute('data-product')
+      v.classList.add('js-none')
+      if (selectValue == product) {
+        v.classList.remove('js-none')
+      }
+    })
+    
+  
+
+  const displaySelected = this.parentElement.querySelector('.selection-span')
+
+  displaySelected.textContent = this.querySelectorAll('variant-radios-bundle:not(.js-none)')[0].currentVariant.title
+  }
+}
+
+window.addEventListener('load', () => {
+  document.querySelectorAll('.accordion__content--bundle').forEach(a => {
+    a.addEventListener('change', bundleAccordion)
+    a.dispatchEvent(new Event('change'))
+  })
+})
+
+//Set button availabitlity
+
+const bundleItems = function (ev) {
+  const input = ev.currentTarget
+  selectedVariants = Array.from(document.querySelectorAll('variant-radios-bundle')).filter(x => !x.classList.contains('js-none')).map(x => x.currentVariant)
+  const productForm = document.getElementById(`product-form-${input.dataset?.section || dataSection}`);
+
+  if (!productForm) return;
+  const addButton = productForm.querySelector('[name="add"]');
+  const addButtonText = productForm.querySelector('[name="add"] > span');
+  if (!addButton) return;
+
+  const isBundleAvailable = selectedVariants.every(v => v.available == true);
+
+  const text = window.variantStrings.soldOut;
+
+  if (!isBundleAvailable) {
+    addButton.setAttribute('disabled', 'disabled');
+    if (text) addButtonText.textContent = text;
+  } else {
+    addButton.removeAttribute('disabled');
+    addButtonText.textContent = window.variantStrings.addToCart;
+  }
+}
+
+window.addEventListener('load', bundleItems)
+Array.from(document.querySelectorAll('variant-radios-bundle')).forEach(v => {
+  v.addEventListener('change', bundleItems)
+})
+
+//Add all bundle items
+
+const productForm = document.getElementById(`product-form-${dataSection}`);
+
+const addAllItems = function(ev) {
+  ev.preventDefault()
+  const cartNotification = document.querySelector('cart-notification')
+  cartNotification.getSectionsToRender = [
+      {
+        id: 'cart-notification-product',
+        selector: `[id="shopify-section-cart-notification-product"]`,
+      },
+      {
+        id: 'cart-notification-button'
+      },
+      {
+        id: 'cart-icon-bubble'
+      }
+    ];
+  cartNotification.getSectionInnerHTML = (html, selector = ['.shopify-section']) => {
+    let index = Array.isArray(selector) ? selector.length : 1
+    let result = []
+    const parser = new DOMParser()
+    for (let i = 0; i < index; i++ ) {
+      let parsedItem = parser.parseFromString(html, 'text/html').querySelector(selector[i]).innerHTML;
+      result.push(parsedItem.toString())
+    }
+    result = result.map(item => `<div class="minicart__item">${item}</div>`).join(' ')
+    return result
+  }
+
+  cartNotification.renderContents = (parsedState) => {
+    cartNotification.getSectionsToRender[0].selector = parsedState.items.map(x => `[id="cart-notification-product-${x.key}"]`)
+    cartNotification.cartItemKey = parsedState.items[0].key;
+    cartNotification.getSectionsToRender.forEach((section => {
+      document.getElementById(section.id).innerHTML =
+        cartNotification.getSectionInnerHTML(parsedState.sections[section.id], section.selector);
+    }));
+
+    if (cartNotification.header) cartNotification.header.reveal();
+    cartNotification.open();
+  }
+
+  const product_data = selectedVariants.map(variant => {
+    return {
+      quantity: 1,
+      id: variant.id,
+    }
+  })
+
+  const data = {
+    items: product_data,
+    sections: cartNotification.getSectionsToRender.map((section) => section.id)
+  }
+
+  fetch('/cart/add.js', {
+    body: JSON.stringify(data),
+    credentials: 'same-origin', 
+    headers: {
+      'Content-Type': 'application/json',
+      'X-Requested-With':'xmlhttprequest'
+    },
+    method: 'POST'
+  }).then((response) => {
+    return response.json();
+  }).then((json) => {
+    /* yay! our products were added */
+    console.log('products', json)
+    cartNotification.renderContents(json);
+  }).catch((err) => {
+    /* uh oh, we have error. */
+    console.error(err)
+  });
+}
+
+productForm.addEventListener('submit', addAllItems)

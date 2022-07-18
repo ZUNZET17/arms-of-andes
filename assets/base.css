@@ -1,5 +1,5 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;500;600;700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Hind:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap');
 
 /* Color custom properties */
 
@@ -3015,6 +3015,17 @@ details-disclosure > details {
     transition-duration: 250ms;
     box-shadow: 0 0 0 1pt rgb(116, 121, 124);
   }
+
+  .color-swatch__label svg {
+    display: none;
+  }
+
+  .color-swatch__label.unavailable-swatch svg {
+    display: block;
+  }
+  .variant-option-input:checked + .color-swatch__label {
+    border-width: .2rem!important;
+  }
   
   .color-swatch__pin {
     font-size: 1.2rem;
@@ -3129,12 +3140,12 @@ details-disclosure > details {
 
   /* custom Font Families */
 
-  .roboto {
-    font-family: 'Roboto Mono', monospace;
+  .hind {
+    font-family: 'Hind', sans-serif;
   }
 
-  .poppins {
-    font-family: 'Poppins', sans-serif;
+  .montserrat {
+    font-family: 'Montserrat', sans-serif;
   }
 
   /* Zoom Image */
@@ -3144,12 +3155,17 @@ details-disclosure > details {
   }
 
   .zoom-thumb {
-    cursor: zoom-in;
     overflow: hidden;
   }
 
-  .zoom-thumb.zoomed {
-    cursor: zoom-out;
+  @media screen and (min-width: 750px) {
+    .zoom-thumb {
+      cursor: zoom-in;
+    }
+  
+    .zoom-thumb.zoomed {
+      cursor: zoom-out;
+    }
   }
 
   .zoom-thumb.zoomed .on-picture-text-container {
@@ -3176,12 +3192,138 @@ details-disclosure > details {
   .product__title {
     line-height: 1;
   }
-/*   globo css */
-  label.swatch-anchor.swatch-other.globo-border-color-swatch.globo-style-circle.globo-size-small.globo-border-style-double {
+
+  /*Bundle minicart*/
+  .cart-notification-product {
+    max-height: 50vh;
+    flex-direction: column;
+    overflow-y: scroll;
+  }
+
+  /*Product option accordion*/
+
+  variant-radios-bundle {
+    display: block!important
+  }
+
+  .accordion--variant_picker {
+    margin-bottom: .5rem!important;
+  }
+
+  .accordion__content {
+    padding: 1rem 1rem 0!important;
+  }
+
+  .accordion-details-bundle-options {
+    border: 2px solid #e6e6e6; 
+  }
+
+  .accordion-summary {
+    padding: 1.5rem!important;
+  }
+
+  .accordion-details-bundle-options.open .accordion-summary {
+    background: #e6e6e6;
+    padding: 1.5rem!important;
+  }
+
+  .accordion__title p {
+    margin: 0;
+  }
+
+  .js-none {
+    display: none!important;
+  }
+
+  /*Variant picker Next button*/
+  .button--picker-next {
+    display: block;
+    margin: 1.5rem auto 0;
+    min-width: max-content;
+    min-height: 100%;
+    line-height: 3.2rem;
+    padding: 0 1.5rem;
+    border-radius: 2.5rem;
+  }
+
+  .button--picker-next:after,
+  .button--picker-next:before {
+    border-radius: 2.5rem;
+  }
+
+  /*BUNDLE OPTION*/
+  .bundle-option {
+    display: block;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  .product__info-container bundle-container:not(:first-of-type) {
+    display: none;
+  }
+
+  fieldset.bundle-steps:not(:first-of-type) {
+    display: none;
+  }
+
+  /*Bundle steps button*/
+  .bundle-steps {
+    border: none;
+    margin-top: 2rem;
     display: flex;
+    padding: 0;
+    column-gap: 0.2rem;
+  }
+
+  .bundle-steps__label {
+    margin-right: 2px;
+    position: relative;
+    text-transform: uppercase;
+    font-size: 10px;
+    padding: 0 10px;
+    cursor: pointer;
+    display: -ms-flexbox;
+    display: flex;
+    margin: 0;
+    width: 100%;
+    border-radius: 50px;
+    -ms-flex-pack: center;
     justify-content: center;
-    align-items: center;
-}
-  .globo-out-of-stock.globo-sold-out-opacity {
-    display: none !important;
-}
+    background-color: #fff;
+    color: #000;
+    border: 1px solid #000;
+  }
+
+  .bundle-steps__label.is-complete {
+    background-color: #fff;
+    color: #000;
+    border: 1px solid #000;
+  }
+
+  .bundle-steps__label:not(.is-complete) {
+    background-color: #d1d1d2;
+    color: #fff;
+    border: 1px solid #d1d1d2;
+    cursor: default;
+  }
+
+  .bundle-steps__input {
+    clip: rect(0, 0, 0, 0);
+    overflow: hidden;
+    position: absolute;
+    height: 1px;
+    width: 1px;
+  }
+
+  .bundle-steps__input:checked + .bundle-steps__label {
+    background: #434442;
+    color: #ffffff;
+  }
+
+  bundle-container .product__accordion--variant:last-child variant-radios-bundle button {
+    display: none;
+  }
+
+  bundle-container-simple:not(:first-of-type) variant-radios-bundle button {
+    display: none;
+  }
