@@ -995,16 +995,14 @@
                                       }
                                     {% endstyle %}
                                     {%- capture colorop1 -%}color-1{{- forloop.index -}}{%- endcapture -%}
-                                    {% comment %}<p>{{colorop1}}</p>{% endcomment %}
                                     {%- if block.settings[colorop1] -%}
                                       <input class="variant-option-input js-variant-option-color" type="radio" id="{{ value }}-{{product_option}}"
                                             name="{{ option.name }}-{{product_option}}"
                                             value="{{ value | escape }}"
                                             form="{{ product_form_id }}"
-                                            {% comment %}{% if option.selected_value == value %}checked{% endif %}{% endcomment %}
                                             {% if forloop.index == 1 %}checked{% endif %}
                                       >
-                                      <label zxc class="color-swatch__label swatch1{{- forloop.index }}{{block.id}} js-color-label {% if forloop.index == 1 %}selected{% endif %}" for="{{ value }}-{{product_option}}" swatch-color="{{ value }}" group-number="1">
+                                      <label zxc class="color-swatch__label swatch1{{- forloop.index }}{{block.id}} js-color-label {% if forloop.index == 1 %}selected{% endif %}" for="{{ value }}-{{product_option}}" swatch-color="{{ value }}" group-number="1" product-title="{{product_option.title}}">
                                         {% render 'icon-close' %}
                                         <span class="color-swatch__pin">{{ value }}</span>
                                       </label>
@@ -1083,7 +1081,6 @@
                                       {% endcomment %}
                                     {% endstyle %}
                                     {%- capture colorop2 -%}color-2{{- forloop.index -}}{%- endcapture -%}
-                                    {% comment %}<p>{{colorop2}}</p>{% endcomment %}
                                     {%- if block.settings[colorop2] -%}
                                       <input class="variant-option-input js-variant-option-color" type="radio" id="{{ value }}-{{product_option}}"
                                             name="{{ option.name }}-{{product_option}}"
@@ -1091,7 +1088,7 @@
                                             form="{{ product_form_id }}"
                                             {% if option.selected_value == value %}checked{% endif %}
                                       >
-                                      <label class="color-swatch__label swatch2{{- forloop.index }}{{block.id}} js-color-label" for="{{ value }}-{{product_option}}" swatch-color="{{ value }}" group-number="2">
+                                      <label class="color-swatch__label swatch2{{- forloop.index }}{{block.id}} js-color-label" for="{{ value }}-{{product_option}}" swatch-color="{{ value }}" group-number="2" product-title="{{product_option.title}}">
                                         {% render 'icon-close' %}
                                         <span class="color-swatch__pin">{{ value }}</span>
                                       </label>

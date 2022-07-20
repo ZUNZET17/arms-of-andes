@@ -3276,6 +3276,7 @@ details-disclosure > details {
   }
 
   .bundle-steps__label {
+    line-height: 3.2rem;
     margin-right: 2px;
     position: relative;
     text-transform: uppercase;
@@ -3326,4 +3327,10 @@ details-disclosure > details {
 
   bundle-container-simple:not(:first-of-type) variant-radios-bundle button {
     display: none;
+  }
+
+  .bundle-option__title,
+  .bundle-option__title p {
+    line-height: 1;
+    margin-bottom: 0!important;
   }
