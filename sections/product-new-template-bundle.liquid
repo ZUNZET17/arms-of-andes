@@ -996,13 +996,13 @@
                                     {% endstyle %}
                                     {%- capture colorop1 -%}color-1{{- forloop.index -}}{%- endcapture -%}
                                     {%- if block.settings[colorop1] -%}
-                                      <input class="variant-option-input js-variant-option-color" type="radio" id="{{ value }}-{{product_option}}"
-                                            name="{{ option.name }}-{{product_option}}"
+                                      <input class="variant-option-input js-variant-option-color" type="radio" id="{{ value }}-{{product_option}}-{{block.id}}"
+                                            name="{{ option.name }}-{{product_option}}-{{block.id}}"
                                             value="{{ value | escape }}"
                                             form="{{ product_form_id }}"
                                             {% if forloop.index == 1 %}checked{% endif %}
                                       >
-                                      <label zxc class="color-swatch__label swatch1{{- forloop.index }}{{block.id}} js-color-label {% if forloop.index == 1 %}selected{% endif %}" for="{{ value }}-{{product_option}}" swatch-color="{{ value }}" group-number="1" product-title="{{product_option.title}}">
+                                      <label zxc class="color-swatch__label swatch1{{- forloop.index }}{{block.id}} js-color-label {% if forloop.index == 1 %}selected{% endif %}" for="{{ value }}-{{product_option}}-{{block.id}}" swatch-color="{{ value }}" group-number="1" product-title="{{product_option.title}}">
                                         {% render 'icon-close' %}
                                         <span class="color-swatch__pin">{{ value }}</span>
                                       </label>
@@ -1082,13 +1082,13 @@
                                     {% endstyle %}
                                     {%- capture colorop2 -%}color-2{{- forloop.index -}}{%- endcapture -%}
                                     {%- if block.settings[colorop2] -%}
-                                      <input class="variant-option-input js-variant-option-color" type="radio" id="{{ value }}-{{product_option}}"
-                                            name="{{ option.name }}-{{product_option}}"
+                                      <input class="variant-option-input js-variant-option-color" type="radio" id="{{ value }}-{{product_option}}-{{block.id}}"
+                                            name="{{ option.name }}-{{product_option}}-{{block.id}}"
                                             value="{{ value | escape }}"
                                             form="{{ product_form_id }}"
                                             {% if option.selected_value == value %}checked{% endif %}
                                       >
-                                      <label class="color-swatch__label swatch2{{- forloop.index }}{{block.id}} js-color-label" for="{{ value }}-{{product_option}}" swatch-color="{{ value }}" group-number="2" product-title="{{product_option.title}}">
+                                      <label class="color-swatch__label swatch2{{- forloop.index }}{{block.id}} js-color-label" for="{{ value }}-{{product_option}}-{{block.id}}" swatch-color="{{ value }}" group-number="2" product-title="{{product_option.title}}">
                                         {% render 'icon-close' %}
                                         <span class="color-swatch__pin">{{ value }}</span>
                                       </label>
@@ -1139,13 +1139,13 @@
                               </div>
                               <div class="sizes-list">
                                 {%- for value in option.values -%}
-                                  <input class="variant-option-input js-variant-option-size" type="radio" id="{{ value }}-{{product_option}}"
-                                        name="{{ option.name }}-{{product_option}}"
+                                  <input class="variant-option-input js-variant-option-size" type="radio" id="{{ value }}-{{product_option}}-{{block.id}}"
+                                        name="{{ option.name }}-{{product_option}}-{{block.id}}"
                                         value="{{ value | escape }}"
                                         form="{{ product_form_id }}"
                                         {% if option.selected_value == value %}checked{% endif %}
                                   >
-                                  <label class="product-size-label js-product-size-label" for="{{ value }}-{{product_option}}">
+                                  <label class="product-size-label js-product-size-label" for="{{ value }}-{{product_option}}-{{block.id}}">
                                     {{ value }}
                                   </label>
                                 {%- endfor -%}

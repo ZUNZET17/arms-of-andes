@@ -912,9 +912,11 @@ class VariantRadiosBundle extends VariantRadios {
     super.getVariantData()
     this.existingVariant = location.href.split('variant=')[1]
     this.existingColor = this.variantData.find(v => v.id == this.existingVariant)?.option1.toLowerCase() || null
+    this.selectedProductTitle = 'cover'
     super.updateOptions()
     super.updateMasterId()
     this.onChangeHandler()
+    this.displayCoverPictures()
   }
 
   onChangeHandler() {
@@ -924,7 +926,7 @@ class VariantRadiosBundle extends VariantRadios {
   }
 
   toggleAddButton() {
-    console.log('newToggleFunction')
+    return
   }
 
   setAvailability() {
@@ -964,23 +966,29 @@ class VariantRadiosBundle extends VariantRadios {
     this.firstLoad = true;
   }
 
+  displayCoverPictures () {
+    const picturesArray = Array.from(document.querySelectorAll('.product__media-item'));
+    picturesArray.forEach(p => {
+      if(p.getAttribute('media-alt').includes('cover')) {
+        p.style.display = 'block'
+        return
+      }
+      p.style.display = 'none'
+    })
+  }
+
   sortVariantPictures() {
     this.selectedColor = this.existingColor || this.querySelectorAll('fieldset.color-swatches input:checked')[0].value.toLowerCase()
     this.picturesArray = Array.from(document.querySelectorAll('.product__media-item'));
+    this.selectedProductTitle = this.querySelectorAll('fieldset.color-swatches input:checked + label')[0].getAttribute('product-title')
     this.filteredArray = this.picturesArray.filter( x => {
       const altArr = x.getAttribute('media-alt').split(' ');
       const pictureColor = altArr.slice(altArr.indexOf('color') + 1).toString().replace(',', ' ').toLowerCase();
-      if (x.getAttribute('media-alt').includes('cover')) {
-        return true
-      } else {
-        console.log('image product title', x.getAttribute('media-alt').split('color')[0])
-        console.log('imagesProduct', this.imagesProduct)
-        return pictureColor == this.selectedColor && x.getAttribute('media-alt').split('color')[0].trim() == this.imagesProduct.trim()
-      }
+      return pictureColor == this.selectedColor && x.getAttribute('media-alt').split('color')[0].trim() == this.selectedProductTitle.trim()
     })
-    console.log(this.filteredArray)
+
     if(this.filteredArray.length > 0 ) {
-      this.picturesArray.map(x => {
+      this.picturesArray.forEach(x => {
         if( this.filteredArray.includes(x) ) {
           x.style.display = 'block'
           return
@@ -988,7 +996,6 @@ class VariantRadiosBundle extends VariantRadios {
         x.style.display = 'none'
       })
     }
-    this.imagesProduct = this.querySelectorAll('fieldset.color-swatches input:checked + label')[0].getAttribute('product-title')
 
   };
 
@@ -996,6 +1003,28 @@ class VariantRadiosBundle extends VariantRadios {
 
 customElements.define('variant-radios-bundle', VariantRadiosBundle)
 
+class VariantRadiosSimple extends VariantRadiosBundle {
+  constructor() {
+    super()
+  }
+
+  displayCoverPictures() {
+    return
+  }
+
+  sortVariantPictures() {
+    this.selectedColor = this.existingColor || this.querySelectorAll('fieldset.color-swatches input:checked')[0].value.toLowerCase()
+    this.picturesArray = Array.from(document.querySelectorAll('.product__media-item'));
+    this.picturesArray.forEach( x => {
+      const altArr = x.getAttribute('media-alt').split(' ');
+      const pictureColor = altArr.slice(altArr.indexOf('color') + 1).toString().replace(',', ' ').toLowerCase();
+      if (pictureColor == this.selectedColor) x.style.display = 'block'
+    })
+
+  };
+}
+
+customElements.define('variant-radios-simple', VariantRadiosSimple)
 class Bundle extends HTMLElement {
   constructor() {
     super();
