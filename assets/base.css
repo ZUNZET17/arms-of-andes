@@ -2989,7 +2989,7 @@ details-disclosure > details {
     border: 1px solid transparent;
     border-color: #ecebeb;
     border-radius: 0;
-    transition: all 0.2s ease-in-out;
+    transition: all 0.2s ease-in-out!important;
   }
   
   .color-swatch__label svg {
@@ -3202,7 +3202,8 @@ details-disclosure > details {
 
   /*Product option accordion*/
 
-  variant-radios-bundle {
+  variant-radios-bundle,
+  variant-radios-simple {
     display: block!important
   }
 

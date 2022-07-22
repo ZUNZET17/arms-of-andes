@@ -850,8 +850,9 @@
                 display: flex!important;
                 justify-content: center;
                 align-items: center;
-                min-width: {{- block.settings.swatch_size -}}rem;
-                min-height: {{- block.settings.swatch_size -}}rem;
+                min-width: {{- block.settings.swatch_size -}}rem!important;
+                min-height: {{- block.settings.swatch_size -}}rem!important;
+                padding: 0!important;
                 {% if block.settings.swatch_display == "rectangle" %}
                 min-width: {{- block.settings.swatch_size | times: 1.35 -}}rem;
                 {% endif %}
@@ -989,7 +990,7 @@
                                         {% capture unavailable_bk %}{{- block.settings[swatch_idx] -}}{{- block.settings[swatch_idx] -}}75!important{% endcapture %}
                                         {% style %}
                                           .{{- swatch_idx -}}--{{block.id}} {
-                                            background-color: {{- block.settings[swatch_idx] -}};
+                                            background-color: {{- block.settings[swatch_idx] -}}!important;
                                           }
                                           .unavailable-swatch:after {
                                             content: "";
@@ -1081,7 +1082,7 @@
                                         {% capture swatch_idx %}bundle-step-option{{x}}-variant{{i}}__swatch2{{- forloop.index -}}{% endcapture %}
                                         {% style %}
                                           .{{- swatch_idx -}}--{{block.id}} {
-                                            background-color: {{- block.settings[swatch_idx] -}};
+                                            background-color: {{- block.settings[swatch_idx] -}}!important;
                                             {% if block.settings.circle_on %}
                                             border-radius: 50%;
                                             {% endif %}

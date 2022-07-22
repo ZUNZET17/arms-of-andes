@@ -843,8 +843,9 @@
                 display: flex!important;
                 justify-content: center;
                 align-items: center;
-                min-width: {{- block.settings.swatch_size -}}rem;
-                min-height: {{- block.settings.swatch_size -}}rem;
+                min-width: {{- block.settings.swatch_size -}}rem!important;
+                min-height: {{- block.settings.swatch_size -}}rem!important;
+                padding: 0!important;
                 {% if block.settings.swatch_display == "rectangle" %}
                 min-width: {{- block.settings.swatch_size | times: 1.35 -}}rem;
                 {% endif %}
@@ -974,16 +975,8 @@
                                     {% capture unavailable_bk %}{{- block.settings[swatch_idx] -}}{{- block.settings[swatch_idx] -}}75!important{% endcapture %}
                                     {% style %}
                                       .{{- swatch_idx -}}{{block.id}} {
-                                        background-color: {{- block.settings[swatch_idx] -}};
+                                        background-color: {{- block.settings[swatch_idx] -}}!important;
                                       }
-                                      {% comment %}
-                                      .{{-swatch_idx-}}.unavailable-swatch {
-                                        {% unless request.design_mode %}
-                                        background-color: {{- block.settings[swatch_idx] -}}75!important;
-                                        {% endunless %}
-                                        border-color: #dddddd40!important;
-                                      }
-                                      {% endcomment %}
                                       .unavailable-swatch:after {
                                         content: "";
                                         font-size: {{- block.settings.swatch_size -}}rem;
@@ -1068,17 +1061,11 @@
                                     {% capture swatch_idx %}swatch2{{- forloop.index -}}{% endcapture %}
                                     {% style %}
                                       .{{- swatch_idx -}}{{block.id}} {
-                                        background-color: {{- block.settings[swatch_idx] -}};
+                                        background-color: {{- block.settings[swatch_idx] -}}!important;
                                         {% if block.settings.circle_on %}
                                         border-radius: 50%;
                                         {% endif %}
                                       }
-                                      {% comment %}
-                                      .{{-swatch_idx-}}.unavailable-swatch {
-                                        background-color: {{- block.settings[swatch_idx] -}}75!important;
-                                        border-color: #dddddd40!important;
-                                      }
-                                      {% endcomment %}
                                     {% endstyle %}
                                     {%- capture colorop2 -%}color-2{{- forloop.index -}}{%- endcapture -%}
                                     {%- if block.settings[colorop2] -%}

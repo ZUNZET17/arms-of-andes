@@ -852,8 +852,9 @@
               display: flex!important;
               justify-content: center;
               align-items: center;
-              min-width: {{- block.settings.swatch_size -}}rem;
-              min-height: {{- block.settings.swatch_size -}}rem;
+              min-width: {{- block.settings.swatch_size -}}rem!important;
+              min-height: {{- block.settings.swatch_size -}}rem!important;
+              padding: 0!important;
               {% if block.settings.swatch_display == "rectangle" %}
               min-width: {{- block.settings.swatch_size | times: 1.35 -}}rem;
               {% endif %}
@@ -875,20 +876,6 @@
             <a href="{{ block.settings.page.url }}" class="product-popup-modal__button link no-js">{{ block.settings.text }}</a>
               {%- unless product.has_only_default_variant -%}
                 {%- if block.settings.picker_type == 'button' -%}
-                  <variant-radios class="no-js-hidden color-swatches-block" data-section="{{ section.id }}" data-url="{{ product.url }}" {{ block.shopify_attributes }}>
-                    <!-- variants list -->
-                    {%- capture variants_list -%}
-                      {
-                      {%- for variant in product.variants -%}
-                          &quot;{%- for option in variant.options -%}
-                          {{- option | strip | downcase | replace: " ", "-" -}}
-                          {%- if forloop.last == false -%}-{%- endif -%}
-                        {%- endfor -%}&quot;:
-                        {{ variant.available -}}
-                        {%- if forloop.last == false -%},{% endif %}
-                      {%- endfor -%}
-                      }
-                    {%- endcapture -%}
                     <input class="js-variant-list" value="{{variants_list}}" type="hidden">
                     {%- for option in product.options_with_values -%}
                       {% capture idx_top %}color_group_{{- forloop.index -}}_padding_top{% endcapture %}
@@ -932,16 +919,8 @@
                                 {% capture swatch_idx %}swatch1{{-forloop.index-}}{% endcapture %}
                                 {% style %}
                                 .{{-swatch_idx-}} {
-                                  background-color: {{- block.settings[swatch_idx] -}};
+                                  background-color: {{- block.settings[swatch_idx] -}}!important;
                                 }
-                                {% comment %}
-                                .{{-swatch_idx-}}.unavailable-swatch {
-                                  {% unless request.design_mode %}
-                                  background-color: {{- block.settings[swatch_idx] -}}75!important;
-                                  {% endunless %}
-                                  border-color: #dddddd40!important;
-                                }
-                                {% endcomment %}
                                 .unavailable-swatch:after {
                                   content: "";
                                   font-size: {{- block.settings.swatch_size -}}rem;
@@ -1027,20 +1006,13 @@
                                 {% capture swatch_idx %}swatch2{{-forloop.index-}}{% endcapture %}
                                 {% style %}
                                   .{{-swatch_idx-}} {
-                                    background-color: {{- block.settings[swatch_idx] -}};
+                                    background-color: {{- block.settings[swatch_idx] -}}!important;
                                     {% if block.settings.circle_on %}
                                     border-radius: 50%;
                                     {% endif %}
                                   }
-                                  {% comment %}
-                                  .{{-swatch_idx-}}.unavailable-swatch {
-                                    background-color: {{- block.settings[swatch_idx] -}}75!important;
-                                    border-color: #dddddd40!important;
-                                  }
-                                  {% endcomment %}
                                 {% endstyle %}
                                 {%- capture colorop2 -%}color-2{{-forloop.index-}}{%- endcapture -%}
-                                {% comment %}<p>{{colorop2}}</p>{% endcomment %}
                                 {%- if block.settings[colorop2] -%}
                                   <input class="variant-option-input js-variant-option-color" type="radio" id="{{ section.id }}-{{ option.position }}-{{ forloop.index0 }}"
                                         name="{{ option.name }}"
