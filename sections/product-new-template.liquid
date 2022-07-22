@@ -876,7 +876,7 @@
             <a href="{{ block.settings.page.url }}" class="product-popup-modal__button link no-js">{{ block.settings.text }}</a>
               {%- unless product.has_only_default_variant -%}
                 {%- if block.settings.picker_type == 'button' -%}
-                    <input class="js-variant-list" value="{{variants_list}}" type="hidden">
+                <variant-radios-simple class="variant-picker no-js-hidden color-swatches-block" data-section="{{ section.id }}" data-url="{{ product.url }}" {{ block.shopify_attributes }}>
                     {%- for option in product.options_with_values -%}
                       {% capture idx_top %}color_group_{{- forloop.index -}}_padding_top{% endcapture %}
                       {% capture idx_bottom %}color_group_{{- forloop.index -}}_padding_bottom{% endcapture %}

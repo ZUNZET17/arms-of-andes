@@ -1013,12 +1013,16 @@ class VariantRadiosSimple extends VariantRadiosBundle {
   }
 
   sortVariantPictures() {
-    this.selectedColor = this.existingColor || this.querySelectorAll('fieldset.color-swatches input:checked')[0].value.toLowerCase()
+    this.selectedColor = this.querySelectorAll('fieldset.color-swatches input:checked')[0].value.toLowerCase()
     this.picturesArray = Array.from(document.querySelectorAll('.product__media-item'));
     this.picturesArray.forEach( x => {
       const altArr = x.getAttribute('media-alt').split(' ');
       const pictureColor = altArr.slice(altArr.indexOf('color') + 1).toString().replace(',', ' ').toLowerCase();
-      if (pictureColor == this.selectedColor) x.style.display = 'block'
+      if (pictureColor == this.selectedColor) {
+        x.style.display = 'block'
+        return
+      }
+      x.style.display = 'none'
     })
 
   };
@@ -1061,7 +1065,6 @@ const bundleAccordion = function (ev) {
   
 
   const displaySelected = this.parentElement.querySelector('.selection-span')
-
   displaySelected.textContent = this.querySelectorAll('variant-radios-bundle:not(.js-none)')[0].currentVariant.title
   }
 }
@@ -1076,8 +1079,10 @@ window.addEventListener('load', () => {
 //Set button availabitlity
 
 const bundleItems = function (ev) {
+  console.log('bundle')
   const input = ev.currentTarget
-  selectedVariants = Array.from(document.querySelectorAll('variant-radios-bundle')).filter(x => !x.classList.contains('js-none')).map(x => x.currentVariant)
+  selectedVariants = Array.from(document.querySelectorAll('.variant-picker')).filter(x => !x.classList.contains('js-none')).map(x => x.currentVariant)
+  console.log(selectedVariants)
   const productForm = document.getElementById(`product-form-${input.dataset?.section || dataSection}`);
 
   if (!productForm) return;
@@ -1099,7 +1104,7 @@ const bundleItems = function (ev) {
 }
 
 window.addEventListener('load', bundleItems)
-Array.from(document.querySelectorAll('variant-radios-bundle')).forEach(v => {
+Array.from(document.querySelectorAll('.variant-picker')).forEach(v => {
   v.addEventListener('change', bundleItems)
 })
 
@@ -1173,9 +1178,9 @@ const addAllItems = function(ev) {
     console.log('products', json)
     cartNotification.renderContents(json);
   }).catch((err) => {
-    /* uh oh, we have error. */
+    /* uh oh, we have an error. */
     console.error(err)
   });
 }
 
-productForm.addEventListener('submit', addAllItems)
+productForm?.addEventListener('submit', addAllItems)
