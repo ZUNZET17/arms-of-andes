@@ -1,0 +1,395 @@
+{
+  "sections": {
+    "main": {
+      "type": "product-new-template",
+      "blocks": {
+        "vendor": {
+          "type": "text",
+          "settings": {
+            "hide_mobile": false,
+            "text": "<p>NATURAL HIGH PERFORMANCE<\/p>",
+            "text_color": "",
+            "padding_top": 0,
+            "padding_bottom": 0,
+            "text_family": "roboto",
+            "text_style": "uppercase",
+            "text_weight": "regular",
+            "text_size": 1.1,
+            "text_justify": "left"
+          }
+        },
+        "title": {
+          "type": "title",
+          "settings": {
+            "title_weight": "regular",
+            "title_color": "",
+            "title_size": 1.7,
+            "title_justify": "left",
+            "subtitle_weight": "400",
+            "subtitle_color": "",
+            "subtitle_size": 1.7,
+            "subtitle_justify": "left"
+          }
+        },
+        "price": {
+          "type": "price",
+          "settings": {
+            "price_color": ""
+          }
+        },
+        "variant_picker": {
+          "type": "variant_picker",
+          "settings": {
+            "swatches_padding_top": 0.4,
+            "swatches_padding_bottom": 2.4,
+            "color_group_1_legend_padding_bottom": 0,
+            "color_group_1_padding_top": 0,
+            "color_group_1_padding_bottom": 0,
+            "color_group_2_legend_padding_bottom": 0,
+            "color_group_2_padding_top": 0.8,
+            "color_group_2_padding_bottom": 2.5,
+            "sizes_options_header_padding_bottom": 1,
+            "sizes_guide_size": 1,
+            "sizes_guide_color": "",
+            "sizes_guide_weight": "400",
+            "sizes_guide_underline": true,
+            "color_group1_page": "sizing-chart-men-bottoms",
+            "color_group1_link": "",
+            "color_group2_page": "",
+            "color_group2_link": "",
+            "pop_up_alignment": true,
+            "pop_up_gap": 1.7,
+            "color_group_2_popup_title": "Why are they different?",
+            "color_group_2_popup_title_family": "default",
+            "color_group2_page2": "",
+            "color_group2_page2_link": "",
+            "size_guide_text": "Size Guide",
+            "size_guide_text_family": "default",
+            "size_guide_page": "fiber-comparison-chart",
+            "size_guide_link": "",
+            "swatch_display": "circle",
+            "legend_size": 1.2,
+            "legend_weight": "regular",
+            "color_group2_page2_size": 1.2,
+            "color_group2_page2_weight": "400",
+            "sizes_legend_size": 1.2,
+            "sizes_legend_weight": "400",
+            "swatch_size": 3,
+            "group_1_title": "Low Impact Dyes:",
+            "group_1_title_family": "default",
+            "group1_legend_color": "",
+            "color-11": true,
+            "swatch11": "#5e6064",
+            "color-12": true,
+            "swatch12": "#161f39",
+            "color-13": true,
+            "swatch13": "#446489",
+            "color-14": false,
+            "swatch14": "#e1e0da",
+            "color-15": false,
+            "swatch15": "#000000",
+            "color-16": false,
+            "swatch16": "#81807e",
+            "color-17": false,
+            "swatch17": "#000000",
+            "color-18": false,
+            "swatch18": "#000000",
+            "color-19": false,
+            "swatch19": "#000000",
+            "color-110": false,
+            "swatch110": "#000000",
+            "group_2_title": "Natural Dyes:",
+            "group_2_title_family": "default",
+            "group2_legend_color": "",
+            "color-21": false,
+            "swatch21": "#000000",
+            "color-22": false,
+            "swatch22": "#000000",
+            "color-23": false,
+            "swatch23": "#446489",
+            "color-24": true,
+            "swatch24": "#e1e0da",
+            "color-25": true,
+            "swatch25": "#000000",
+            "color-26": true,
+            "swatch26": "#81807e",
+            "color-27": false,
+            "swatch27": "#000000",
+            "color-28": false,
+            "swatch28": "#000000",
+            "color-29": false,
+            "swatch29": "#000000",
+            "color-210": false,
+            "swatch210": "#000000",
+            "picker_type": "button"
+          }
+        },
+        "quantity_selector": {
+          "type": "quantity_selector",
+          "disabled": true,
+          "settings": {
+          }
+        },
+        "buy_buttons": {
+          "type": "buy_buttons",
+          "settings": {
+            "show_dynamic_checkout": false,
+            "button_bk": "#17365c",
+            "button_color": "#ffffff"
+          }
+        },
+        "a2e921b7-a70f-4364-b6e6-a5399955b244": {
+          "type": "text",
+          "settings": {
+            "hide_mobile": false,
+            "text": "<p>EMBRACE THE JOURNEY<\/p>",
+            "text_color": "",
+            "padding_top": 0,
+            "padding_bottom": 0,
+            "text_family": "roboto",
+            "text_style": "uppercase",
+            "text_weight": "regular",
+            "text_size": 1.5,
+            "text_justify": "left"
+          }
+        },
+        "ff694956-c6ef-4d0e-9e3d-6e3101374dd4": {
+          "type": "text",
+          "settings": {
+            "hide_mobile": false,
+            "text": "<p>Alpaca Outperforms Merino<\/p>",
+            "text_color": "",
+            "padding_top": 0,
+            "padding_bottom": 0,
+            "text_family": "default",
+            "text_style": "body",
+            "text_weight": "bold",
+            "text_size": 2.1,
+            "text_justify": "left"
+          }
+        },
+        "tabs": {
+          "type": "tabs",
+          "settings": {
+            "hide_mobile": false,
+            "border_on": false,
+            "padding_top": 1.2,
+            "padding_bottom": 0,
+            "tab_icon_size": 5,
+            "tab_title1_size": 1.3,
+            "tab_title1_weight": "400",
+            "tab_title1_justify": "left",
+            "tab_title12_size": 1.9,
+            "tab_title12_weight": "400",
+            "tab_title12_justify": "left",
+            "tab_title2_size": 1.3,
+            "tab_title2_weight": "400",
+            "tab_title2_justify": "left",
+            "tab_title22_size": 1.9,
+            "tab_title22_weight": "400",
+            "tab_title22_justify": "left",
+            "tab_title3_size": 1.3,
+            "tab_title3_weight": "400",
+            "tab_title3_justify": "left",
+            "tab_title32_size": 1.9,
+            "tab_title32_weight": "400",
+            "tab_title32_justify": "left",
+            "tab1_content_size": 1.5,
+            "tab1_content_color": "",
+            "tab1_content_justify": "left",
+            "tab2_content_size": 1.5,
+            "tab2_content_color": "",
+            "tab2_content_justify": "left",
+            "tab3_content_size": 1.5,
+            "tab3_content_color": "",
+            "tab3_content_justify": "left",
+            "btn_bk_active": "#17365c",
+            "icon_color_hover": "#17365c",
+            "tab1_image": "shopify:\/\/shop_images\/Anti-Bacterial_Blue.png",
+            "tab1_image_white": "shopify:\/\/shop_images\/Anti-Bacterial.png",
+            "tab1_title": "",
+            "tab1_title_family": "roboto",
+            "tab1_title_padding_top": 1.2,
+            "tab1_title_padding_bottom": 0,
+            "tab1_title_color": "",
+            "tab1_title2": "<p><strong>Microplastic-Free World<\/strong><\/p>",
+            "tab1_title2_family": "default",
+            "tab1_title2_padding_top": 1.2,
+            "tab1_title2_padding_bottom": 0,
+            "tab1_title2_color": "",
+            "tab1_title2_hide_mobile": false,
+            "tab1_content": "<p>We put a stop to plastic pollution.<\/p><p>We use only organic materials: 100% Organic Cotton fabric sewn with 100% Cotton threads. Even our labels are 100% Cotton.<\/p><p>This is the first step in making our entire catalog petroleum-free and biodegradable.<\/p>",
+            "tab1_content_family": "default",
+            "tab2_image": "shopify:\/\/shop_images\/Lightweight_Blue.png",
+            "tab2_image_white": "shopify:\/\/shop_images\/Lightweight_76e6583e-48ee-4be8-b753-2833135b1ee9.png",
+            "tab2_title": "",
+            "tab2_title_family": "roboto",
+            "tab2_title_padding_top": 1.2,
+            "tab2_title_padding_bottom": 0,
+            "tab2_title_color": "",
+            "tab2_title2": "<p><strong>One-Country Supply Chain<\/strong><\/p>",
+            "tab2_title2_family": "default",
+            "tab2_title2_padding_top": 1.2,
+            "tab2_title2_padding_bottom": 0,
+            "tab2_title2_color": "",
+            "tab2_title2_hide_mobile": false,
+            "tab2_content": "<p>We perfected the supply chain.<\/p><p>No more international supply chain with a high carbon footprint and no transparency.<\/p><p>Our cotton is cultivated, spun into yarn, knitted into fabric, and sewn into the perfect Tank Top in our studio, exclusively in Peru.<\/p>",
+            "tab2_content_family": "default",
+            "tab3_image": "shopify:\/\/shop_images\/Quick-Drying_Blue.png",
+            "tab3_image_white": "shopify:\/\/shop_images\/Quick-Drying.png",
+            "tab3_title": "",
+            "tab3_title_family": "default",
+            "tab3_title_padding_top": 1.2,
+            "tab3_title_padding_bottom": 0,
+            "tab3_title_color": "",
+            "tab3_title2": "<p><strong>100% Organic Pima Cotton<\/strong><\/p>",
+            "tab3_title2_family": "default",
+            "tab3_title2_padding_top": 1.2,
+            "tab3_title2_padding_bottom": 0,
+            "tab3_title2_color": "",
+            "tab3_title2_hide_mobile": false,
+            "tab3_content": "<p>We redefined sustainability.<\/p><p>This is not just another organic Tank Top. We use Pima Cotton, native to Peru, that uses zero toxic chemicals.<\/p><p>Peruvian Pima is the parent fiber to all premium cotton, unbelievably soft and breathable.<\/p>",
+            "tab3_content_family": "default"
+          }
+        },
+        "collapsible-row-0": {
+          "type": "collapsible_tab",
+          "settings": {
+            "hide_mobile": false,
+            "heading": "Product Details",
+            "accordion_title_size": 1.3,
+            "accordion_title_weight": "400",
+            "accordion_title_family": "default",
+            "accordion_title_color": "",
+            "accordion_title_align": "left",
+            "icon": "none",
+            "content": "<p>• Regular Fit<\/p><p>• Model is 6'1\", has 34\" chest and 32\" hips<\/p>",
+            "accordion_content_size": 1.3,
+            "accordion_content_weight": "400",
+            "accordion_content_family": "default",
+            "accordion_content_color": "",
+            "accordion_content_align": "left",
+            "page": ""
+          }
+        },
+        "collapsible-row-3": {
+          "type": "collapsible_tab",
+          "settings": {
+            "hide_mobile": false,
+            "heading": "Fabric Care",
+            "accordion_title_size": 1.3,
+            "accordion_title_weight": "400",
+            "accordion_title_family": "default",
+            "accordion_title_color": "",
+            "accordion_title_align": "left",
+            "icon": "none",
+            "content": "<p>• Machine wash cold<br\/>• Tumble dry low<\/p>",
+            "accordion_content_size": 1.3,
+            "accordion_content_weight": "400",
+            "accordion_content_family": "default",
+            "accordion_content_color": "",
+            "accordion_content_align": "left",
+            "page": ""
+          }
+        }
+      },
+      "block_order": [
+        "vendor",
+        "title",
+        "price",
+        "variant_picker",
+        "quantity_selector",
+        "buy_buttons",
+        "a2e921b7-a70f-4364-b6e6-a5399955b244",
+        "ff694956-c6ef-4d0e-9e3d-6e3101374dd4",
+        "tabs",
+        "collapsible-row-0",
+        "collapsible-row-3"
+      ],
+      "settings": {
+        "enable_sticky_info": true,
+        "bc_hide_mobile": false,
+        "bc_size": 1.2,
+        "bc_weight": "500",
+        "bc_is_uppercase": false,
+        "on_picture_text": "<p><strong>Fiber: <\/strong>100% Organic Pima Cotton<br\/><strong>Thread: <\/strong>100% Cotton<br\/><strong>Label:<\/strong> 100% Organic Cotton + GOTS Certified Ink<br\/><strong>Dyes:<\/strong> Low Impact Dyes (GOTS) & 100% Natural Dyes<br\/><strong>Finishing:<\/strong> OEKO-TEX Certified<br\/><strong>Care:<\/strong> Tumble dry low. Machine wash cold.<\/p>",
+        "on_image_text_size": 1.2,
+        "on_image_text_weight": "500",
+        "on_image_text_align": "flex-end",
+        "on_image_text_content_align": "left",
+        "on_picture_text_color": "#17365c",
+        "on_image_bk": "rgba(255,255,255,0.6)",
+        "on_picture_text_natural": "<p>Fiber: 100% Organic Pima Cotton<br\/>Thread: 100% Cotton<br\/>Label : 100% Organic Cotton + GOTS Certified Ink<\/p>",
+        "on_image_text_size_natural": 1.2,
+        "on_image_text_weight_natural": "500",
+        "on_image_text_align_natural": "flex-end",
+        "on_image_text_content_align_natural": "left",
+        "on_picture_text_color_natural": "#17365c",
+        "on_image_bk_natural": "rgba(255,255,255,0.6)",
+        "on_picture_trigger_text": "Plastic-Free Ingredients",
+        "on_picture_trigger_text_underline": true,
+        "on_picture_trigger_text_natural": "Plastic-Free Ingredients",
+        "on_picture_trigger_text_natural_underline": true,
+        "gallery_layout": "stacked",
+        "grid_display": true,
+        "media_size": "large",
+        "mobile_thumbnails": "hide",
+        "hide_variants": true,
+        "enable_video_looping": true,
+        "padding_top": 8,
+        "padding_bottom": 12
+      }
+    },
+    "product-recommendations": {
+      "type": "product-recommendations",
+      "disabled": true,
+      "settings": {
+        "heading": "You may also like",
+        "heading_size": "h2",
+        "products_to_show": 4,
+        "columns_desktop": 4,
+        "color_scheme": "background-1",
+        "image_ratio": "square",
+        "show_secondary_image": true,
+        "show_vendor": false,
+        "show_rating": false,
+        "columns_mobile": "2",
+        "padding_top": 36,
+        "padding_bottom": 28
+      }
+    },
+    "1655846331249d4e40": {
+      "type": "apps",
+      "blocks": {
+        "e7765396-b452-4b0a-93fb-28018755cf73": {
+          "type": "shopify:\/\/apps\/judge-me-product-reviews\/blocks\/review_widget\/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
+          "settings": {
+          }
+        },
+        "8c91ed5f-63be-48ad-b594-3346a05a6283": {
+          "type": "shopify:\/\/apps\/judge-me-product-reviews\/blocks\/all_reviews_text\/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
+          "settings": {
+          }
+        }
+      },
+      "block_order": [
+        "e7765396-b452-4b0a-93fb-28018755cf73",
+        "8c91ed5f-63be-48ad-b594-3346a05a6283"
+      ],
+      "settings": {
+        "include_margins": true
+      }
+    },
+    "pf-dd368c63": {
+      "type": "pf-dd368c63",
+      "settings": {
+      }
+    }
+  },
+  "order": [
+    "main",
+    "product-recommendations",
+    "1655846331249d4e40",
+    "pf-dd368c63"
+  ]
+}
