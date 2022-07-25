@@ -85,9 +85,9 @@
             "color-11": true,
             "swatch11": "#000000",
             "color-12": true,
-            "swatch12": "#161f39",
+            "swatch12": "#5e6064",
             "color-13": true,
-            "swatch13": "#5e6064",
+            "swatch13": "#161f39",
             "color-14": false,
             "swatch14": "#dcd8e3",
             "color-15": false,
@@ -112,10 +112,10 @@
             "color-23": false,
             "swatch23": "#446489",
             "color-24": true,
-            "swatch24": "#446489",
-            "color-25": true,
+            "swatch24": "#e1e0da",
+            "color-25": false,
             "swatch25": "#81807e",
-            "color-26": true,
+            "color-26": false,
             "swatch26": "#e1e0da",
             "color-27": false,
             "swatch27": "#e1e0da",
@@ -228,6 +228,7 @@
         },
         "collapsible-row-0": {
           "type": "collapsible_tab",
+          "disabled": true,
           "settings": {
             "hide_mobile": false,
             "heading": "Size & Fit",
@@ -333,28 +334,6 @@
         "padding_bottom": 28
       }
     },
-    "1655846331249d4e40": {
-      "type": "apps",
-      "blocks": {
-        "e7765396-b452-4b0a-93fb-28018755cf73": {
-          "type": "shopify:\/\/apps\/judge-me-product-reviews\/blocks\/review_widget\/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
-          "settings": {
-          }
-        },
-        "8c91ed5f-63be-48ad-b594-3346a05a6283": {
-          "type": "shopify:\/\/apps\/judge-me-product-reviews\/blocks\/all_reviews_text\/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
-          "settings": {
-          }
-        }
-      },
-      "block_order": [
-        "e7765396-b452-4b0a-93fb-28018755cf73",
-        "8c91ed5f-63be-48ad-b594-3346a05a6283"
-      ],
-      "settings": {
-        "include_margins": true
-      }
-    },
     "pf-46439648": {
       "type": "pf-46439648",
       "settings": {
@@ -364,7 +343,6 @@
   "order": [
     "main",
     "product-recommendations",
-    "1655846331249d4e40",
     "pf-46439648"
   ]
 }
