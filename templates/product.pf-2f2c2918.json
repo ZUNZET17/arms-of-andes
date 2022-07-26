@@ -228,6 +228,7 @@
         },
         "collapsible-row-0": {
           "type": "collapsible_tab",
+          "disabled": true,
           "settings": {
             "hide_mobile": false,
             "heading": "Size & Fit",
@@ -333,22 +334,6 @@
         "padding_bottom": 28
       }
     },
-    "1655846331249d4e40": {
-      "type": "apps",
-      "blocks": {
-        "e7765396-b452-4b0a-93fb-28018755cf73": {
-          "type": "shopify:\/\/apps\/judge-me-product-reviews\/blocks\/review_widget\/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
-          "settings": {
-          }
-        }
-      },
-      "block_order": [
-        "e7765396-b452-4b0a-93fb-28018755cf73"
-      ],
-      "settings": {
-        "include_margins": true
-      }
-    },
     "pf-2f2c2918": {
       "type": "pf-2f2c2918",
       "settings": {
@@ -358,7 +343,6 @@
   "order": [
     "main",
     "product-recommendations",
-    "1655846331249d4e40",
     "pf-2f2c2918"
   ]
 }
