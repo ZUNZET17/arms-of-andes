@@ -1061,12 +1061,11 @@ const bundleAccordion = function (ev) {
         v.classList.remove('js-none')
       }
     })
-    
-  
+  }
 
   const displaySelected = this.parentElement.querySelector('.selection-span')
   displaySelected.textContent = this.querySelectorAll('variant-radios-bundle:not(.js-none)')[0].currentVariant.title
-  }
+
 }
 
 window.addEventListener('load', () => {
@@ -1079,10 +1078,8 @@ window.addEventListener('load', () => {
 //Set button availabitlity
 
 const bundleItems = function (ev) {
-  console.log('bundle')
   const input = ev.currentTarget
   selectedVariants = Array.from(document.querySelectorAll('.variant-picker')).filter(x => !x.classList.contains('js-none')).map(x => x.currentVariant)
-  console.log(selectedVariants)
   const productForm = document.getElementById(`product-form-${input.dataset?.section || dataSection}`);
 
   if (!productForm) return;

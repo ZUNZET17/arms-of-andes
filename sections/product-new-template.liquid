@@ -907,9 +907,11 @@
                                   {% if block.settings.color_group1_page.content != blank %}
                                     {{ block.settings.color_group1_page.content }}
                                   {% else %}
-                                    {% capture pageStyle %}'pagefly.{{- pageId -}}.css' | asset_url{% endcapture%}
-                                    {% render 'pagefly-settings' %} 
-                                    <link rel="stylesheet" href="{{pageStyle}}">
+                                    {% if pageId %}
+                                      {% capture pageStyle %}'pagefly.{{- pageId -}}.css' | asset_url{% endcapture%}
+                                      {% render 'pagefly-settings' %} 
+                                      <link rel="stylesheet" href="{{pageStyle}}">
+                                    {% endif %}
                                   {% endif %}
                                 </div>
                               </div>
@@ -977,8 +979,10 @@
                                     {% if block.settings.color_group2_page.content != blank %}
                                       {{ block.settings.color_group2_page.content }}
                                     {% else %}
-                                      {% capture pageStyle2 %}'pagefly.{{- pageId2 -}}.css' | asset_url{% endcapture%}
-                                      <link rel="stylesheet" href="{{pageStyle2}}">
+                                      {% if pageId2 %}
+                                        {% capture pageStyle2 %}'pagefly.{{- pageId2 -}}.css' | asset_url{% endcapture%}
+                                        <link rel="stylesheet" href="{{pageStyle2}}">
+                                      {% endif %}
                                     {% endif %}
                                   </div>
                                 </div>
@@ -994,8 +998,10 @@
                                     {% if block.settings.color_group2_page2.content != blank %}
                                     {{ block.settings.color_group2_page2.content }}
                                   {% else %}
-                                    {% capture color_group2_page2_style %}'pagefly.{{- pageId22-}}.css' | asset_url{% endcapture%}
-                                    <link rel="stylesheet" href="{{color_group2_page2_style}}">
+                                    {% if pageId22 %}
+                                      {% capture color_group2_page2_style %}'pagefly.{{- pageId22-}}.css' | asset_url{% endcapture%}
+                                      <link rel="stylesheet" href="{{color_group2_page2_style}}">
+                                    {% endif %}
                                   {% endif %}
                                   </div>
                                 </div>
@@ -1062,8 +1068,10 @@
                                   {% if block.settings.size_guide_page.content != blank %}
                                   {{ block.settings.size_guide_page.content }}
                                 {% else %}
-                                  {% capture pageStyle3 %}'pagefly.{{- pageId3 -}}.css' | asset_url{% endcapture%}
-                                  <link rel="stylesheet" href="{{pageStyle3}}">
+                                  {% if pageId3 %}
+                                    {% capture pageStyle3 %}'pagefly.{{- pageId3 -}}.css' | asset_url{% endcapture%}
+                                    <link rel="stylesheet" href="{{pageStyle3}}">
+                                  {% endif %}
                                 {% endif %}
                                 </div>
                               </div>
