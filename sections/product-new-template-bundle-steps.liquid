@@ -1008,7 +1008,9 @@
                                                 name="bundle-step-option{{x}}-variant{{i}}__{{-option.name-}}-{{product_option}}-{{block.id}}"
                                                 value="{{ value | escape }}"
                                                 form="{{ product_form_id }}"
-                                                {% if forloop.index == 1 %}checked{% endif %}
+                                                {% unless x == 1 %}
+                                                  {% if forloop.index == 1 %}checked{% endif %}
+                                                {% endunless %}
                                           >
                                           <label class="color-swatch__label bundle-step-option{{x}}-variant{{i}}__swatch1{{- forloop.index }}--{{block.id}} js-color-label {% if forloop.index == 1 %}selected{% endif %}" for="bundle-step-option{{x}}-variant{{i}}__{{-value-}}-{{product_option}}-{{block.id}}" swatch-color="{{ value }}" group-number="1" product-title="{{product_option.title}}">
                                             {% render 'icon-close' %}
@@ -1056,9 +1058,9 @@
                                           </div>
                                         </div>
                                       </modal-dialog>
-                                      {% assign color_group2_page2 = 'bundle_step_option' | append: x | append: '_variant' | append: i | append: '__color_group2_page2' %}
-                                      {% assign color_group2_page2_link = 'bundle_step_option' | append: x | append: '_variant' | append: i | append: '__color_group2_page2_link' %}
-                                      {% assign color_group_2_popup_title = 'bundle_step_option' | append: x | append: '_variant' | append: i | append: '__color_group_2_popup_title' %}
+                                      {% assign color_group2_page2 = 'bundle_step_option' | append: x | append: '_variant1__color_group2_page2' %}
+                                      {% assign color_group2_page2_link = 'bundle_step_option' | append: x | append: '_variant1__color_group2_page2_link' %}
+                                      {% assign color_group_2_popup_title = 'bundle_step_option' | append: x | append: '_variant1__color_group_2_popup_title' %}
                                       <modal-opener {% unless block.settings.color_group2_page2 %}style="pointer-events: none"{% endunless %}class="product-popup-modal__opener no-js-hidden quick-add-hidden sizes-guide-opener" data-modal="#PopupModal-{{ block.settings[color_group_2_popup_title] | replace: " ", "" | replace: '?', '' }}" {{ block.shopify_attributes }}>
                                         {% assign pageId22 = block.settings[color_group2_page2].template_suffix %}
                                         <{% if pageId22 %}button{% else %}a{% endif %} id="ProductPopup-{{ block.id }}" {%if block.settings[color_group2_page2_link] %}href="{{ block.settings[color_group2_page2_link] }}" target="_blank" {% endif %} class="product-popup-modal__button link color-group2-page2-legend{{block.id}} {% if pageId22 %}js-pop-up-button{% endif %} sizes-guide{{block.id}} {{ block.settings.color_group_2_popup_title_family }}" type="button" aria-haspopup="dialog" page-id="{{pageId22}}">{{ block.settings[color_group_2_popup_title] | default: block.settings.page.title }}</{% if pageId22 %}button{% else %}a{% endif %}>

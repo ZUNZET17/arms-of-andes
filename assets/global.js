@@ -912,7 +912,7 @@ class VariantRadiosBundle extends VariantRadios {
     super.getVariantData()
     this.existingVariant = location.href.split('variant=')[1]
     this.existingColor = this.variantData.find(v => v.id == this.existingVariant)?.option1.toLowerCase() || null
-    this.selectedProductTitle = 'cover'
+    this.setAvailability()
     super.updateOptions()
     super.updateMasterId()
     this.onChangeHandler()
@@ -1064,7 +1064,7 @@ const bundleAccordion = function (ev) {
   }
 
   const displaySelected = this.parentElement.querySelector('.selection-span')
-  displaySelected.textContent = this.querySelectorAll('variant-radios-bundle:not(.js-none)')[0].currentVariant.title
+  displaySelected.textContent = this.querySelectorAll('variant-radios-bundle:not(.js-none)')[0].currentVariant?.title
 
 }
 

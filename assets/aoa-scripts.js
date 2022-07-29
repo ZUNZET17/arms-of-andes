@@ -35,6 +35,8 @@ const AccordionSolo = function (ev) {
       a.closest('details').classList.remove('open');
     })
   }
+
+  input.nextElementSibling.querySelector('variant-radios-bundle').dispatchEvent(new Event('change'))
   
 }
 
@@ -106,6 +108,8 @@ const nextBundleOption = function (ev) {
   const thisAccordion = input.closest('.product__accordion')
   thisAccordion.querySelector('summary').click()
   accordionArr[(accordionArr.indexOf(thisAccordion) +  1)]?.querySelector('summary').click()
+  accordionArr[(accordionArr.indexOf(thisAccordion) +  1)].querySelectorAll('variant-radios-bundle')[0].dispatchEvent(new Event('change'))
+  window.scrollBy(0, 175)
 
 }
 
@@ -114,7 +118,6 @@ document.querySelectorAll('.js-btn-bundle-nxt').forEach(b => {
 })
 
 const nextBundleOptionSimple = function (ev) {
-  console.log('next-simple')
   const input = ev.target
   const bundleArr = Array.from(document.querySelectorAll('bundle-container-simple'))
   const thisBundleContainer = input.closest('bundle-container-simple')
@@ -122,6 +125,9 @@ const nextBundleOptionSimple = function (ev) {
 
   if (currentIndex == bundleArr.length - 1) return;
   bundleArr[currentIndex + 1].querySelector('summary').click()
+  Array.from(bundleArr[currentIndex + 1].querySelector('variant-radios-bundle').querySelectorAll('input.js-variant-option-color')).some(i => i.getAttribute('checked')) || bundleArr[currentIndex + 1].querySelector('variant-radios-bundle').querySelectorAll('input.js-variant-option-color')[0].setAttribute('checked', true)
+  bundleArr[currentIndex + 1].querySelector('variant-radios-bundle').dispatchEvent(new Event('change'))
+  window.scrollBy(0, 175)
   
 }
 
