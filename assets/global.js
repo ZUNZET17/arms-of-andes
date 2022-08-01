@@ -1059,6 +1059,8 @@ const bundleAccordion = function (ev) {
       v.classList.add('js-none')
       if (selectValue == product) {
         v.classList.remove('js-none')
+        v.querySelectorAll('.js-variant-option-color')[0].setAttribute('checked', true)
+        v.dispatchEvent(new Event('change'))
       }
     })
   }
